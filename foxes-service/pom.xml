@@ -10,6 +10,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>foxes-service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>foxes-chapter-service</module>
+        <module>foxes-user-service</module>
+        <module>foxes-search-service</module>
+        <module>foxes-homepage-service</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <artifactId>foxes-common-db</artifactId>
+            <groupId>com.foxes</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
