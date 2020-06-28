@@ -16,6 +16,7 @@
         <module>foxes-service-api</module>
         <module>foxes-gateway</module>
         <module>foxes-web</module>
+        <module>foxes-canal</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

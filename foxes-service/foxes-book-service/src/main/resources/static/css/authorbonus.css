@@ -1,0 +1,1003 @@
+body,
+dl,
+dd,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+button,
+textarea,
+p,
+th,
+td {
+ margin:0;
+ padding:0
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+ font-size:100%
+}
+input,
+button,
+textarea {
+ vertical-align:middle
+}
+table {
+ border-collapse:collapse;
+ border-spacing:0
+}
+body {
+ color:#000;
+ font:14px/1.5 "Microsoft YaHei",微软雅黑,SimSun,tahoma,arial
+}
+img {
+ border:0
+}
+li {
+ list-style:none
+}
+a {
+ outline:0;
+ text-decoration:none;
+ color:inherit
+}
+.cl:after {
+ content:'\20';
+ display:block;
+ height:0;
+ clear:both
+}
+.cl {
+ *zoom:1
+}
+.c_red {
+ color:red
+}
+* html .wrap-notice {
+ background:#f3d11f url(/Content/pic/2017fans/bg.jpg) no-repeat center 30px;
+ background-attachment:scroll
+}
+.userdataloaidng {
+ height:357px !important;
+ line-height:357px;
+ text-align:center;
+ font-size:16px;
+ color:#999
+}
+.wrap-notice {
+ background:#f3d11f url(/Content/pic/2017fans/bg.jpg) no-repeat center 30px;
+ color:#000;
+ padding-top:31px
+}
+.wrap-hongbao .content {
+ width:1000px;
+ margin:0 auto
+}
+.wrap-hongbao .wrap {
+ background:url(/Content/pic/2017fans/footer.png) no-repeat center bottom;
+ padding:0 0 115px
+}
+.logen {
+ display:block;
+ margin:800px auto 270px
+}
+.activity-rules {
+ padding:0 55px
+}
+.activity-rules dt {
+ width:150px;
+ text-align:center;
+ height:46px;
+ line-height:46px;
+ font-size:24px;
+ color:#fff;
+ background:#000;
+ border-radius:15px;
+ -webkit-border-radius:15px;
+ -moz-border-radius:15px;
+ -ms-border-radius:15px
+}
+.activity-rules dd {
+ font-size:16px;
+ line-height:24px;
+ border-left:2px dotted #000;
+ margin:0 0 0 74px;
+ padding:27px 0
+}
+.activity-rules dd .li {
+ margin:0 0 24px -11px;
+ padding:0 0 0 35px;
+ background:url(/Content/pic/2017fans/minus.png) no-repeat 0 2px
+}
+.activity-rules dd .li .num {
+ float:left
+}
+.activity-rules dd .li .info {
+ overflow:hidden;
+ zoom:1
+}
+* html .wrap-pre {
+ background:#f3d11f url(/Content/pic/2017fans/bg-pre.jpg) no-repeat center 30px;
+ background-attachment:scroll
+}
+.wrap-pre {
+ background:#f3d11f url(/Content/pic/2017fans/bg-pre.jpg) no-repeat center 30px;
+ padding-top:31px
+}
+.wrap-pre .wrap {
+ padding:0 0 240px
+}
+.wrap-pre .pre-word {
+ display:block;
+ margin:170px 0 0 125px
+}
+.wrap-pre .main-wrap {
+ text-align:center
+}
+.main-wrap .activity-time {
+ margin:80px 0 0
+}
+.main-wrap .circle-area p {
+ font-size:18px;
+ line-height:34px
+}
+.main-wrap .circle-area .title {
+ margin:320px auto 20px;
+ display:block
+}
+.main-wrap .circle-area .demo {
+ margin:35px auto 0;
+ display:block
+}
+.main-wrap .circle-area .title2 {
+ margin-top:250px
+}
+.main-wrap .circle-area .title3 {
+ margin-top:280px
+}
+* html .wrap-on {
+ background:#f3d11f url(/Content/pic/2017fans/bg-on.jpg) no-repeat center 30px;
+ background-attachment:scroll
+}
+.wrap-on {
+ background:#f3d11f url(/Content/pic/2017fans/bg-on.jpg) no-repeat center 30px;
+ color:#000;
+ padding-top:31px
+}
+.wrap-on .wrap {
+ background:url(/Content/pic/2017fans/f1.png) no-repeat center bottom
+}
+.wrap-on .wrap-bottom {
+ background:#fff5ce url(/Content/pic/2017fans/f2.png) no-repeat center bottom;
+ padding:0 0 190px;
+ overflow:hidden;
+ zoom:1
+}
+.banner-word-on {
+ display:block;
+ margin:153px 0 315px 205px
+}
+.wrap-hongbao .box-con {
+ position:relative;
+ margin:40px 0 0
+}
+.box-con .box-top,
+.box-con .box-main,
+.box-con .box-bottom {
+ display:block;
+ background:url(/Content/pic/2017fans/box1.png)
+}
+.box-con .box-top,
+.box-con .box-bottom {
+ height:55px
+}
+.box-con .box-main {
+ background-repeat:repeat-y;
+ background-position:-1000px 0;
+ background-color:#fff29c
+}
+.box-con .box-bottom {
+ background-position:-2000px 0
+}
+.box-con .title {
+ display:block;
+ margin:0 auto -25px;
+ position:relative
+}
+.box-con .profile {
+ font-size:18px;
+ text-align:center
+}
+.hongbao-big li {
+ float:left;
+ width:250px;
+ margin:30px 41px 0;
+ display:inline;
+ text-align:center
+}
+.hongbao-big li .hongbao {
+ display:block;
+ overflow:hidden;
+ zoom:1;
+ width:250px;
+ height:310px;
+ font-size:18px;
+ color:#fff;
+ background:url(/Content/pic/2017fans/hongbao-big.png) no-repeat 0 0
+}
+.hongbao-big li .hongbao:hover {
+ text-decoration:none
+}
+.hongbao-big li .hongbao:link,
+.hongbao-big li .hongbao:visited,
+.hongbao-big li .hongbao:hover,
+.hongbao-big li .hongbao:active {
+ color:#fff
+}
+.hongbao-big li .hongbao strong {
+ display:block;
+ font-size:24px;
+ margin:120px auto 0
+}
+.hongbao-big li .icon-ling {
+ display:block;
+ width:95px;
+ cursor:pointer;
+ height:94px;
+ margin:15px auto 0;
+ background:url(/Content/pic/2017fans/icon-ling.png) no-repeat 0 0
+}
+.hongbao-big li .detail {
+ line-height:18px;
+ margin:10px 0 0
+}
+.hongbao-big li .detail .link {
+ color:#09f
+}
+.tab-con .tab-hd span {
+ display:inline-block;
+ cursor:pointer
+}
+.hongbao-tab .tab-hd {
+ margin:0 32px;
+ border-bottom:1px dashed #8b5014;
+ padding:0 0 10px
+}
+.hongbao-tab .tab-hd span {
+ width:110px;
+ height:30px;
+ line-height:30px;
+ margin:0 10px 0 0;
+ font-size:18px;
+ background:url(/Content/pic/2017fans/tab-span.png) no-repeat 0 0;
+ text-align:center;
+ color:#d71e28
+}
+.hongbao-tab .tab-hd .active {
+ background-position:-110px 0;
+ color:#fff
+}
+.hongbao-tab .tab-bd {
+ position:relative
+}
+.hongbao-tab .tab-bd .more {
+ color:#965907;
+ position:absolute;
+ right:32px;
+ top:10px
+}
+.hongbao-tab .tab-bd .more:hover {
+ color:#d71e28
+}
+.hongbao-small {
+ padding:10px 0 0 15px
+}
+.hongbao-small .li {
+ float:left;
+ width:160px;
+ height:200px;
+ line-height:20px;
+ background:url(/Content/pic/2017fans/hongbao-small.png) no-repeat 0 0;
+ text-align:center;
+ color:#ffff9a;
+ margin:34px 17px 0;
+ display:inline
+}
+.hongbao-small .li:hover {
+ color:#ffff9a;
+ text-decoration:none
+}
+.hongbao-small .li .book {
+ width:51px;
+ height:66px;
+ border:2px solid #ce052a;
+ margin-bottom:3px
+}
+.hongbao-small .li h3,
+.hongbao-small .li p {
+ height:20px;
+ overflow:hidden;
+ zoom:1
+}
+.hongbao-small .li .icon-status {
+ display:block;
+ color:#666;
+ margin:15px auto 4px;
+ width:50px;
+ line-height:50px;
+ height:53px;
+ overflow:hidden;
+ zoom:1;
+ background:url(/Content/pic/2017fans/hongbao-icon.png) no-repeat 0 0
+}
+.hongbao-small .li .status-on-word3,
+.hongbao-small .li .status-on-word4 {
+ color:#fe0000
+}
+.hongbao-small .li .status-off-word3 {
+ background-position:0 -53px
+}
+.hongbao-small .li .status-on-word4 {
+ line-height:16px;
+ padding:8px 5px 0;
+ width:40px;
+ height:45px
+}
+.hongbao-small .li a:hover {
+ color:inherit
+}
+.box2 .box-top {
+ background-position:-3000px 0
+}
+.box2 .box-main {
+ background-color:#fff
+}
+.box2 .box-bottom {
+ background-position:-4000px 0
+}
+.prizes {
+ background:#fdcd09;
+ margin:0 2px;
+ padding:0 0 20px
+}
+.prizes .profile {
+ line-height:30px;
+ font-size:18px;
+ text-indent:2em;
+ text-align:left;
+ padding:0 24px 24px 24px
+}
+.prizes-list li {
+ float:left;
+ text-align:center;
+ line-height:40px;
+ margin:0 24px;
+ display:inline
+}
+.prizes-list li img {
+ display:block
+}
+.box2 a:hover {
+ text-decoration:none
+}
+.box2 .discuss_content {
+ margin:20px 20px 0
+}
+.discuss_content .tab-hd .red-small-btn:link,
+.discuss_content .tab-hd .red-small-btn:visited,
+.discuss_content .tab-hd .red-small-btn:hover,
+.discuss_content .tab-hd .red-small-btn:active {
+ color:#fff;
+ font-size:14px
+}
+.box2 .load-more .iconfont {
+ display:none
+}
+.reader-action {
+ height:16px;
+ line-height:16px;
+ overflow:hidden;
+ zoom:1;
+ margin:22px 0 0
+}
+.reader-action span {
+ background:url(/Content/pic/2017fans/icon.png) no-repeat 0 0
+}
+.reader-action .icon-pointer {
+ float:left;
+ padding:0 0 0 18px;
+ color:#42b0ff
+}
+.reader-action .icon-collect {
+ float:right;
+ padding:0 0 0 22px;
+ background-position:0 -29px;
+ color:#999
+}
+.sub-rules {
+ position:fixed;
+ left:50%;
+ top:31px;
+ margin-left:550px
+}
+.sub-rules .line {
+ display:block;
+ width:0;
+ height:550px;
+ border-left:2px dashed #000;
+ overflow:hidden;
+ zoom:1;
+ margin-left:32px
+}
+.sub-rules .hongbao-mine {
+ display:block;
+ cursor:pointer;
+ width:55px;
+ height:65px;
+ padding:36px 0 0 15px;
+ background:url(/Content/pic/2017fans/hongbao-mini.png) no-repeat 0 0;
+ color:#f0ff00;
+ font-size:20px;
+ line-height:22px
+}
+* html .sub-rules {
+ _position:absolute;
+ _bottom:auto;
+ _top:expression(eval(document.documentElement.scrollTop))
+}
+.overWrap {
+ position:fixed;
+ left:0;
+ top:0;
+ width:100%;
+ height:100%;
+ _height:0;
+ z-index:9998;
+ background:#000;
+ filter:alpha(opacity=50);
+ opacity:.5
+}
+.popbox {
+ display:none;
+ position:fixed;
+ left:50%;
+ top:50%;
+ z-index:9999;
+ _position:absolute;
+ _bottom:auto;
+ _top:expression(eval(document.documentElement.scrollTop))
+}
+.closeBoxBtn {
+ position:absolute;
+ right:18px;
+ top:18px;
+ cursor:pointer;
+ width:17px;
+ height:17px;
+ text-indent:-9999px;
+ overflow:hidden;
+ zoom:1;
+ background:url(/Content/pic/2017fans/close-btn.png) no-repeat 0 0
+}
+.line-box {
+ border:2px solid #9d6314;
+ padding:20px 35px;
+ width:676px;
+ margin-left:-375px;
+ background-color:#fef29c;
+ border-radius:20px;
+ -webkit-border-radius:20px;
+ -moz-border-radius:20px;
+ -ms-border-radius:20px
+}
+.line-box .line-box-main {
+ overflow:hidden;
+ zoom:1
+}
+.line-box-main dt {
+ border-bottom:1px dotted #93581b;
+ text-align:center;
+ line-height:52px;
+ color:#e42628;
+ font-size:30px;
+ margin:0 0 24px
+}
+.line-box-main dd {
+ margin:0 0 25px;
+ color:#844401
+}
+.line-box-main dd .article {
+ overflow:hidden;
+ zoom:1;
+ line-height:22px
+}
+.line-box-main dd .article .biaoti {
+ float:left
+}
+.line-box-main dd .article .detail {
+ overflow:hidden;
+ zoom:1
+}
+.line-box-main .part2 .article .biaoti,
+.line-box-main .part3 .article .biaoti {
+ margin:0 25px 0 0
+}
+.rule-box {
+ margin-top:-318px;
+ _margin-top:31px
+}
+* html .wrap-hongbao {
+ background:#fdebbb url(/Content/pic/2017fans/square-bg.jpg) no-repeat center 30px;
+ background-attachment:scroll;
+ padding-top:570px
+}
+.wrap-hongbao {
+ background:#fdebbb url(/Content/pic/2017fans/square-bg.jpg) no-repeat center 30px;
+ color:#000;
+ padding-top:601px
+}
+.wrap-hongbao .wrap {
+ background:url(/Content/pic/2017fans/footer-cloud.png) repeat-x center bottom;
+ padding:0 0 150px
+}
+.box-hongbao {
+ margin:-20px 0 0
+}
+.box-hongbao .box-top {
+ height:156px;
+ line-height:156px;
+ padding:0 85px 0 200px;
+ background:url(/Content/pic/2017fans/box-top-square.png) no-repeat 0 0;
+ font-size:24px
+}
+.box-hongbao .box-top .hongbao-mine {
+ float:right;
+ font-size:16px;
+ color:#874e00
+}
+.box-hongbao .box-top .hongbao-mine a {
+ cursor:pointer
+}
+.box-hongbao .box-main {
+ background-color:#fdebbb;
+ padding:30px 0 0
+}
+.box-hongbao .box-bottom {
+ background-position:-5000px 0
+}
+.pages-simple {
+ text-align:center;
+ margin:10px 0 0
+}
+.pages-simple a {
+ margin:0 5px;
+ color:#965907
+}
+.pages-simple a:hover {
+ color:red
+}
+.pages-simple .active,
+.pages-simple .active:hover {
+ color:#e3bf8f;
+ cursor:default;
+ text-decoration:none
+}
+.hongbao-rule {
+ background-color:#fff8c6;
+ margin-top:-209px
+}
+.hongbao-box {
+ width:400px;
+ height:550px;
+ margin:-275px 0 0 -200px;
+ background:url(/Content/pic/2017fans/hongbao-large.png) no-repeat 0 0;
+ text-align:center
+}
+.hongbao-box .closeBoxBtn {
+ width:30px;
+ height:30px;
+ background:url(/Content/pic/2017fans/close.png) no-repeat 0 0;
+ top:9px;
+ right:9px
+}
+.book-correlate,
+.book-correlate a,
+.book-correlate a:hover {
+ color:#fff
+}
+.book-correlate {
+ line-height:26px
+}
+.book-correlate img {
+ border:2px solid #ce052a;
+ width:147px;
+ height:200px;
+ display:block;
+ margin:55px auto 10px
+}
+.book-correlate h3 {
+ font-size:18px;
+ height:26px;
+ overflow:hidden;
+ zoom:1
+}
+.book-correlate p {
+ height:26px;
+ overflow:hidden;
+ zoom:1
+}
+.hongbao-box .current-status {
+ font-size:18px;
+ color:#ff0;
+ margin-top:35px
+}
+.hongbao-box .current-status span {
+ font-size:60px
+}
+.hongbao-box .bottom-tips {
+ color:#fdebbb;
+ position:absolute;
+ bottom:15px;
+ left:0;
+ width:100%
+}
+.hongbao-box .bottom-tips a,
+.hongbao-box .bottom-tips a:hover {
+ color:#fdebbb;
+ text-decoration:underline;
+ margin:0 30px
+}
+.hongbao-box .bottom-tips a:first-child {
+ float:left
+}
+.hongbao-box .bottom-tips a:last-child {
+ float:right
+}
+.go-vote {
+ display:block;
+ background:#fff100;
+ margin:30px auto 0;
+ width:160px;
+ height:36px;
+ line-height:36px;
+ border-radius:18px;
+ -webkit-border-radius:18px;
+ -moz-border-radius:18px;
+ -ms-border-radius:18px
+}
+.go-vote:link,
+.go-vote:visited,
+.go-vote:hover,
+.go-vote:active {
+ color:#e73452;
+ text-decoration:none
+}
+.history-box {
+ background-color:#fff8c6;
+ width:450px;
+ margin:-269px 0 0 -252px;
+ padding:35px 25px 10px
+}
+.history-box .closeBoxBtn {
+ top:10px;
+ right:10px
+}
+.history-table {
+ width:100%;
+ text-align:center
+}
+.history-table thead th {
+ width:150px;
+ line-height:38px;
+ background:#e73452;
+ color:#fff;
+ font-weight:normal
+}
+.history-table tbody td {
+ border-bottom:1px solid #e3d780;
+ line-height:40px
+}
+.history-table tbody td p {
+ height:40px;
+ overflow:hidden;
+ zoom:1
+}
+.history-box .pages-simple {
+ text-align:right
+}
+.strategy-box {
+ width:426px;
+ margin:-237px 0 0 -250px;
+ _margin-top:80px
+}
+.strategy-box .strategy {
+ text-align:center;
+ color:#844401
+}
+.strategy-box .strategy em {
+ font-style:normal;
+ color:red;
+ margin:0 3px
+}
+.strategy-box .title-hbgl {
+ display:block;
+ margin:-69px auto 0;
+ position:relative
+}
+.strategy-box h3 {
+ color:red;
+ line-height:60px;
+ font-size:36px;
+ font-weight:normal;
+ margin:20px 0 0
+}
+.strategy-box h4 {
+ font-weight:normal;
+ margin:20px 0 0;
+ font-size:24px;
+ line-height:40px
+}
+.strategy-box .btn-link {
+ text-align:right;
+ line-height:30px;
+ margin:20px 0 0
+}
+.strategy-box .btn-link a {
+ text-decoration:underline;
+ color:#844401
+}
+.guanfang-history-box {
+ width:340px;
+ margin:-298px 0 0 -207px;
+ _margin-top:31px
+}
+.guanfang-history-box .history-table .num {
+ width:40px;
+ color:#e73452
+}
+.guanfang-history-box .history-table .name {
+ width:190px;
+ text-align:left;
+ padding:0 10px
+}
+.guanfang-history-box .history-table .piont {
+ width:90px;
+ text-align:left
+}
+.guanfang-history-box .pages-simple {
+ text-align:right
+}
+.guanfang-hongbao {
+ background:#e73452;
+ margin:-20px -35px 0;
+ color:#fff;
+ padding:15px 35px;
+ border-bottom:2px solid #cd0328;
+ margin-bottom:10px;
+ position:relative;
+ overflow:hidden;
+ zoom:1;
+ border-radius:18px 18px 0 0;
+ -webkit-border-radius:18px 18px 0 0
+}
+.guanfang-hongbao .pic {
+ float:left;
+ margin:0 10px 0 0;
+ display:inline;
+ width:92px;
+ height:123px
+}
+.guanfang-hongbao .info {
+ overflow:hidden;
+ zoom:1
+}
+.guanfang-hongbao .info .title {
+ line-height:36px
+}
+.guanfang-hongbao .info .detail {
+ font-size:18px;
+ height:48px;
+ line-height:24px;
+ overflow:hidden;
+ zoom:1
+}
+.guanfang-hongbao .info .name {
+ line-height:24px;
+ margin:10px 0 0
+}
+.guanfang-hongbao .info .name .minilogo {
+ float:left;
+ margin:0 10px 0 0;
+ display:inline
+}
+.book-guanfang .pic {
+ border:0;
+ width:126px;
+ height:169px;
+ margin:35px auto 15px;
+ display:block
+}
+.book-guanfang h3 {
+ font-size:30px;
+ text-align:center;
+ color:#fff;
+ font-weight:normal;
+ line-height:34px
+}
+.book-guanfang .name {
+ line-height:27px;
+ margin:10px 0 0;
+ color:#fff
+}
+.book-guanfang .minilogo {
+ width:24px;
+ height:27px;
+ margin:0;
+ border:0;
+ display:inline-block;
+ vertical-align:middle
+}
+.icon-qiang-once {
+ display:block;
+ cursor:pointer;
+ width:122px;
+ height:130px;
+ background:url(/Content/pic/2017fans/icon-qiang.png) no-repeat 0 0;
+ text-indent:-999px;
+ overflow:hidden;
+ zoom:1;
+ margin:10px auto 0
+}
+.icon-qiang-ten {
+ color:#ff0;
+ text-align:center;
+ text-decoration:underline;
+ cursor:pointer;
+ line-height:40px
+}
+.icon-qiang-ten .btn-ten {
+ display:inline-block
+}
+.icon-qiang-ten a:link,
+.icon-qiang-ten a:visited,
+.icon-qiang-ten a:hover,
+.icon-qiang-ten a:active {
+ color:#ff0
+}
+.hongbao-final h2 {
+ font-size:36px;
+ color:#fff;
+ text-align:center;
+ line-height:160px
+}
+.hongbao-final .final {
+ color:#ff0;
+ font-size:16px;
+ line-height:83px;
+ margin:50px 0
+}
+.hongbao-final .final span {
+ font-size:60px
+}
+.final-ten {
+ overflow:hidden;
+ zoom:1
+}
+.final-ten li {
+ float:left;
+ width:160px;
+ padding:0 20px;
+ color:#ff0;
+ font-size:20px
+}
+.final-ten .odd {
+ text-align:right
+}
+.final-ten .even {
+ text-align:left
+}
+.hongbao-final .tips {
+ color:#fff8c6;
+ margin:50px 0 0
+}
+.hongbao-final .hongbao-btn {
+ margin:40px 0 0
+}
+.hongbao-final .hongbao-btn .btn {
+ border:0;
+ cursor:pointer;
+ outline:0;
+ color:#ce052a;
+ margin:0 20px;
+ font-size:18px;
+ background:#fff100;
+ width:140px;
+ height:36px;
+ line-height:36px;
+ border-radius:18px;
+ -webkit-border-radius:18px;
+ -moz-border-radius:18px;
+ -ms-border-radius:18px
+}
+.hongbao-final .xinren-final {
+ color:#ff0;
+ font-size:30px;
+ line-height:60px;
+ margin:30px 0 0
+}
+.hongbao-final .xinren-final span {
+ font-size:60px;
+ display:block
+}
+.hongbao-xinren h2 {
+ color:#fff100;
+ font-size:30px;
+ margin:25px 0 0;
+ line-height:36px
+}
+.hongbao-xinren .time {
+ color:#fff100
+}
+.icon-logo-flower {
+ display:block;
+ margin:10px auto 0;
+ background:url(/Content/pic/2017fans/logo.png) no-repeat 0 0;
+ width:107px;
+ height:109px
+}
+.hongbao-xinren .xinren-final {
+ color:#fff;
+ font-size:36px;
+ line-height:60px;
+ margin:10px 0 30px
+}
+.hongbao-xinren .xinren-final span {
+ display:block;
+ font-size:60px;
+ color:#fff
+}
+.icon-ling-big {
+ display:block;
+ margin:0 auto;
+ cursor:pointer;
+ background:url(/Content/pic/2017fans/icon-qiang-big.png) no-repeat 0 0;
+ width:122px;
+ height:130px;
+ text-indent:-999px;
+ overflow:hidden;
+ zoom:1
+}
+.nobonus {
+ text-align:center;
+ color:#999;
+ font-size:16px;
+ padding:40px 0
+}
+.bonus-sendmonticknotice {
+ margin:-20px 0 -32px;
+ font-size:15px;
+ color:red;
+ text-align:center
+}
+.bonus-subcribenotice {
+ font-size:16px;
+ color:red;
+ text-align:center !important;
+ margin:-25px 0 5px
+}
+.bonus-content-subcribenotice {
+ font-size:16px;
+ color:red;
+ text-align:center !important;
+ padding-bottom:20px
+}

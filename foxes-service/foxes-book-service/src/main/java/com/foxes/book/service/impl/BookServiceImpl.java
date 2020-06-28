@@ -16,6 +16,14 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
+    /**
+     * 生成静态化页面
+     * @param bookId
+     */
+    @Override
+    public void generateHtml(String bookId) {
+
+    }
 
     @Override
     public Book findBookById(String bookId) {

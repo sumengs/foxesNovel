@@ -1,0 +1,60 @@
+/*
+scrollbar-3d-light-color立体滚动条亮边的颜色 
+scrollbar-arrow-color上下按钮上三角箭头的颜色 
+scrollbar-base-color滚动条的基本颜色 
+scrollbar-dark-shadow-color立体滚动条强阴影的颜色 
+scrollbar-face-color立体滚动条凸出部分的颜色 
+scrollbar-highlight-color滚动条空白部分的颜色 
+scrollbar-shadow-color立体滚动条阴影的颜色 
+*/
+
+
+.x-rs2{ -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;  }
+.x-rs3{ -moz-border-radius:3px; -khtml-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;  }
+.x-rs5{ -moz-border-radius:5px; -khtml-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }
+ 
+.x-box{position:absolute; text-align:center; overflow:hidden; top:0px; left:0px; display:none;
+       /* background:url(images/alpbg.png);
+        filter:progid:DXImageTransform.Microsoft.Shadow(color=#f6f6f6,direction=120,strength=4);
+        -moz-box-shadow: 3px 3px 0px #f6f6f6;
+        -webkit-box-shadow: 3px 3px 0px #f6f6f6;
+        box-shadow: 3px 3px 0px #f6f6f6;
+        */
+      }
+
+.x-box-loading{ position:absolute;  line-height:99%; background:#FFFFFF; left:0; top:0; font-size:14px; text-align:center; color:#888; font-weight:bold; }
+/*.x-box-mask{ position:absolute; background:url(images/tmbg.png);filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/tmbg.png'); top:0px;left:0px;display:none;}
+.x-box-mask-cover{ position:absolute;top:0px; background:url(images/tmbg2.png);filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/tmbg2.png');left:0px;display:none;}
+.x-box-mask-blank {position:absolute;top:0px; background:url(images/blank.png);filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/blank.png');left:0px;display:none;}
+*/
+.x-box-mask{ position:absolute; top:0px;left:0px; background:#bbb; display:none;}
+.x-box-mask-cover{ position:absolute;top:0px;background:#ddd;left:0px;display:none;}
+.x-box-mask-blank {position:absolute;top:0px; left:0px;display:none;}
+
+.x-box-title{  height:35px; line-height:35px;  position:relative; cursor:move; overflow:hidden; }
+.x-box-title-boxs{ float:right; width:60px; height:35px;line-height:35px;  overflow:hidden; }
+.x-box-title-boxs a{ display:block; width:35px; height:35px; margin-left:3px; text-decoration:none;  float:right; cursor:pointer; }
+.x-box-title-boxs a.close0{ background:url(images/close0.gif) no-repeat center; }
+.x-box-title-boxs a.close0:hover{ background:url(images/close1.gif) no-repeat center; }
+.x-box-title-msg{ float:left; height:35px; line-height:35px;font-size:14px; padding-left:10px; font-weight:bold; color:#000; overflow:hidden; }
+
+.x-box-main{ padding:0 0 0 0; background:#eaeaea;border:1px solid #aaa;  overflow:hidden; }
+.x-box-i{ width:100%; height:100%; position:absolute; z-index:-1; border:none; margin:0; padding:0; }
+.x-box-content{ background:#fff;border-top:1px solid #ccc; border-bottom:1px solid #ddd; position:relative; overflow-x:hidden;}
+
+.x-box-button{height:35px; line-height:35px;background:#EAEAEA; margin-right:30px; overflow:hidden; display:none; text-align:right;}
+.x-box-button .outhtml{ float:left;text-align:left; margin:0 0 0 10px;}
+.x-box-button .buttondiv {float:right; margin:0 0 0 10px;}
+.x-box-button input { width:62px; margin:6px 10px 0 0; height:23px;}
+.x-box-button span{ float:right;width:10px; height:10px;}
+
+
+.x-alert { vertical-align:middle;}
+.x-alert .cnt{ display:block; height:100%; width:100%; line-height:100%;}
+.x-alert .msg{ float:left; line-height:25px; padding:0px 10px;  overflow:hidden; font-size:14px;}
+.x-alert .ok{ float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat -160px 0px;}
+.x-alert .confirm{ float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat -96px 0px;}
+.x-alert .failed{ float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat -192px 0px;}
+.x-alert .wrong{ float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat -128px 0px;}
+.x-alert .right{ float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat 0px 0px;}
+.x-alert .wonder { float:left; width:32px; height:32px;margin-left:20px;  background:url(images/prompt.gif) no-repeat -64px 0px;}
