@@ -16,6 +16,7 @@
         <module>foxes-user-service</module>
         <module>foxes-search-service</module>
         <module>foxes-homepage-service</module>
+        <module>foxes-service-book</module>
     </modules>
 
     <dependencies>

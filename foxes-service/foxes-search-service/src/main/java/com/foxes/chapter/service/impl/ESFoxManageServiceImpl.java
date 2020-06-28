@@ -3,6 +3,7 @@ package com.foxes.chapter.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.foxes.book.pojo.Book;
 import com.foxes.chapter.dao.ESFoxManageMapper;
 import com.foxes.chapter.service.ESFoxManageService;
 import com.foxesnovel.search.pojo.Book;
