@@ -32,5 +32,10 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
     </dependency>
+    <dependency>
+        <groupId>com.foxes</groupId>
+        <artifactId>foxes-chapter-service-api</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
 </dependencies>
 </project>
