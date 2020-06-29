@@ -39,8 +39,9 @@
     </dependency>
     <dependency>
         <groupId>com.foxes</groupId>
-        <artifactId>foxes-service-book-api</artifactId>
+        <artifactId>foxes-service-bookwy-api</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
+
 </dependencies>
 </project>

@@ -3,10 +3,10 @@ package com.foxes.chapter.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.foxes.book.feign.BookFeign;
 import com.foxes.book.pojo.Book;
 import com.foxes.chapter.dao.ESFoxManageMapper;
 import com.foxes.chapter.service.ESFoxManageService;
-import com.foxesnovel.search.pojo.Book;
 import com.foxesnovel.search.pojo.BookInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
@@ -20,8 +20,12 @@ public class ESFoxManageServiceImpl implements ESFoxManageService {
 
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
+
     @Autowired
     private ESFoxManageMapper esFoxSearchMapper;
+
+    @Autowired
+    private BookFeign bookFeign;
 
     @Override
     public void createIndex() {

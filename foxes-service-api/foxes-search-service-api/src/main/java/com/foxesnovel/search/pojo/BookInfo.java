@@ -20,13 +20,13 @@ public class BookInfo {
     /**
      * 小说名
      */
-    @Field(index = true, store = true, type = FieldType.Text)
+    @Field(index = true, store = true, type = FieldType.Text,analyzer = "is_max_word")
     private String name;
 
     /**
      * 作者
      */
-    @Field(index = true, store = true, type = FieldType.Text)
+    @Field(index = true, store = true, type = FieldType.Text,analyzer = "is_smart")
     private String author;
 
     /**
@@ -57,12 +57,41 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer category;
 
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     /**
      * 是否完结，1为完结，0为未完结
      */
     @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer isDelete;
+    @Field(index = true, store = true, type = FieldType.Integer)
     private Integer status;
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer isFree;
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer subscribeNum;
 
+    public Integer getIsFree() {
+        return isFree;
+    }
+
+    public void setIsFree(Integer isFree) {
+        this.isFree = isFree;
+    }
+
+    public Integer getSubscribeNum() {
+        return subscribeNum;
+    }
+
+    public void setSubscribeNum(Integer subscribeNum) {
+        this.subscribeNum = subscribeNum;
+    }
 
     /**
      * 总字数
