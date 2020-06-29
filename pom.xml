@@ -16,6 +16,7 @@
         <module>foxes-service-api</module>
         <module>foxes-gateway</module>
         <module>foxes-web</module>
+        <module>foxes-canal</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -54,6 +55,11 @@
                 <version>Hoxton.SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>2.0.4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
