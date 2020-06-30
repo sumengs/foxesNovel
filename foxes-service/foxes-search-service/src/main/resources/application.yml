@@ -13,6 +13,8 @@ spring:
     url: jdbc:mysql://192.168.26.100:3306/foxer-novel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
+  thymeleaf:
+    cache: false
 eureka:
   client:
     service-url:

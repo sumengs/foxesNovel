@@ -107,7 +107,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                 pageNum = "1";
             }
             if (StringUtils.isEmpty(pageSize)) {
-                pageSize = "30";
+                pageSize = "15";
             }
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
@@ -168,7 +168,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
 
             List<String> li = terms.getBuckets().stream().map(
                     bucket -> bucket.getKeyAsString()).collect(Collectors.toList());
-            resultMap.put(category, li);
+            resultMap.put("categoryNames", li);
 
 
             return resultMap;

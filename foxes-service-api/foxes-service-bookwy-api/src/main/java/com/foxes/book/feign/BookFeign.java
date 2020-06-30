@@ -31,5 +31,6 @@ public interface BookFeign {
      * 获取分类信息
      * @return
      */
+    @RequestMapping("/book/cate")
     public Map<Integer,String> findCate();
 }
