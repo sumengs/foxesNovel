@@ -13,10 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +46,43 @@ public class ChapterServiceImpl implements ChapterService {
     @Override
     public Chapter findChapterById(String id) {
         return chapterMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Chapter findLastChapterByBookId(String bookId) {
+        Example example = new Example(Chapter.class);
+
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("bookId",bookId);
+        criteria.andEqualTo("next","0");
+
+        Chapter chapter = chapterMapper.selectOneByExample(example);
+
+        return chapter;
+    }
+
+    @Override
+    public List<Chapter> findAllChapterByBookId(String bookId) {
+        Example example = new Example(Chapter.class);
+
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("bookId",bookId);
+
+
+        return chapterMapper.selectByExample(example);
+    }
+
+    @Override
+    public Chapter findFirstChapterByBookId(String bookId) {
+        Example example = new Example(Chapter.class);
+
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("bookId",bookId);
+        criteria.andEqualTo("pre","0");
+
+        Chapter chapter = chapterMapper.selectOneByExample(example);
+
+        return chapter;
     }
 
     @Override

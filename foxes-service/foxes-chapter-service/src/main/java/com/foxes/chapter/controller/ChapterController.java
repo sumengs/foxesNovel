@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * @date: 2020/6/28 18:15
@@ -27,6 +28,29 @@ public class ChapterController {
 
     @Autowired
     private ChapterService chapterService;
+
+
+    @GetMapping("/findAllChapterByBookId/{id}")
+    @ResponseBody
+    public Result<List<Chapter>> findAllChapterByBookId(@PathVariable("id") String chapterId) {
+        List<Chapter> chapterList = chapterService.findAllChapterByBookId(chapterId);
+        return new Result<>(true, StatusCode.OK, "查询所有章节详情成功", chapterList);
+    }
+
+
+    @GetMapping("/findFirstChapterByBookId/{id}")
+    @ResponseBody
+    public Result<Chapter> findFirstChapterByBookId(@PathVariable("id") String chapterId) {
+        Chapter chapter = chapterService.findFirstChapterByBookId(chapterId);
+        return new Result<>(true, StatusCode.OK, "查询第一章节详情成功", chapter);
+    }
+
+    @GetMapping("/findLastChapterByBookId/{id}")
+    @ResponseBody
+    public Result<Chapter> findLastChapterByBookId(@PathVariable("id") String chapterId) {
+        Chapter chapter = chapterService.findLastChapterByBookId(chapterId);
+        return new Result<>(true, StatusCode.OK, "查询最新章节详情成功", chapter);
+    }
 
 
     @GetMapping("/findById/{id}")
