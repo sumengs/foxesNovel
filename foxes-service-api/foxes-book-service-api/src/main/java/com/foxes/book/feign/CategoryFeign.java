@@ -6,6 +6,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 /**
  * @date: 2020/6/30 14:48
  * @author: lenaminz
@@ -17,7 +19,7 @@ public interface CategoryFeign {
      * @return
      */
     @GetMapping("/category/findAll")
-    Result findAll();
+    Result<List<Category>> findAll();
 
     /**
      * 根据分类ID查询分类信息

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @date: 2020/6/30 14:36
  * @author: lenaminz
@@ -27,6 +29,6 @@ public interface BookFeign {
      * @return
      */
     @ResponseBody
-    @GetMapping("/findAll")
-    Result findAll();
+    @GetMapping("/book/findAll")
+    Result<List<Book>> findAll();
 }

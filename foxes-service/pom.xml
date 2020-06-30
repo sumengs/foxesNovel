@@ -17,6 +17,7 @@
         <module>foxes-search-service</module>
         <module>foxes-homepage-service</module>
         <module>foxes-service-bookwy</module>
+        <module>foxes-book-service</module>
     </modules>
 
     <dependencies>

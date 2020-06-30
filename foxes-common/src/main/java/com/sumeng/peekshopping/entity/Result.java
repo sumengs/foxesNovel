@@ -32,6 +32,9 @@ public class Result<T> {
      */
     private T data;
 
+    public T getData() {
+        return data;
+    }
 
     public Result(boolean flag, Integer code, String message, Object data) {
         this.flag = flag;

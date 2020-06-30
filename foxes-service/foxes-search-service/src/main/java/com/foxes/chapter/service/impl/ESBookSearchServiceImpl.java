@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foxes.book.feign.BookFeign;
+import com.foxes.book.feign.CategoryFeign;
 import com.foxes.chapter.dao.ESFoxManageMapper;
 import com.foxes.chapter.service.ESBookSearchService;
 import com.foxesnovel.search.pojo.BookInfo;
@@ -48,6 +49,8 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
 
     @Autowired
     private BookFeign bookFeign;
+
+
 
     @Override
     public Map search(Map<String, String> searchMap) {
