@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import com.foxes.book.dao.CategoryMapper;
 import com.foxes.book.service.CategoryService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,10 +18,12 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Map<Integer,String> find() {
-        Map<Integer,String> map=null;
+        Map<Integer,String> map=new HashMap<>();
         List<Category> categories = categoryMapper.selectAll();
         for (Category category : categories) {
-           map.put(category.getId(),category.getName());
+            Integer id = category.getId();
+            String name = category.getName();
+            map.put(id,name);
         }
         return map;
 

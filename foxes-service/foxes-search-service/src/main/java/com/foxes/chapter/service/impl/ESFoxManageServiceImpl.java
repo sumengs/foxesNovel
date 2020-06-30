@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +51,7 @@ public class ESFoxManageServiceImpl implements ESFoxManageService {
             e.printStackTrace();
             throw new RuntimeException("json字符串转化失败");
         }
-        List<BookInfo> rows = null;
+        List<BookInfo> rows = new ArrayList<>();
         Map<Integer, String> cate = bookFeign.findCate();
         for (BookInfo book : books) {
             book.setCategoryName(cate.get(book.getCategory()));

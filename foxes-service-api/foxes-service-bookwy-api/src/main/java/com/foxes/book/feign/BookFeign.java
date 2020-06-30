@@ -10,12 +10,26 @@ import java.util.Map;
 
 @FeignClient("book")
 public interface BookFeign {
+
+    /**
+     * 查找所有book
+     * @return book的list集合
+     */
     @RequestMapping("/book/all")
     public List<Book> findAll();
 
+    /**
+     * 根据bookId查询book
+     * @param bookId
+     * @return book
+     */
     @RequestMapping("/book/findone/{bookId}")
     public Book findOne(@PathVariable("bookId") String bookId);
 
-    @RequestMapping("/book/cate")
+
+    /**
+     * 获取分类信息
+     * @return
+     */
     public Map<Integer,String> findCate();
 }

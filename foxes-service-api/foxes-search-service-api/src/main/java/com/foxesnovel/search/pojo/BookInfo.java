@@ -20,13 +20,13 @@ public class BookInfo {
     /**
      * 小说名
      */
-    @Field(index = true, store = true, type = FieldType.Text,analyzer = "is_max_word")
+    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_max_word")
     private String name;
 
     /**
      * 作者
      */
-    @Field(index = true, store = true, type = FieldType.Text,analyzer = "is_smart")
+    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_smart")
     private String author;
 
     /**
@@ -117,7 +117,7 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer isVerify;
 
-    @Field(index = true, store = true, type = FieldType.Text)
+    @Field(index = true, store = true, type = FieldType.Keyword)
     private String categoryName;
 
     public String getCategoryName() {

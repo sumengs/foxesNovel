@@ -7,6 +7,7 @@ import com.foxes.book.feign.BookFeign;
 import com.foxes.chapter.dao.ESFoxManageMapper;
 import com.foxes.chapter.service.ESBookSearchService;
 import com.foxesnovel.search.pojo.BookInfo;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -17,6 +18,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
@@ -75,8 +77,9 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
             nativeSearchQueryBuilder.withQuery(boolQuery);
             //类别聚合查询
-            String category = "category";
-            nativeSearchQueryBuilder.addAggregation(AggregationBuilders.terms(category).field(category));
+            String category = "categoryName";
+            nativeSearchQueryBuilder.addAggregation(
+                    AggregationBuilders.terms(category).field("categoryName"));
 
             //设置高亮
             HighlightBuilder.Field fname = new HighlightBuilder.Field("name")
@@ -86,7 +89,17 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                     .preTags("<span style='color:red'>")
                     .postTags("</span>");
             nativeSearchQueryBuilder.withHighlightFields(fname, fauthor);
+           /* HighlightBuilder highlightBuilder = new HighlightBuilder(); //生成高亮查询器
+            highlightBuilder.field("name");      //高亮查询字段
+            highlightBuilder.field("author");    //高亮查询字段
+            highlightBuilder.requireFieldMatch(false);     //如果要多个字段高亮,这项要为false
+            highlightBuilder.preTags("<span style=\"color:red\">");   //高亮设置
+            highlightBuilder.postTags("</span>");
 
+            //下面这两项,如果你要高亮如文字内容等有很多字的字段,必须配置,不然会导致高亮不全,文章内容缺失等
+            highlightBuilder.fragmentSize(800000); //最大高亮分片数
+            highlightBuilder.numOfFragments(0); //从第一个分片获取高亮片段
+            nativeSearchQueryBuilder.withHighlightBuilder(highlightBuilder);*/
             //设置分页
             String pageNum = searchMap.get("pageNum");
             String pageSize = searchMap.get("pageSize");
@@ -97,7 +110,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                 pageSize = "30";
             }
             nativeSearchQueryBuilder.withPageable(
-                    PageRequest.of(Integer.parseInt(pageNum)-1,Integer.parseInt(pageSize)));
+                    PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
             //设置排序
             if (StringUtils.isNotEmpty(searchMap.get("sortField"))
                     && StringUtils.isNotEmpty(searchMap.get("soreRule"))) {
@@ -125,7 +138,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                                     ObjectMapper om = new ObjectMapper();
                                     BookInfo bookInfo = null;
                                     try {
-                                        String s = om.writeValueAsString(hit.getSourceAsString());
+                                        String s = hit.getSourceAsString();
                                         bookInfo = om.readValue(s, new TypeReference<BookInfo>() {
                                         });
                                     } catch (JsonProcessingException e) {
