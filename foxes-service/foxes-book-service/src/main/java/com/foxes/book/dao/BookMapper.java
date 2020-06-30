@@ -11,3 +11,4 @@ import tk.mybatis.mapper.common.Mapper;
 @Repository
 public interface BookMapper extends Mapper<Book> {
 }
+

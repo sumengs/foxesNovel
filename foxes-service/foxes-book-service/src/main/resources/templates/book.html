@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>盛世娇宠之名门闺香,盛世娇宠之名门闺香全文阅读,盛世娇宠之名门闺香最新章节,Foxes小说网</title>
@@ -150,26 +150,31 @@
     <!-- end header -->
     <div class="content">
         <div class="container">
-            <p class="bread">当前位置：<a href="//www.xxsy.net/" target="_blank">潇湘首页</a>&gt;<a href="/Category/1.html"
-                    target="_blank">古言</a>&gt;盛世娇宠之名门闺香</p>
+            <p class="bread">当前位置：<a href="//www.xxsy.net/" target="_blank">foxes小说网首页</a>&gt;<a href="/Category/1.html"
+                    target="_blank" th:text="${category.name}"></a>&gt;[[${book.name}]]</p>
             <div class="bookdetail cl">
                 <dl class="bookprofile">
                     <dt>
-                        <img src="" alt="盛世娇宠之名门闺香">
+                        <img src="" alt="">
                     </dt>
                     <dd>
                         <div class="title">
                             <a href="javascript:;" class="read-by-phone" onclick="commonBox.appBox();"><i
                                     class="iconfont">&#xe63e;</i>手机阅读</a>
-                            <h1>盛世娇宠之名门闺香</h1>
+                            <h1 th:text="${book.name}"></h1>
                             <span>
-                                文&nbsp;/&nbsp;<a href="index.html" target="_blank">天泠</a>
+                                文&nbsp;/&nbsp;<a href="index.html" target="_blank" th:text="${book.author}"></a>
                             </span>
                         </div>
                         <p class="sub-cols">
-                            <span>会员作品</span><span>已完成</span><span>类别：古言</span><span>发布：2018-04-12</span></p>
+                            <span>会员作品</span>
+                            <span th:if="${book.status==1}">已完结</span>
+                            <span th:if="${book.status==0}">未完结</span>
+                            <span>类别：[[${category.name}]]</span>
+                            <span>发布：[[${#dates.format(book.releaseTime,'yyyy-MM-dd')}]]</span>
+                        </p>
                         <p class="sub-data">
-                            <span><em>531.7万</em>字</span><span><em>2116.2万</em>阅读</span><span><em>3.6万</em>收藏</span></p>
+                            <span><em th:text="${book.wordsNum/10000}"></em><em>万</em>字</span><span><em>2116.2万</em>阅读</span><span><em th:text="${book.subscribeNum}"></em>收藏</span></p>
                         <p class="sub-tags">
                         </p>
                         <div class="sub-newest">
@@ -237,17 +242,7 @@
                             <div class="book-profile">
                                 <dl class="introcontent">
                                     <dd>
-                                        <p>她是簪缨世家的嫡长女，生而尊贵，天资卓绝，却被重生堂妹视为了垫脚石，溺水而亡，死得不明不白。<p>再睁开眼睛，她成了尚书府的痴傻儿端木绯。<p>
-                                                    重生前，她是天之娇女，京城明珠。<p>重生后，她是废物草包，受尽耻笑辱骂。<p>
-                                                            当她成为了她，从再次睁眼的那一刹那，她万丈光芒，风华崛起！<p>护至亲，诛仇人。<p>举手间，掌乾坤。<p>
-                                                                        谈笑中，定朝局。<p>从此，尚书府天翻地覆；<p>从此，大盛朝多了一位人人闻之色变的“小祖宗”。
-                                                                                <p>这一世，她斗得风声水起，玩得不亦乐乎，没想到，身旁总有一个人细心呵护。
-                                                                                    <p>原来两世，她都是那人心口的朱砂痣。<p>
-                                                                                            他背负血海深仇，桀骜不驯，唯独对她，拿命宠着。<p>
-                                                                                                小剧场：<p>
-                                                                                                    一日，她问他：世间谤我、欺我、辱我、笑我、轻我、贱我、恶我、骗我、如何处治乎？
-                                                                                                    <p>他答：揍他、揍他、揍他、揍他、揍他、揍他、揍他、狠狠揍他！
-                                                                                                        <p>已完结文：《盛宠之嫡女医妃》，欢迎入坑。
+                                        <p th:text="${book.abstracts}"></p>
                                     </dd>
                                 </dl>
                                 <div><span class="btn-show" style="display: none;">展开<i
