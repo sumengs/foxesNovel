@@ -117,6 +117,17 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer isVerify;
 
+    @Field(index = true, store = true, type = FieldType.Text)
+    private String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Long getId() {
         return id;
     }

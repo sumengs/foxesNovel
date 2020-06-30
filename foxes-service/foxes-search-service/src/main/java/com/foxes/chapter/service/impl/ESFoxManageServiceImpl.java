@@ -13,6 +13,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ESFoxManageServiceImpl implements ESFoxManageService {
@@ -46,13 +47,16 @@ public class ESFoxManageServiceImpl implements ESFoxManageService {
             books = om.readValue(s, new TypeReference<List<BookInfo>>() {
             });
         } catch (JsonProcessingException e) {
-
             e.printStackTrace();
             throw new RuntimeException("json字符串转化失败");
         }
-
-
-        esFoxSearchMapper.saveAll(books);
+        List<BookInfo> rows = null;
+        Map<Integer, String> cate = bookFeign.findCate();
+        for (BookInfo book : books) {
+            book.setCategoryName(cate.get(book.getCategory()));
+            rows.add(book);
+        }
+        esFoxSearchMapper.saveAll(rows);
     }
 
     @Override
@@ -78,6 +82,5 @@ public class ESFoxManageServiceImpl implements ESFoxManageService {
     @Override
     public void deleteById(String bookId) {
         esFoxSearchMapper.deleteById(Long.parseLong(bookId));
-
     }
 }
