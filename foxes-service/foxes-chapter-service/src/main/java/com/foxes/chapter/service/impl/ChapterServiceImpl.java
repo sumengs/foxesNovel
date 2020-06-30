@@ -44,8 +44,6 @@ public class ChapterServiceImpl implements ChapterService {
     private TemplateEngine templateEngine;
 
 
-
-
     @Override
     public Chapter findChapterById(String id) {
         return chapterMapper.selectByPrimaryKey(id);
@@ -56,8 +54,8 @@ public class ChapterServiceImpl implements ChapterService {
         Example example = new Example(Chapter.class);
 
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("bookId",bookId);
-        criteria.andEqualTo("next","0");
+        criteria.andEqualTo("bookId", bookId);
+        criteria.andEqualTo("next", "0");
 
         Chapter chapter = chapterMapper.selectOneByExample(example);
 
@@ -69,7 +67,7 @@ public class ChapterServiceImpl implements ChapterService {
         Example example = new Example(Chapter.class);
 
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("bookId",bookId);
+        criteria.andEqualTo("bookId", bookId);
 
 
         return chapterMapper.selectByExample(example);
@@ -80,8 +78,8 @@ public class ChapterServiceImpl implements ChapterService {
         Example example = new Example(Chapter.class);
 
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("bookId",bookId);
-        criteria.andEqualTo("pre","0");
+        criteria.andEqualTo("bookId", bookId);
+        criteria.andEqualTo("pre", "0");
 
         Chapter chapter = chapterMapper.selectOneByExample(example);
 
@@ -89,17 +87,30 @@ public class ChapterServiceImpl implements ChapterService {
     }
 
 
-
-
-
+    /**
+     * 生成页面
+     *
+     * @param id 章节Id
+     */
     @Override
-    public void generateHtml(String id) throws FileNotFoundException {
+    public void generateHtml(String id) {
         //1. 获取context对象，用于存储商品的相关信息
         Context context = new Context();
 
 
         //获取静态页面相关数据
         Chapter chapter = this.findChapterById(id);
+
+        //判断网页是否被删除
+        if (chapter.getIsDelete() == 1) {
+            return;
+        }
+
+
+        //判断网页是否过审
+        if (chapter.getIsVerify() == 0) {
+            return;
+        }
 
         Result<Book> book = bookFeign.findById(chapter.getBookId());
 
@@ -121,7 +132,12 @@ public class ChapterServiceImpl implements ChapterService {
         itemData.put("category", category.getData());
         context.setVariables(itemData);
 
-        String path = ResourceUtils.getURL("classpath:").getPath();
+        String path = null;
+        try {
+            path = ResourceUtils.getURL("classpath:").getPath();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         //2. 获取商品详情页面位置
@@ -147,7 +163,23 @@ public class ChapterServiceImpl implements ChapterService {
                 e.printStackTrace();
             }
         }
+    }
 
+    @Override
+    public void deleteHtml(String id) {
+        Chapter chapter = chapterMapper.selectByPrimaryKey(id);
+        String path = null;
+        try {
+            path = ResourceUtils.getURL("classpath:").getPath();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String fileName = path + "/static/" + chapter.getBookId() + "/" + id + ".html";
+
+        File file = new File(fileName);
+        if (file.exists()) {
+            boolean delete = file.delete();
+        }
     }
 
 

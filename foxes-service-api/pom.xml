@@ -16,7 +16,6 @@
         <module>foxes-homepage-service-api</module>
         <module>foxes-search-service-api</module>
         <module>foxes-user-service-api</module>
-        <module>foxes-service-bookwy-api</module>
         <module>foxes-book-service-api</module>
     </modules>
     <dependencies>
