@@ -29,8 +29,11 @@ public class BookListener {
         Map<String,String> newData = new HashMap<>();
         rowData.getAfterColumnsList().forEach((c)->newData.put(c.getName(),c.getValue()));
 
+        String oldStatus = "0";
+        String newStatus = "1";
+        String str = "is_verify";
         //获取最新上架的商品 0->1
-        if ("0".equals(oldData.get("is_verify")) && "1".equals(newData.get("is_verify"))){
+        if (oldStatus.equals(oldData.get(str)) && newStatus.equals(newData.get(str))){
             //将小说的id发送到mq
             rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE,"",newData.get("id"));
         }
