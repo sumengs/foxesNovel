@@ -1,14 +1,14 @@
 package com.foxes.chapter.service.impl;
 
-import com.foxes.chapter.dao.BookMapper;
-import com.foxes.chapter.dao.CategoryMapper;
+import com.foxes.book.feign.BookFeign;
+import com.foxes.book.feign.CategoryFeign;
+import com.foxes.book.pojo.Book;
+import com.foxes.book.pojo.Category;
 import com.foxes.chapter.dao.ChapterMapper;
-import com.foxes.chapter.pojo.Book;
-import com.foxes.chapter.pojo.Category;
 import com.foxes.chapter.pojo.Chapter;
 import com.foxes.chapter.service.ChapterService;
+import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.thymeleaf.TemplateEngine;
@@ -34,14 +34,17 @@ public class ChapterServiceImpl implements ChapterService {
 
 
     @Autowired
-    private BookMapper bookMapper;
+    private BookFeign bookFeign;
 
 
     @Autowired
-    private CategoryMapper categoryMapper;
+    private CategoryFeign categoryFeign;
 
     @Autowired
     private TemplateEngine templateEngine;
+
+
+
 
     @Override
     public Chapter findChapterById(String id) {
@@ -85,15 +88,9 @@ public class ChapterServiceImpl implements ChapterService {
         return chapter;
     }
 
-    @Override
-    public Book findBookById(String id) {
-        return bookMapper.selectByPrimaryKey(id);
-    }
 
-    @Override
-    public Category findCategoryById(int id) {
-        return categoryMapper.selectByPrimaryKey(id);
-    }
+
+
 
     @Override
     public void generateHtml(String id) throws FileNotFoundException {
@@ -104,29 +101,31 @@ public class ChapterServiceImpl implements ChapterService {
         //获取静态页面相关数据
         Chapter chapter = this.findChapterById(id);
 
-        Book book = this.findBookById(chapter.getBookId());
+        Result<Book> book = bookFeign.findById(chapter.getBookId());
 
-        Category category = this.findCategoryById(book.getCategory());
+
+        Result<Category> category = categoryFeign.findByCategoryId(book.getData().getCategory());
+
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        String bookReleaseTime = simpleDateFormat.format(book.getReleaseTime());
+        String bookReleaseTime = simpleDateFormat.format(book.getData().getReleaseTime());
         String chapterUpdateTime = simpleDateFormat.format(chapter.getUpdateTime());
 
 
         Map<String, Object> itemData = new HashMap<>();
         itemData.put("chapter", chapter);
-        itemData.put("book", book);
+        itemData.put("book", book.getData());
         itemData.put("bookReleaseTime", bookReleaseTime);
         itemData.put("chapterUpdateTime", chapterUpdateTime);
-        itemData.put("category", category);
+        itemData.put("category", category.getData());
         context.setVariables(itemData);
 
         String path = ResourceUtils.getURL("classpath:").getPath();
 
 
         //2. 获取商品详情页面位置
-        File dir = new File(path + "/static/" + book.getId());
+        File dir = new File(path + "/static/" + book.getData().getId());
         if (!dir.exists()) {
             dir.mkdirs();
         }
