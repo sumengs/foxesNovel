@@ -52,7 +52,7 @@ public class BookServiceImpl implements BookService {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        path = path + "\\static\\BookDetail";
+        path = path + "\\static\\Book";
         File dir = new File(path);
         if(!dir.exists()){
             dir.mkdirs();

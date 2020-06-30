@@ -5,10 +5,7 @@ import com.foxes.book.service.CategoryService;
 import com.sumeng.peekshopping.constant.StatusCode;
 import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/findByBookId/{bookId}")
-    public Result findByBookId(@PathVariable("bookId") String bookId){
+    public Result<Category> findByBookId(@PathVariable("bookId") String bookId){
         Category category = categoryService.findByBookId(bookId);
         return new Result<>(true, StatusCode.OK, "查询分类成功", category);
     }
@@ -38,9 +35,19 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/findAll")
-    public Result findAll(){
+    public Result<List<Category>> findAll(){
         List<Category> categoryList = categoryService.findAll();
         return new Result<>(true, StatusCode.OK, "查询分类成功", categoryList);
+    }
+
+    /**
+     * 根据分类ID查询分类信息
+     * @return
+     */
+    @GetMapping("/findByCategoryId/{id}")
+    public Result<Category> findByCategoryId(@PathVariable("id") Integer id){
+        Category category = categoryService.findByCategoryId(id);
+        return new Result<>(true, StatusCode.OK, "查询分类成功", category);
     }
 
 }

@@ -35,4 +35,16 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findAll() {
         return categoryMapper.selectAll();
     }
+
+    /**
+     * 根据分类ID查询分类信息
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public Category findByCategoryId(Integer categoryId) {
+        return categoryMapper.selectByPrimaryKey(categoryId);
+    }
+
+
 }

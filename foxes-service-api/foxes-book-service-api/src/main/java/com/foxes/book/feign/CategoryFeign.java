@@ -1,8 +1,10 @@
 package com.foxes.book.feign;
 
+import com.foxes.book.pojo.Category;
 import com.sumeng.peekshopping.entity.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @date: 2020/6/30 14:48
@@ -16,4 +18,20 @@ public interface CategoryFeign {
      */
     @GetMapping("/category/findAll")
     Result findAll();
+
+    /**
+     * 根据分类ID查询分类信息
+     * @param id 分类id
+     * @return
+     */
+    @GetMapping("/category/findByCategoryId/{id}")
+    Result<Category> findByCategoryId(@PathVariable("id") Integer id);
+
+    /**
+     * 根据小说ID查询分类
+     * @param bookId
+     * @return
+     */
+    @GetMapping("/category/findByBookId/{bookId}")
+    Result<Category> findByBookId(@PathVariable("bookId") String bookId);
 }

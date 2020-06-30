@@ -22,4 +22,11 @@ public interface CategoryService {
      * @return
      */
     List<Category> findAll();
+
+    /**
+     * 根据分类ID查询分类信息
+     * @param categoryId
+     * @return
+     */
+    Category findByCategoryId(Integer categoryId);
 }

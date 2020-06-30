@@ -4,6 +4,8 @@ import com.foxes.book.pojo.Book;
 import com.foxes.book.pojo.Category;
 import com.foxes.book.service.BookService;
 import com.foxes.book.service.CategoryService;
+import com.foxes.chapter.feign.ChapterFeign;
+import com.foxes.chapter.pojo.Chapter;
 import com.sumeng.peekshopping.constant.StatusCode;
 import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/book")
 public class BookController {
-
     @Autowired
     private BookService bookService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private ChapterFeign chapterFeign;
 
     /**
      * 根据id查询小说数据
@@ -45,7 +48,7 @@ public class BookController {
      */
     @ResponseBody
     @GetMapping("/findAll")
-    public Result findAll() {
+    public Result<List<Book>> findAll() {
         List<Book> bookList = bookService.findAll();
         return new Result<>(true, StatusCode.OK, "查询所有书籍成功", bookList);
     }
@@ -61,7 +64,10 @@ public class BookController {
         Book book = this.findById(bookId).getData();
         //查询分类信息
         Category category = categoryService.findByBookId(bookId);
+        //查询最新章节
+        Chapter lastChapter = chapterFeign.findLastChapterByBookId(bookId).getData();
 
+        model.addAttribute("lastChapter",lastChapter);
         model.addAttribute("category",category);
         model.addAttribute("book",book);
 
