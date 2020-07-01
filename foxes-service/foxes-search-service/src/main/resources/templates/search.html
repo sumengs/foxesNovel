@@ -1,36 +1,41 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>言情小说,完本小说,小说推荐,小说排行榜,Foxes小说网</title>
-    <meta name="keywords" content="穿越,架空,都市,青春,魔幻,玄幻,豪门,历史,异能,短篇,灵异,悬疑,校园,职场,科幻,仙侠,言情小说,小说完本,小说推荐,小说排行榜" />
+    <meta name="keywords" content="穿越,架空,都市,青春,魔幻,玄幻,豪门,历史,异能,短篇,灵异,悬疑,校园,职场,科幻,仙侠,言情小说,小说完本,小说推荐,小说排行榜"/>
     <meta name="robots" content="all">
-<meta name="googlebot" content="all">
-<meta name="baiduspider" content="all">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-<meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a" />
-<link th:href="@{../css/menutop.css}" rel="stylesheet" type="text/css" />
+    <meta name="googlebot" content="all">
+    <meta name="baiduspider" content="all">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a"/>
+    <link th:href="@{../css/menutop.css}" rel="stylesheet" type="text/css"/>
 
 
-<link th:href="@{../css/iconfont.css}" rel="stylesheet" />
-<link th:href="@{../css/global.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{../css/iconfont.css}" rel="stylesheet"/>
+    <link th:href="@{../css/global.css}" rel="stylesheet" type="text/css"/>
 
-<link th:href="@{../css/base.css}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" th:href="@{../css/JQBox.css}" />
-<!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link th:href="@{../css/base.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/JQBox.css}"/>
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
-    <div class="top-menu">
+<div class="top-menu">
     <div class="container">
         <div class="download-app">
             <a class="app-android" href="/download.html" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
-            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index" href="//www.xxsy.net/">首页</a>
+            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a
+                class="app-index" href="//www.xxsy.net/">首页</a>
         </div>
         <div class="guide-menu">
-            <div class="column" id="loginaction"><a href="javascript:void(0);" class="login" id="headerLogin">登录</a>&ensp;<a href="/Reg" class="register" target="_blank" rel="nofollow">注册</a></div>
-            <div class="column" id="userinfo" style="display: none;"><a href="/control" id="username" target="_blank" rel="nofollow"></a>&ensp;<a href="javascript:" class="register" id="logout">退出</a></div>
+            <div class="column" id="loginaction"><a href="javascript:void(0);" class="login" id="headerLogin">登录</a>&ensp;<a
+                    href="/Reg" class="register" target="_blank" rel="nofollow">注册</a></div>
+            <div class="column" id="userinfo" style="display: none;"><a href="/control" id="username" target="_blank"
+                                                                        rel="nofollow"></a>&ensp;<a href="javascript:"
+                                                                                                    class="register"
+                                                                                                    id="logout">退出</a>
+            </div>
             <div class="column more bookcase" id="menubookcase">
                 <a href="javascript:void(0);" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>
@@ -49,16 +54,22 @@
                         <li class="n4">操作</li>
                     </ul>
                     <ul id="mybcasecnt1" class="menumybclist">
-                        <div style="height:200px!important;line-height:200px!important;"><img border=0 style="width:32px;height:32px;" src="" />正在加载数据...</div>
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
                     </ul>
                     <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
-                        <div style="height:200px!important;line-height:200px!important;"><img border=0 style="width:32px;height:32px;" src="" />正在加载数据...</div>
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
                     </ul>
                 </div>
             </div>
             <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
         </div>
-        <ul class="menu-style cl" >
+        <ul class="menu-style cl">
             <li><a href="/category/1.html" class=''>玄幻</a></li>
             <li><a href="/category/2.html" class=''>现代言情</a></li>
             <li><a href="/category/3.html" class=''>玄幻仙侠</a></li>
@@ -67,7 +78,7 @@
             <li><a href="/ip.html" class=''>改编频道</a></li>
             <li><a href="/search?channel=1">男生频道</a></li>
             <li><a href="/comic" class=''>漫画频道</a></li>
-            
+
         </ul>
     </div>
 </div>
@@ -77,894 +88,863 @@
 </script>
 
 
-    <div class="header">
-        <div class="container">
-            <div class="top-main cl">
-                <a href="index.html" class="logo">
-                    <img src="/images/foxRead.png" style="height: 80px" alt="Foxes小说网">
-                </a>
-                <div class="guide-writer"><a class="become" href="http://author.xxsy.net" target="_blank"><i class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare" href="//images.xxsy.net/xxhtml/zuozhefulinew/index.html" target="_blank"><i class="iconfont">&#xe600;</i>作家福利</a></div>
-                <div class="search-bar">
-                    <form id="hform" name="hform" action="search.html" method="get" target="_blank">
-                        
-                        <input type="text" class="search-text" placeholder="" name="s_wd" id="searchkeyword" value="" maxlength="20"><span class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit" value="" class="search-btn" id="gosearch"></span>
-                    </form>
-                </div>
+<div class="header" id="header">
+    <div class="container">
+        <div class="top-main cl">
+            <a href="index.html" class="logo">
+                <img src="/images/foxRead.png" style="height: 80px" alt="Foxes小说网">
+            </a>
+            <div class="guide-writer"><a class="become" href="http://author.xxsy.net" target="_blank"><i
+                    class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare"
+                                                             href="//images.xxsy.net/xxhtml/zuozhefulinew/index.html"
+                                                             target="_blank"><i class="iconfont">&#xe600;</i>作家福利</a>
             </div>
-            <div class="nav inner-nav cl">
-                <ul class="main-menu">
-                    <li><a href="//www.xxsy.net/">首页</a></li>
-                    <li><a href="/search">全部作品</a></li>
-                    <li><a href="/search?s_lianzai=2">完本</a></li>
-                    <li><a href="/search?vip=0&sort=2">免费</a></li>
-                </ul>
-                <div class="side-menu"><a class="writer" href="http://author.xxsy.net" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a class="client" href="javascript:" onclick="commonBox.appBox();"><i class="iconfont">&#xe62d;</i>客户端</a></div>
+            <div class="search-bar">
+                <form id="hform" name="hform" th:action="@{/search/map}">
+
+                    <input th:type="text" class="search-text" placeholder="" name="keywords"
+                           th:value="${searchMap.keywords}" maxlength="20"><span class="search-btn-bar"><i
+                        class="iconfont">&#xe627;</i>
+                    <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
+                    <button class="search-btn" th:type="submit"></button>
+                </form>
+            </div>
+        </div>
+        <div class="nav inner-nav cl">
+            <ul class="main-menu">
+                <li><a href="//www.xxsy.net/">首页</a></li>
+                <li><a href="/search">全部作品</a></li>
+                <li><a href="/search?s_lianzai=2">完本</a></li>
+                <li><a href="/search?vip=0&sort=2">免费</a></li>
+            </ul>
+            <div class="side-menu"><a class="writer" href="http://author.xxsy.net" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
+                    class="client" href="javascript:" onclick="commonBox.appBox();"><i class="iconfont">&#xe62d;</i>客户端</a>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="content" id="category">
-        <div class="container">
-            <div class="inner-wrap cl">
-                <div class="inner-mainbar">
-                    <div class="book-classify">
-                        <div class="choosed-classify">
-                            <strong>已选：</strong>
-                            <div class="tags">
-                                                                                                                                                                                                                                                            </div>
-                        </div>
-                        <ul class="classify-list">
-                            <li class=''>
-                                <strong>频道：</strong>
-                                <div class="tags" id="channeltype">
-                                    <span class='active' data-value="0" data-type="channel">全部</span>
-                                    <span class='' data-value="2" data-type="channel">女生</span>
-                                    <span class='' data-value="1" data-type="channel">男生</span>
-                                </div>
+<div class="content" id="category">
+    <div class="container">
+        <div class="inner-wrap cl">
+            <div class="inner-mainbar">
+                <div class="book-classify">
+                    <div class="bread">
+                        <ul class="fl sui-breadcrumb">
+                            <li>
+                                <a href="#">全部结果</a>
                             </li>
-<!--                            <li class='classify' >-->
-                            <li class='classify' >
-                                <strong>类别：</strong>
-                                <div class="tags" >
-                                            <span class='active' data-value="-1" data-type="s_type">全部</span>
-                                            <span v-for="cate in items.categoryNames" class='' data-value="3" data-type="s_type">{{cate}}</span>
-                                           <!-- <span class='' data-value="4" data-type="s_type">仙侠奇缘</span>
-                                            <span class='' data-value="1" data-type="s_type">古代言情</span>
-                                            <span class='' data-value="2" data-type="s_type">现代言情</span>
-                                            <span class='' data-value="6" data-type="s_type">浪漫青春</span>
-                                            <span class='' data-value="5" data-type="s_type">悬疑</span>
-                                            <span class='' data-value="7" data-type="s_type">科幻空间</span>
-                                            <span class='' data-value="8" data-type="s_type">游戏竞技</span>
-                                            <span class='' data-value="9" data-type="s_type">轻小说</span>
-                                            <span class='' data-value="11" data-type="s_type">短篇</span>
-                                            <span class='' data-value="82" data-type="s_type">玄幻(男)</span>
-                                            <span class='' data-value="83" data-type="s_type">奇幻</span>
-                                            <span class='' data-value="84" data-type="s_type">武侠</span>
-                                            <span class='' data-value="86" data-type="s_type">仙侠(男)</span>
-                                            <span class='' data-value="88" data-type="s_type">都市</span>
-                                            <span class='' data-value="90" data-type="s_type">历史</span>
-                                            <span class='' data-value="91" data-type="s_type">军事</span>
-                                            <span class='' data-value="92" data-type="s_type">悬疑(男)</span>
-                                            <span class='' data-value="93" data-type="s_type">科幻(男)</span>
-                                            <span class='' data-value="94" data-type="s_type">游戏(男)</span>
-                                            <span class='' data-value="96" data-type="s_type">体育</span>
-                                            <span class='' data-value="97" data-type="s_type">轻小说(男)</span>
-                                            <span class='' data-value="98" data-type="s_type">现实</span>
-                                            <span class='' data-value="99" data-type="s_type">短篇(男)</span>-->
-                                </div>
-<!--                                <em class="more">更多<i class="iconfont">&#xe601;</i></em>-->
+                            <li class="active">
+                                <span th:text="${searchMap.keywords}"></span>
                             </li>
-                            <li class='l_status '>
-                                <strong>状态：</strong>
-                                <div class="tags">
-                                        <span class='active' data-value="-1" data-type="s_lianzai">全部</span>
-                                        <span class='' data-value="1" data-type="s_lianzai">连载</span>
-                                        <span class='' data-value="2" data-type="s_lianzai">完结</span>
-                                </div>
-                            </li>
-                            <li class='l_price '>
-                                <strong>资费：</strong>
-                                <div class="tags">
-                                        <span class='active' data-value="-1" data-type="vip">全部</span>
-                                        <span class='' data-value="0" data-type="vip">免费</span>
-                                        <span class='' data-value="1" data-type="vip">VIP</span>
-                                        <span class='' data-value="3" data-type="vip">包月</span>
-                                        <span class='' data-value="4" data-type="vip">1-8元书</span>
-                                </div>
-                            </li>
-                          <!--  <li class='l_style '>
-                                <strong>风格：</strong>
-                                <div class="tags">
-                                    <span class='active'>全部</span>
-                                        <span class='' data-value="轻松" data-type="s_fg">轻松</span>
-                                        <span class='' data-value="爆笑" data-type="s_fg">爆笑</span>
-                                        <span class='' data-value="虐恋" data-type="s_fg">虐恋</span>
-                                        <span class='' data-value="治愈" data-type="s_fg">治愈</span>
-                                        <span class='' data-value="恶搞" data-type="s_fg">恶搞</span>
-                                        <span class='' data-value="开放式结局" data-type="s_fg">开放式结局</span>
-                                        <span class='' data-value="正剧" data-type="s_fg">正剧</span>
-                                        <span class='' data-value="生死大爱" data-type="s_fg">生死大爱</span>
-                                        <span class='' data-value="温馨清水" data-type="s_fg">温馨清水</span>
-                                        <span class='' data-value="囧文" data-type="s_fg">囧文</span>
-                                        <span class='' data-value="小白" data-type="s_fg">小白</span>
-                                        <span class='' data-value="宠文" data-type="s_fg">宠文</span>
-                                        <span class='' data-value="唯美" data-type="s_fg">唯美</span>
-                                        <span class='' data-value="暧昧" data-type="s_fg">暧昧</span>
-                                        <span class='' data-value="励志" data-type="s_fg">励志</span>
-                                        <span class='' data-value="甜文" data-type="s_fg">甜文</span>
-                                        <span class='' data-value="悲剧" data-type="s_fg">悲剧</span>
-                                        <span class='' data-value="铁血" data-type="s_fg">铁血</span>
-                                        <span class='' data-value="爽文" data-type="s_fg">爽文</span>
-                                        <span class='' data-value="轻小说" data-type="s_fg">轻小说</span>
-                                        <span class='' data-value="苦恋" data-type="s_fg">苦恋</span>
-                                        <span class='' data-value="暗黑" data-type="s_fg">暗黑</span>
-                                        <span class='' data-value="苏" data-type="s_fg">苏</span>
-                                        <span class='' data-value="浪漫" data-type="s_fg">浪漫</span>
-                                        <span class='' data-value="HE" data-type="s_fg">HE</span>
-                                </div>
-                                <em class="more">更多<i class="iconfont">&#xe601;</i></em>
-                            </li>-->
-                         <!--   <li class='l_genre ' style="display:none;">
-                                <strong>流派：</strong>
-                                <div class="tags">
-                                    <span class='active'>全部</span>
-                                        <span class='' data-value="穿越" data-type="s_lp">穿越</span>
-                                        <span class='' data-value="女强" data-type="s_lp">女强</span>
-                                        <span class='' data-value="魂穿" data-type="s_lp">魂穿</span>
-                                        <span class='' data-value="复仇" data-type="s_lp">复仇</span>
-                                        <span class='' data-value="清穿" data-type="s_lp">清穿</span>
-                                        <span class='' data-value="争霸" data-type="s_lp">争霸</span>
-                                        <span class='' data-value="反穿越" data-type="s_lp">反穿越</span>
-                                        <span class='' data-value="契约" data-type="s_lp">契约</span>
-                                        <span class='' data-value="重生" data-type="s_lp">重生</span>
-                                        <span class='' data-value="红楼" data-type="s_lp">红楼</span>
-                                        <span class='' data-value="学院" data-type="s_lp">学院</span>
-                                        <span class='' data-value="变身" data-type="s_lp">变身</span>
-                                        <span class='' data-value="古娱" data-type="s_lp">古娱</span>
-                                        <span class='' data-value="转世" data-type="s_lp">转世</span>
-                                        <span class='' data-value="种田文" data-type="s_lp">种田文</span>
-                                        <span class='' data-value="书本穿" data-type="s_lp">书本穿</span>
-                                        <span class='' data-value="随身流" data-type="s_lp">随身流</span>
-                                        <span class='' data-value="群穿" data-type="s_lp">群穿</span>
-                                        <span class='' data-value="修仙" data-type="s_lp">修仙</span>
-                                        <span class='' data-value="系统流" data-type="s_lp">系统流</span>
-                                        <span class='' data-value="美食" data-type="s_lp">美食</span>
-                                        <span class='' data-value="废柴流" data-type="s_lp">废柴流</span>
-                                        <span class='' data-value="盗墓" data-type="s_lp">盗墓</span>
-                                        <span class='' data-value="养成" data-type="s_lp">养成</span>
-                                        <span class='' data-value="鉴宝" data-type="s_lp">鉴宝</span>
-                                        <span class='' data-value="升级文" data-type="s_lp">升级文</span>
-                                        <span class='' data-value="宝宝" data-type="s_lp">宝宝</span>
-                                        <span class='' data-value="赌石" data-type="s_lp">赌石</span>
-                                        <span class='' data-value="宠物" data-type="s_lp">宠物</span>
-                                        <span class='' data-value="灵魂互换" data-type="s_lp">灵魂互换</span>
-                                </div>
-                                <em class="more">更多<i class="iconfont">&#xe601;</i></em>
-                            </li>-->
-                       <!--     <li class='l_element ' style="display:none;">
-                                <strong>元素：</strong>
-                                <div class="tags">
-                                    <span class='active'>全部</span>
-                                        <span class='' data-value="青梅竹马" data-type="s_ys">青梅竹马</span>
-                                        <span class='' data-value="白领浪漫" data-type="s_ys">白领浪漫</span>
-                                        <span class='' data-value="策马江湖" data-type="s_ys">策马江湖</span>
-                                        <span class='' data-value="乡村爱情" data-type="s_ys">乡村爱情</span>
-                                        <span class='' data-value="青楼宫廷" data-type="s_ys">青楼宫廷</span>
-                                        <span class='' data-value="豪门" data-type="s_ys">豪门</span>
-                                        <span class='' data-value="江湖恩怨" data-type="s_ys">江湖恩怨</span>
-                                        <span class='' data-value="选秀" data-type="s_ys">选秀</span>
-                                        <span class='' data-value="别后重逢" data-type="s_ys">别后重逢</span>
-                                        <span class='' data-value="平凡生活" data-type="s_ys">平凡生活</span>
-                                        <span class='' data-value="麻雀变凤凰" data-type="s_ys">麻雀变凤凰</span>
-                                        <span class='' data-value="家长里短" data-type="s_ys">家长里短</span>
-                                        <span class='' data-value="异国情缘" data-type="s_ys">异国情缘</span>
-                                        <span class='' data-value="姐弟恋" data-type="s_ys">姐弟恋</span>
-                                        <span class='' data-value="暗恋成真" data-type="s_ys">暗恋成真</span>
-                                        <span class='' data-value="日久生情" data-type="s_ys">日久生情</span>
-                                        <span class='' data-value="欢喜冤家" data-type="s_ys">欢喜冤家</span>
-                                        <span class='' data-value="乔装改扮" data-type="s_ys">乔装改扮</span>
-                                        <span class='' data-value="西方罗曼" data-type="s_ys">西方罗曼</span>
-                                        <span class='' data-value="午夜惊魂" data-type="s_ys">午夜惊魂</span>
-                                        <span class='' data-value="炮灰逆袭" data-type="s_ys">炮灰逆袭</span>
-                                        <span class='' data-value="代嫁" data-type="s_ys">代嫁</span>
-                                        <span class='' data-value="影视名家" data-type="s_ys">影视名家</span>
-                                        <span class='' data-value="生存奇遇" data-type="s_ys">生存奇遇</span>
-                                        <span class='' data-value="奋斗" data-type="s_ys">奋斗</span>
-                                        <span class='' data-value="相亲" data-type="s_ys">相亲</span>
-                                        <span class='' data-value="隐婚" data-type="s_ys">隐婚</span>
-                                        <span class='' data-value="裸婚" data-type="s_ys">裸婚</span>
-                                        <span class='' data-value="同居" data-type="s_ys">同居</span>
-                                        <span class='' data-value="待嫁" data-type="s_ys">待嫁</span>
-                                        <span class='' data-value="复合" data-type="s_ys">复合</span>
-                                        <span class='' data-value="逃婚" data-type="s_ys">逃婚</span>
-                                        <span class='' data-value="花季雨季" data-type="s_ys">花季雨季</span>
-                                        <span class='' data-value="失忆" data-type="s_ys">失忆</span>
-                                        <span class='' data-value="斗智斗勇" data-type="s_ys">斗智斗勇</span>
-                                        <span class='' data-value="咸鱼翻身" data-type="s_ys">咸鱼翻身</span>
-                                        <span class='' data-value="全息" data-type="s_ys">全息</span>
-                                        <span class='' data-value="冒险" data-type="s_ys">冒险</span>
-                                        <span class='' data-value="神秘文化" data-type="s_ys">神秘文化</span>
-                                        <span class='' data-value="权谋" data-type="s_ys">权谋</span>
-                                        <span class='' data-value="吐糟" data-type="s_ys">吐糟</span>
-                                        <span class='' data-value="一见钟情" data-type="s_ys">一见钟情</span>
-                                </div>
-                                <em class="more">更多<i class="iconfont">&#xe601;</i></em>
-                            </li>-->
                         </ul>
-                        <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>
+                        <ul class="fl sui-tag">
+                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">
+                                频道:<span th:text="${searchMap.channel}"></span>
+                                <a th:href="@{${#strings.replace(url,'&channel='+searchMap.channel,'')}}">×</a>
+                            </li>
+                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'category')}">
+                                类别:<span th:text="${searchMap.category}"></span>
+                                <a th:href="@{${#strings.replace(url,'&category='+searchMap.category,'')}}">×</a>
+                            </li>
+                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'status')}">
+                                <span th:if="${searchMap.status==1}">完结</span>
+                                <span th:if="${searchMap.status==0}">连载</span>
+                                <a th:href="@{${#strings.replace(url,'&status='+searchMap.status,'')}}">×</a>
+                            </li>
+                        </ul>
+                        <form class="fl sui-form form-dark">
+                            <div class="input-control control-right">
+                                <input type="text"/>
+                                <i class="sui-icon icon-touch-magnifier"></i>
+                            </div>
+                        </form>
                     </div>
-                    <div class="search-result">
-                        <div class="result-sort">
-                                    <a href="javascript:" class='active' data-value="9">综合排序<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="13">评价热度<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="4">总收藏<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="6">总月票<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="7">本月月票<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="10">字数<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="11">鲜花<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="12">钻石<span>↓</span></a>
-                                    <a href="javascript:" class='' data-value="5">更新<span>↓</span></a>
-                        </div>
-                        <div class="result-list">
-                                <ul>
-                                        <li v-for="book in items.rows">
-                                            <a class="book commonbook" href="book.html" target="_blank">
-                                                <img data-src="">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="book.html" target="_blank">{{book.name}}</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/258020.html"><i class="iconfont">&#xe604;</i>{{book.author}}</a>
-                                                            <a target="_blank" href="/Category/1.html">{{book.categoryName}}</a>
-                                                        <span >已完成</span>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">{{book.abstracts}}</p>
-                                                <p class="number"><span>更新：{{book.releaseTime}}</span><span>字数：{{book.wordsNum}}</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(949361)" id="addShelfBtn949361">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                      <!--  <li>
-                                            <a class="book commonbook" href="/info/1074070.html" target="_blank">
-                                                <img data-src="">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1074070.html" target="_blank">至尊神医之帝君要下嫁</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/734417.html"><i class="iconfont">&#xe604;</i>战西野</a>
-                                                            <a target="_blank" href="/Category/3.html">玄幻</a>
-                                                        <span>连载中</span>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">前世，她是地位尊崇的天命帝姬，却在大婚前夕，遭遇背叛，自焚而亡！重生为破落世家的废柴弃女，受尽欺凌，而害她之人却已高高在上，享尽风光！一朝重生，凤唳九天！驭神兽，凝原力，通医毒之术，掌人神生死！她发誓：要让背叛欺辱过她的那些人，受尽折磨，百倍还之！……他是孱弱温润的离王殿下，也是手握天下的暗夜君王，唯独为了一个人倾尽生生世世。他承诺：要让他唯一爱过的那个人，平安喜乐，永世欢愉。……她以为这一路必将充满血泪，却不知等待她的，是一世预谋已久的盛世豪宠！小剧场：1开始，人人都劝：“离王殿下，楚家弃女配不上您！”后来，个个都嘲：“孱弱世子，恁配不上天命帝姬！”最后，众人喟叹：帝君，您这是何苦来哉？他淡笑：她在云端，本王便去云端，她在尘埃，本王便入尘埃。为她，前生不苦，余生皆甜。全文苏爽甜极，欢迎跳坑！...</p>
-                                                <p class="number"><span>更新：2020-06-21 12:21:00</span><span>字数：4886836</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1074070)" id="addShelfBtn1074070">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1399376.html" target="_blank">
-                                                <img data-src="">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1399376.html" target="_blank">公主她在现代星光璀璨</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1111935.html"><i class="iconfont">&#xe604;</i>一船梦</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=总裁">总裁</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=马甲">马甲</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=娱乐圈">娱乐圈</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=先婚后爱">先婚后爱</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=反穿">反穿</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=甜宠">甜宠</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">（双洁，古穿今，娱乐圈打脸甜文）于乱世中将众弟妹抚养长大，文能招聚天下贤士，武能挂帅出征开拓疆土，终于一步步将胞弟送上皇帝位置的夏挽沅，是夏朝历史上最为传奇的长公主。而这位长公主一睁眼，却发现自己身处千年以后，老公有了，儿子居然也有了，还有两个不争气的弟弟妹妹，只不过老公把她当空气，儿子与她无交集。这回自己倒是依然被称为“公主”，只不过这回别人都是讽刺她在娱乐圈仗着资本行事，娇气嚣张，给她的黑称罢了。对此夏挽沅表示，总有你们真心实意跪着叫公主的一天。众人表示：呵呵，真把自己当公主了？谁给你的脸，你那马上就要踹了你的大佬老公吗？君时陵：拿着一亿离婚费离开我的视线。一年后众人：脸好疼，公主您看我跪的标准吗？君时陵：谁敢造谣我们离婚，让他天凉王破！老婆我们再生一个好不好？貌美如花腹黑多才多艺长公主兼职影后与心思深沉冷峻追妻火葬场总裁一个找寻自我的同时收获真爱在现代养崽的小故事，望大家喜欢。...</p>
-                                                <p class="number"><span>更新：2020-06-21 15:37:00</span><span>字数：692608</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1399376)" id="addShelfBtn1399376">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1334886.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1334886.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1334886.html" target="_blank">全能千金燃翻天</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1076088.html"><i class="iconfont">&#xe604;</i>德音不忘</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【本文爽爽爽，强强强！男主妻管严，女主第一美，虐渣宠文】异世界科技大佬叶灼重生了。重生成豪门假千金。假千金鸠占鹊巢，在圈子里人人厌恶，臭名昭著，不但是大字不识几个的草包，还是个见不得光的私生女。被人嘲讽：“连真千金的小拇指都比不上！”“私生女！不要脸！”对此，叶大佬轻笑一声。呵呵......假千金？私生女？一手烂牌，她照样能扭转乾坤,搅乱一池风云！从假千金到著名科技公司老总；从草包到人人艳羡的无双才女；从一无所有，到走上人生巅峰；且看她如何上演一场逆袭人生！**就在叶大佬已经习惯了私生女的马甲时——隐藏多年的秘密突然曝光，众人眼中见不得光私生女摇身一变，竟变成根深蒂固的权门千金。原来那个闻名华夏大陆的林家家主居然是她亲爹！不光多了个亲爹，还附带一枚宠妹狂魔的亲哥......**一句话简介：女主火速让位真千金后，回家带着母亲和舅舅发家致富，走上人生巅峰！在走上人生巅峰的过程中，顺便谈了个恋爱，没想到对方竟然是财阀大佬！...</p>
-                                                <p class="number"><span>更新：2020-06-21 10:23:00</span><span>字数：570742</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1334886)" id="addShelfBtn1334886">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1023751.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1023751.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1023751.html" target="_blank">全民女神之重生腹黑千金</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1076088.html"><i class="iconfont">&#xe604;</i>德音不忘</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>已完成</span>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【苏爽、宠文、虐渣、男强女强】十八岁的苏晓遇从花山农家女一夜之间，摇身一变，变成了村里人人艳羡的豪门千金，穆青璃。初回豪门，穆青璃敛起一身锋芒，低调做人，低调做事。重生的六妹，桃代李僵抢走了原本属于她的身份和地位。贪婪的渣父为了救活亲生儿子，竟然设计挖走了她的心脏！重生后，穆青璃高调做人，高调做事！自己给自己打下一片江山！渣妹设计？那就让你设计个彻底！此后：商业界多了位穆老板！中医界多了位绝世鬼才！纤纤素手，医死人而肉白骨。这辈子，她就是要活的肆意张扬！我行我素！——他是傅家唯一的继承人，容貌俊美，矜贵异常，狠甩当代小鲜肉几条街，亦是万千少女的梦想。富可敌国，家财万贯，可惜——是个弯的！直至，某日。他从花山回来后，身边多了只小奶狗。小奶狗跟着他水涨船高，人前人后，风光无限，出席各种酒会。人人皆叹，这世道，人不如狗！就在众人猜测小奶狗是什么顶级名贵品种时......知...</p>
-                                                <p class="number"><span>更新：2020-06-10 16:44:00</span><span>字数：1438756</span></p>
-                                                <div class="action">
-                                                                                                            <a href="/baoyue" class="order-btn" target="_blank">购买包月</a>
-                                                                                                        <a href="javascript:" class="order-btn" onclick="addShelft(1023751)" id="addShelfBtn1023751">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/801802.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/801802.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/801802.html" target="_blank">盛宠之嫡女医妃</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/258020.html"><i class="iconfont">&#xe604;</i>天泠</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>已完成</span>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【爽文，双处，一生一世一双人，男主身心干净，互宠腹黑，欢迎入坑。】前世，南宫玥是被自己坑死的。她出生名门，身份尊贵，得当世神医倾囊相授，一身医术冠绝天下。她倾尽一切，助他从一介皇子登上帝位，换来的却是一旨满门抄斩！她被囚冷宫，隐忍筹谋，最终亲手覆灭了他的天下。一朝大仇得报，她含笑而终，却未想，再睁眼，却回到了九岁那一年。嫡女重生，这一世，她绝不容任何人欺她、辱她、轻她、践她！年少溺亡的哥哥，疯癫早逝的母亲，这一世，她必要保他们一生幸福安泰。前世的继母，你不是喜欢勾引有妇之夫吗？那就给你找个断袖分桃的男人，让你勾引个够！前世的夫君，你不是为了皇位可以不择手段吗？这辈子你再怎么算计也只会与皇位无缘！亲爱的表妹，前世的夺夫灭族之痛，一刀一刀让你慢慢还回来！偏心的祖母，极品的亲戚，既然你们想斗，那就干脆斗个天翻地覆！原以为这一世，她会孤独终老，没想到，前世那个弑父杀弟，阴狠毒辣的“杀神”镇南王却悄然出现在了她的生命里。只是……怎么画风好像不太对，说好的冷血阴郁、心...</p>
-                                                <p class="number"><span>更新：2020-06-12 18:55:00</span><span>字数：5033773</span></p>
-                                                <div class="action">
-                                                                                                            <a href="/baoyue" class="order-btn" target="_blank">购买包月</a>
-                                                                                                        <a href="javascript:" class="order-btn" onclick="addShelft(801802)" id="addShelfBtn801802">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1372367.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1372367.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1372367.html" target="_blank">另类千金归来</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/800987.html"><i class="iconfont">&#xe604;</i>荢璇</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=杀手">杀手</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=扮猪吃虎">扮猪吃虎</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=养成">养成</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【本文1v1，男强女强，绝对宠文】北城颜家失踪16年的大女儿找回来了。是被她未婚夫，帝都殷家二爷从一所孤儿院领回来的。彼年颜大小姐18岁。——殷家，帝都顶级世家。殷二爷全名殷九烬，人称九爷，年24岁，商界杀神。九爷遵祖母遗愿找回颜家早已放弃寻找的大小姐，带回家自己养。——外人眼中的颜瑾虞：身材好颜值高智商更高；朋友眼中的颜瑾虞：邻家妹妹（才怪），手起刀落杀人不眨眼；九爷眼中的颜瑾虞：话少人呆没见过世面，完全不像18岁，像个小孩子，惹人怜惜。——杀手界第一杀手“魑”，第一杀手组织“鬼刹”的王牌。八年前成名，三年前端了鬼刹老巢鬼刹岛，自此解散鬼刹。没人见过真面目，只知其武器是两米长细如发的金丝。鬼刹解散，“魑”自此隐没，一起隐没的还有鬼刹中排名仅次于“魑”的三大杀手。【精彩片段】九爷：“你这年纪应该上学，想去哪所学校？”虞美人喝着酸奶看着熊出没：“不要。”“别任性。”不理。“只要你乖乖去上学，家里冰箱顶上一层全放酸奶，动画片每天可多看一小时。”...</p>
-                                                <p class="number"><span>更新：2020-06-21 05:02:00</span><span>字数：1390588</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1372367)" id="addShelfBtn1372367">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1382225.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1382225.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/898612.html"><i class="iconfont">&#xe604;</i>公子安爷</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=明星">明星</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=独宠">独宠</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【宠文、无虐、女强、团宠！】阮柒爆红之后。黑粉：再漂亮也没文化。当天下午，华夏最高等学府发博——介绍一下，我院最年轻博士生导师，阮柒教授。黑粉：炒学霸人设有什么用？最后也得向金主低头。第二天，阮柒现身国际经济会议，名牌落款——柒木制药集团董事长。黑粉：赚这么多钱，也不知道为国家做点贡献。三天后，官方发布新闻——最新型核潜艇问世，感谢总设计师阮柒及所有研发成员！黑粉们：……惹不起，再见。*结婚之后，有记者问席玖：九爷您当初是怎么追到阮女神的？席玖默默的翻开一个日记本。追妻日记：一、给宝贝打榜。二、帮宝贝投票。三、为宝贝应援。四、宝贝的电影要包场。五、加入宝贝后援会。……众所周知，阮女神有个宇宙级富豪铁杆粉——席家九爷，席玖！...</p>
-                                                <p class="number"><span>更新：2020-06-21 09:55:00</span><span>字数：873288</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1382225)" id="addShelfBtn1382225">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1351522.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1351522.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1351522.html" target="_blank">金凤华庭</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/238933.html"><i class="iconfont">&#xe604;</i>西子情</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=轻松">轻松</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=世家">世家</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=玩世不恭">玩世不恭</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=一见钟情">一见钟情</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">老南阳王病逝前，为安华锦选了一个未婚夫，名门世家顾家的七公子。传言顾七公子温雅玉华，风骨清流，是顾家新一代最拔尖的人才。安华锦一听，脸都黑了，摇头再摇头，死活不要。十三岁那年，她第一次进京，仰慕帝京城八大街的红粉巷，想去见识见识，没想到没摸到美人的手，却险些死在温柔乡。因为她遇到了一个人——八大街背后的公子爷。那是真正的爷。毓秀风流，弹指间让人化成灰。她死里逃生后，命人查了两年，才知道那个人叫顾轻衍，是顾家的七公子。她有多想不开，才会嫁给他？于是，老南阳王直到咽气，也没等到安华锦点头。后来——谁也没想到，她带了三十万兵马，兵临城下，只为逼婚。顾轻衍敢不娶她，她就马蹋顾家！...</p>
-                                                <p class="number"><span>更新：2020-06-21 10:47:00</span><span>字数：1431144</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1351522)" id="addShelfBtn1351522">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1074345.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1074345.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1074345.html" target="_blank">夫人你马甲又掉了</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/867755.html"><i class="iconfont">&#xe604;</i>一路烦花</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=扮猪吃虎">扮猪吃虎</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">【本文专注扒马，女主帅，男主炸，身份多重，双宠爽文微科幻无逻辑】秦苒，从小在乡下长大，高三失踪一年，休学一年。一年后，她被亲生母亲接到云城借读。母亲说：你后爸是名门之后，你大哥自小就是天才，你妹妹是一中尖子生，你不要丢他们的脸。**京城有身份的人暗地里都收到程家太子爷的警告：隽爷老婆是普通人，不懂京城规矩……脾气还不好。直到一天，调查某个大佬时，他的手下望着不小心扒出来的据说什么都不懂的小嫂子的其中一个马甲……陷入迷之沉默。...</p>
-                                                <p class="number"><span>更新：2020-06-02 11:00:00</span><span>字数：1891806</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1074345)" id="addShelfBtn1074345">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1383141.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1383141.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1383141.html" target="_blank">旺门小农女</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/899963.html"><i class="iconfont">&#xe604;</i>西青先生</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=温馨清水">温馨清水</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=种田文">种田文</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">一场车祸，云莞一朝回到解放前。从家财万贯产业遍布大江南北的白富美，变成了不知朝代的上林村家徒四壁食不果腹的小农女。瘦弱的小身板、重病的祖母和阿爹、面黄肌瘦的幼弟幼妹、陷入困境的村庄……云莞表示，没什么能阻挡她继续成为白富美的步伐。手撕极品虐渣渣，美食发家、开荒种地、先富带后富、小小村庄变成日进斗金的古代工厂。贫贱的小农女将悲惨命运改造成了福禄双全的好命格，日子过得风生水起。然而，那个在她发家致富的道路上，总是在她身边晃悠的纨绔美少年，是怎么回事呢？美少年，听闻你觊觎我的钱？美少年慵懒一笑：此言差矣，阿莞，嫁给我，我的钱都是你的，金山银山也送给你，好不好？————这是一个……我负责赚钱养家，少年你负责貌美如花的故事。PS：发家致富、美食、暖爱互宠，1v1...</p>
-                                                <p class="number"><span>更新：2020-06-20 23:54:00</span><span>字数：815787</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1383141)" id="addShelfBtn1383141">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1345254.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1345254.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1345254.html" target="_blank">摄政王的小闲妻</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1515744.html"><i class="iconfont">&#xe604;</i>妖殊</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>已完成</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=王爷">王爷</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">她是相府不起眼的小小庶女，淡然低调，偏居一隅，只想守着自己的一亩三分地，偏偏有个变态掉进了她的院子。本着做好事的精神为民除害，却不想他突然醒来，被抓了个现行。他是位高权重的一方军候，手段狠辣，恶名昭彰。渣爹为了保命，打包将她送上门做妾，从此悲催的日子开始了。端茶倒水、洗衣叠被就算了，抱枕是什么鬼？《她是妾》“爷！皇上说您已经二十一了，该娶个正妻了！”“爷有穆九！”“太后说她的侄女年方十八，端庄贤淑，准备赐给您做妻子！”“爷有穆九。”“（T-T）......爷，奴才说的是娶夫人，穆小姐是妾啊？”怒：“等穆九什么时候愿意嫁给爷了，你们就有夫人了！”穆九：“当妾好啊，不用隔三差五进宫去跪这个拜那个，也不用应付白莲花绿茶婊，偶尔跑出去潇洒一圈也没人说她不够端庄，当然，如果那个变态侯爷不要天天来骚扰她就更好了！”某爷一把将她扛起进屋：“做梦！”一对一，女强爽文，欢迎入坑，作者玻璃心，不喜欢不勉强。...</p>
-                                                <p class="number"><span>更新：2020-05-23 19:15:00</span><span>字数：1439901</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1345254)" id="addShelfBtn1345254">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/822637.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/822637.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/822637.html" target="_blank">魔眼小神医</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/326553.html"><i class="iconfont">&#xe604;</i>相思如风</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>连载中</span>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">乐韵最大的理想就是：成为华夏最优秀的医生。好运来了挡不住，高考前无意间开启一个系统，双眼获得魔力，看一眼就知人或物有无生病，病在哪个部位。系统空间种出来的药材吃一口，力气充盈，吃一样，身体倍儿棒，乃医生成神之必备神器。一直为当杏林国手而奋斗的乐韵，简直乐晕了。只是，现实很骨感，系统是半残的，需要吃东西维持，它不吃金不吃银，要吃有灵气的翡翠玉石，异珍奇宝等高大上的东东。从此，乐姑娘在成为旷世女神医的道路上又多了一项任务—帮系统找粮食。...</p>
-                                                <p class="number"><span>更新：2020-06-21 15:31:00</span><span>字数：7047901</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(822637)" id="addShelfBtn822637">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1093857.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1093857.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1093857.html" target="_blank">龙飞凤仵</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/517283.html"><i class="iconfont">&#xe604;</i>莫风流</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=轻松">轻松</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=穿越">穿越</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=欢喜冤家">欢喜冤家</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">轻松推理女强双洁简介萧彦真穿越后，愿望是当官、发财！愿望实现后，有人来讹她。男人半垂眼帘，依在门边：“嫁我，你能继续做人人尊敬的萧大人。”讹人的事，做的如此清奇随性，也只有他了。“等我剖完这具尸体。”萧彦真忙的很，头也不抬地道。男人抬眼，眸光清亮：“就答应我？”“不。”萧彦真波澜不惊地转着手中的解剖刀，挑眉道，“就来剖你！”男人：“……”案情小剧场：“什么凶手？大局之前，谈什么律法！”刘大人怒瞪萧彦真，讥讽道，“这里没你说话的份，滚出去！”萧彦真抬手，刘大人吓得脖子一缩，指着她：“萧、萧蛮子，你、你敢动手？！”萧蛮子的外号不是白取的，刘大人害怕地看着她。“打你，脏手！”萧彦真笑容亲和无辜。刘大人松了口气，拍桌正要涨气焰，却听门啪地关上。门外，萧彦真道：“门已关，放狗！”门内，传来刘大人嗷嗷惨叫：”啊，这里不行！啊，哪里也不行！“她有狗，一只纯种狗仗人势欺软怕硬咬人不露牙的狗！...</p>
-                                                <p class="number"><span>更新：2020-06-21 07:10:00</span><span>字数：797557</span></p>
-                                                <div class="action">
-                                                        <a href="/info/1093857.html" class="order-btn bonus-btn" target="_blank">月票红包</a>
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1093857)" id="addShelfBtn1093857">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1101656.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1101656.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1101656.html" target="_blank">侯门嫡女之一品夫人</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/744258.html"><i class="iconfont">&#xe604;</i>凌七七</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>已完成</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">一朝穿越，顾明卿成了大晋朝忠勇侯府的嫡次女。顾明卿原以为从此就能过上“坐看庭前花开花落,笑看天边云卷云舒”的悠闲日子，谁知亲爹是入赘侯府，而她是原配生的小可怜，身份那叫一个尴尬。顾明卿还没来得及适应新身份，就被继母嫁到农家，真是刚出虎穴，又进狼窝，不过——腹黑忠犬相公：“爹说男人就要疼爱妻子。娘子，你放心，以后我一定疼你，啥好吃的，好用的都先紧着你。”疼儿媳的公公：“明卿啊，我最遗憾的就是没能有个白白嫩嫩的闺女，你是我儿媳，跟闺女也差不了多少。以后臭小子要是敢欺负你，爹一定为你做主教训他！”视儿媳如女儿的婆婆，“我这盼了那么多年，老天总算给我送了一个好闺女。明卿啊，以后你就是我亲闺女了。”顾明卿摸摸下巴，这日子跟她想的不一样，她好像掉进福窝了！...</p>
-                                                <p class="number"><span>更新：2020-05-26 10:30:00</span><span>字数：3117852</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1101656)" id="addShelfBtn1101656">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1084505.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1084505.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1084505.html" target="_blank">权门贵嫁</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1156528.html"><i class="iconfont">&#xe604;</i>秦兮</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">朱元一朝重生，从百病缠身郁郁而终的变成了未嫁的少女。如何从烂饭粒蚊子血变成朱砂痣白月光，这条路任重道远。好在她有一身医术护体。可是号称包治百病之后，她发现事情渐渐有些不对了&#45;&#45;&#45;&#45;某人挑眉问她：“我的相思病什么时候帮我治？”-&#45;&#45;&#45;&#45;老书《名门闺战》《春闺密事》已完结，欢迎大家开宰...</p>
-                                                <p class="number"><span>更新：2020-06-20 23:27:00</span><span>字数：2018716</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1084505)" id="addShelfBtn1084505">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1031616.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1031616.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1031616.html" target="_blank">大清佳人</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1154703.html"><i class="iconfont">&#xe604;</i>尤妮丝</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>已完成</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=帝王">帝王</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">瓜尔佳昭嫆一点都不想给自己的表姐夫当小妾，可无奈表姐夫的奶奶相中了她。哦，她表姐夫叫玄烨。————————————————穿越的老贵人遇上重生的四爷陛下——《大清贵人》新坑已开，请安心跳。剩女姚佳欣穿越雍正后宫，成了一位年方二八……啊不二十八岁的病弱老贵人，这个年纪好、这个年纪妙，不用争宠、不用宫斗，直接进入养老生涯。然而，姚佳欣发现，咱们的四爷大大居然是重生的！老贵人瑟瑟发抖，唯恐掉马被宰。重生的四爷提前十三年登上皇位，君威无人敢逆，吊炸天大杀四方，却十数年饱受失眠症折磨，不得解脱。突然有一天，他发现了一只安眠药精……老贵人：哦，原来我拿的是甜宠剧本？雍正四爷：你是朕的安眠药精~...</p>
-                                                <p class="number"><span>更新：2020-05-29 13:54:00</span><span>字数：1554165</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1031616)" id="addShelfBtn1031616">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1061059.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1061059.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1061059.html" target="_blank">重生之幸福日常</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1154066.html"><i class="iconfont">&#xe604;</i>雪凤凰</a>
-                                                            <a target="_blank" href="/Category/2.html">现言</a>
-                                                        <span>已完成</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=重生">重生</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">这世上有这样一种人，明明有实力也有运气，却总是离幸福一步之差，而林小乖幸运又不幸地属于其中之一。——出生在六十年代，作为家里备受宠爱的老来女，林小乖长得好又聪明，却偏偏有四个平庸软弱的哥哥，以及四个厉害的嫂子；原本家庭成分不好前路灰暗，却在恰当的年纪遇上高考恢复，一举考上大学；疼她的爹人逢喜事精神爽，一觉睡下再没有醒来，林小乖悲痛欲绝下病倒，兄嫂却见钱眼开把高烧昏迷的她嫁了出去；幸得遇上个不差的男人，家里却是一窝不省心的，浑浑噩噩中失了做母亲的能力。心灰意冷下离了婚，远走他乡。一个人在城里闯荡出一番新天地，有钱有闲，过得也算自在逍遥，临老却突然得了个晚出现了几十年的金手指，亏得心宽才没给郁闷死。祸从天降，原以为要一命呜呼，睁开眼却回到了最初。林小乖想着，这要再把日子过差了，她得蠢成啥样啊。...</p>
-                                                <p class="number"><span>更新：2015-03-01 07:01:03</span><span>字数：805502</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1061059)" id="addShelfBtn1061059">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1393205.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1393205.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1393205.html" target="_blank">将军不容易</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/307365.html"><i class="iconfont">&#xe604;</i>侧耳听风</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=甜文">甜文</a>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=王爷">王爷</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">又名《媳妇儿总想给我相亲怎么办》《我的媳妇儿是小姑姑》《论成为自己姑父是什么体验》***穿于乱世；家破人亡；孤女无依！幸得战死沙场亲兄的结义兄长老将军收留，居于将军府，人尊小姑姑。小姑姑庄正端雅；秀外慧中；蕙心纨质，深得老夫人喜爱。弥留之际，交给小姑姑一项任务，为那猛锐冠世，旷世无匹的少年将军觅一匹配女子，成婚生子，延续血脉。这个任务……可不是那么简单的！***将军少年成名，纵横无敌，征战沙场，击退敌蛮。但，他有一秘事也天下尽知，恐女！老夫人为此操碎了心，觅得众多大家闺秀，将军无一满意。敌军为此设计女子前锋，意欲‘吓死’将军。为将军找媳妇儿……无异于水滴石穿，铁杵磨针，西天取经！***深得老将军老夫人恩情，小姑姑毅然决然的走上了‘西天取经’的漫漫长路。取经路上披荆斩棘，奈何将军是一块世所罕见的金刚石，哪个姑娘他都不满意。绞尽脑汁，总算得知他到底心仪何种女子，一一对应，倒是与她相差无几。原来，将军是想做自己的小姑夫？&lt;p...</p>
-                                                <p class="number"><span>更新：2020-06-21 09:42:00</span><span>字数：677315</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1393205)" id="addShelfBtn1393205">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a class="book commonbook" href="/info/1372809.html" target="_blank">
-                                                <img data-src="//images.xxsy.net/img/1372809.jpg">
-                                            </a>
-                                            <div class="info">
-                                                <h4>
-                                                    <a href="/info/1372809.html" target="_blank">农女福妃名动天下</a>
-                                                    <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/1156020.html"><i class="iconfont">&#xe604;</i>渐进淡出</a>
-                                                            <a target="_blank" href="/Category/1.html">古言</a>
-                                                        <span>连载中</span>
-                                                        <a class="tags" target="_blank" href="/search?channel=0&tag=种田文">种田文</a>
-                                                    </span>
-                                                </h4>
-                                                <p class="detail">一朝穿越温暖成了十里八乡有名的瘟神、短命鬼，一家人被她拖累得去住草棚，许多人等着看这一大家子熬不过这个冬天，不是饿死就是冻死！可是等着等着，人家买屋买田买地又买铺.....这泼天的富贵是怎么回事？——京城的人都知道瑾王娶了一个只会种田的农女，还如珠如宝的宠着，大家等着看这个农女王妃闹笑话，丢尽瑾王的脸子！可是，有一天大家发现那传说中名动天下的某某和某某某，居然是瑾王家的小王妃！说好的只会种田的小农女呢？（且看小小农女如何名动四海，富甲天下！）...</p>
-                                                <p class="number"><span>更新：2020-06-21 06:28:00</span><span>字数：1091381</span></p>
-                                                <div class="action">
-                                                                                                                                                            <a href="javascript:" class="order-btn" onclick="addShelft(1372809)" id="addShelfBtn1372809">放入书架</a>
-                                                </div>
-                                            </div>
-                                        </li>-->
-                                </ul>
-                                <div class="pages">
-                                        <a class='page-prev defalt' href="javascript:"><i class="iconfont">&#xe7d0;</i></a>
-                                    <!--总页数10页以内-->
-                                                <a class="active" href="javascript:">1</a>
-                                                <a href="javascript:" onclick="setPage(2)">2</a>
-                                                <a href="javascript:" onclick="setPage(3)">3</a>
-                                                <a href="javascript:" onclick="setPage(4)">4</a>
-                                                <a href="javascript:" onclick="setPage(5)">5</a>
+                    <ul class="classify-list">
+                        <li class='' th:unless="${#maps.containsKey(searchMap,'channel')}">
+                            <strong>频道：</strong>
+                            <div class="tags" id="channeltype">
+                                <span class='active' data-value="0" data-type="channel">全部</span>
+                                <a th:href="@{${url(channel='0')}" class='' data-value="2" data-type="channel"
+                                   th:text="女生"></a>
+                                <a th:href="@{${url(channel='1')}" class='' data-value="1" data-type="channel"
+                                   th:text="男生"></a>
+                            </div>
+                        </li>
 
-                                        <a class='page-next' href="javascript:" onclick="setPage(2)"><i class="iconfont">&#xe7cf;</i></a>
-共5页，到第<input type="text" class="text" id="pageindex">页<a href="javascript:" class="go" id="gopage">GO</a>
+                        <li class='classify' th:unless="${#maps.containsKey(searchMap,'category')}">
+                            <strong>类别：</strong>
+                            <div class="tags">
+                                <span class='active' data-value="-1" data-type="s_type">全部</span>
+                                <span th:each="cate:${items.categoryNames}" class='' data-value="3"
+                                      data-type="s_type"><a th:text="${cate}"
+                                                            th:href="@{${url}('categoryName'=${cate})}"></a> </span>
+                            </div>
+                        </li>
+                        <li class='l_status ' th:unless="${#maps.containsKey(searchMap,'status')}">
+                            <strong>状态：</strong>
+                            <div class="tags">
+                                <span class='active' data-value="-1" data-type="s_lianzai" th:text="全部"></span>
+                                <a th:href="@{${url}('status'='0')}" class='' data-value="1" data-type="s_lianzai"
+                                   th:text="连载"></a>
+                                <a th:href="@{${url}('status'='1')}" class='' data-value="2" data-type="s_lianzai"
+                                   th:text="完结"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>
+                </div>
+                <div class="search-result">
+                    <div class="result-sort">
+                        <a th:href="@{${#Strings.replace(url,'&sortField='+searchMap.sortField,'')}}" class='active'
+                           data-value="9">综合排序<span>↓</span></a>
+                        <a th:href="@{${url}('sortField'='wordsNum')}" class='' data-value="13">字数<span>↓</span></a>
+                        <a th:href="@{${url}('sortField'='subscribeNum')}" class=''
+                           data-value="13">总收藏<span>↓</span></a>
+                    </div>
+                    <div class="result-list">
+                        <ul>
+                            <li th:each="book,books:${items.rows}">
+                                <a class="book commonbook" href="book.html" target="_blank">
+                                    <img data-src="">
+                                </a>
+                                <div class="info">
+                                    <h4>
+                                        <a href="book.html" target="_blank"><span th:text="${book.name}"></span> </a>
+                                        <span class="subtitle">
+                                                        <a target="_blank" href="/authorcenter/258020.html"><i
+                                                                class="iconfont">&#xe604;</i><span
+                                                                th:text="${book.author}"></span> </a>
+                                                            <a target="_blank" href="/Category/1.html"><span
+                                                                    th:text="${book.categoryName}"></span> </a>
+                                                        <span>已完成</span>
+                                                    </span>
+                                    </h4>
+                                    <p class="detail"><span th:text="${book.abstracts}"></span></p>
+                                    <p class="number">
+                                        <span>更新：<span th:text="${book.releaseTime}"></span></span><span>字数：<span
+                                            th:text="${book.wordsNum}"></span></span></p>
+                                    <div class="action">
+                                        <a href="javascript:" class="order-btn" onclick="addShelft(949361)"
+                                           id="addShelfBtn949361">放入书架</a>
+                                    </div>
                                 </div>
+                            </li>
+                            <!--  <li>
+                                  <a class="book commonbook" href="/info/1074070.html" target="_blank">
+                                      <img data-src="">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1074070.html" target="_blank">至尊神医之帝君要下嫁</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/734417.html"><i class="iconfont">&#xe604;</i>战西野</a>
+                                                  <a target="_blank" href="/Category/3.html">玄幻</a>
+                                              <span>连载中</span>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">前世，她是地位尊崇的天命帝姬，却在大婚前夕，遭遇背叛，自焚而亡！重生为破落世家的废柴弃女，受尽欺凌，而害她之人却已高高在上，享尽风光！一朝重生，凤唳九天！驭神兽，凝原力，通医毒之术，掌人神生死！她发誓：要让背叛欺辱过她的那些人，受尽折磨，百倍还之！……他是孱弱温润的离王殿下，也是手握天下的暗夜君王，唯独为了一个人倾尽生生世世。他承诺：要让他唯一爱过的那个人，平安喜乐，永世欢愉。……她以为这一路必将充满血泪，却不知等待她的，是一世预谋已久的盛世豪宠！小剧场：1开始，人人都劝：“离王殿下，楚家弃女配不上您！”后来，个个都嘲：“孱弱世子，恁配不上天命帝姬！”最后，众人喟叹：帝君，您这是何苦来哉？他淡笑：她在云端，本王便去云端，她在尘埃，本王便入尘埃。为她，前生不苦，余生皆甜。全文苏爽甜极，欢迎跳坑！...</p>
+                                      <p class="number"><span>更新：2020-06-21 12:21:00</span><span>字数：4886836</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1074070)" id="addShelfBtn1074070">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1399376.html" target="_blank">
+                                      <img data-src="">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1399376.html" target="_blank">公主她在现代星光璀璨</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1111935.html"><i class="iconfont">&#xe604;</i>一船梦</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=总裁">总裁</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=马甲">马甲</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=娱乐圈">娱乐圈</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=先婚后爱">先婚后爱</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=反穿">反穿</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=甜宠">甜宠</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">（双洁，古穿今，娱乐圈打脸甜文）于乱世中将众弟妹抚养长大，文能招聚天下贤士，武能挂帅出征开拓疆土，终于一步步将胞弟送上皇帝位置的夏挽沅，是夏朝历史上最为传奇的长公主。而这位长公主一睁眼，却发现自己身处千年以后，老公有了，儿子居然也有了，还有两个不争气的弟弟妹妹，只不过老公把她当空气，儿子与她无交集。这回自己倒是依然被称为“公主”，只不过这回别人都是讽刺她在娱乐圈仗着资本行事，娇气嚣张，给她的黑称罢了。对此夏挽沅表示，总有你们真心实意跪着叫公主的一天。众人表示：呵呵，真把自己当公主了？谁给你的脸，你那马上就要踹了你的大佬老公吗？君时陵：拿着一亿离婚费离开我的视线。一年后众人：脸好疼，公主您看我跪的标准吗？君时陵：谁敢造谣我们离婚，让他天凉王破！老婆我们再生一个好不好？貌美如花腹黑多才多艺长公主兼职影后与心思深沉冷峻追妻火葬场总裁一个找寻自我的同时收获真爱在现代养崽的小故事，望大家喜欢。...</p>
+                                      <p class="number"><span>更新：2020-06-21 15:37:00</span><span>字数：692608</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1399376)" id="addShelfBtn1399376">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1334886.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1334886.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1334886.html" target="_blank">全能千金燃翻天</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1076088.html"><i class="iconfont">&#xe604;</i>德音不忘</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【本文爽爽爽，强强强！男主妻管严，女主第一美，虐渣宠文】异世界科技大佬叶灼重生了。重生成豪门假千金。假千金鸠占鹊巢，在圈子里人人厌恶，臭名昭著，不但是大字不识几个的草包，还是个见不得光的私生女。被人嘲讽：“连真千金的小拇指都比不上！”“私生女！不要脸！”对此，叶大佬轻笑一声。呵呵......假千金？私生女？一手烂牌，她照样能扭转乾坤,搅乱一池风云！从假千金到著名科技公司老总；从草包到人人艳羡的无双才女；从一无所有，到走上人生巅峰；且看她如何上演一场逆袭人生！**就在叶大佬已经习惯了私生女的马甲时——隐藏多年的秘密突然曝光，众人眼中见不得光私生女摇身一变，竟变成根深蒂固的权门千金。原来那个闻名华夏大陆的林家家主居然是她亲爹！不光多了个亲爹，还附带一枚宠妹狂魔的亲哥......**一句话简介：女主火速让位真千金后，回家带着母亲和舅舅发家致富，走上人生巅峰！在走上人生巅峰的过程中，顺便谈了个恋爱，没想到对方竟然是财阀大佬！...</p>
+                                      <p class="number"><span>更新：2020-06-21 10:23:00</span><span>字数：570742</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1334886)" id="addShelfBtn1334886">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1023751.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1023751.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1023751.html" target="_blank">全民女神之重生腹黑千金</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1076088.html"><i class="iconfont">&#xe604;</i>德音不忘</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>已完成</span>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【苏爽、宠文、虐渣、男强女强】十八岁的苏晓遇从花山农家女一夜之间，摇身一变，变成了村里人人艳羡的豪门千金，穆青璃。初回豪门，穆青璃敛起一身锋芒，低调做人，低调做事。重生的六妹，桃代李僵抢走了原本属于她的身份和地位。贪婪的渣父为了救活亲生儿子，竟然设计挖走了她的心脏！重生后，穆青璃高调做人，高调做事！自己给自己打下一片江山！渣妹设计？那就让你设计个彻底！此后：商业界多了位穆老板！中医界多了位绝世鬼才！纤纤素手，医死人而肉白骨。这辈子，她就是要活的肆意张扬！我行我素！——他是傅家唯一的继承人，容貌俊美，矜贵异常，狠甩当代小鲜肉几条街，亦是万千少女的梦想。富可敌国，家财万贯，可惜——是个弯的！直至，某日。他从花山回来后，身边多了只小奶狗。小奶狗跟着他水涨船高，人前人后，风光无限，出席各种酒会。人人皆叹，这世道，人不如狗！就在众人猜测小奶狗是什么顶级名贵品种时......知...</p>
+                                      <p class="number"><span>更新：2020-06-10 16:44:00</span><span>字数：1438756</span></p>
+                                      <div class="action">
+                                                                                                  <a href="/baoyue" class="order-btn" target="_blank">购买包月</a>
+                                                                                              <a href="javascript:" class="order-btn" onclick="addShelft(1023751)" id="addShelfBtn1023751">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/801802.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/801802.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/801802.html" target="_blank">盛宠之嫡女医妃</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/258020.html"><i class="iconfont">&#xe604;</i>天泠</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>已完成</span>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【爽文，双处，一生一世一双人，男主身心干净，互宠腹黑，欢迎入坑。】前世，南宫玥是被自己坑死的。她出生名门，身份尊贵，得当世神医倾囊相授，一身医术冠绝天下。她倾尽一切，助他从一介皇子登上帝位，换来的却是一旨满门抄斩！她被囚冷宫，隐忍筹谋，最终亲手覆灭了他的天下。一朝大仇得报，她含笑而终，却未想，再睁眼，却回到了九岁那一年。嫡女重生，这一世，她绝不容任何人欺她、辱她、轻她、践她！年少溺亡的哥哥，疯癫早逝的母亲，这一世，她必要保他们一生幸福安泰。前世的继母，你不是喜欢勾引有妇之夫吗？那就给你找个断袖分桃的男人，让你勾引个够！前世的夫君，你不是为了皇位可以不择手段吗？这辈子你再怎么算计也只会与皇位无缘！亲爱的表妹，前世的夺夫灭族之痛，一刀一刀让你慢慢还回来！偏心的祖母，极品的亲戚，既然你们想斗，那就干脆斗个天翻地覆！原以为这一世，她会孤独终老，没想到，前世那个弑父杀弟，阴狠毒辣的“杀神”镇南王却悄然出现在了她的生命里。只是……怎么画风好像不太对，说好的冷血阴郁、心...</p>
+                                      <p class="number"><span>更新：2020-06-12 18:55:00</span><span>字数：5033773</span></p>
+                                      <div class="action">
+                                                                                                  <a href="/baoyue" class="order-btn" target="_blank">购买包月</a>
+                                                                                              <a href="javascript:" class="order-btn" onclick="addShelft(801802)" id="addShelfBtn801802">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1372367.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1372367.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1372367.html" target="_blank">另类千金归来</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/800987.html"><i class="iconfont">&#xe604;</i>荢璇</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=杀手">杀手</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=扮猪吃虎">扮猪吃虎</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=养成">养成</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【本文1v1，男强女强，绝对宠文】北城颜家失踪16年的大女儿找回来了。是被她未婚夫，帝都殷家二爷从一所孤儿院领回来的。彼年颜大小姐18岁。——殷家，帝都顶级世家。殷二爷全名殷九烬，人称九爷，年24岁，商界杀神。九爷遵祖母遗愿找回颜家早已放弃寻找的大小姐，带回家自己养。——外人眼中的颜瑾虞：身材好颜值高智商更高；朋友眼中的颜瑾虞：邻家妹妹（才怪），手起刀落杀人不眨眼；九爷眼中的颜瑾虞：话少人呆没见过世面，完全不像18岁，像个小孩子，惹人怜惜。——杀手界第一杀手“魑”，第一杀手组织“鬼刹”的王牌。八年前成名，三年前端了鬼刹老巢鬼刹岛，自此解散鬼刹。没人见过真面目，只知其武器是两米长细如发的金丝。鬼刹解散，“魑”自此隐没，一起隐没的还有鬼刹中排名仅次于“魑”的三大杀手。【精彩片段】九爷：“你这年纪应该上学，想去哪所学校？”虞美人喝着酸奶看着熊出没：“不要。”“别任性。”不理。“只要你乖乖去上学，家里冰箱顶上一层全放酸奶，动画片每天可多看一小时。”...</p>
+                                      <p class="number"><span>更新：2020-06-21 05:02:00</span><span>字数：1390588</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1372367)" id="addShelfBtn1372367">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1382225.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1382225.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/898612.html"><i class="iconfont">&#xe604;</i>公子安爷</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=明星">明星</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=独宠">独宠</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【宠文、无虐、女强、团宠！】阮柒爆红之后。黑粉：再漂亮也没文化。当天下午，华夏最高等学府发博——介绍一下，我院最年轻博士生导师，阮柒教授。黑粉：炒学霸人设有什么用？最后也得向金主低头。第二天，阮柒现身国际经济会议，名牌落款——柒木制药集团董事长。黑粉：赚这么多钱，也不知道为国家做点贡献。三天后，官方发布新闻——最新型核潜艇问世，感谢总设计师阮柒及所有研发成员！黑粉们：……惹不起，再见。*结婚之后，有记者问席玖：九爷您当初是怎么追到阮女神的？席玖默默的翻开一个日记本。追妻日记：一、给宝贝打榜。二、帮宝贝投票。三、为宝贝应援。四、宝贝的电影要包场。五、加入宝贝后援会。……众所周知，阮女神有个宇宙级富豪铁杆粉——席家九爷，席玖！...</p>
+                                      <p class="number"><span>更新：2020-06-21 09:55:00</span><span>字数：873288</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1382225)" id="addShelfBtn1382225">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1351522.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1351522.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1351522.html" target="_blank">金凤华庭</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/238933.html"><i class="iconfont">&#xe604;</i>西子情</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=轻松">轻松</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=世家">世家</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=玩世不恭">玩世不恭</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=一见钟情">一见钟情</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">老南阳王病逝前，为安华锦选了一个未婚夫，名门世家顾家的七公子。传言顾七公子温雅玉华，风骨清流，是顾家新一代最拔尖的人才。安华锦一听，脸都黑了，摇头再摇头，死活不要。十三岁那年，她第一次进京，仰慕帝京城八大街的红粉巷，想去见识见识，没想到没摸到美人的手，却险些死在温柔乡。因为她遇到了一个人——八大街背后的公子爷。那是真正的爷。毓秀风流，弹指间让人化成灰。她死里逃生后，命人查了两年，才知道那个人叫顾轻衍，是顾家的七公子。她有多想不开，才会嫁给他？于是，老南阳王直到咽气，也没等到安华锦点头。后来——谁也没想到，她带了三十万兵马，兵临城下，只为逼婚。顾轻衍敢不娶她，她就马蹋顾家！...</p>
+                                      <p class="number"><span>更新：2020-06-21 10:47:00</span><span>字数：1431144</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1351522)" id="addShelfBtn1351522">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1074345.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1074345.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1074345.html" target="_blank">夫人你马甲又掉了</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/867755.html"><i class="iconfont">&#xe604;</i>一路烦花</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=扮猪吃虎">扮猪吃虎</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=豪门">豪门</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">【本文专注扒马，女主帅，男主炸，身份多重，双宠爽文微科幻无逻辑】秦苒，从小在乡下长大，高三失踪一年，休学一年。一年后，她被亲生母亲接到云城借读。母亲说：你后爸是名门之后，你大哥自小就是天才，你妹妹是一中尖子生，你不要丢他们的脸。**京城有身份的人暗地里都收到程家太子爷的警告：隽爷老婆是普通人，不懂京城规矩……脾气还不好。直到一天，调查某个大佬时，他的手下望着不小心扒出来的据说什么都不懂的小嫂子的其中一个马甲……陷入迷之沉默。...</p>
+                                      <p class="number"><span>更新：2020-06-02 11:00:00</span><span>字数：1891806</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1074345)" id="addShelfBtn1074345">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1383141.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1383141.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1383141.html" target="_blank">旺门小农女</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/899963.html"><i class="iconfont">&#xe604;</i>西青先生</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=温馨清水">温馨清水</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=种田文">种田文</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">一场车祸，云莞一朝回到解放前。从家财万贯产业遍布大江南北的白富美，变成了不知朝代的上林村家徒四壁食不果腹的小农女。瘦弱的小身板、重病的祖母和阿爹、面黄肌瘦的幼弟幼妹、陷入困境的村庄……云莞表示，没什么能阻挡她继续成为白富美的步伐。手撕极品虐渣渣，美食发家、开荒种地、先富带后富、小小村庄变成日进斗金的古代工厂。贫贱的小农女将悲惨命运改造成了福禄双全的好命格，日子过得风生水起。然而，那个在她发家致富的道路上，总是在她身边晃悠的纨绔美少年，是怎么回事呢？美少年，听闻你觊觎我的钱？美少年慵懒一笑：此言差矣，阿莞，嫁给我，我的钱都是你的，金山银山也送给你，好不好？————这是一个……我负责赚钱养家，少年你负责貌美如花的故事。PS：发家致富、美食、暖爱互宠，1v1...</p>
+                                      <p class="number"><span>更新：2020-06-20 23:54:00</span><span>字数：815787</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1383141)" id="addShelfBtn1383141">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1345254.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1345254.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1345254.html" target="_blank">摄政王的小闲妻</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1515744.html"><i class="iconfont">&#xe604;</i>妖殊</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>已完成</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=王爷">王爷</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">她是相府不起眼的小小庶女，淡然低调，偏居一隅，只想守着自己的一亩三分地，偏偏有个变态掉进了她的院子。本着做好事的精神为民除害，却不想他突然醒来，被抓了个现行。他是位高权重的一方军候，手段狠辣，恶名昭彰。渣爹为了保命，打包将她送上门做妾，从此悲催的日子开始了。端茶倒水、洗衣叠被就算了，抱枕是什么鬼？《她是妾》“爷！皇上说您已经二十一了，该娶个正妻了！”“爷有穆九！”“太后说她的侄女年方十八，端庄贤淑，准备赐给您做妻子！”“爷有穆九。”“（T-T）......爷，奴才说的是娶夫人，穆小姐是妾啊？”怒：“等穆九什么时候愿意嫁给爷了，你们就有夫人了！”穆九：“当妾好啊，不用隔三差五进宫去跪这个拜那个，也不用应付白莲花绿茶婊，偶尔跑出去潇洒一圈也没人说她不够端庄，当然，如果那个变态侯爷不要天天来骚扰她就更好了！”某爷一把将她扛起进屋：“做梦！”一对一，女强爽文，欢迎入坑，作者玻璃心，不喜欢不勉强。...</p>
+                                      <p class="number"><span>更新：2020-05-23 19:15:00</span><span>字数：1439901</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1345254)" id="addShelfBtn1345254">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/822637.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/822637.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/822637.html" target="_blank">魔眼小神医</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/326553.html"><i class="iconfont">&#xe604;</i>相思如风</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>连载中</span>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">乐韵最大的理想就是：成为华夏最优秀的医生。好运来了挡不住，高考前无意间开启一个系统，双眼获得魔力，看一眼就知人或物有无生病，病在哪个部位。系统空间种出来的药材吃一口，力气充盈，吃一样，身体倍儿棒，乃医生成神之必备神器。一直为当杏林国手而奋斗的乐韵，简直乐晕了。只是，现实很骨感，系统是半残的，需要吃东西维持，它不吃金不吃银，要吃有灵气的翡翠玉石，异珍奇宝等高大上的东东。从此，乐姑娘在成为旷世女神医的道路上又多了一项任务—帮系统找粮食。...</p>
+                                      <p class="number"><span>更新：2020-06-21 15:31:00</span><span>字数：7047901</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(822637)" id="addShelfBtn822637">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1093857.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1093857.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1093857.html" target="_blank">龙飞凤仵</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/517283.html"><i class="iconfont">&#xe604;</i>莫风流</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=轻松">轻松</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=穿越">穿越</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=欢喜冤家">欢喜冤家</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">轻松推理女强双洁简介萧彦真穿越后，愿望是当官、发财！愿望实现后，有人来讹她。男人半垂眼帘，依在门边：“嫁我，你能继续做人人尊敬的萧大人。”讹人的事，做的如此清奇随性，也只有他了。“等我剖完这具尸体。”萧彦真忙的很，头也不抬地道。男人抬眼，眸光清亮：“就答应我？”“不。”萧彦真波澜不惊地转着手中的解剖刀，挑眉道，“就来剖你！”男人：“……”案情小剧场：“什么凶手？大局之前，谈什么律法！”刘大人怒瞪萧彦真，讥讽道，“这里没你说话的份，滚出去！”萧彦真抬手，刘大人吓得脖子一缩，指着她：“萧、萧蛮子，你、你敢动手？！”萧蛮子的外号不是白取的，刘大人害怕地看着她。“打你，脏手！”萧彦真笑容亲和无辜。刘大人松了口气，拍桌正要涨气焰，却听门啪地关上。门外，萧彦真道：“门已关，放狗！”门内，传来刘大人嗷嗷惨叫：”啊，这里不行！啊，哪里也不行！“她有狗，一只纯种狗仗人势欺软怕硬咬人不露牙的狗！...</p>
+                                      <p class="number"><span>更新：2020-06-21 07:10:00</span><span>字数：797557</span></p>
+                                      <div class="action">
+                                              <a href="/info/1093857.html" class="order-btn bonus-btn" target="_blank">月票红包</a>
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1093857)" id="addShelfBtn1093857">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1101656.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1101656.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1101656.html" target="_blank">侯门嫡女之一品夫人</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/744258.html"><i class="iconfont">&#xe604;</i>凌七七</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>已完成</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=腹黑">腹黑</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=女强">女强</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">一朝穿越，顾明卿成了大晋朝忠勇侯府的嫡次女。顾明卿原以为从此就能过上“坐看庭前花开花落,笑看天边云卷云舒”的悠闲日子，谁知亲爹是入赘侯府，而她是原配生的小可怜，身份那叫一个尴尬。顾明卿还没来得及适应新身份，就被继母嫁到农家，真是刚出虎穴，又进狼窝，不过——腹黑忠犬相公：“爹说男人就要疼爱妻子。娘子，你放心，以后我一定疼你，啥好吃的，好用的都先紧着你。”疼儿媳的公公：“明卿啊，我最遗憾的就是没能有个白白嫩嫩的闺女，你是我儿媳，跟闺女也差不了多少。以后臭小子要是敢欺负你，爹一定为你做主教训他！”视儿媳如女儿的婆婆，“我这盼了那么多年，老天总算给我送了一个好闺女。明卿啊，以后你就是我亲闺女了。”顾明卿摸摸下巴，这日子跟她想的不一样，她好像掉进福窝了！...</p>
+                                      <p class="number"><span>更新：2020-05-26 10:30:00</span><span>字数：3117852</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1101656)" id="addShelfBtn1101656">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1084505.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1084505.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1084505.html" target="_blank">权门贵嫁</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1156528.html"><i class="iconfont">&#xe604;</i>秦兮</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=爽文">爽文</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">朱元一朝重生，从百病缠身郁郁而终的变成了未嫁的少女。如何从烂饭粒蚊子血变成朱砂痣白月光，这条路任重道远。好在她有一身医术护体。可是号称包治百病之后，她发现事情渐渐有些不对了&#45;&#45;&#45;&#45;某人挑眉问她：“我的相思病什么时候帮我治？”-&#45;&#45;&#45;&#45;老书《名门闺战》《春闺密事》已完结，欢迎大家开宰...</p>
+                                      <p class="number"><span>更新：2020-06-20 23:27:00</span><span>字数：2018716</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1084505)" id="addShelfBtn1084505">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1031616.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1031616.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1031616.html" target="_blank">大清佳人</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1154703.html"><i class="iconfont">&#xe604;</i>尤妮丝</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>已完成</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=帝王">帝王</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">瓜尔佳昭嫆一点都不想给自己的表姐夫当小妾，可无奈表姐夫的奶奶相中了她。哦，她表姐夫叫玄烨。————————————————穿越的老贵人遇上重生的四爷陛下——《大清贵人》新坑已开，请安心跳。剩女姚佳欣穿越雍正后宫，成了一位年方二八……啊不二十八岁的病弱老贵人，这个年纪好、这个年纪妙，不用争宠、不用宫斗，直接进入养老生涯。然而，姚佳欣发现，咱们的四爷大大居然是重生的！老贵人瑟瑟发抖，唯恐掉马被宰。重生的四爷提前十三年登上皇位，君威无人敢逆，吊炸天大杀四方，却十数年饱受失眠症折磨，不得解脱。突然有一天，他发现了一只安眠药精……老贵人：哦，原来我拿的是甜宠剧本？雍正四爷：你是朕的安眠药精~...</p>
+                                      <p class="number"><span>更新：2020-05-29 13:54:00</span><span>字数：1554165</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1031616)" id="addShelfBtn1031616">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1061059.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1061059.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1061059.html" target="_blank">重生之幸福日常</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1154066.html"><i class="iconfont">&#xe604;</i>雪凤凰</a>
+                                                  <a target="_blank" href="/Category/2.html">现言</a>
+                                              <span>已完成</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=宠文">宠文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=重生">重生</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">这世上有这样一种人，明明有实力也有运气，却总是离幸福一步之差，而林小乖幸运又不幸地属于其中之一。——出生在六十年代，作为家里备受宠爱的老来女，林小乖长得好又聪明，却偏偏有四个平庸软弱的哥哥，以及四个厉害的嫂子；原本家庭成分不好前路灰暗，却在恰当的年纪遇上高考恢复，一举考上大学；疼她的爹人逢喜事精神爽，一觉睡下再没有醒来，林小乖悲痛欲绝下病倒，兄嫂却见钱眼开把高烧昏迷的她嫁了出去；幸得遇上个不差的男人，家里却是一窝不省心的，浑浑噩噩中失了做母亲的能力。心灰意冷下离了婚，远走他乡。一个人在城里闯荡出一番新天地，有钱有闲，过得也算自在逍遥，临老却突然得了个晚出现了几十年的金手指，亏得心宽才没给郁闷死。祸从天降，原以为要一命呜呼，睁开眼却回到了最初。林小乖想着，这要再把日子过差了，她得蠢成啥样啊。...</p>
+                                      <p class="number"><span>更新：2015-03-01 07:01:03</span><span>字数：805502</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1061059)" id="addShelfBtn1061059">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1393205.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1393205.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1393205.html" target="_blank">将军不容易</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/307365.html"><i class="iconfont">&#xe604;</i>侧耳听风</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=甜文">甜文</a>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=王爷">王爷</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">又名《媳妇儿总想给我相亲怎么办》《我的媳妇儿是小姑姑》《论成为自己姑父是什么体验》***穿于乱世；家破人亡；孤女无依！幸得战死沙场亲兄的结义兄长老将军收留，居于将军府，人尊小姑姑。小姑姑庄正端雅；秀外慧中；蕙心纨质，深得老夫人喜爱。弥留之际，交给小姑姑一项任务，为那猛锐冠世，旷世无匹的少年将军觅一匹配女子，成婚生子，延续血脉。这个任务……可不是那么简单的！***将军少年成名，纵横无敌，征战沙场，击退敌蛮。但，他有一秘事也天下尽知，恐女！老夫人为此操碎了心，觅得众多大家闺秀，将军无一满意。敌军为此设计女子前锋，意欲‘吓死’将军。为将军找媳妇儿……无异于水滴石穿，铁杵磨针，西天取经！***深得老将军老夫人恩情，小姑姑毅然决然的走上了‘西天取经’的漫漫长路。取经路上披荆斩棘，奈何将军是一块世所罕见的金刚石，哪个姑娘他都不满意。绞尽脑汁，总算得知他到底心仪何种女子，一一对应，倒是与她相差无几。原来，将军是想做自己的小姑夫？&lt;p...</p>
+                                      <p class="number"><span>更新：2020-06-21 09:42:00</span><span>字数：677315</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1393205)" id="addShelfBtn1393205">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <a class="book commonbook" href="/info/1372809.html" target="_blank">
+                                      <img data-src="//images.xxsy.net/img/1372809.jpg">
+                                  </a>
+                                  <div class="info">
+                                      <h4>
+                                          <a href="/info/1372809.html" target="_blank">农女福妃名动天下</a>
+                                          <span class="subtitle">
+                                              <a target="_blank" href="/authorcenter/1156020.html"><i class="iconfont">&#xe604;</i>渐进淡出</a>
+                                                  <a target="_blank" href="/Category/1.html">古言</a>
+                                              <span>连载中</span>
+                                              <a class="tags" target="_blank" href="/search?channel=0&tag=种田文">种田文</a>
+                                          </span>
+                                      </h4>
+                                      <p class="detail">一朝穿越温暖成了十里八乡有名的瘟神、短命鬼，一家人被她拖累得去住草棚，许多人等着看这一大家子熬不过这个冬天，不是饿死就是冻死！可是等着等着，人家买屋买田买地又买铺.....这泼天的富贵是怎么回事？——京城的人都知道瑾王娶了一个只会种田的农女，还如珠如宝的宠着，大家等着看这个农女王妃闹笑话，丢尽瑾王的脸子！可是，有一天大家发现那传说中名动天下的某某和某某某，居然是瑾王家的小王妃！说好的只会种田的小农女呢？（且看小小农女如何名动四海，富甲天下！）...</p>
+                                      <p class="number"><span>更新：2020-06-21 06:28:00</span><span>字数：1091381</span></p>
+                                      <div class="action">
+                                                                                                                                                  <a href="javascript:" class="order-btn" onclick="addShelft(1372809)" id="addShelfBtn1372809">放入书架</a>
+                                      </div>
+                                  </div>
+                              </li>-->
+                        </ul>
+                        <div class="pages">
+                            <a class='page-prev defalt' href="javascript:"><i class="iconfont">&#xe7d0;</i></a>
+                            <!--总页数10页以内-->
+                            <span th:each="i:${#numbers.sequence(page.lpage,page.rpage)}"
+                                  th:class="${i}==${page.currentpage}?'active':''">
+                                <a th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
+                            </span>
+
+
+                            <a class='page-next' href="javascript:" onclick="setPage(2)">
+                                <i class="iconfont">&#xe7cf;</i>
+                            </a>
+                            <span id="gopage">
+                                共<span th:text="${items.totalPages}"></span> 页，到第<input type="text" class="text" name="toPage">页<a href="javascript:void(0)" class="go">GO</a>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="inner-sidebar">
-                    
-<div class="box-con tab-con products-tab">
-    <div class="box-hd tab-hd">
-        <h3 class="active">优秀作品</h3>
-        <h3>完结作品</h3>
-    </div>
-    <div class="box-bd tab-bd">
-        <div class="bd-main">
-            <dl class="dl-list">
-                        <dd><span class="classify">[古言]</span><span class="author">夜寒梓</span><a href="/info/1350562.html" target="_blank" xid="1088101" tid="398">林家娇女种田忙</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">墨染清安</span><a href="/info/1379377.html" target="_blank" xid="1088092" tid="391">重生食神学霸不软萌</a></dd>
-                        <dd><span class="classify">[现实]</span><span class="author">暗夜璨枭</span><a href="/info/1412177.html" target="_blank" xid="1088103" tid="398">最美逆行者之时代圆梦</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">一见安和</span><a href="/info/1430213.html" target="_blank" xid="1088083" tid="380">我养大的孩子太监了</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">耳东蔚然</span><a href="/info/1416135.html" target="_blank" xid="1085308" tid="381">未婚妻她突然变A了</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">思羽长安</span><a href="/info/1398276.html" target="_blank" xid="1088091" tid="391">顾少你老婆要翻天了</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">雪年年</span><a href="/info/1357082.html" target="_blank" xid="1088090" tid="391">盛世豪门之夫人又凶又萌</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">又浪又慢</span><a href="/info/1420454.html" target="_blank" xid="1088088" tid="391">女帝重生之逢公子</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">花间妖</span><a href="/info/1412616.html" target="_blank" xid="1088102" tid="398">村花小妻凶又甜</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">画江</span><a href="/info/1410169.html" target="_blank" xid="1088110" tid="402">皇后是门技术活</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">树幺幺</span><a href="/info/1356898.html" target="_blank" xid="1088089" tid="391">亲爱的沐先生</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">尤妮丝</span><a href="/info/1418069.html" target="_blank" xid="1088099" tid="398">清穿咸鱼攻略</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">关涩</span><a href="/info/1410279.html" target="_blank" xid="1088104" tid="398">重生之太女殿下又飘了</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">时舒影</span><a href="/info/1402994.html" target="_blank" xid="1088093" tid="391">穿书奇缘之爱上男二</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">渐进淡出</span><a href="/info/1372809.html" target="_blank" xid="1088100" tid="398">农女福妃名动天下</a></dd>
-            </dl>
-        </div>
-        <div class="bd-main" style="display: none">
-            <dl class="dl-list">
-                        <dd><span class="classify">[仙侠]</span><span class="author">金铃动</span><a href="/info/1064756.html" target="_blank" xid="1088111" tid="403">极品女仙</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">坐酌泠泠水</span><a href="/info/971702.html" target="_blank" xid="1088109" tid="401">古代农家日常</a></dd>
-                        <dd><span class="classify">[科幻]</span><span class="author">谢君顾</span><a href="/info/1335701.html" target="_blank" xid="1088096" tid="395">快穿美食直播间</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">情非缘浅</span><a href="/info/924814.html" target="_blank" xid="1088108" tid="401">步步逼婚之甜蜜暴击</a></dd>
-                        <dd><span class="classify">[科幻]</span><span class="author">旺财是只喵</span><a href="/info/969725.html" target="_blank" xid="1088105" tid="401">快穿之每次都是我躺枪</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">天泠</span><a href="/info/949361.html" target="_blank" xid="1088095" tid="395">盛世娇宠之名门闺香</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">一只小胖</span><a href="/info/1103667.html" target="_blank" xid="1088098" tid="395">重生农家清荷</a></dd>
-                        <dd><span class="classify">[科幻]</span><span class="author">蜜语心言</span><a href="/info/976640.html" target="_blank" xid="1088097" tid="395">快穿之炮灰的开挂人生</a></dd>
-                        <dd><span class="classify">[青春]</span><span class="author">依琴翩飞</span><a href="/info/977785.html" target="_blank" xid="1088084" tid="383">重生学霸小甜妻</a></dd>
-                        <dd><span class="classify">[玄幻]</span><span class="author">莉莉薇</span><a href="/info/967746.html" target="_blank" xid="1088106" tid="401">喜劫良缘</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">酷美人</span><a href="/info/1366017.html" target="_blank" xid="1088087" tid="384">九十年代美好生活</a></dd>
-                        <dd><span class="classify">[现言]</span><span class="author">京剧猫</span><a href="/info/1344790.html" target="_blank" xid="1088085" tid="383">隔壁大佬又帅又苏</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">风雨归来兮</span><a href="/info/1096243.html" target="_blank" xid="1088094" tid="395">病娇毒妃狠绝色</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">酒心小草莓</span><a href="/info/1355874.html" target="_blank" xid="1088086" tid="384">重生美人爱种田</a></dd>
-                        <dd><span class="classify">[古言]</span><span class="author">妖治天下</span><a href="/info/1077202.html" target="_blank" xid="1088107" tid="401">家有庶夫套路深</a></dd>
-            </dl>
-        </div>
-    </div>
-</div>
-<div class="box-con products-tab">
-    <div class="box-hd">
-        <h3 class="active">编辑组推荐</h3>
-    </div>
-    <div class="box-bd">
-        <dl class="dl-list">
-                    <dd><span class="classify">[科幻]</span><span class="author">薄荷水冰沙</span><a href="/info/1427035.html" target="_blank" xid="1088036" tid="387">快穿骑士攻略系统</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">松鼠鱼的果仁</span><a href="/info/1439176.html" target="_blank" xid="1088028" tid="386">酿爱情的咖啡</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">蓁越</span><a href="/info/1434985.html" target="_blank" xid="1088032" tid="387">独家娇宠已上线</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">掌柜有糖</span><a href="/info/1446030.html" target="_blank" xid="1088033" tid="387">这个书粉欠收拾</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">风梧</span><a href="/info/1441363.html" target="_blank" xid="1088027" tid="386">不想跟大佬谈恋爱</a></dd>
-                    <dd><span class="classify">[古言]</span><span class="author">蝶舞芳踪</span><a href="/info/1379719.html" target="_blank" xid="1088030" tid="387">穿越之安然的小日子</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">竹篱清茶</span><a href="/info/1444139.html" target="_blank" xid="1088034" tid="387">重生之我有灵泉</a></dd>
-                    <dd><span class="classify">[古言]</span><span class="author">木昔麦禾</span><a href="/info/1441422.html" target="_blank" xid="1088035" tid="387">郡主她奉旨出嫁</a></dd>
-                    <dd><span class="classify">[古言]</span><span class="author">南瓜不在忧伤</span><a href="/info/1443426.html" target="_blank" xid="1088037" tid="388">古代末日生存录</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">小二园</span><a href="/info/1445426.html" target="_blank" xid="1088029" tid="386">老公是高岭之花</a></dd>
-                    <dd><span class="classify">[古言]</span><span class="author">晏晏其语</span><a href="/info/1439606.html" target="_blank" xid="1088023" tid="386">帝姬今天不想出门</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">山野点雾灯</span><a href="/info/1440584.html" target="_blank" xid="1088024" tid="386">他作精病娇还黑莲花</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">铛铛</span><a href="/info/1442411.html" target="_blank" xid="1088031" tid="387">穿书后我成了反派的心头宝</a></dd>
-                    <dd><span class="classify">[古言]</span><span class="author">维兮唯兮</span><a href="/info/1445988.html" target="_blank" xid="1088025" tid="386">将门新妻</a></dd>
-                    <dd><span class="classify">[现言]</span><span class="author">秋天的信</span><a href="/info/1436305.html" target="_blank" xid="1088026" tid="386">重生之倩女纪事</a></dd>
-        </dl>
-    </div>
-</div>
-<div class="box-con tab bang-tab">
-    <div class="box-hd hd">
-        <h3 class="active">月票榜</h3>
-        <h3>打赏榜</h3>
-    </div>
-    <div class="bd">
-            <ul class="ranking-list">
-                        <li class="n1">
-                            <a class="book" href="/info/1072387.html" target="_blank">
-                                <img src="">
-                            </a>
-                            <div class="detail">
-                                <span class="num">NO.1</span>
-                                <p class="name"><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                                <p class="piao"><em>4990</em>月票</p>
-                                <p class="author">古言&ensp;|&ensp;天下归元</p>
-                            </div>
-                        </li>
-                        <li class="n2">
-                            <span class="piao">3862</span>
-                            <span class="num">2</span>
-                            <p><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                        </li>
-                        <li class="n3">
-                            <span class="piao">2874</span>
-                            <span class="num">3</span>
-                            <p><a href="/info/1099917.html" target="_blank">我全家都是穿来的</a></p>
-                        </li>
-                        <li class="n4">
-                            <span class="piao">2559</span>
-                            <span class="num">4</span>
-                            <p><a href="/info/1363431.html" target="_blank">婚后被大佬惯坏了</a></p>
-                        </li>
-                        <li class="n5">
-                            <span class="piao">2455</span>
-                            <span class="num">5</span>
-                            <p><a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a></p>
-                        </li>
-                        <li class="n6">
-                            <span class="piao">2434</span>
-                            <span class="num">6</span>
-                            <p><a href="/info/971626.html" target="_blank">前方高能</a></p>
-                        </li>
-                        <li class="n7">
-                            <span class="piao">2426</span>
-                            <span class="num">7</span>
-                            <p><a href="/info/1429968.html" target="_blank">问丹朱</a></p>
-                        </li>
-                        <li class="n8">
-                            <span class="piao">2122</span>
-                            <span class="num">8</span>
-                            <p><a href="/info/1382598.html" target="_blank">纨绔天医</a></p>
-                        </li>
-                        <li class="n9">
-                            <span class="piao">2095</span>
-                            <span class="num">9</span>
-                            <p><a href="/info/1349331.html" target="_blank">红尘篱落</a></p>
-                        </li>
-                        <li class="n10">
-                            <span class="piao">1826</span>
-                            <span class="num">10</span>
-                            <p><a href="/info/1093857.html" target="_blank">龙飞凤仵</a></p>
-                        </li>
-            </ul>
-                    <ul class="ranking-list" style="display: none">
-                        <li class="n1">
-                            <a class="book" href="/info/1406701.html" target="_blank">
-                                <img data-src="">
-                            </a>
-                            <div class="detail">
-                                <span class="num">NO.1</span>
-                                <p class="name"><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                                <p class="author" style="margin-top:26px;">现言&ensp;|&ensp;一路烦花</p>
-                            </div>
-                        </li>
-                        <li class="n2">
-                            <span class="num">2</span>
-                            <p><a href="/info/1447650.html" target="_blank">爱在随遇而安</a></p>
-                        </li>
-                        <li class="n3">
-                            <span class="num">3</span>
-                            <p><a href="/info/1363450.html" target="_blank">人人都爱于休休</a></p>
-                        </li>
-                        <li class="n4">
-                            <span class="num">4</span>
-                            <p><a href="/info/1071347.html" target="_blank">绝世倾城之尊主归来</a></p>
-                        </li>
-                        <li class="n5">
-                            <span class="num">5</span>
-                            <p><a href="/info/1444877.html" target="_blank">今天大佬又不做人了</a></p>
-                        </li>
-                        <li class="n6">
-                            <span class="num">6</span>
-                            <p><a href="/info/1408580.html" target="_blank">徒儿你自寻死路</a></p>
-                        </li>
-                        <li class="n7">
-                            <span class="num">7</span>
-                            <p><a href="/info/1425251.html" target="_blank">重生王妃太难哄</a></p>
-                        </li>
-                        <li class="n8">
-                            <span class="num">8</span>
-                            <p><a href="/info/1406896.html" target="_blank">豪门谋婚之大佬宠妻入骨</a></p>
-                        </li>
-                        <li class="n9">
-                            <span class="num">9</span>
-                            <p><a href="/info/1415031.html" target="_blank">穿越农女要回家</a></p>
-                        </li>
-                        <li class="n10">
-                            <span class="num">10</span>
-                            <p><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                        </li>
-            </ul>
-    </div>
-</div>
+            </div>
+            <div class="inner-sidebar">
 
+                <div class="box-con tab-con products-tab">
+                    <div class="box-hd tab-hd">
+                        <h3 class="active">优秀作品</h3>
+                        <h3>完结作品</h3>
+                    </div>
+                    <div class="box-bd tab-bd">
+                        <div class="bd-main">
+                            <dl class="dl-list">
+                                <dd><span class="classify">[古言]</span><span class="author">夜寒梓</span><a
+                                        href="/info/1350562.html" target="_blank" xid="1088101" tid="398">林家娇女种田忙</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">墨染清安</span><a
+                                        href="/info/1379377.html" target="_blank" xid="1088092" tid="391">重生食神学霸不软萌</a>
+                                </dd>
+                                <dd><span class="classify">[现实]</span><span class="author">暗夜璨枭</span><a
+                                        href="/info/1412177.html" target="_blank" xid="1088103" tid="398">最美逆行者之时代圆梦</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">一见安和</span><a
+                                        href="/info/1430213.html" target="_blank" xid="1088083" tid="380">我养大的孩子太监了</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">耳东蔚然</span><a
+                                        href="/info/1416135.html" target="_blank" xid="1085308" tid="381">未婚妻她突然变A了</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">思羽长安</span><a
+                                        href="/info/1398276.html" target="_blank" xid="1088091" tid="391">顾少你老婆要翻天了</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">雪年年</span><a
+                                        href="/info/1357082.html" target="_blank" xid="1088090"
+                                        tid="391">盛世豪门之夫人又凶又萌</a></dd>
+                                <dd><span class="classify">[古言]</span><span class="author">又浪又慢</span><a
+                                        href="/info/1420454.html" target="_blank" xid="1088088" tid="391">女帝重生之逢公子</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">花间妖</span><a
+                                        href="/info/1412616.html" target="_blank" xid="1088102" tid="398">村花小妻凶又甜</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">画江</span><a
+                                        href="/info/1410169.html" target="_blank" xid="1088110" tid="402">皇后是门技术活</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">树幺幺</span><a
+                                        href="/info/1356898.html" target="_blank" xid="1088089" tid="391">亲爱的沐先生</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">尤妮丝</span><a
+                                        href="/info/1418069.html" target="_blank" xid="1088099" tid="398">清穿咸鱼攻略</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">关涩</span><a
+                                        href="/info/1410279.html" target="_blank" xid="1088104" tid="398">重生之太女殿下又飘了</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">时舒影</span><a
+                                        href="/info/1402994.html" target="_blank" xid="1088093" tid="391">穿书奇缘之爱上男二</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">渐进淡出</span><a
+                                        href="/info/1372809.html" target="_blank" xid="1088100" tid="398">农女福妃名动天下</a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="bd-main" style="display: none">
+                            <dl class="dl-list">
+                                <dd><span class="classify">[仙侠]</span><span class="author">金铃动</span><a
+                                        href="/info/1064756.html" target="_blank" xid="1088111" tid="403">极品女仙</a></dd>
+                                <dd><span class="classify">[古言]</span><span class="author">坐酌泠泠水</span><a
+                                        href="/info/971702.html" target="_blank" xid="1088109" tid="401">古代农家日常</a></dd>
+                                <dd><span class="classify">[科幻]</span><span class="author">谢君顾</span><a
+                                        href="/info/1335701.html" target="_blank" xid="1088096" tid="395">快穿美食直播间</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">情非缘浅</span><a
+                                        href="/info/924814.html" target="_blank" xid="1088108" tid="401">步步逼婚之甜蜜暴击</a>
+                                </dd>
+                                <dd><span class="classify">[科幻]</span><span class="author">旺财是只喵</span><a
+                                        href="/info/969725.html" target="_blank" xid="1088105" tid="401">快穿之每次都是我躺枪</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">天泠</span><a
+                                        href="/info/949361.html" target="_blank" xid="1088095" tid="395">盛世娇宠之名门闺香</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">一只小胖</span><a
+                                        href="/info/1103667.html" target="_blank" xid="1088098" tid="395">重生农家清荷</a>
+                                </dd>
+                                <dd><span class="classify">[科幻]</span><span class="author">蜜语心言</span><a
+                                        href="/info/976640.html" target="_blank" xid="1088097" tid="395">快穿之炮灰的开挂人生</a>
+                                </dd>
+                                <dd><span class="classify">[青春]</span><span class="author">依琴翩飞</span><a
+                                        href="/info/977785.html" target="_blank" xid="1088084" tid="383">重生学霸小甜妻</a>
+                                </dd>
+                                <dd><span class="classify">[玄幻]</span><span class="author">莉莉薇</span><a
+                                        href="/info/967746.html" target="_blank" xid="1088106" tid="401">喜劫良缘</a></dd>
+                                <dd><span class="classify">[现言]</span><span class="author">酷美人</span><a
+                                        href="/info/1366017.html" target="_blank" xid="1088087" tid="384">九十年代美好生活</a>
+                                </dd>
+                                <dd><span class="classify">[现言]</span><span class="author">京剧猫</span><a
+                                        href="/info/1344790.html" target="_blank" xid="1088085" tid="383">隔壁大佬又帅又苏</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">风雨归来兮</span><a
+                                        href="/info/1096243.html" target="_blank" xid="1088094" tid="395">病娇毒妃狠绝色</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">酒心小草莓</span><a
+                                        href="/info/1355874.html" target="_blank" xid="1088086" tid="384">重生美人爱种田</a>
+                                </dd>
+                                <dd><span class="classify">[古言]</span><span class="author">妖治天下</span><a
+                                        href="/info/1077202.html" target="_blank" xid="1088107" tid="401">家有庶夫套路深</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
                 </div>
+                <div class="box-con products-tab">
+                    <div class="box-hd">
+                        <h3 class="active">编辑组推荐</h3>
+                    </div>
+                    <div class="box-bd">
+                        <dl class="dl-list">
+                            <dd><span class="classify">[科幻]</span><span class="author">薄荷水冰沙</span><a
+                                    href="/info/1427035.html" target="_blank" xid="1088036" tid="387">快穿骑士攻略系统</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">松鼠鱼的果仁</span><a
+                                    href="/info/1439176.html" target="_blank" xid="1088028" tid="386">酿爱情的咖啡</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">蓁越</span><a
+                                    href="/info/1434985.html" target="_blank" xid="1088032" tid="387">独家娇宠已上线</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">掌柜有糖</span><a
+                                    href="/info/1446030.html" target="_blank" xid="1088033" tid="387">这个书粉欠收拾</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">风梧</span><a
+                                    href="/info/1441363.html" target="_blank" xid="1088027" tid="386">不想跟大佬谈恋爱</a></dd>
+                            <dd><span class="classify">[古言]</span><span class="author">蝶舞芳踪</span><a
+                                    href="/info/1379719.html" target="_blank" xid="1088030" tid="387">穿越之安然的小日子</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">竹篱清茶</span><a
+                                    href="/info/1444139.html" target="_blank" xid="1088034" tid="387">重生之我有灵泉</a></dd>
+                            <dd><span class="classify">[古言]</span><span class="author">木昔麦禾</span><a
+                                    href="/info/1441422.html" target="_blank" xid="1088035" tid="387">郡主她奉旨出嫁</a></dd>
+                            <dd><span class="classify">[古言]</span><span class="author">南瓜不在忧伤</span><a
+                                    href="/info/1443426.html" target="_blank" xid="1088037" tid="388">古代末日生存录</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">小二园</span><a
+                                    href="/info/1445426.html" target="_blank" xid="1088029" tid="386">老公是高岭之花</a></dd>
+                            <dd><span class="classify">[古言]</span><span class="author">晏晏其语</span><a
+                                    href="/info/1439606.html" target="_blank" xid="1088023" tid="386">帝姬今天不想出门</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">山野点雾灯</span><a
+                                    href="/info/1440584.html" target="_blank" xid="1088024" tid="386">他作精病娇还黑莲花</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">铛铛</span><a
+                                    href="/info/1442411.html" target="_blank" xid="1088031" tid="387">穿书后我成了反派的心头宝</a>
+                            </dd>
+                            <dd><span class="classify">[古言]</span><span class="author">维兮唯兮</span><a
+                                    href="/info/1445988.html" target="_blank" xid="1088025" tid="386">将门新妻</a></dd>
+                            <dd><span class="classify">[现言]</span><span class="author">秋天的信</span><a
+                                    href="/info/1436305.html" target="_blank" xid="1088026" tid="386">重生之倩女纪事</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="box-con tab bang-tab">
+                    <div class="box-hd hd">
+                        <h3 class="active">月票榜</h3>
+                        <h3>打赏榜</h3>
+                    </div>
+                    <div class="bd">
+                        <ul class="ranking-list">
+                            <li class="n1">
+                                <a class="book" href="/info/1072387.html" target="_blank">
+                                    <img src="">
+                                </a>
+                                <div class="detail">
+                                    <span class="num">NO.1</span>
+                                    <p class="name"><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
+                                    <p class="piao"><em>4990</em>月票</p>
+                                    <p class="author">古言&ensp;|&ensp;天下归元</p>
+                                </div>
+                            </li>
+                            <li class="n2">
+                                <span class="piao">3862</span>
+                                <span class="num">2</span>
+                                <p><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
+                            </li>
+                            <li class="n3">
+                                <span class="piao">2874</span>
+                                <span class="num">3</span>
+                                <p><a href="/info/1099917.html" target="_blank">我全家都是穿来的</a></p>
+                            </li>
+                            <li class="n4">
+                                <span class="piao">2559</span>
+                                <span class="num">4</span>
+                                <p><a href="/info/1363431.html" target="_blank">婚后被大佬惯坏了</a></p>
+                            </li>
+                            <li class="n5">
+                                <span class="piao">2455</span>
+                                <span class="num">5</span>
+                                <p><a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a></p>
+                            </li>
+                            <li class="n6">
+                                <span class="piao">2434</span>
+                                <span class="num">6</span>
+                                <p><a href="/info/971626.html" target="_blank">前方高能</a></p>
+                            </li>
+                            <li class="n7">
+                                <span class="piao">2426</span>
+                                <span class="num">7</span>
+                                <p><a href="/info/1429968.html" target="_blank">问丹朱</a></p>
+                            </li>
+                            <li class="n8">
+                                <span class="piao">2122</span>
+                                <span class="num">8</span>
+                                <p><a href="/info/1382598.html" target="_blank">纨绔天医</a></p>
+                            </li>
+                            <li class="n9">
+                                <span class="piao">2095</span>
+                                <span class="num">9</span>
+                                <p><a href="/info/1349331.html" target="_blank">红尘篱落</a></p>
+                            </li>
+                            <li class="n10">
+                                <span class="piao">1826</span>
+                                <span class="num">10</span>
+                                <p><a href="/info/1093857.html" target="_blank">龙飞凤仵</a></p>
+                            </li>
+                        </ul>
+                        <ul class="ranking-list" style="display: none">
+                            <li class="n1">
+                                <a class="book" href="/info/1406701.html" target="_blank">
+                                    <img data-src="">
+                                </a>
+                                <div class="detail">
+                                    <span class="num">NO.1</span>
+                                    <p class="name"><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
+                                    <p class="author" style="margin-top:26px;">现言&ensp;|&ensp;一路烦花</p>
+                                </div>
+                            </li>
+                            <li class="n2">
+                                <span class="num">2</span>
+                                <p><a href="/info/1447650.html" target="_blank">爱在随遇而安</a></p>
+                            </li>
+                            <li class="n3">
+                                <span class="num">3</span>
+                                <p><a href="/info/1363450.html" target="_blank">人人都爱于休休</a></p>
+                            </li>
+                            <li class="n4">
+                                <span class="num">4</span>
+                                <p><a href="/info/1071347.html" target="_blank">绝世倾城之尊主归来</a></p>
+                            </li>
+                            <li class="n5">
+                                <span class="num">5</span>
+                                <p><a href="/info/1444877.html" target="_blank">今天大佬又不做人了</a></p>
+                            </li>
+                            <li class="n6">
+                                <span class="num">6</span>
+                                <p><a href="/info/1408580.html" target="_blank">徒儿你自寻死路</a></p>
+                            </li>
+                            <li class="n7">
+                                <span class="num">7</span>
+                                <p><a href="/info/1425251.html" target="_blank">重生王妃太难哄</a></p>
+                            </li>
+                            <li class="n8">
+                                <span class="num">8</span>
+                                <p><a href="/info/1406896.html" target="_blank">豪门谋婚之大佬宠妻入骨</a></p>
+                            </li>
+                            <li class="n9">
+                                <span class="num">9</span>
+                                <p><a href="/info/1415031.html" target="_blank">穿越农女要回家</a></p>
+                            </li>
+                            <li class="n10">
+                                <span class="num">10</span>
+                                <p><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="footer">
-        </div>
+</div>
+<div class="footer">
+</div>
 </div>
 <script th:src="@{../js/jquery.min.js}"></script>
 <script th:src="@{../js/JQBox.js}"></script>
@@ -989,22 +969,45 @@
         $('#statdiv').append(unescape("%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
     }, 200);
 </script>
-    <script th:src="@{../js/common.js}"></script>
-    <script th:src="@{../js/search.js}"></script>
-    
-    <script>
-        Init(parseInt(0), parseInt(1), parseInt(5))
-    </script>
-    <script th:src="@{../js/commendclickbyjquery.js}"></script>
-    <!-- 引入组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
-    <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
-    <script src="/static/js/axios.js"></script>
+<script th:src="@{../js/common.js}"></script>
+<script th:src="@{../js/search.js}"></script>
+
+<script>
+    Init(parseInt(0), parseInt(1), parseInt(5))
+</script>
+<script th:src="@{../js/commendclickbyjquery.js}"></script>
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
+<script src="/static/js/axios.js"></script>
 <script th:inline="javascript">
-    var app=new Vue({
-        el:"#category",
-        data:{
-            items:[[${items}]]
+    var app = new Vue({
+        el: "#gopage",
+        data: {
+           pageNum: [[${items.rows.pageNum}]]
+        },
+        methods: {
+            toPage: function () {
+                var s = this.pageNum;
+
+
+            }
+        }
+    })
+    var search = new Vue({
+        el: "#header",
+        data: {
+            searchkeywords: "123"
+        },
+        methods: {
+            search: function () {
+                var s = this.searchkeywords;
+                axios.get("/search/keywords?keywords=" + s).then(function (response) {
+                    if (response.data.flag) {
+                        alert("111");
+                    }
+                })
+            }
         }
     })
 </script>

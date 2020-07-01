@@ -51,7 +51,6 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
     private BookFeign bookFeign;
 
 
-
     @Override
     public Map search(Map<String, String> searchMap) {
         if (searchMap != null && searchMap.size() != 0) {
@@ -74,7 +73,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             }
             //完结选择
             if (StringUtils.isNotEmpty(searchMap.get("status"))) {
-                boolQuery.filter(QueryBuilders.termQuery("status", searchMap.get("status")));
+                boolQuery.filter(QueryBuilders.termQuery("status", Integer.parseInt(searchMap.get("status"))));
             }
 
             NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
@@ -115,15 +114,10 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
             //设置排序
-            if (StringUtils.isNotEmpty(searchMap.get("sortField"))
-                    && StringUtils.isNotEmpty(searchMap.get("soreRule"))) {
-                if (searchMap.get("sortRule").equals("ASC")) {
-                    nativeSearchQueryBuilder.withSort(
-                            SortBuilders.fieldSort(searchMap.get("soreFeild")).order(SortOrder.ASC));
-                } else {
-                    nativeSearchQueryBuilder.withSort(
-                            SortBuilders.fieldSort(searchMap.get("soreFeild")).order(SortOrder.DESC));
-                }
+            if (StringUtils.isNotEmpty(searchMap.get("sortField"))) {
+
+                nativeSearchQueryBuilder.withSort(
+                        SortBuilders.fieldSort(searchMap.get("sortFeild")).order(SortOrder.DESC));
             }
 
 
@@ -164,8 +158,13 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
 
             //封装查询结果
             resultMap.put("rows", bookInfos.getContent());
+            //总页数
             resultMap.put("totalPages", bookInfos.getTotalPages());
+            //总记录数
             resultMap.put("total", bookInfos.getTotalElements());
+            //当前页
+            resultMap.put("pageNum",pageNum);
+            resultMap.put("pageSize",pageSize);
             //封装聚合结果
             ParsedStringTerms terms = (ParsedStringTerms) bookInfos.getAggregation(category);
 
