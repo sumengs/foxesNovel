@@ -66,7 +66,10 @@ public class BookController {
         Category category = categoryService.findByBookId(bookId);
         //查询最新章节
         Chapter lastChapter = chapterFeign.findLastChapterByBookId(bookId).getData();
+        //查询所有章节
+        List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
 
+        model.addAttribute("chapterList",chapterList);
         model.addAttribute("lastChapter",lastChapter);
         model.addAttribute("category",category);
         model.addAttribute("book",book);

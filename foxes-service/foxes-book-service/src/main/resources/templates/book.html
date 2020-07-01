@@ -35,7 +35,7 @@
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
 
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="css/JQBox.css" />
+    <link rel="stylesheet" type="text/css" href="/css/JQBox.css" />
 
     <link href="/css/authorbonus.css" rel="stylesheet" />
     <link href="/css/quanzi.css" rel="stylesheet" type="text/css" />
@@ -178,10 +178,10 @@
                         <p class="sub-tags">
                         </p>
                         <div class="sub-newest">
-                            <p>最新公共章节：<a href="/chapter/8525957.html" target="_blank">058母子</a><span
-                                    class="time">2019-09-30 12:58:31</span></p>
-                            <p>最新VIP章节：<a href="/chapter/91379127.html" target="_blank">番外036成亲</a><span
-                                    class="time">2020-05-26 16:13:18</span></p>
+                            <p>最新公共章节：<a href="/chapter/8525957.html" target="_blank" th:text="${lastChapter.name}"></a>
+                                <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span></p>
+                            <p>最新VIP章节：<a href="/chapter/91379127.html" target="_blank" th:text="${lastChapter.name}"></a>
+                                <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span></p>
                         </div>
                         <div class="book-btns">
                             <a class="btn_read" href="chapter.html">开始阅读</a>
@@ -229,7 +229,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box-con book-detail-tab tab-click">
+            <div class="box-con book-detail-tab tab-click" id="app">
                 <div class="box-hd click-hd">
                     <h3 class="active">作品介绍</h3>
                     <h3 id="chapterllisttab">作品目录</h3>
@@ -600,7 +600,14 @@
                     </div>
                     <div class="works-main catalog" style="display: none">
                         <div class="fix" id="chapterlist">
-                            <p class="chapterlistloading">正在加载 . . .</p>
+                            <!--<p class="chapterlistloading">正在加载 . . .</p>-->
+                            <dd>
+                                <ul class="catalog-list cl">
+                                    <li th:each="chapter,chapterStat:${chapterList}">
+                                        <a th:href="|/${book.id}/${chapter.html}|" target="_blank" th:text="${chapter.name}"></a>
+                                    </li>
+                                </ul>
+                            </dd>
                         </div>
                         <a href="javascript:scrollTo(0,0)" class="back-top" id="back-top"></a>
                     </div>
@@ -651,14 +658,14 @@
 
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/JQBox.js"></script>
-    <script src="js/Util.js"></script>
-    <script src="js/newmenutop.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/JQBox.js"></script>
+    <script src="/js/Util.js"></script>
+    <script src="/js/newmenutop.js"></script>
 
-    <script src="js/commonbox.js"></script>
-    <script src="js/lazyimgload.js"></script>
-    <script src="js/statpage_pc.js"></script>
+    <script src="/js/commonbox.js"></script>
+    <script src="/js/lazyimgload.js"></script>
+    <script src="/js/statpage_pc.js"></script>
     <div id="statdiv" style="display:none;"></div>
     <script>
         setTimeout(function () {
@@ -681,26 +688,27 @@
                 "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
         }, 200);
     </script>
-    <script src="js/jquery.bxslider.min.js"></script>
-    <script src="js/scroll.js"></script>
-    <script src="js/jquery.raty.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/userinfo.js"></script>
-    <script src="js/giftrecharge.js"></script>
+    <script src="/js/jquery.bxslider.min.js"></script>
+    <script src="/js/scroll.js"></script>
+    <script src="/js/jquery.raty.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/userinfo.js"></script>
+    <script src="/js/giftrecharge.js"></script>
 
-    <script src="js/gift.js"></script>
+    <script src="/js/gift.js"></script>
 
-    <script src="js/chapterlist.js"></script>
+    <script src="/js/chapterlist.js"></script>
 
-    <script src="js/commentaction.js"></script>
-    <script src="js/bookreivew.js"></script>
-    <script src="js/bookinfo.js"></script>
+    <script src="/js/commentaction.js"></script>
+    <script src="/js/bookreivew.js"></script>
+    <script src="/js/bookinfo.js"></script>
 
     <!-- 作者红包 -->
-    <script src="js/authorbonus.js"></script>
-    <script src="js/clipboard.min.js"></script>
-    <script src="js/showshare.js"></script>
-    <script src="js/giftredpackage.js"></script>
+    <script src="/js/authorbonus.js"></script>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/showshare.js"></script>
+    <script src="/js/giftredpackage.js"></script>
+
     <script>
         var obj = {
             hasLogin: parseInt(0),
@@ -733,7 +741,7 @@
     </script>
 
 
-    <script src="js/commendclickbyjquery.js"></script>
+    <script src="/js/commendclickbyjquery.js"></script>
 </body>
 
 </html>

@@ -31,7 +31,7 @@ public interface ChapterFeign {
      * @param chapterId 书籍Id
      * @return 所有章节
      */
-    @GetMapping("/findAllChapterByBookId/{id}")
+    @GetMapping("/chapter/findAllChapterByBookId/{id}")
     public Result<List<Chapter>> findAllChapterByBookId(@PathVariable("id") String chapterId);
 
 
@@ -41,7 +41,7 @@ public interface ChapterFeign {
      * @param chapterId 书籍Id
      * @return 第一章节
      */
-    @GetMapping("/findFirstChapterByBookId/{id}")
+    @GetMapping("/chapter/findFirstChapterByBookId/{id}")
     public Result<Chapter> findFirstChapterByBookId(@PathVariable("id") String chapterId);
 
     /**
@@ -50,6 +50,6 @@ public interface ChapterFeign {
      * @param chapterId 书籍Id
      * @return 最新章节
      */
-    @GetMapping("/findLastChapterByBookId/{id}")
+    @GetMapping("/chapter/findLastChapterByBookId/{id}")
     public Result<Chapter> findLastChapterByBookId(@PathVariable("id") String chapterId);
 }

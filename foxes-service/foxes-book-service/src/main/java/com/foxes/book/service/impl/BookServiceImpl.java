@@ -5,6 +5,9 @@ import com.foxes.book.dao.CategoryMapper;
 import com.foxes.book.pojo.Book;
 import com.foxes.book.pojo.Category;
 import com.foxes.book.service.BookService;
+import com.foxes.chapter.feign.ChapterFeign;
+import com.foxes.chapter.pojo.Chapter;
+import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -28,6 +31,8 @@ public class BookServiceImpl implements BookService {
     private CategoryMapper categoryMapper;
     @Autowired
     private TemplateEngine templateEngine;
+    @Autowired
+    private ChapterFeign chapterFeign;
 
 
     /**
@@ -41,7 +46,17 @@ public class BookServiceImpl implements BookService {
         Map<String, Object> dataMap = new HashMap<>();
         //获取小说详情相关数据
         Book book = this.findBookById(bookId);
+        //获取分类信息
+        Category category = categoryMapper.findByBookId(bookId);
+        //获取最新章节
+        Chapter lastChapter = chapterFeign.findLastChapterByBookId(bookId).getData();
+        //获取所有章节
+        List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
+
         dataMap.put("book",book);
+        dataMap.put("category",category);
+        dataMap.put("lastChapter",lastChapter);
+        dataMap.put("chapterList",chapterList);
         context.setVariables(dataMap);
 
         //定义静态详情页的存放位置
