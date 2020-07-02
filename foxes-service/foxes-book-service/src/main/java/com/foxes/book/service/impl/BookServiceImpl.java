@@ -52,10 +52,11 @@ public class BookServiceImpl implements BookService {
         //获取所有章节
         List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
 
-        dataMap.put("book",book);
-        dataMap.put("category",category);
-        dataMap.put("lastChapter",lastChapter);
-        dataMap.put("chapterList",chapterList);
+        dataMap.put("book",book); //小说详情数据
+        dataMap.put("category",category); //章节数据
+        dataMap.put("firstChapter",chapterList.get(0)); //第一章数据
+        dataMap.put("lastChapter",lastChapter); //最后一章数据
+        dataMap.put("chapterList",chapterList); //所有章节数据
         context.setVariables(dataMap);
 
         //定义静态详情页的存放位置

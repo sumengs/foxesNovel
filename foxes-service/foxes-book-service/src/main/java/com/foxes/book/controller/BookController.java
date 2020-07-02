@@ -1,15 +1,12 @@
 package com.foxes.book.controller;
 
 import com.foxes.book.pojo.Book;
-import com.foxes.book.pojo.Category;
 import com.foxes.book.service.BookService;
 import com.foxes.book.service.CategoryService;
 import com.foxes.chapter.feign.ChapterFeign;
-import com.foxes.chapter.pojo.Chapter;
 import com.sumeng.peekshopping.constant.StatusCode;
 import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +17,7 @@ import java.util.List;
  * @author: sumeng
  */
 
-@Controller
+@RestController
 @RequestMapping("/book")
 public class BookController {
     @Autowired
@@ -59,23 +56,10 @@ public class BookController {
      * @param model
      * @return
      */
-    @RequestMapping("/toBook")
+    @RequestMapping("/generateBookHtml")
     public String toBook(@RequestParam("bookId") String bookId, Model model){
-        Book book = this.findById(bookId).getData();
-        //查询分类信息
-        Category category = categoryService.findByBookId(bookId);
-        //查询最新章节
-        Chapter lastChapter = chapterFeign.findLastChapterByBookId(bookId).getData();
-        //查询所有章节
-        List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
-
-        model.addAttribute("firstChapter",chapterList.get(0));
-        model.addAttribute("chapterList",chapterList);
-        model.addAttribute("lastChapter",lastChapter);
-        model.addAttribute("category",category);
-        model.addAttribute("book",book);
-
-        return "book";
+        bookService.generateHtml(bookId);
+        return "success";
     }
 
 
