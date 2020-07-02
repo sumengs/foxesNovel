@@ -28,6 +28,12 @@ spring:
             - Path=/book/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 1
+        - id: homepage # 唯一标识
+          uri: lb://homepage-service # 转发路径(good 服务)
+          predicates:
+            - Path=/** # 条件，用于请求网关路径的匹配规则
+          filters:
+            - StripPrefix= 0
 
 
 
