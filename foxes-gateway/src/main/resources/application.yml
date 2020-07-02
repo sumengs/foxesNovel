@@ -46,9 +46,9 @@ spring:
           filters:
             - StripPrefix= 0
         - id: search # 唯一标识
-          uri: lb://search-service # 转发路径(good 服务)
+          uri: lb://search-service # 转发路径(search 服务)
           predicates:
-            - Path=/search/sweb/search/** # 条件，用于请求网关路径的匹配规则
+            - Path=/search/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 1
 
