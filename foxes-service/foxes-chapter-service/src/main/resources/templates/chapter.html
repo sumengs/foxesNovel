@@ -55,20 +55,20 @@
             <a class="app-android" href="" target="_blank"><i
                     class="iconfont">&#xe607;</i>Android版</a>
             <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a
-                class="app-index" href="/api/homepage-service/index.html">首页</a>
+                class="app-index" href="../../homepage/index.html">首页</a>
         </div>
         <div class="guide-menu">
             <div class="column" id="loginaction">
-                <a href="/api/login-service/login.html" class="login" id="headerLogin">登录</a>&ensp;
-                <a href="/api/login-service/regist.html" rel="nofollow" class="register" target="_blank">注册</a>
+                <a href="../../oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a href="../../oauth/regist.html" rel="nofollow" class="register" target="_blank">注册</a>
             </div>
-            <div class="column" id="userinfo" style="display: none;"><a href="/api/user-service/control" rel="nofollow"
+            <div class="column" id="userinfo" style="display: none;"><a href="../../oauth/control" rel="nofollow"
                                                                         class="username" id="username"
                                                                         target="_blank"></a>&ensp;
-                <a href="/api/login-service/exit" class="register" id="logout">退出</a>
+                <a href="../../oauth/exit" class="register" id="logout">退出</a>
             </div>
             <div class="column more bookcase" id="menubookcase">
-                <a href="/api/user-service/control" class="my-book" id="mybookcase">我的书架</a>
+                <a href="../../user/control" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>
                 <!--                <div id="menucnt2" class="menu-ct menu-ct-2">-->
                 <!--                    <div id="mybc">-->
@@ -128,9 +128,9 @@
 
 
 <div class="container auto-container" id="auto-container" style="width:960px">
-    <p class="bread">当前位置：<a th:href="@{../index.html}" target="_blank">foxes小说网</a>&gt;
+    <p class="bread">当前位置：<a th:href="@{../../homepage/index.html}" target="_blank">foxes小说网</a>&gt;
         <a href="" target="_blank" th:text="${category.name}"></a>&gt;
-        <a th:href="'../book/'+${book.id} + '.html'" target="_blank" th:text="${book.name}"></a>
+        <a th:href="'../../book/book/'+${book.id} + '.html'" target="_blank" th:text="${book.name}"></a>
     </p>
     <!--    <em class="iconfont icon-liwu"></em>-->
     <div class="chapter-read">
@@ -154,7 +154,7 @@
     <ul class="chapter-control cl">
         <li class="chapter-prev">
             <span th:if="${chapter.pre} == 0">
-                <a th:href="'../book/'+${chapter.bookId} +'.html'"><em>上一章</em><i>（快捷键：←）</i></a>
+                <a th:href="'../../book/book/'+${chapter.bookId} +'.html'"><em>上一章</em><i>（快捷键：←）</i></a>
             </span>
             <span th:if="${chapter.pre} != 0">
                 <a th:href="${chapter.pre} + '.html'"><em>上一章</em><i>（快捷键：←）</i></a>
@@ -164,7 +164,7 @@
 
         <li class='chapter-next'>
             <span th:if="${chapter.next} == 0">
-                <a th:href="'../book/'+${chapter.bookId} +'.html'"><em>下一章</em><i>（快捷键：→）</i></a>
+                <a th:href="'../../book/book/'+${chapter.bookId} +'.html'"><em>下一章</em><i>（快捷键：→）</i></a>
             </span>
             <span th:if="${chapter.next} != 0">
                 <a th:href="${chapter.next} + '.html'"><em>下一章</em><i>（快捷键：→）</i></a>
