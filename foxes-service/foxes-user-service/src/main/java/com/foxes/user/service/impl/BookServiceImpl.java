@@ -1,5 +1,6 @@
 package com.foxes.user.service.impl;
 
+import com.foxes.user.config.TokenDecode;
 import com.foxes.user.dao.BookMapper;
 import com.foxes.user.service.BookService;
 import com.foxes.user.pojo.Book;
@@ -19,11 +20,15 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookMapper bookMapper;
+    @Autowired
+    private TokenDecode tokenDecode;
 
     //返回书架中的书(Book)
     @Override
     public List<Book> list() {
+       // String username = tokenDecode.getUserInfo().get("username");
         String username = "zhangsan";
+
         Set<String> members = redisTemplate.opsForSet().members(username);
         List<Book> bookList = new ArrayList<>();
 
