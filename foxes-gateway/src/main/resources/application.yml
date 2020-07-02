@@ -16,12 +16,14 @@ spring:
   cloud:
     gateway:
       routes:
+        # 章节微服务
         - id: chapter # 唯一标识
           uri: lb://chapter-service # 转发路径(good 服务)
           predicates:
             - Path=/chapter/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 1
+        # 小说微服务
         - id: book # 唯一标识
           uri: lb://book-service # 转发路径(good 服务)
           predicates:
@@ -29,12 +31,10 @@ spring:
           filters:
             - StripPrefix= 1
 
-
-
-  management:
-    endpoint:
-      gateway:
-        enabled: true
-      web:
-        exposure:
-          include: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+    web:
+      exposure:
+        include: true

@@ -18,6 +18,12 @@ public interface BookService {
     void generateHtml(String bookId);
 
     /**
+     * 删除静态化页面
+     * @param bookId
+     */
+    void deleteHtml(String bookId);
+
+    /**
      * 根据Id查询Book数据
      * @param bookId bookID
      * @return Book

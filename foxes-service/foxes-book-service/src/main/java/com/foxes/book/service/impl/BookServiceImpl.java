@@ -67,7 +67,7 @@ public class BookServiceImpl implements BookService {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        path = path + "\\static\\Book";
+        path = path + "\\static\\book";
         File dir = new File(path);
         if(!dir.exists()){
             dir.mkdirs();
@@ -84,6 +84,7 @@ public class BookServiceImpl implements BookService {
              * 3.输出流
              */
             templateEngine.process("book",context,out);
+            System.out.println("生成静态页面成功");
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -95,6 +96,27 @@ public class BookServiceImpl implements BookService {
             }
         }
 
+    }
+
+    /**
+     * 删除静态化页面
+     * @param bookId
+     */
+    @Override
+    public void deleteHtml(String bookId) {
+        String path = null;
+        try {
+            path = ResourceUtils.getURL("classpath:").getPath();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String fileName = path + "/static/book/" + bookId + ".html";
+
+        File file = new File(fileName);
+        if (file.exists()) {
+            file.delete();
+            System.out.println("删除静态页面成功");
+        }
     }
 
     /**
