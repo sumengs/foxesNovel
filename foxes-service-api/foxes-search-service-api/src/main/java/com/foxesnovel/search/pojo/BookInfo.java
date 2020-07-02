@@ -20,7 +20,7 @@ public class BookInfo {
     /**
      * 小说名
      */
-    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_max_word")
+    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_smart")
     private String name;
 
     /**
@@ -57,6 +57,35 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer category;
 
+
+
+    /**
+     * 是否删除,1为删除,0未删除
+     */
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer isDelete;
+    /**
+     * 是否完结，1为完结，0为未完结
+     */
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer status;
+    /**
+     * 是否免费,1免,2收
+     */
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer isFree;
+    /**
+     * 收藏数
+     */
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer subscribeNum;
+
+    /**
+     * 观看数
+     */
+    @Field(index = true, store = true, type = FieldType.Integer)
+    private Integer readNum;
+
     public Integer getIsDelete() {
         return isDelete;
     }
@@ -64,19 +93,6 @@ public class BookInfo {
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
-
-    /**
-     * 是否完结，1为完结，0为未完结
-     */
-    @Field(index = true, store = true, type = FieldType.Integer)
-    private Integer isDelete;
-    @Field(index = true, store = true, type = FieldType.Integer)
-    private Integer status;
-    @Field(index = true, store = true, type = FieldType.Integer)
-    private Integer isFree;
-    @Field(index = true, store = true, type = FieldType.Integer)
-    private Integer subscribeNum;
-
     public Integer getIsFree() {
         return isFree;
     }

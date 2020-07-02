@@ -15,6 +15,15 @@ spring:
     name: gateway
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*" #允许所有请求跨域
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       routes:
         # 章节微服务
         - id: chapter # 唯一标识
@@ -36,6 +45,12 @@ spring:
             - Path=/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 0
+        - id: search # 唯一标识
+          uri: lb://search-service # 转发路径(good 服务)
+          predicates:
+            - Path=/search/sweb/search/** # 条件，用于请求网关路径的匹配规则
+          filters:
+            - StripPrefix= 1
 
 management:
   endpoint:
