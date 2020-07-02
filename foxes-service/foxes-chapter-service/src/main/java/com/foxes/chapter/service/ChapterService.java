@@ -49,10 +49,18 @@ public interface ChapterService {
 
 
     /**
-     * 生成静态页面
+     * 生成章节静态页面
+     *
+     * @param id 章节Id
+     * @return
+     */
+    void generateHtml(String id);
+
+
+    /**
+     * 删除页面
      *
      * @param id
-     * @throws FileNotFoundException
      */
-    void generateHtml(String id) throws FileNotFoundException;
+    void deleteHtml(String id);
 }
