@@ -138,5 +138,23 @@ public class BookServiceImpl implements BookService {
         return bookMapper.selectAll();
     }
 
+    /**
+     * 查询阅读数前十的小说
+     * @return
+     */
+    @Override
+    public List<Book> findByReadNumDesc() {
+        return bookMapper.findByReadNumDesc();
+    }
+
+    /**
+     * 查询订阅数前十的小说
+     * @return
+     */
+    @Override
+    public List<Book> findBySubscribeNumDesc() {
+        return bookMapper.findBySubscribeNumDesc();
+    }
+
 
 }
