@@ -103,13 +103,19 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             highlightBuilder.numOfFragments(0); //从第一个分片获取高亮片段
             nativeSearchQueryBuilder.withHighlightBuilder(highlightBuilder);*/
             //设置分页
-            String pageNum = searchMap.get("pageNum");
+
             String pageSize = searchMap.get("pageSize");
-            if (StringUtils.isEmpty(pageNum)) {
+            String pageNum = null;
+            try {
+                pageNum = String.valueOf((int)Math.floor(Double.parseDouble(searchMap.get("pageNum"))));
+                if (StringUtils.isEmpty(pageNum) ||Integer.parseInt(pageNum) < 1) {
+                    pageNum = "1";
+                }
+            } catch (NullPointerException e) {
                 pageNum = "1";
             }
             if (StringUtils.isEmpty(pageSize)) {
-                pageSize = "15";
+                pageSize = "3";
             }
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
@@ -117,44 +123,19 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             if (StringUtils.isNotEmpty(searchMap.get("sortField"))) {
 
                 nativeSearchQueryBuilder.withSort(
-                        SortBuilders.fieldSort(searchMap.get("sortFeild")).order(SortOrder.DESC));
+                        SortBuilders.fieldSort(searchMap.get("sortField")).order(SortOrder.DESC));
             }
 
-
             //开始查询
-            AggregatedPage<BookInfo> bookInfos = elasticsearchRestTemplate.queryForPage(
-                    nativeSearchQueryBuilder.build(), BookInfo.class, new SearchResultMapper() {
-                        @Override
-                        public <T> AggregatedPage<T> mapResults(
-                                SearchResponse searchResponse, Class<T> aClass, Pageable pageable) {
-                            SearchHits hits = searchResponse.getHits();
-                            List<T> list = new ArrayList<>();
-                            if (hits != null) {
+            AggregatedPage<BookInfo> bookInfos = this.searchBook(nativeSearchQueryBuilder);
 
-                                for (SearchHit hit : hits) {
-                                    ObjectMapper om = new ObjectMapper();
-                                    BookInfo bookInfo = null;
-                                    try {
-                                        String s = hit.getSourceAsString();
-                                        bookInfo = om.readValue(s, new TypeReference<BookInfo>() {
-                                        });
-                                    } catch (JsonProcessingException e) {
+            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages()) {
 
-                                        e.printStackTrace();
-                                        throw new RuntimeException("查询结果转换失败");
-                                    }
-                                    list.add((T) bookInfo);
-                                }
-                            }
-                            return new AggregatedPageImpl<T>(
-                                    list, pageable, hits.getTotalHits().value, searchResponse.getAggregations());
-                        }
-
-                        @Override
-                        public <T> T mapSearchHit(SearchHit searchHit, Class<T> aClass) {
-                            return null;
-                        }
-                    });
+                pageNum = String.valueOf(bookInfos.getTotalPages());
+                nativeSearchQueryBuilder.withPageable(
+                        PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
+                bookInfos = this.searchBook(nativeSearchQueryBuilder);
+            }
 
             //封装查询结果
             resultMap.put("rows", bookInfos.getContent());
@@ -163,8 +144,8 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             //总记录数
             resultMap.put("total", bookInfos.getTotalElements());
             //当前页
-            resultMap.put("pageNum",pageNum);
-            resultMap.put("pageSize",pageSize);
+            resultMap.put("pageNum", pageNum);
+            resultMap.put("pageSize", pageSize);
             //封装聚合结果
             ParsedStringTerms terms = (ParsedStringTerms) bookInfos.getAggregation(category);
 
@@ -178,5 +159,42 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
         return null;
     }
 
+    private AggregatedPage<BookInfo> searchBook(NativeSearchQueryBuilder na) {
+        AggregatedPage<BookInfo> bookInfos = elasticsearchRestTemplate.queryForPage(
+                na.build(), BookInfo.class, new SearchResultMapper() {
+                    @Override
+                    public <T> AggregatedPage<T> mapResults(
+                            SearchResponse searchResponse, Class<T> aClass, Pageable pageable) {
+                        SearchHits hits = searchResponse.getHits();
+                        List<T> list = new ArrayList<>();
+                        if (hits != null) {
+
+                            for (SearchHit hit : hits) {
+                                ObjectMapper om = new ObjectMapper();
+                                BookInfo bookInfo = null;
+                                try {
+                                    String s = hit.getSourceAsString();
+                                    bookInfo = om.readValue(s, new TypeReference<BookInfo>() {
+                                    });
+                                } catch (JsonProcessingException e) {
+
+                                    e.printStackTrace();
+                                    throw new RuntimeException("查询结果转换失败");
+                                }
+                                list.add((T) bookInfo);
+                            }
+                        }
+                        return new AggregatedPageImpl<T>(
+                                list, pageable, hits.getTotalHits().value, searchResponse.getAggregations());
+                    }
+
+                    @Override
+                    public <T> T mapSearchHit(SearchHit searchHit, Class<T> aClass) {
+                        return null;
+                    }
+                });
+        return bookInfos;
+
+    }
 
 }

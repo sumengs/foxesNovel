@@ -23,9 +23,14 @@ private ESBookSearchService esBookSearchService;
     @RequestMapping("/search")
     public String toSearch(@RequestParam Map<String,String> map, Model model){
 
-        if (map==null||map.size()==0){
+        if (map.get("keywords")==null){
             map.put("keywords","");
         }
+        if (map.get("sortField")==null){
+            map.put("sortField","");
+        }
+
+
         Map search = esBookSearchService.search(map);
         model.addAttribute("searchMap",map);
         model.addAttribute("items",search);
@@ -38,7 +43,7 @@ private ESBookSearchService esBookSearchService;
         model.addAttribute("page",bookInfoPage);
         StringBuilder url = new StringBuilder("/sweb/search?");
         for (String s : map.keySet()) {
-            if (!s.equals("sortField")&&!s.equals("sortRule")&&!s.equals("pageNum")&&!s.equals("pageSize")&&StringUtils.isNotEmpty(map.get(s))){
+            if (!s.equals("sortRule")&&!s.equals("pageNum")&&!s.equals("pageSize")&&StringUtils.isNotEmpty(map.get(s))){
                 url.append(s).append("=").append(map.get(s)).append("&");
             }
         }

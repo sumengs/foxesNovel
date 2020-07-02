@@ -94,17 +94,21 @@
             <a href="index.html" class="logo">
                 <img src="/images/foxRead.png" style="height: 80px" alt="Foxes小说网">
             </a>
-            <div class="guide-writer"><a class="become" href="http://author.xxsy.net" target="_blank"><i
-                    class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare"
-                                                             href="//images.xxsy.net/xxhtml/zuozhefulinew/index.html"
-                                                             target="_blank"><i class="iconfont">&#xe600;</i>作家福利</a>
+            <div class="guide-writer">
+                <a class="become" href="http://author.xxsy.net" target="_blank">
+                    <i class="iconfont">&#xe687;</i>我要当作家
+                </a>
+                <a class="welfare" href="//images.xxsy.net/xxhtml/zuozhefulinew/index.html" target="_blank">
+                    <i class="iconfont">&#xe600;</i>作家福利
+                </a>
             </div>
             <div class="search-bar">
-                <form id="hform" name="hform" th:action="@{/search/map}">
+                <form id="hform" name="hform" th:action="@{/sweb/search}">
 
                     <input th:type="text" class="search-text" placeholder="" name="keywords"
-                           th:value="${searchMap.keywords}" maxlength="20"><span class="search-btn-bar"><i
-                        class="iconfont">&#xe627;</i>
+                           th:value="${searchMap.keywords}" maxlength="20">
+                    <span class="search-btn-bar">
+                        <i class="iconfont">&#xe627;</i>
                     <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
                     <button class="search-btn" th:type="submit"></button>
                 </form>
@@ -132,47 +136,47 @@
                     <div class="bread">
                         <ul class="fl sui-breadcrumb">
                             <li>
-                                <a href="#">全部结果</a>
+                                <a th:href="@{/sweb/search}" th:text="全部结果"></a> <b class="active" th:text="${searchMap.keywords}"></b>
+                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">频道:
+                                    <b th:text="'1'==${searchMap.channel}?'男生':'女生'" class="active"></b>
+                                    <a th:href="@{${#strings.replace(url,'&channel='+searchMap.channel,'')}}">×</a>
+                                </b>
+                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'categoryName')}">类别:
+                                    <b th:text="${searchMap.categoryName}" class="active"></b>
+                                    <a th:href="@{${#strings.replace(url,'&categoryName='+searchMap.categoryName,'')}}">×</a>
+                                </b>
+                                <b class="with-x" th:if="${#maps.containsKey(searchMap,'status')}">状态:
+                                    <b th:text="'1'==${searchMap.status}?'完结':'连载'" class="active"></b>
+                                    <a th:href="@{${#strings.replace(url,'&status='+searchMap.status,'')}}">×</a>
+                                </b>
                             </li>
-                            <li class="active">
-                                <span th:text="${searchMap.keywords}"></span>
-                            </li>
-                        </ul>
-                        <ul class="fl sui-tag">
-                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">
-                                频道:<span th:text="${searchMap.channel}"></span>
-                                <a th:href="@{${#strings.replace(url,'&channel='+searchMap.channel,'')}}">×</a>
-                            </li>
-                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'category')}">
-                                类别:<span th:text="${searchMap.category}"></span>
+
+                           <!-- <li class="with-x" th:if="${#maps.containsKey(searchMap,'category')}">类别:
+                                <b th:text="${searchMap.category}"></b>
                                 <a th:href="@{${#strings.replace(url,'&category='+searchMap.category,'')}}">×</a>
                             </li>
-                            <li class="with-x" th:if="${#maps.containsKey(searchMap,'status')}">
-                                <span th:if="${searchMap.status==1}">完结</span>
-                                <span th:if="${searchMap.status==0}">连载</span>
-                                <a th:href="@{${#strings.replace(url,'&status='+searchMap.status,'')}}">×</a>
-                            </li>
+-->
+
                         </ul>
-                        <form class="fl sui-form form-dark">
-                            <div class="input-control control-right">
-                                <input type="text"/>
-                                <i class="sui-icon icon-touch-magnifier"></i>
-                            </div>
-                        </form>
+                        <ul class="fl sui-tag">
+
+                        </ul>
                     </div>
                     <ul class="classify-list">
                         <li class='' th:unless="${#maps.containsKey(searchMap,'channel')}">
                             <strong>频道：</strong>
                             <div class="tags" id="channeltype">
                                 <span class='active' data-value="0" data-type="channel">全部</span>
-                                <a th:href="@{${url(channel='0')}" class='' data-value="2" data-type="channel"
-                                   th:text="女生"></a>
-                                <a th:href="@{${url(channel='1')}" class='' data-value="1" data-type="channel"
-                                   th:text="男生"></a>
+                                <span>
+                                    <a th:href="@{${url}(channel='0')}"  th:text="女生"></a>
+                                </span>
+                                <span>
+                                    <a th:href="@{${url}(channel='1')}"  th:text="男生"> </a>
+                                </span>
                             </div>
                         </li>
 
-                        <li class='classify' th:unless="${#maps.containsKey(searchMap,'category')}">
+                        <li class='classify' th:unless="${#maps.containsKey(searchMap,'categoryName')}">
                             <strong>类别：</strong>
                             <div class="tags">
                                 <span class='active' data-value="-1" data-type="s_type">全部</span>
@@ -184,11 +188,13 @@
                         <li class='l_status ' th:unless="${#maps.containsKey(searchMap,'status')}">
                             <strong>状态：</strong>
                             <div class="tags">
-                                <span class='active' data-value="-1" data-type="s_lianzai" th:text="全部"></span>
-                                <a th:href="@{${url}('status'='0')}" class='' data-value="1" data-type="s_lianzai"
-                                   th:text="连载"></a>
-                                <a th:href="@{${url}('status'='1')}" class='' data-value="2" data-type="s_lianzai"
-                                   th:text="完结"></a>
+                                <span class='active'   th:text="全部"></span>
+                                <span>
+                                    <a th:href="@{${url}('status'='0')}" th:text="连载"></a>
+                                </span>
+                                <span>
+                                    <a th:href="@{${url}('status'='1')}" th:text="完结"></a>
+                                </span>
                             </div>
                         </li>
                     </ul>
@@ -196,11 +202,13 @@
                 </div>
                 <div class="search-result">
                     <div class="result-sort">
-                        <a th:href="@{${#Strings.replace(url,'&sortField='+searchMap.sortField,'')}}" class='active'
-                           data-value="9">综合排序<span>↓</span></a>
-                        <a th:href="@{${url}('sortField'='wordsNum')}" class='' data-value="13">字数<span>↓</span></a>
-                        <a th:href="@{${url}('sortField'='subscribeNum')}" class=''
-                           data-value="13">总收藏<span>↓</span></a>
+                        <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}" th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
+<!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
+                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>
+                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='subscribeNum')}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">字数<span>↓</span></a>
+
+                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}" th:class="'wordsNum'==${searchMap.sortField}?'active':''">字数<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
                     </div>
                     <div class="result-list">
                         <ul>
@@ -661,20 +669,32 @@
                               </li>-->
                         </ul>
                         <div class="pages">
-                            <a class='page-prev defalt' href="javascript:"><i class="iconfont">&#xe7d0;</i></a>
+                            <!--上一页-->
+                            <a th:unless="${items.pageNum}=='1'" class="go" th:href="@{${url}(pageNum=${page.currentpage-1})}">
+                                <i class="iconfont">&#xe7d0;</i>
+                            </a>
                             <!--总页数10页以内-->
-                            <span th:each="i:${#numbers.sequence(page.lpage,page.rpage)}"
-                                  th:class="${i}==${page.currentpage}?'active':''">
+                            <span   th:each="i:${#numbers.sequence(page.lpage,page.rpage)}" th:class="${i}==${page.currentpage}?'active':''">
                                 <a th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
                             </span>
-
-
-                            <a class='page-next' href="javascript:" onclick="setPage(2)">
+                            <!--下一页-->
+                            <a  th:unless="${items.pageNum}==${page.last}" class="go" th:href="@{${url}(pageNum=${page.currentpage+1})}" >
                                 <i class="iconfont">&#xe7cf;</i>
-                            </a>
-                            <span id="gopage">
-                                共<span th:text="${items.totalPages}"></span> 页，到第<input type="text" class="text" name="toPage">页<a href="javascript:void(0)" class="go">GO</a>
+                            </a >
+                            <span style="margin-left: 50px" id="gopage">
+                               <!-- 共<span th:text="${items.totalPages}"></span> 页，到第
+                                <input th:value="${page.currentpage}"  th:type="text" class="text" name="toPage">页
+                                <a th:href="@{${url}(pageNum=${page.currentpage})}"  class="go">GO</a>
+&lt;!&ndash;                                <button type="button" @click="topage()"  class="go">GO</button>&ndash;&gt;-->
+
+                                 <form id="hform" name="hform" th:action="@{${#strings.replace(url,'&pageNum='+page.currentpage,'')}}">
+                                     共<span th:text="${items.totalPages}"></span> 页，到第
+                                <input th:type="text" class="text" placeholder="" name="pageNum"
+                                       th:value="${items.pageNum}" maxlength="20">页
+                                <button class="search-btn" th:type="submit" >GO</button>
+                            </form>
                             </span>
+
                         </div>
                     </div>
                 </div>
@@ -956,7 +976,7 @@
 <script th:src="@{../js/statpage_pc.js}"></script>
 <div id="statdiv" style="display:none;"></div>
 <script>
-    setTimeout(function () {
+    /*setTimeout(function () {
         if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf("gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {
             $('#statdiv').append('<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>');
         }
@@ -967,7 +987,7 @@
         //cnzz统计
         var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
         $('#statdiv').append(unescape("%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
-    }, 200);
+    }, 200);*/
 </script>
 <script th:src="@{../js/common.js}"></script>
 <script th:src="@{../js/search.js}"></script>
@@ -977,19 +997,19 @@
 </script>
 <script th:src="@{../js/commendclickbyjquery.js}"></script>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script th:src="@{../js/vue.js}" ></script>
 <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
-<script src="/static/js/axios.js"></script>
+<script th:src="@{../js/axios.js}" ></script>
 <script th:inline="javascript">
     var app = new Vue({
         el: "#gopage",
         data: {
-           pageNum: [[${items.rows.pageNum}]]
+           pageNum: [[${items.pageNum}]]
         },
         methods: {
             toPage: function () {
                 var s = this.pageNum;
-
+                alert(s)
 
             }
         }
