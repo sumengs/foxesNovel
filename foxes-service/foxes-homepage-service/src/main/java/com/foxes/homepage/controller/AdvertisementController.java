@@ -1,5 +1,6 @@
 package com.foxes.homepage.controller;
 
+import com.foxes.book.pojo.Book;
 import com.foxes.chapter.pojo.Advertisement;
 import com.foxes.homepage.service.AdvertisementService;
 import com.sumeng.peekshopping.constant.StatusCode;
@@ -25,10 +26,39 @@ public class AdvertisementController {
 
     @RequestMapping("/carousel")
     @ResponseBody
-    public Result<Advertisement> carousel() {
-
+    public Result<List<Advertisement>> carousel() {
         List<Advertisement> carousel = advertisementService.carousel();
         return new Result<>(true, StatusCode.OK, "轮播图数据返回成功", carousel);
     }
 
+
+    @RequestMapping("/small")
+    @ResponseBody
+    public Result<List<Advertisement>> smallImage() {
+
+        List<Advertisement> smallImage = advertisementService.smallImage();
+        return new Result<>(true, StatusCode.OK, "轮播图数据返回成功", smallImage);
+    }
+
+
+    @RequestMapping("/big")
+    @ResponseBody
+    public Result<Advertisement> bigImage() {
+        Advertisement bigImage = advertisementService.bigImage();
+        return new Result<>(true, StatusCode.OK, "轮播图数据返回成功", bigImage);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/subscribe")
+    public Result<List<Book>> subscribeList() {
+        return advertisementService.subscribeList();
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/read")
+    public Result<List<Book>> readList() {
+        return advertisementService.readList();
+    }
 }

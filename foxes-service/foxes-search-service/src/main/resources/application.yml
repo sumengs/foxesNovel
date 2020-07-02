@@ -2,7 +2,7 @@ server:
   port: 6002
 spring:
   application:
-    name: search
+    name: search-service
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   elasticsearch:
@@ -15,6 +15,8 @@ spring:
     password: root
   thymeleaf:
     cache: false
+  rabbitmq:
+    host: 192.168.26.100
 eureka:
   client:
     service-url:
