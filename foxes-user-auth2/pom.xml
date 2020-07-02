@@ -3,26 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>foxes-service</artifactId>
+        <artifactId>foxesNovel</artifactId>
         <groupId>com.foxes</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>foxes-user-service</artifactId>
+    <artifactId>foxes-user-auth2</artifactId>
+    <description>
+        OAuth2.0认证环境搭建
+    </description>
+
     <dependencies>
+        <!--spring security-->
         <dependency>
-            <artifactId>foxes-user-service-api</artifactId>
-            <groupId>com.foxes</groupId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
         </dependency>
 
-
-        <!--通用依赖-->
         <dependency>
-            <groupId>com.foxes</groupId>
-            <artifactId>foxes-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
         <!--数据库查询相关依赖-->
@@ -31,19 +37,13 @@
             <artifactId>foxes-common-db</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--oauth2依赖-->
-        <!-- spring-cloud-starter-oauth2-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-        </dependency>
 
+        <!--查询user库-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.foxes</groupId>
+            <artifactId>foxes-user-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-
 
 </project>

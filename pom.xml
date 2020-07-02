@@ -17,6 +17,7 @@
         <module>foxes-gateway</module>
         <module>foxes-web</module>
         <module>foxes-canal</module>
+        <module>foxes-user-auth2</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,6 +35,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!--es版本锁定-->
         <elasticsearch.version>7.4.0</elasticsearch.version>
+
     </properties>
 
     <!--依赖包-->
