@@ -22,21 +22,22 @@ public class BookListener {
 
     @ListenPoint(schema = "foxes-novel",table = "tb_book")
     public void goodsUp(CanalEntry.EventType eventType, CanalEntry.RowData rowData){
-        //获取改变之前的数据并将这部分数据转换为map
-        Map<String,String> oldData=new HashMap<>();
+        System.out.println("监听到数据库变化");
+
+        //获取改变之前的数据并这部分数据转换为map
+        Map<String,String> oldData = new HashMap<>();
         rowData.getBeforeColumnsList().forEach((c)->oldData.put(c.getName(),c.getValue()));
 
         //获取改变之后的数据并这部分数据转换为map
         Map<String,String> newData = new HashMap<>();
         rowData.getAfterColumnsList().forEach((c)->newData.put(c.getName(),c.getValue()));
 
-        String oldStatus = "0";
-        String newStatus = "1";
-        String str = "is_verify";
-        //获取最新上架的商品 0->1
-        if (oldStatus.equals(oldData.get(str)) && newStatus.equals(newData.get(str))){
-            //将小说的id发送到mq
-            rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE,"",newData.get("id"));
+        if ("0".equals(oldData.get("is_delete")) && "1".equals(newData.get("is_delete"))) {
+            rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_DELETE_EXCHANGE, "", newData.get("id"));
+        } else if ("1".equals(oldData.get("is_verify")) && "0".equals(newData.get("is_verify"))){
+            rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_DELETE_EXCHANGE, "", newData.get("id"));
+        } else {
+            rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE, "", newData.get("id"));
         }
         //是否下架
         if (oldStatus.equals(newData.get(str)) && newStatus.equals(oldData.get(str))){

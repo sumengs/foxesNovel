@@ -11,9 +11,7 @@
 
     <artifactId>foxes-web</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>foxes-web-search</module>
-    </modules>
+
 
 
 </project>

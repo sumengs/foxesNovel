@@ -1,0 +1,266 @@
+.dataloading {
+ text-align:center;
+ font-size:16px;
+ color:#999
+}
+.content-quanzi {
+ background:url(//images.xxsy.net/css/pc/website/images/quanzi-bg.jpg) no-repeat center 0;
+ _background:0;
+ padding:0 0 15px
+}
+.content-quanzi .container {
+ width:1000px
+}
+.content-quanzi .bread {
+ margin:45px 0 0
+}
+.quanzi-wrap {
+ border:1px solid #e0e0e0;
+ background:#fff;
+ padding:0 50px;
+ min-height:600px
+}
+.quanzi-wrap .squre-title {
+ font-size:40px;
+ color:#fb6b84;
+ text-align:center;
+ line-height:50px;
+ margin:30px 0 20px
+}
+.quanzi-wrap .box-con .box-hd h3 {
+ padding:0 60px;
+ cursor:pointer
+}
+.discus-book {
+ overflow:hidden;
+ zoom:1;
+ padding:35px 0 25px;
+ border-bottom:1px solid #000
+}
+.discus-book .book-pic {
+ float:left;
+ width:90px;
+ margin:0 50px 0 0;
+ display:inline;
+ height:122px;
+ border:1px solid #ccc
+}
+.discus-book .book-pic img {
+ display:block;
+ width:90px;
+ height:122px
+}
+.discus-book .book-desc {
+ overflow:hidden;
+ zoom:1;
+ height:124px;
+ color:#666;
+ line-height:24px
+}
+.discus-book .book-desc h3 {
+ font-weight:normal;
+ color:#999;
+ line-height:20px;
+ margin:0 0 8px
+}
+.discus-book .book-desc h3 span {
+ padding:0 15px
+}
+.discus-book .book-desc h3 a:hover {
+ color:#fb6b84 !important
+}
+.discus-book .book-tit {
+ color:#000;
+ margin:0 80px 0 0;
+ font-size:16px;
+ font-weight:bold
+}
+.discuss_info .reply-num {
+ margin:10px 0 0;
+ height:20px;
+ line-height:20px;
+ overflow:hidden;
+ zoom:1;
+ text-align:right
+}
+.discuss_info .reply-num span {
+ display:inline-block;
+ text-align:left;
+ width:88px;
+ font-size:12px;
+ color:#a6a6a6
+}
+.discuss_info .reply-num span a {
+ color:inherit
+}
+.discuss_info .reply-num span a:hover {
+ color:#fb6b84
+}
+.discuss_info .reply-num .name {
+ width:60px
+}
+.discuss_info .reply-num .name a {
+ color:#fb6b84
+}
+.discuss_info .reply-num .iconfont {
+ font-size:12px;
+ vertical-align:middle;
+ margin:0 8px 0 0
+}
+.discuss_info .reply-num .haslike .iconfont {
+ color:#fb6b84
+}
+.quanzi_discuss_list {
+ border-top:1px solid #e6e6e6
+}
+.quanzi-discuss .quanzi_discuss_list li {
+ padding:30px 0 10px;
+ position:relative
+}
+.quanzi_discuss_list li:last-child {
+ border-color:#ccc
+}
+.quanzi_discuss_list .active {
+ background:#fff7f9
+}
+.quanzi_discuss_list .reader-reply dt .sub-right {
+ padding:0 10px 0 0
+}
+.quanzi_discuss_list .reader-reply dt .sub-right .hasreport {
+ color:#fb6b84
+}
+.quanzi_discuss_list .reader-reply dt .specialstatus {
+ color:#fff;
+ width:40px;
+ text-align:center;
+ border-radius:4px;
+ -webkit-border-radius:4px;
+ line-height:25px;
+ margin-top:4px
+}
+.quanzi_discuss_list .reader-reply dt .istop {
+ background:#24bbff
+}
+.quanzi_discuss_list .reader-reply dt .isgood {
+ background:#ff4800
+}
+.quanzi_discuss_list .reader-reply dt .isauhtorreply {
+ background:#47c7dc
+}
+.quanzi_discuss_list .reader-reply dd .reply-status {
+ display:inline-block;
+ text-align:center;
+ color:#fff;
+ margin:0 4px 0 0;
+ width:36px;
+ height:16px;
+ line-height:16px;
+ border-radius:2px;
+ -webkit-border-radius:2px
+}
+.quanzi_discuss_list .reader-reply dd .reply-status1 {
+ background:#24bbff
+}
+.quanzi_discuss_list .reader-reply dd .reply-status2 {
+ background:#ff4800
+}
+.quanzi_discuss_list .dataloading {
+ padding-bottom:15px
+}
+.discuss-action {
+ padding:15px 0 10px
+}
+.discuss-action .discuss-btn {
+ display:block;
+ margin:0 0 0 808px;
+ background:#fb6b84;
+ color:#fff;
+ width:90px;
+ height:26px;
+ line-height:26px;
+ text-align:center;
+ border-radius:4px;
+ -webkit-border-radius:4px;
+ -moz-border-radius:4px;
+ -ms-border-radius:4px
+}
+.qianzi-comment {
+ position:fixed;
+ left:50%;
+ top:50%;
+ z-index:9999;
+ background:#fff;
+ width:540px;
+ height:430px;
+ border:1px solid #999;
+ margin:-215px 0 0 -270px;
+ box-shadow:0 0 5px rgba(0,0,0,.5);
+ _position:absolute;
+ _bottom:auto;
+ _top:expression(eval(document.documentElement.scrollTop));
+ _margin-top:100px
+}
+.qianzi-comment .hd {
+ height:44px;
+ line-height:44px;
+ font-size:18px;
+ padding:0 20px;
+ color:#454545;
+ background:#f5e4e4
+}
+.qianzi-comment .hd span {
+ margin:0 0 0 10px;
+ color:#fb6b84
+}
+.textarea-comment {
+ font-size:14px;
+ line-height:24px;
+ padding:5px 10px;
+ width:480px;
+ height:240px;
+ border:1px solid #ccc;
+ border-radius:5px;
+ -webkit-border-radius:5px;
+ margin:20px auto 0;
+ display:block
+}
+.qianzi-comment .bd .limited {
+ color:#ccc;
+ line-height:36px;
+ padding:0 19px
+}
+.qianzi-comment .bd .red-btn {
+ margin:5px auto 0;
+ display:block
+}
+.quanzi-wrap .box-con .box-hd {
+ margin:0 0 25px
+}
+.mark-flag {
+ position:absolute;
+ left:0;
+ top:0;
+ width:110px;
+ height:0;
+ border-top:11px solid #fb6b84;
+ border-bottom:11px solid #fb6b84;
+ border-right:10px solid transparent
+}
+.mark-flag span {
+ display:block;
+ color:#fff;
+ position:absolute;
+ left:20px;
+ top:-11px;
+ line-height:22px;
+ height:22px
+}
+.quanzi-wrap .discuss_content .tab-hd {
+ border:0;
+ border-top:1px solid #e6e6e6
+}
+.replyicon {
+ width:50px !important;
+ text-align:center !important;
+ cursor:pointer
+}

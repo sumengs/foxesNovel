@@ -126,7 +126,7 @@
     <div class="header header-detail">
         <div class="container">
             <div class="top-main cl">
-                <a href="index.html" class="logo">
+                <a href="/index.html" class="logo">
                     <img src="" alt="Foxes小说网" />
                 </a>
                 <div class="guide-writer"><a class="become" href="http://author.xxsy.net" target="_blank"><i
@@ -150,7 +150,7 @@
     <!-- end header -->
     <div class="content">
         <div class="container">
-            <p class="bread">当前位置：<a href="//www.xxsy.net/" target="_blank">foxes小说网首页</a>&gt;<a href="/Category/1.html"
+            <p class="bread">当前位置：<a href="/index.html" target="_blank">foxes小说网首页</a>&gt;<a href="/Category/1.html"
                     target="_blank" th:text="${category.name}"></a>&gt;[[${book.name}]]</p>
             <div class="bookdetail cl">
                 <dl class="bookprofile">
@@ -163,7 +163,7 @@
                                     class="iconfont">&#xe63e;</i>手机阅读</a>
                             <h1 th:text="${book.name}"></h1>
                             <span>
-                                文&nbsp;/&nbsp;<a href="index.html" target="_blank" th:text="${book.author}"></a>
+                                文&nbsp;/&nbsp;<a href="/index.html" target="_blank" th:text="${book.author}"></a>
                             </span>
                         </div>
                         <p class="sub-cols">
@@ -178,13 +178,13 @@
                         <p class="sub-tags">
                         </p>
                         <div class="sub-newest">
-                            <p>最新公共章节：<a href="/chapter/8525957.html" target="_blank" th:text="${lastChapter.name}"></a>
+                            <p>最新公共章节：<a th:href="|/chapter/${book.id}/${lastChapter.html}|" target="_blank" th:text="${lastChapter.name}"></a>
                                 <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span></p>
-                            <p>最新VIP章节：<a href="/chapter/91379127.html" target="_blank" th:text="${lastChapter.name}"></a>
+                            <p>最新VIP章节：<a th:href="|/chapter/${book.id}/${lastChapter.html}|" target="_blank" th:text="${lastChapter.name}"></a>
                                 <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span></p>
                         </div>
                         <div class="book-btns">
-                            <a class="btn_read" href="chapter.html">开始阅读</a>
+                            <a class="btn_read" th:href="|/chapter/${book.id}/${firstChapter.html}|">开始阅读</a>
                             <a class='btn_shelf ' href="javascript:">加入书架</a>
                             <a class="btn_vote showgiftbox" href="javascript:" data-index="1">投票互动</a>
                             <a class="btn_play showgiftbox" href="javascript:" data-index="2">打赏支持</a>
@@ -604,7 +604,7 @@
                             <dd>
                                 <ul class="catalog-list cl">
                                     <li th:each="chapter,chapterStat:${chapterList}">
-                                        <a th:href="|/${book.id}/${chapter.html}|" target="_blank" th:text="${chapter.name}"></a>
+                                        <a th:href="|/chapter/${book.id}/${chapter.html}|" target="_blank" th:text="${chapter.name}"></a>
                                     </li>
                                 </ul>
                             </dd>

@@ -7,7 +7,6 @@ import com.foxes.book.pojo.Category;
 import com.foxes.book.service.BookService;
 import com.foxes.chapter.feign.ChapterFeign;
 import com.foxes.chapter.pojo.Chapter;
-import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -53,10 +52,11 @@ public class BookServiceImpl implements BookService {
         //获取所有章节
         List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
 
-        dataMap.put("book",book);
-        dataMap.put("category",category);
-        dataMap.put("lastChapter",lastChapter);
-        dataMap.put("chapterList",chapterList);
+        dataMap.put("book",book); //小说详情数据
+        dataMap.put("category",category); //章节数据
+        dataMap.put("firstChapter",chapterList.get(0)); //第一章数据
+        dataMap.put("lastChapter",lastChapter); //最后一章数据
+        dataMap.put("chapterList",chapterList); //所有章节数据
         context.setVariables(dataMap);
 
         //定义静态详情页的存放位置
@@ -67,7 +67,7 @@ public class BookServiceImpl implements BookService {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        path = path + "\\static\\Book";
+        path = path + "\\static\\book";
         File dir = new File(path);
         if(!dir.exists()){
             dir.mkdirs();
@@ -84,6 +84,7 @@ public class BookServiceImpl implements BookService {
              * 3.输出流
              */
             templateEngine.process("book",context,out);
+            System.out.println("生成静态页面成功");
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -95,6 +96,27 @@ public class BookServiceImpl implements BookService {
             }
         }
 
+    }
+
+    /**
+     * 删除静态化页面
+     * @param bookId
+     */
+    @Override
+    public void deleteHtml(String bookId) {
+        String path = null;
+        try {
+            path = ResourceUtils.getURL("classpath:").getPath();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String fileName = path + "/static/book/" + bookId + ".html";
+
+        File file = new File(fileName);
+        if (file.exists()) {
+            file.delete();
+            System.out.println("删除静态页面成功");
+        }
     }
 
     /**

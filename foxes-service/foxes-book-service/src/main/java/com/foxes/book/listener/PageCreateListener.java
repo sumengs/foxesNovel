@@ -16,8 +16,16 @@ public class PageCreateListener {
     private BookService bookService;
 
     @RabbitListener(queues = RabbitMQConfig.PAGE_CREATE_QUEUE)
-    public void receiveMessage(String bookId){
-        System.out.println("获取到静态化页面的小说id,id的值为:   "+bookId);
+    public void receiveCreateMessage(String bookId){
+        System.out.println("获取到生成静态化页面的小说id,id的值为:   "+bookId);
         bookService.generateHtml(bookId);
     }
+
+    @RabbitListener(queues = RabbitMQConfig.PAGE_DELETE_QUEUE)
+    public void receiveDeleteMessage(String bookId){
+        System.out.println("获取到删除静态化页面的小说id,id的值为:   "+bookId);
+        bookService.deleteHtml(bookId);
+    }
+
+
 }
