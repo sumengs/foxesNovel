@@ -1,6 +1,7 @@
 package com.foxes.canal.listener;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
+import com.foxes.canal.config.ESrabbitMQConfig;
 import com.foxes.canal.config.RabbitMQConfig;
 import com.xpand.starter.canal.annotation.CanalEventListener;
 import com.xpand.starter.canal.annotation.ListenPoint;
@@ -37,6 +38,15 @@ public class BookListener {
             //将小说的id发送到mq
             rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE,"",newData.get("id"));
         }
+        //是否下架
+        if (oldStatus.equals(newData.get(str)) && newStatus.equals(oldData.get(str))){
+            //是下架,ES执行删除
+            rabbitTemplate.convertAndSend(ESrabbitMQConfig.BOOK_ESUP_EXCHANGE,"",newData.get("id")+",down");
+        }else {
+            //不是下架,ES更新
+            rabbitTemplate.convertAndSend(ESrabbitMQConfig.BOOK_ESUP_EXCHANGE,"",newData.get("id")+",up");
+        }
+
 
     }
 }
