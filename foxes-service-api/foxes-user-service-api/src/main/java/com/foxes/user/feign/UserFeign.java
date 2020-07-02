@@ -17,6 +17,6 @@ public interface UserFeign {
      * @param username
      * @return
      */
-    @GetMapping("/{username}")
+    @GetMapping("/user/{username}")
     User findByUsername(@PathVariable String username);
 }

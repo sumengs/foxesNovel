@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="description" content="加入foxes，开启你的阅读之路。">
+    <title>登录 - foxes</title>
+
+    <!--加载css样式-->
+    <link rel="stylesheet" media="all" href="css/web-aec5e95c7d38e6d93742.css"/>
+    <link rel="stylesheet" media="all" href="css/entry-725103a0668ccb1789d4.css"/>
+
+    <!--layui-->
+    <script src="plugins/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="plugins/layui/css/layui.css">
+
+    <!--vue-->
+    <script src="js/vue.js"></script>
+    <!--axios-->
+    <script src="js/axios-0.18.0.js"></script>
+    <!--jq-->
+    <script src="js/jquery-3.3.1.js"></script>
+
+</head>
+
+<body class="no-padding reader-black-font" lang="zh-CN">
+<div class="sign">
+    <div class="logo">
+        <a href=""><img src="image/logo2.png" alt="Logo" style="width: 300px"/></a>
+    </div>
+    <div class="main">
+        <h4 class="title">
+            <div class="normal-title">
+                <a class="active" href="/sign_in">登录</a>
+
+                <a id="js-sign-up-btn" class="" href="/sign_up" hidden>注册</a>
+            </div>
+        </h4>
+        <div class="js-sign-in-container" id="login_app">
+            <form id="login_form" action="/oauth/login" accept-charset="UTF-8" method="post">
+                <!-- 正常登录登录名输入框 -->
+                <div class="input-prepend restyle js-normal">
+                    <input placeholder="手机号或邮箱" type="text" name="username"
+                           id="username"/>
+                    <i class="iconfont ic-user"></i>
+                </div>
+
+                <!-- 密码 -->
+
+                <div class="input-prepend">
+                    <input placeholder="密码" type="password" name="password" id="password"/>
+                    <i class="iconfont ic-password"></i>
+                </div>
+
+                <div class="remember-btn">
+                    <input type="checkbox" value="true" checked="checked" name="remember_me"
+                           id="remember_me"/><span>记住我</span>
+                </div>
+                <div class="forget-btn">
+                    <a class="" data-toggle="dropdown" href="###" title="请联系管理员">登录遇到问题?</a>
+                    </div>
+                <button class="sign-in-button" id="sign-in-form-submit-btn" type="button" onclick="login()" >
+                    登录
+                </button>
+            </form>
+            <!-- 更多登录方式 -->
+            <div class="more-sign">
+                <h6>社交帐号登录</h6>
+                <ul>
+                    <li><a id="weixin" class="weixin" target="_blank" href="###"><i
+                            class="iconfont ic-wechat"></i></a></li>
+                    <li><a id="qq" class="qq" target="_blank" href="###"><i
+                            class="iconfont ic-qq_connect"></i></a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <script type="application/javascript">
+         // jq入口函数
+           $(function () {
+
+
+
+
+           })
+         //验证用户名密码是否为空
+         function verify(username,password) {
+
+             if(!username){
+                 layer.msg("用户名为空")
+                 return false;
+
+             }
+             if(!password){
+                 layer.msg("密码为空",)
+                 return false;
+             }
+             return true;
+         }
+
+         function login() {
+             var username = $("#username").val();
+
+             var password = $("#password").val();
+
+             let param = {};
+             param['username'] = username;
+             param['password'] = password;
+
+             if(verify(username,password)){
+                 axios.post("/oauth/login",param).then(res=>{
+                         if(res.data.flag){
+                             layer.msg(res.data.message);
+                             setTimeout(()=>{
+                                 window.location.href("http://127.0.0.1/index.html");
+                             },1300)
+                         }
+                 })
+             }
+
+
+
+         }
+    </script>
+</body>
+</html>
