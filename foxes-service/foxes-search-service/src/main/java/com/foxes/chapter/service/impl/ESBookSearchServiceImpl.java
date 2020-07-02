@@ -4,22 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foxes.book.feign.BookFeign;
-import com.foxes.book.feign.CategoryFeign;
 import com.foxes.chapter.dao.ESFoxManageMapper;
 import com.foxes.chapter.service.ESBookSearchService;
 import com.foxesnovel.search.pojo.BookInfo;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.Operator;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
-import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
@@ -51,7 +46,6 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
     private BookFeign bookFeign;
 
 
-
     @Override
     public Map search(Map<String, String> searchMap) {
         if (searchMap != null && searchMap.size() != 0) {
@@ -74,7 +68,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             }
             //完结选择
             if (StringUtils.isNotEmpty(searchMap.get("status"))) {
-                boolQuery.filter(QueryBuilders.termQuery("status", searchMap.get("status")));
+                boolQuery.filter(QueryBuilders.termQuery("status", Integer.parseInt(searchMap.get("status"))));
             }
 
             NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
@@ -104,68 +98,49 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             highlightBuilder.numOfFragments(0); //从第一个分片获取高亮片段
             nativeSearchQueryBuilder.withHighlightBuilder(highlightBuilder);*/
             //设置分页
-            String pageNum = searchMap.get("pageNum");
+
             String pageSize = searchMap.get("pageSize");
-            if (StringUtils.isEmpty(pageNum)) {
+            String pageNum = null;
+            try {
+                pageNum = String.valueOf((int)Math.floor(Double.parseDouble(searchMap.get("pageNum"))));
+                if (StringUtils.isEmpty(pageNum) ||Integer.parseInt(pageNum) < 1) {
+                    pageNum = "1";
+                }
+            } catch (NullPointerException e) {
                 pageNum = "1";
             }
             if (StringUtils.isEmpty(pageSize)) {
-                pageSize = "15";
+                pageSize = "3";
             }
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
             //设置排序
-            if (StringUtils.isNotEmpty(searchMap.get("sortField"))
-                    && StringUtils.isNotEmpty(searchMap.get("soreRule"))) {
-                if (searchMap.get("sortRule").equals("ASC")) {
-                    nativeSearchQueryBuilder.withSort(
-                            SortBuilders.fieldSort(searchMap.get("soreFeild")).order(SortOrder.ASC));
-                } else {
-                    nativeSearchQueryBuilder.withSort(
-                            SortBuilders.fieldSort(searchMap.get("soreFeild")).order(SortOrder.DESC));
-                }
+            if (StringUtils.isNotEmpty(searchMap.get("sortField"))) {
+
+                nativeSearchQueryBuilder.withSort(
+                        SortBuilders.fieldSort(searchMap.get("sortField")).order(SortOrder.DESC));
             }
 
-
             //开始查询
-            AggregatedPage<BookInfo> bookInfos = elasticsearchRestTemplate.queryForPage(
-                    nativeSearchQueryBuilder.build(), BookInfo.class, new SearchResultMapper() {
-                        @Override
-                        public <T> AggregatedPage<T> mapResults(
-                                SearchResponse searchResponse, Class<T> aClass, Pageable pageable) {
-                            SearchHits hits = searchResponse.getHits();
-                            List<T> list = new ArrayList<>();
-                            if (hits != null) {
+            AggregatedPage<BookInfo> bookInfos = this.searchBook(nativeSearchQueryBuilder);
 
-                                for (SearchHit hit : hits) {
-                                    ObjectMapper om = new ObjectMapper();
-                                    BookInfo bookInfo = null;
-                                    try {
-                                        String s = hit.getSourceAsString();
-                                        bookInfo = om.readValue(s, new TypeReference<BookInfo>() {
-                                        });
-                                    } catch (JsonProcessingException e) {
+            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages()) {
 
-                                        e.printStackTrace();
-                                        throw new RuntimeException("查询结果转换失败");
-                                    }
-                                    list.add((T) bookInfo);
-                                }
-                            }
-                            return new AggregatedPageImpl<T>(
-                                    list, pageable, hits.getTotalHits().value, searchResponse.getAggregations());
-                        }
-
-                        @Override
-                        public <T> T mapSearchHit(SearchHit searchHit, Class<T> aClass) {
-                            return null;
-                        }
-                    });
+                pageNum = String.valueOf(bookInfos.getTotalPages());
+                nativeSearchQueryBuilder.withPageable(
+                        PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));
+                bookInfos = this.searchBook(nativeSearchQueryBuilder);
+            }
 
             //封装查询结果
             resultMap.put("rows", bookInfos.getContent());
+            //总页数
             resultMap.put("totalPages", bookInfos.getTotalPages());
+            //总记录数
             resultMap.put("total", bookInfos.getTotalElements());
+            //当前页
+            resultMap.put("pageNum", pageNum);
+            resultMap.put("pageSize", pageSize);
             //封装聚合结果
             ParsedStringTerms terms = (ParsedStringTerms) bookInfos.getAggregation(category);
 
@@ -179,5 +154,42 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
         return null;
     }
 
+    private AggregatedPage<BookInfo> searchBook(NativeSearchQueryBuilder na) {
+        AggregatedPage<BookInfo> bookInfos = elasticsearchRestTemplate.queryForPage(
+                na.build(), BookInfo.class, new SearchResultMapper() {
+                    @Override
+                    public <T> AggregatedPage<T> mapResults(
+                            SearchResponse searchResponse, Class<T> aClass, Pageable pageable) {
+                        SearchHits hits = searchResponse.getHits();
+                        List<T> list = new ArrayList<>();
+                        if (hits != null) {
+
+                            for (SearchHit hit : hits) {
+                                ObjectMapper om = new ObjectMapper();
+                                BookInfo bookInfo = null;
+                                try {
+                                    String s = hit.getSourceAsString();
+                                    bookInfo = om.readValue(s, new TypeReference<BookInfo>() {
+                                    });
+                                } catch (JsonProcessingException e) {
+
+                                    e.printStackTrace();
+                                    throw new RuntimeException("查询结果转换失败");
+                                }
+                                list.add((T) bookInfo);
+                            }
+                        }
+                        return new AggregatedPageImpl<T>(
+                                list, pageable, hits.getTotalHits().value, searchResponse.getAggregations());
+                    }
+
+                    @Override
+                    public <T> T mapSearchHit(SearchHit searchHit, Class<T> aClass) {
+                        return null;
+                    }
+                });
+        return bookInfos;
+
+    }
 
 }

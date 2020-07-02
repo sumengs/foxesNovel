@@ -7,7 +7,6 @@ import com.foxes.book.pojo.Category;
 import com.foxes.book.service.BookService;
 import com.foxes.chapter.feign.ChapterFeign;
 import com.foxes.chapter.pojo.Chapter;
-import com.sumeng.peekshopping.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;

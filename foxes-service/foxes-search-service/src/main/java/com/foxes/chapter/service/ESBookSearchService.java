@@ -1,8 +1,5 @@
 package com.foxes.chapter.service;
 
-import com.foxesnovel.search.pojo.BookInfo;
-
-import java.util.List;
 import java.util.Map;
 
 public interface ESBookSearchService {
