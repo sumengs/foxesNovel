@@ -1,5 +1,6 @@
 package com.foxes.oauth2;
 
+import com.sumeng.peekshopping.interceptor.FeignInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,11 @@ public class OAuthApplication {
     @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();
+    }
+
+    @Bean
+    public FeignInterceptor feignInterceptor(){
+        return  new FeignInterceptor();
     }
 
 

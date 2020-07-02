@@ -32,7 +32,6 @@ public class BookController {
      * @param bookId
      * @return
      */
-    @ResponseBody
     @GetMapping("/findById/{id}")
     public Result<Book> findById(@PathVariable("id") String bookId) {
         Book book = bookService.findBookById(bookId);
@@ -43,11 +42,30 @@ public class BookController {
      * 查询所有Book数据
      * @return
      */
-    @ResponseBody
     @GetMapping("/findAll")
     public Result<List<Book>> findAll() {
         List<Book> bookList = bookService.findAll();
         return new Result<>(true, StatusCode.OK, "查询所有书籍成功", bookList);
+    }
+
+    /**
+     * 查询阅读数前十的小说
+     * @return
+     */
+    @GetMapping("/findTopTenRead")
+    public Result<List<Book>> findTopTenRead() {
+        List<Book> bookList = bookService.findByReadNumDesc();
+        return new Result<>(true, StatusCode.OK, "查询阅读数排行前十书籍成功", bookList);
+    }
+
+    /**
+     * 查询阅读数前十的小说
+     * @return
+     */
+    @GetMapping("/findTopTenSubscribe")
+    public Result<List<Book>> findTopTenSubscribe() {
+        List<Book> bookList = bookService.findBySubscribeNumDesc();
+        return new Result<>(true, StatusCode.OK, "查询订阅数排行前十书籍成功", bookList);
     }
 
     /**
@@ -61,6 +79,5 @@ public class BookController {
         bookService.generateHtml(bookId);
         return "success";
     }
-
 
 }

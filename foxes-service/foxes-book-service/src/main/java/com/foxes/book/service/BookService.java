@@ -36,4 +36,16 @@ public interface BookService {
      */
     List<Book> findAll();
 
+    /**
+     * 查询阅读数前十的小说
+     * @return
+     */
+    List<Book> findByReadNumDesc();
+
+    /**
+     * 查询订阅数前十的小说
+     * @return
+     */
+    List<Book> findBySubscribeNumDesc();
+
 }

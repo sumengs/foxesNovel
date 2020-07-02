@@ -71,6 +71,11 @@ public class Book {
     private Integer subscribeNum;
 
     /**
+     * 阅读数
+     */
+    private Integer readNum;
+
+    /**
      * 总字数
      */
     private Integer wordsNum;
