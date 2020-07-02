@@ -20,7 +20,6 @@ public interface BookFeign {
      * @param bookId
      * @return
      */
-    @ResponseBody
     @GetMapping("/book/findById/{id}")
     Result<Book> findById(@PathVariable("id") String bookId);
 
@@ -28,7 +27,20 @@ public interface BookFeign {
      * 查询所有Book数据
      * @return
      */
-    @ResponseBody
     @GetMapping("/book/findAll")
     Result<List<Book>> findAll();
+
+    /**
+     * 查询阅读数前十的小说
+     * @return
+     */
+    @GetMapping("/book/findTopTenRead")
+    Result<List<Book>> findTopTenRead();
+
+    /**
+     * 查询订阅数数前十的小说
+     * @return
+     */
+    @GetMapping("/book/findTopTenSubscribe")
+    Result<List<Book>> findTopTenSubscribe();
 }

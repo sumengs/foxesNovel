@@ -155,7 +155,7 @@
             <div class="bookdetail cl">
                 <dl class="bookprofile">
                     <dt>
-                        <img src="" alt="">
+                        <img th:src="${book.image}" th:alt="${book.name}">
                     </dt>
                     <dd>
                         <div class="title">
@@ -174,7 +174,7 @@
                             <span>发布：[[${#dates.format(book.releaseTime,'yyyy-MM-dd')}]]</span>
                         </p>
                         <p class="sub-data">
-                            <span><em th:text="${book.wordsNum/10000}"></em><em>万</em>字</span><span><em>2116.2万</em>阅读</span><span><em th:text="${book.subscribeNum}"></em>收藏</span></p>
+                            <span><em th:text="${book.wordsNum/10000}"></em><em>万</em>字</span><span><em th:text="${book.readNum/10000}"></em><em>万</em>阅读</span><span><em th:text="${book.subscribeNum}"></em>收藏</span></p>
                         <p class="sub-tags">
                         </p>
                         <div class="sub-newest">
@@ -192,7 +192,7 @@
                         <div class="score-bar">
                             <p class="active">本书评价<span>（已有1880人评价）</span></p>
                             <div class="score-show">
-                                <div id="bookstar" data-score="5.0"></div>
+                                <!--<div id="bookstar" data-score="5.0"></div>-->
                                 <div id="curscore"></div>
                                 <a href="javascript:;" class="appraisal-btn showgiftbox" id="appraisal-btn"
                                     data-index="0">我要评价</a>
