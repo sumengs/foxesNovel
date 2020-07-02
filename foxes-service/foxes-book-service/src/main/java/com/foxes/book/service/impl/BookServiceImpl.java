@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.*;
 import java.util.HashMap;
@@ -45,6 +46,8 @@ public class BookServiceImpl implements BookService {
         Map<String, Object> dataMap = new HashMap<>();
         //获取小说详情相关数据
         Book book = this.findBookById(bookId);
+        //根据作者查询小说列表
+        List<Book> bookListOfAuthor = this.findListByAuthor(book.getAuthor());
         //获取分类信息
         Category category = categoryMapper.findByBookId(bookId);
         //获取最新章节
@@ -53,6 +56,7 @@ public class BookServiceImpl implements BookService {
         List<Chapter> chapterList = chapterFeign.findAllChapterByBookId(bookId).getData();
 
         dataMap.put("book",book); //小说详情数据
+        dataMap.put("bookListOfAuthor",bookListOfAuthor); //某作者的所有小说列表
         dataMap.put("category",category); //章节数据
         dataMap.put("firstChapter",chapterList.get(0)); //第一章数据
         dataMap.put("lastChapter",lastChapter); //最后一章数据
@@ -154,6 +158,19 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findBySubscribeNumDesc() {
         return bookMapper.findBySubscribeNumDesc();
+    }
+
+    /**
+     * 根据作者查询小说列表
+     * @param author
+     * @return
+     */
+    @Override
+    public List<Book> findListByAuthor(String author) {
+        Example example = new Example(Book.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("author",author);
+        return bookMapper.selectByExample(example);
     }
 
 
