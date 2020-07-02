@@ -16,6 +16,34 @@
             <groupId>com.foxes</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+
+        <!--通用依赖-->
+        <dependency>
+            <groupId>com.foxes</groupId>
+            <artifactId>foxes-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--数据库查询相关依赖-->
+        <dependency>
+            <groupId>com.foxes</groupId>
+            <artifactId>foxes-common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--oauth2依赖-->
+        <!-- spring-cloud-starter-oauth2-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
+
+
 
 </project>
