@@ -116,12 +116,12 @@
 
              if(verify(username,password)){
                  console.log(username+"1111"+password);
-                 axios.post("/oauth/login",param).then(res=>{
+                 axios.post("http:/localhost/oauth/login",param).then(res=>{
 
                          if(res.data.flag){
                              layer.msg(res.data.message);
                              setTimeout(()=>{
-                                 location.href = "http://127.0.0.1/index.html";
+                                 location.href = "http:/localhost/index.html";
                              },1300)
                          }
 

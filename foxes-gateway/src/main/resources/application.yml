@@ -46,19 +46,25 @@ spring:
             - Path=/search/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 1
+        # 认证服务
+        - id: oauth2 # 唯一标识
+          uri: lb://user-oauth # 转发路径(user-oauth 服务)
+          predicates:
+            - Path=/oauth/** # 条件，用于请求网关路径的匹配规则
+          filters:
+            - StripPrefix= 0
+
+
+
+
         - id: homepage # 唯一标识
           uri: lb://homepage-service # 转发路径(homepage 服务)
           predicates:
             - Path=/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 0
-        # 认证服务
-        - id: oauth2 # 唯一标识
-            uri: lb://user-oauth # 转发路径(homepage 服务)
-            predicates:
-              - Path=/oauth/** # 条件，用于请求网关路径的匹配规则
-            filters:
-              - StripPrefix= 0
+
+
 
 management:
   endpoint:
@@ -67,6 +73,7 @@ management:
     web:
       exposure:
         include: true
-logging:
-  level:
-    root: debug
+# 注释掉,
+#logging:
+#  level:
+#    root: debug

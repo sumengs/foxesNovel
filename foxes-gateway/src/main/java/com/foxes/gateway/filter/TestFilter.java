@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
+
 /**
  * @date: 2020/7/2 9:27
  * @author: sumeng
@@ -17,7 +19,8 @@ public class TestFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        System.out.println("-----------HTTP-------放行-----------------");
+        URI uri = exchange.getRequest().getURI();
+        System.out.println(uri+"         "+"-----------HTTP-------放行-----------------");
         ServerHttpRequest request = exchange.getRequest();
         return chain.filter(exchange);
     }
