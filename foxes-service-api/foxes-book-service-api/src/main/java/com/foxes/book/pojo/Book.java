@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @Table(name = "tb_book")
-public class Book {
+public class Book implements Serializable {
 
     /**
      * 主键ID

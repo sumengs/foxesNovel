@@ -35,7 +35,7 @@
     <script>
 
 
-        
+
         function getCookieValue(cookieName) {
             var arr, reg = new RegExp("(^| )" + cookieName + "=([^;]*)(;|$)");
             if (arr = document.cookie.match(reg))
@@ -80,6 +80,10 @@
                         logout(){
                             console.log("用户注销");
                             axios.get("/oauth/logout?uid="+this.uid).then(res=>{
+            <!--
+            根据cookie的值来判断是否登录
+
+            -->
 
                                 if(res.data.flag){
                                     console.log("用户已经注销");
@@ -179,10 +183,10 @@
                     class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare" href="" target="_blank"><i
                     class="iconfont">&#xe600;</i>作家福利</a></div>
             <div class="search-bar">
-                <form id="hform" name="hform" action="search.html" method="" target="_blank">
-                    <input type="text" class="search-text" placeholder="霸道女总裁" name="" id="searchkeyword"><span
-                        class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit" value=""
-                                                                                      class="search-btn" id="gosearch"></span>
+                <form id="hform" name="keywords" action="/search/sweb/search" method="get" target="_blank">
+                    <input type="text" class="search-text" placeholder="霸道女总裁" name="keywords" id="searchkeyword"><span
+                        class="search-btn-bar"><i class="iconfont">&#xe627;</i>
+                    <button type="submit" class="search-btn" id="gosearch"></span>
                 </form>
             </div>
         </div>
@@ -217,37 +221,8 @@
                         <h3 class="active">订阅金榜</h3>
                     </div>
                     <div class="box-bd">
-                        <ul class="text-list">
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088632"
-                                                                     tid="855">大神你人设崩了</a></li>
-                            <li><span class="classify">[玄幻]</span><a href="" target="_blank" xid="1088629"
-                                                                     tid="855">至尊神医之帝君要下嫁</a></li>
-                            <li><span class="classify">[古言]</span><a href="" target="_blank" xid="1088631"
-                                                                     tid="855">金凤华庭</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088636"
-                                                                     tid="855">公主她在现代星光璀璨</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088635"
-                                                                     tid="855">全能千金燃翻天</a></li>
-                            <li><span class="classify">[古言]</span><a href="" target="_blank" xid="1088628"
-                                                                     tid="855">山河盛宴</a></li>
-                            <li><span class="classify">[古言]</span><a href="" target="_blank" xid="1088640"
-                                                                     tid="855">侯门嫡女之一品夫人</a></li>
-                            <li><span class="classify">[古言]</span><a href="" target="_blank" xid="1088630"
-                                                                     tid="855">盛世娇宠之名门闺香</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088633"
-                                                                     tid="855">人人都爱于休休</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088639"
-                                                                     tid="855">席爷每天都想官宣</a></li>
-                            <li><span class="classify">[玄幻]</span><a href="" target="_blank" xid="1088641"
-                                                                     tid="855">灵妃倾天之妖帝已就擒</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088637"
-                                                                     tid="855">夫人你马甲又掉了</a></li>
-                            <li><span class="classify">[古言]</span><a href="" target="_blank" xid="1088642"
-                                                                     tid="855">龙飞凤仵</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088634"
-                                                                     tid="855">婚后被大佬惯坏了</a></li>
-                            <li><span class="classify">[现言]</span><a href="" target="_blank" xid="1088638"
-                                                                     tid="855">另类千金归来</a></li>
+                        <ul class="text-list" id="subscribeList">
+
                         </ul>
                     </div>
                 </div>
@@ -255,7 +230,6 @@
             <div class="mainbar">
                 <div class="roasting">
                     <ul class="roastingslider">
-
                     </ul>
                 </div>
                 <div class="recommend-today tab-con">
@@ -375,66 +349,11 @@
             <div class="ranking cl">
                 <div class="ranking-time box-con tab">
                     <div class="box-hd">
-                        <h3 class="active">月票榜</h3>
+                        <h3 class="active">热度榜</h3>
                     </div>
                     <div class="bd">
-                        <ul class="ranking-list">
-                            <li class="n1">
-                                <a class="book" href="" target="_blank">
-                                    <img data-src="">
-                                </a>
-                                <div class="detail">
-                                    <span class="num">NO.1</span>
-                                    <p class="name"><a href="" target="_blank">山河盛宴</a></p>
-                                    <p class="piao"><em>4960</em>月票</p>
-                                    <p class="author">古言&ensp;|&ensp;天下归元</p>
-                                </div>
-                            </li>
-                            <li class="n2">
-                                <span class="piao">3844</span>
-                                <span class="num">2</span>
-                                <p><a href="" target="_blank">大神你人设崩了</a></p>
-                            </li>
-                            <li class="n3">
-                                <span class="piao">2861</span>
-                                <span class="num">3</span>
-                                <p><a href="" target="_blank">我全家都是穿来的</a></p>
-                            </li>
-                            <li class="n4">
-                                <span class="piao">2544</span>
-                                <span class="num">4</span>
-                                <p><a href="" target="_blank">婚后被大佬惯坏了</a></p>
-                            </li>
-                            <li class="n5">
-                                <span class="piao">2445</span>
-                                <span class="num">5</span>
-                                <p><a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a></p>
-                            </li>
-                            <li class="n6">
-                                <span class="piao">2429</span>
-                                <span class="num">6</span>
-                                <p><a href="/info/971626.html" target="_blank">前方高能</a></p>
-                            </li>
-                            <li class="n7">
-                                <span class="piao">2415</span>
-                                <span class="num">7</span>
-                                <p><a href="/info/1429968.html" target="_blank">问丹朱</a></p>
-                            </li>
-                            <li class="n8">
-                                <span class="piao">2117</span>
-                                <span class="num">8</span>
-                                <p><a href="/info/1382598.html" target="_blank">纨绔天医</a></p>
-                            </li>
-                            <li class="n9">
-                                <span class="piao">2095</span>
-                                <span class="num">9</span>
-                                <p><a href="/info/1349331.html" target="_blank">红尘篱落</a></p>
-                            </li>
-                            <li class="n10">
-                                <span class="piao">1822</span>
-                                <span class="num">10</span>
-                                <p><a href="/info/1093857.html" target="_blank">龙飞凤仵</a></p>
-                            </li>
+                        <ul class="ranking-list" id="readList">
+
                         </ul>
 
                     </div>
@@ -450,7 +369,7 @@
                             <li class="n1">
                                 <span class="num">NO.1</span>
                                 <a class="book" href="/info/1406701.html" target="_blank" xid="1088663" tid="538">
-                                    <img data-src="">
+                                    <img src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF79bkyAQewwAACF9ujChgE444.jpg">
                                 </a>
                                 <div class="detail">
                                     <p class="name"><a href="/info/1406701.html" target="_blank" xid="1088663"
@@ -518,7 +437,7 @@
                             <li class="n1">
                                 <span class="num">NO.1</span>
                                 <a class="book" href="/info/1379993.html" target="_blank" xid="1088673" tid="851">
-                                    <img data-src="">
+                                    <img src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF79bkyAQewwAACF9ujChgE444.jpg">
                                 </a>
                                 <div class="detail">
                                     <p class="name"><a href="/info/1379993.html" target="_blank" xid="1088673"
@@ -593,7 +512,7 @@
                             <li class="n1">
                                 <span class="num">NO.1</span>
                                 <a class="book" href="/info/1363450.html" target="_blank" xid="1088643" tid="536">
-                                    <img data-src="">
+                                    <img src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF79bkyAQewwAACF9ujChgE444.jpg">
                                 </a>
                                 <div class="detail">
                                     <p class="name"><a href="/info/1363450.html" target="_blank" xid="1088643"
@@ -691,43 +610,43 @@
                             <li class="n4">
                                 <span class="piao">水果店的瓶子</span>
                                 <span class="num">4</span>
-                                <p><a href="/info/1444877.html" target="_blank" xid="1088656"
+                                <p><a href="#" xid="1088656"
                                       tid="537">今天大佬又不做人了</a></p>
                             </li>
                             <li class="n5">
                                 <span class="piao">木易宁</span>
                                 <span class="num">5</span>
-                                <p><a href="/info/1446802.html" target="_blank" xid="1088657" tid="537">寻找异能之主</a>
+                                <p><a href="#" xid="1088657" tid="537">寻找异能之主</a>
                                 </p>
                             </li>
                             <li class="n6">
                                 <span class="piao">落花月西</span>
                                 <span class="num">6</span>
-                                <p><a href="/info/1442449.html" target="_blank" xid="1088658" tid="537">这个角儿我包了</a>
+                                <p><a href="#" xid="1088658" tid="537">这个角儿我包了</a>
                                 </p>
                             </li>
                             <li class="n7">
                                 <span class="piao">明眸若水</span>
                                 <span class="num">7</span>
-                                <p><a href="/info/1445543.html" target="_blank" xid="1088659" tid="537">最熟悉的最陌生的</a>
+                                <p><a href="#" xid="1088659" tid="537">最熟悉的最陌生的</a>
                                 </p>
                             </li>
                             <li class="n8">
                                 <span class="piao">翦玥</span>
                                 <span class="num">8</span>
-                                <p><a href="/info/1445061.html" target="_blank" xid="1088660" tid="537">归途之天佑无双</a>
+                                <p><a href="#" xid="1088660" tid="537">归途之天佑无双</a>
                                 </p>
                             </li>
                             <li class="n9">
                                 <span class="piao">苏子欢</span>
                                 <span class="num">9</span>
-                                <p><a href="/info/1446527.html" target="_blank" xid="1088661" tid="537">她被大佬祸害了</a>
+                                <p><a href="#" xid="1088661" tid="537">她被大佬祸害了</a>
                                 </p>
                             </li>
                             <li class="n10">
                                 <span class="piao">罗晓07</span>
                                 <span class="num">10</span>
-                                <p><a href="/info/1444902.html" target="_blank" xid="1088662" tid="537">巴渝霸王花</a>
+                                <p><a href="#"  xid="1088662" tid="537">巴渝霸王花</a>
                                 </p>
                             </li>
                         </ul>
@@ -738,9 +657,9 @@
     </div>
 </div>
 <div style="position:fixed;right:10px;bottom:10px;" id="weappimg">
-    <div>
+    <div >
         <img id="wx" src="" alt="广告"/>
-        <p>Foxes小程序上线啦</p>
+        <p>Foxes公众号上线啦</p>
         <p>打开微信扫一扫</p>
         <i class="iconfont">&#xe622;</i>
     </div>
@@ -809,8 +728,47 @@
                 $(".topic-rec-area a:first-child .mt-20").attr("src", "" + images[0].image);
                 $(".topic-rec-area a:last-child").attr("href", "" + images[1].url);
                 $(".topic-rec-area a:last-child .mt-20").attr("src", "" + images[1].image);
+            }
+        })
+
+        $.ajax({
+            type: "GET",
+            url: "subscribe",
+            success: function (response) {
+                let books = response.data;
+                for (let i = 0; i < books.length; i++) {
+                    $("#subscribeList").append("<li><span class='classify'>["+books[i].category+"]</span><a href='book/book/"+books[i].bookId+".html' target='_blank'>"+ books[i].bookName + "</a></li>")
+                }
+            }
+        })
 
 
+        $.ajax({
+            type: "GET",
+            url: "read",
+            success: function (response) {
+                let books = response.data;
+
+                $("#readList").append("<li class='n1'>" +
+                    "<a class='book' href='book/book/"+books[0].bookId+".html' target='_blank'>" +
+                    "<img src='"+books[0].bookImage+"'>" +
+                    "</a>" +
+                    "<div class='detail'>" +
+                    "<span class='num'>NO.1</span>" +
+                    "<p class='name'>" +
+                    "<a href='book/book/"+books[0].bookId+".html' target='_blank'>"+books[0].bookName+"</a>" +
+                    "</p> " +
+                    "<p class='piao'><em>"+books[0].readNum+"</em>&ensp;热度</p>" +
+                    "<p class='author'>"+books[0].category+"&ensp;|&ensp;"+books[0].bookAuthor+"</p>" +
+                    "</div>" +
+                    "</li>");
+
+                for (let i = 1; i < books.length; i++) {
+                    $("#readList").append("<li class='n"+(i+1)+"'>"+
+                        "<span class='piao'>"+books[i].readNum+"</span>"+
+                        "<span class='num'>"+(i+1)+"</span>"+
+                        "<p><a href='book/book/"+books[i].bookId+".html' target='_blank'>"+books[i].bookName+"</a></p></li>")
+                }
             }
         })
 
@@ -827,7 +785,27 @@
 <script src="js/lazyimgload.js"></script>
 <script src="js/statpage_pc.js"></script>
 <div id="statdiv" style="display:none;"></div>
+<script>
+    setTimeout(function () {
+        if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf(
+            "gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {
+            $('#statdiv').append(
+                '<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>'
+            );
+        }
 
+        //百度统计
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape("%3Cscript src='" + _bdhmProtocol +
+            "hm.baidu.com/h.js%3Fa574454240bf693f1d8415a3915f25ff' type='text/javascript'%3E%3C/script%3E"
+        ));
+        //cnzz统计
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape(
+            "%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol +
+            "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
+    }, 200);
+</script>
 <script src="js/jquery.bxslider.min.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/common.js"></script>

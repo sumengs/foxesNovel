@@ -110,7 +110,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                 pageNum = "1";
             }
             if (StringUtils.isEmpty(pageSize)) {
-                pageSize = "3";
+                pageSize = "10";
             }
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));

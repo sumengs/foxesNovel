@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @date: 2020/6/30 9:22
@@ -11,7 +12,7 @@ import javax.persistence.Table;
  */
 @Data
 @Table(name = "tb_category")
-public class Category {
+public class Category implements Serializable {
     /**
      * 主键ID
      */
