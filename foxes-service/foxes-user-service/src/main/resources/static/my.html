@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <title>我的控制面板-潇湘书院</title>
+    <meta name="robots" content="all">
+    <meta name="googlebot" content="all">
+    <meta name="baiduspider" content="all">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a"/>
+    <link href="css/menutop.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/iconfont.css" rel="stylesheet"/>
+    <link href="css/global.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/base.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/JQBox.css"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link href="css/center.css?v=201907" rel="stylesheet"/>
+    <link href="css/pagestatic.css?v=20200615" rel="stylesheet"/>
+
+</head>
+<body id="help">
+<div class="top-menu search-top-menu">
+    <div class="container">
+        <div class="download-app">
+            <a class="app-android" href="/download.html" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
+            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a
+                class="app-index" href="//www.xxsy.net/">首页</a>
+        </div>
+        <div class="guide-menu">
+            <div class="column" id="loginaction"><a href="javascript:" class="login" id="headerLogin">登录</a>&ensp;<a
+                    href="/Reg" rel="nofollow" class="register" target="_blank">注册</a></div>
+            <div class="column" id="userinfo" style="display: none;"><a href="/control" rel="nofollow" class="username"
+                                                                        id="username" target="_blank"></a>&ensp;<a
+                    href="javascript:" class="register" id="logout">退出</a></div>
+            <div class="column more bookcase" id="menubookcase">
+                <a href="javascript:" class="my-book" id="mybookcase">我的书架</a>
+                <em><i></i></em>
+                <div id="menucnt2" class="menu-ct menu-ct-2">
+                    <div id="mybc">
+                        <span class="off"></span>
+                        <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
+                        <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
+                        <span class="rblank"></span>
+                    </div>
+                    <ul id="mybctitle">
+                        <li class="n0">序</li>
+                        <li class="n1">书名</li>
+                        <li class="n2">标签章节(加入时间)</li>
+                        <li class="n3">作者</li>
+                        <li class="n4">操作</li>
+                    </ul>
+                    <ul id="mybcasecnt1" class="menumybclist">
+                        <div style="height: 200px!important; line-height: 200px!important;">
+                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif"/>正在加载数据...
+                        </div>
+                    </ul>
+                    <ul id="mybcasecnt2" class="menumybclist" style="display: none;">
+                        <div style="height: 200px!important; line-height: 200px!important;">
+                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif"/>正在加载数据...
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
+        </div>
+        <div class="mid-bar-search">
+            <form id="hform" name="hform" action="/search" method="get" target="_blank">
+                <input type="text" class="minisearch-text" placeholder="农家福妻娇又美" name="s_wd" id="searchkeyword"
+                       maxlength="20"><span class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit"
+                                                                                                          value=""
+                                                                                                          class="minisearch-btn"
+                                                                                                          id="gosearch"></span>
+            </form>
+        </div>
+        <ul class="menu-style cl">
+            <li><a href="" target="_self">古代言情</a></li>
+            <li><a href="" target="_self">现代言情</a></li>
+            <li><a href="" target="_self">玄幻仙侠</a></li>
+            <li><a href="" target="_self">浪漫青春</a></li>
+            <li><a href="" target="_self">悬疑</a></li>
+            <li><a href="" target="_self">改编频道</a></li>
+            <li><a href="" target="_self">男生频道</a></li>
+            <li><a href="" target="_self">漫画频道</a></li>
+        </ul>
+    </div>
+</div>
+<input id="pagetoken" value="f47c91cde8a4160cfe41c7fbd9255cbe" type="hidden">
+<script>
+    window._pageToken = document.getElementById('pagetoken').value;
+</script>
+
+<div class="content" id="vm">
+    <div class="container container-control">
+        <div class="control tab-click cl">
+            <div class="control-menu">
+                <div class="control-title"><span class="ribbon"></span><i class="iconfont">&#xe62e;</i>会员中心</div>
+                <div class="click-hd">
+                    <h3 class="active"><a href="my.html"><i class="iconfont">&#xe606;</i>我的首页</a></h3>
+                    <h3><a href="bookcase.html"><i class="iconfont">&#xe61b;</i>我的书架</a></h3>
+                    <h3 v-bind:class="tabIndex==2 ? 'active':''" v-on:click="setTabIndex(2)"><a href="javascript:;"><i
+                            class="iconfont">&#xe609;</i>我的书签</a></h3>
+                    <h3 v-bind:class="tabIndex==11 ? 'active':''" v-on:click="setTabIndex(11)"><a href="javascript:;"><i
+                            class="iconfont">&#xe748;</i>我的消息</a></h3>
+                    <h3 v-on:click="lotteryTabOpen = !lotteryTabOpen">
+                        <a href="javascript:;">
+                            <i class="iconfont more-icon" v-if="lotteryTabOpen" v-cloak>&#xe7cd;</i>
+                            <i class="iconfont more-icon" v-else v-cloak>&#xe601;</i>
+                            <i class="iconfont">&#xe628;</i>我的福利
+                        </a>
+                    </h3>
+                    <div class="secondary-nav" v-show="lotteryTabOpen" v-cloak>
+                        <h3 v-bind:class="tabIndex==10 ? 'active':''" v-on:click="setTabIndex(10)"><a
+                                href="javascript:;"><i class="iconfont">&#xe7d1;</i>我的书券<em>new</em></a></h3>
+
+                        <h3 v-bind:class="tabIndex==7 ? 'active':''" v-on:click="setTabIndex(7)"><a href="javascript:;"><i
+                                class="iconfont">&#xe61f;</i>奖励任务</a></h3>
+                        <h3 v-bind:class="tabIndex==12 ? 'active':''" v-on:click="setTabIndex(12)"><a
+                                href="javascript:;"><i class="iconfont">&#xe600;</i>礼品兑换</a></h3>
+                    </div>
+                    <h3 v-bind:class="tabIndex==9 ? 'active':''" v-on:click="setTabIndex(9)"><a href="javascript:;"><i
+                            class="iconfont">&#xe65c;</i>我的书单<em>new</em></a></h3>
+                    <h3 v-bind:class="tabIndex==3 ? 'active':''" v-on:click="setTabIndex(3)"><a href="javascript:;"><i
+                            class="iconfont">&#xe6ae;</i>我的书评</a></h3>
+                    <h3><a href="/quanzi/square" target="_blank"><i class="iconfont">&#xe618;</i>我的圈子</a></h3>
+                    <h3 v-bind:class="tabIndex==4 ? 'active':''" v-on:click="setTabIndex(4)"><a href="javascript:;"><i
+                            class="iconfont">&#xe60e;</i>我的钱包</a></h3>
+                    <h3 v-bind:class="tabIndex==5 ? 'active':''" v-on:click="setTabIndex(5)"><a href="javascript:;"><i
+                            class="iconfont">&#xe75c;</i>订阅设置</a></h3>
+                    <h3 v-bind:class="tabIndex==6 ? 'active':''" v-on:click="setTabIndex(6)"><a href="javascript:;"><i
+                            class="iconfont">&#xe60d;</i>个人设置</a></h3>
+                    <h3><a href="http://recharge.xxsy.net/" target="_blank"><i class="iconfont">&#xe625;</i>充值中心</a>
+                    </h3>
+                    <h3><a href="/login/logout"><i class="iconfont">&#xe649;</i>退出登录</a></h3>
+                </div>
+                <div class="help">
+                    <a href="/help/uhelp.html" target="_blank">会员帮助中心></a>
+                    <a href="/help/ahelp.html" target="_blank">作家帮助中心></a>
+                    <a href="http://author.xxsy.net" target="_blank">我要当作家></a>
+                </div>
+            </div>
+            <div class="control-main click-bd">
+                <div class="works-main" style="display: block">
+                    <dl class="user-head cl">
+                        <dt>
+                            <img class="auatar" src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF79xcWANUB1AABFnn20SZY342.jpg">
+                        </dt>
+                        <dd>
+                            <h2>
+                                <span class="name">foxes</span>
+                                <span>
+                                            包月会员：
+                                            <a href="/baoyue" target="_blank" class="colorred">未开通，立即开通包月</a>
+                                        </span>
+                            </h2>
+                            <p>
+                                会员积分（动态粉丝值）：0 点
+                                <a href="/userzone/16609793" class="blue-link f-r" target="_blank">个人主页</a>
+                            </p>
+                            <p><a href="javascript:;" class="common-blue-link"
+                                  v-on:click="lotteryTabOpen=true;setTabIndex(7)">签到</a> 领取更多奖励</p>
+                            <div class="honor-medal">
+                                <span>荣誉勋章：</span>
+                            </div>
+                        </dd>
+                    </dl>
+                    <ul class="account-info">
+                        <li>
+                            <h3><i class="iconfont">&#xe60f;</i>账户余额</h3>
+                            <p><span class="num_red">541</span>潇湘币</p>
+                            <p><span class="num_red">82445</span>元宝</p>
+                            <p><span class="num_red">269864723</span>体验币</p>
+                            <p><a href="" class="blue-link" target="_blank">充值</a></p>
+                        </li>
+                        <li style="position:relative;">
+
+                            <h3><i class="iconfont">&#xe63a;</i>月票&评价票</h3>
+                            <p><span class="num_red">68</span>月票</p>
+                            <p class="ticketinfo">再订阅消费2500点，可得1张月票</p>
+                            <p><span class="num_red">984</span>评价票</p>
+                            <p class="ticketinfo">再订阅消费1000点，可得1张评价票</p>
+                        </li>
+                        <li>
+                            <h3><i class="iconfont">&#xe648;</i>我的书架</h3>
+                            <p><span class="num_red">364</span>藏书</p>
+                            <p><a href="javascript:;" class="blue-link" id="linkto-bookshelf"
+                                  v-on:click="setTabIndex(1)">前往查看</a></p>
+                        </li>
+                        <li>
+                            <h3><i class="iconfont">&#xe61d;</i>我的消费</h3>
+                            <p>累计消费：<span class="num_gray">0</span>潇湘币</p>
+                            <p>累计订阅：<span class="num_gray">0</span>潇湘币</p>
+                        </li>
+                    </ul>
+                    <!--<div class="maylike">
+                        <h3 class="profile-main-title">猜你喜欢</h3>
+                        <ul class="unusual-list unusual-heng-list cl">
+                            <li>
+                                <a class="book" href="/info/1101656.html" target="_blank">
+                                    <img src=" img/1101656.jpg">
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/info/1101656.html" target="_blank">侯门嫡女之一品夫人</a></h4>
+                                    <p class="subtitle">凌七七&ensp;/&ensp;著</p>
+                                    <p class="detail">新文《腹黑首辅的心尖宠》已开，欢迎亲们入坑！一朝穿越，顾明卿成了大晋朝忠勇侯府的嫡次...</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="book" href="/info/971729.html" target="_blank">
+                                    <img src=" img/971729.jpg">
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/info/971729.html" target="_blank">女战神的黑包群</a></h4>
+                                    <p class="subtitle">二谦&ensp;/&ensp;著</p>
+                                    <p class="detail">星际第一女战神东姝，某天突然加入一个黑包群！女战神一脸懵逼，顺手一戳！——————快...</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="book" href="/info/1026606.html" target="_blank">
+                                    <img src=" img/1026606.jpg">
+                                </a>
+                                <div class="info">
+                                    <h4><a href="/info/1026606.html" target="_blank">农娇有福</a></h4>
+                                    <p class="subtitle">寂寞的清泉&ensp;/&ensp;著</p>
+                                    <p class="detail">【清泉的新书《农家娇女》已经上传，请亲们多多支持！】陈燕燕情场失意，败的彻底。再次睁...</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>-->
+                </div>
+                <div class="works-main" v-show="tabIndex == 1">
+                    <bookcase-component v-bind:topaccountinfo="accountInfo"
+                                        v-bind:topdataloading="dataLoading"></bookcase-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 2">
+                    <bookmark-component v-bind:topdataloading="dataLoading"></bookmark-component>
+                </div>
+
+                <div class="works-main" v-show="tabIndex == 9">
+                    <bookorder-component v-bind:topdataloading="dataLoading"
+                                         v-bind:topviplevel="userInfo.vipLevel"></bookorder-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 7">
+                    <task-component v-bind:topdataloading="dataLoading" v-bind:topisvip="userInfo.vip"
+                                    v-on:method-set-tiyanbi-count="setTiyanbiCount"
+                                    v-on:method-set-yuanbao-count="setYuanbaoCount"
+                                    v-on:method-set-pingjiapiao-count="setPingjiapiaoCount"
+                                    v-on:method-set-yuepiao-count="setYuepiaoCount"></task-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 3">
+                    <bookreview-component v-bind:topdataloading="dataLoading"></bookreview-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 4">
+                    <cost-component v-bind:topdataloading="dataLoading"
+                                    v-bind:topaccountinfo="accountInfo"></cost-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 10">
+                    <bookticket-component v-bind:topdataloading="dataLoading"></bookticket-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 5">
+                    <subcribe-component v-bind:topaccountinfo="accountInfo" v-bind:topuserinfo="userInfo"
+                                        v-bind:topdataloading="dataLoading"></subcribe-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 6">
+                    <set-component v-bind:topuserinfo="userInfo" v-bind:topdataloading="dataLoading"></set-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 11">
+                    <message-component v-bind:topdataloading="dataLoading"></message-component>
+                </div>
+                <div class="works-main" v-show="tabIndex == 12">
+                    <lotteryticket-component></lotteryticket-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="componentlist">
+    <template id="bookcase">
+        <div class="box-con tab-con">
+            <div class="box-hd tab-hd">
+                <!--<h3 v-bind:class="[tabIndex == 2 ? 'active':'']" v-on:click="setTabIndex(2)">最近阅读</h3>
+                <h3 v-bind:class="[tabIndex == 0 ? 'active':'']" v-on:click="setTabIndex(0)">按收藏时间排序</h3>
+                <h3 v-bind:class="[tabIndex == 1 ? 'active':'']" v-on:click="setTabIndex(1)">按更新时间排序</h3>-->
+            </div>
+            <div class="box-bd tab-bd">
+                <div class="bd-main">
+                    <table class="control-table">
+                        <thead>
+                        <tr>
+                            <th class="wa"></th>
+                            <th class="wb">书名</th>
+                            <th class="wc">最新章节</th>
+                            <th class="wd">作者</th>
+                            <th class="we">最新章节发布时间</th>
+                            <th class="history">阅读进度</th>
+                        </tr>
+                        </thead>
+                        <tbody v-if="(loading[tabIndex] && !bookCase[tabIndex].pages) || !ready || (bookCase[tabIndex].pages && !bookCase[tabIndex].pages[bookCase[tabIndex].pageIndex].load)">
+                        <td colspan="6" class="userdataloaidng">正在加载 . . .</td>
+                        </tbody>
+                        <tbody v-else-if="!bookCase[tabIndex].pages">
+                        <td colspan="6" class="userdataloaidng">书架为空</td>
+                        </tbody>
+                        <tbody v-else>
+                        <tr v-bind:class="item.HasDelete==1 ? 'hasdelete':''"
+                            v-for="(item,itemindex) in bookCase[tabIndex].pages[bookCase[tabIndex].pageIndex].books">
+                            <td>
+                                <input type="checkbox" v-if="item.HasDelete==0 && tabIndex != 2"
+                                       v-bind:value="item.BookId" v-model="bookCase[tabIndex].selItems"/>
+                            </td>
+                            <td><a v-bind:href="'/category/'+item.ClassId + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a><a
+                                    v-bind:href="'/info/'+item.BookId + '.html'" target="_blank">{{item.BookName}}</a>
+                            </td>
+                            <td><a v-bind:href="'/chapter/'+item.LastChapterId + '.html'" target="_blank">{{item.LastChapterName}}</a><em
+                                    class="vip" v-if="item.LastChapterIsVip > 0">vip</em></td>
+                            <td><a v-bind:href="'/authorcenter/'+item.AuthorId + '.html'" target="_blank">{{item.Author}}</a>
+                            </td>
+                            <td><span class="time">{{item.UpdateTime}}</span></td>
+                            <td>
+                                <template v-if="item.ReadChapterId == 0">
+                                    <a v-bind:href="'/bookcoverinfo/'+item.BookId + '.html'" target="_blank"
+                                       class="no-history">尚未阅读</a>
+                                </template>
+                                <template v-else>
+                                    <div class="history-tip" v-if="item.ShowTips == 1"><span>读至：{{item.ReadChapterTitle}}</span>
+                                    </div>
+                                    <a v-if="item.ReadChapterId != item.LastChapterId"
+                                       v-bind:href="'/chapter/'+item.ReadChapterId + '.html'" target="_blank"
+                                       class="history-btn continue-read" v-on:mouseover="item.ShowTips = 1"
+                                       v-on:mouseout="item.ShowTips = 0">有更新</a>
+                                    <a v-else v-bind:href="'/chapter/'+item.ReadChapterId + '.html'" target="_blank"
+                                       class="history-btn no-update" v-on:mouseover="item.ShowTips = 1"
+                                       v-on:mouseout="item.ShowTips = 0">无更新</a>
+                                </template>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot v-if="tabIndex != 2 && ready && bookCase[tabIndex].pages">
+                        <tr>
+                            <td>
+                                <input type="checkbox" v-model="bookCase[tabIndex].allSel" id="selectAll"
+                                       v-on:click="selAll()"></td>
+                            <td><a href="javascript:">
+                                <label for="selectAll">全选</label></a><a href="javascript:;" v-on:click="delSomeBook()">删除</a>
+                            </td>
+                            <td colspan="4">
+                                <div class="pages">
+                                    <a class="page-prev defalt" href="javascript:;"
+                                       v-if="bookCase[tabIndex].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else
+                                       v-on:click="setPageIndex(bookCase[tabIndex].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                    <!--总页数10页以内-->
+                                    <template v-if="bookCase[tabIndex].pageCount <= 10">
+                                        <template v-for="i in bookCase[tabIndex].pageCount">
+                                            <a href="javascript:" v-if="i-1==bookCase[tabIndex].pageIndex"
+                                               class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </template>
+                                    </template>
+                                    <!--总页数超过10页-->
+                                    <template v-else>
+                                        <template v-if="bookCase[tabIndex].pageIndex < 4">
+                                        <span v-for="i in 5">
+                                            <a href="javascript:" v-if="i-1==bookCase[tabIndex].pageIndex"
+                                               class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </span>
+                                            <span class="ellipsis">…</span><a href="javascript:"
+                                                                              v-on:click="setPageIndex(bookCase[tabIndex].pageCount-1)">{{bookCase[tabIndex].pageCount}}</a>
+                                        </template>
+                                        <template
+                                                v-else-if="bookCase[tabIndex].pageIndex + 5 > bookCase[tabIndex].pageCount">
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span
+                                                class="ellipsis">…</span>
+                                            <template v-for="i in 5">
+                                                <a class="active"
+                                                   v-if="bookCase[tabIndex].pageCount - 6 + i == bookCase[tabIndex].pageIndex"
+                                                   href="javascript:">{{bookCase[tabIndex].pageIndex+1}}</a>
+                                                <a href="javascript:" v-else
+                                                   v-on:click="setPageIndex(bookCase[tabIndex].pageCount - 6 + i)">{{bookCase[tabIndex].pageCount
+                                                    - 5 + i}}</a>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span
+                                                class="ellipsis">…</span>
+                                            <a href="javascript:"
+                                               v-on:click="setPageIndex(bookCase[tabIndex].pageIndex - 2)">{{bookCase[tabIndex].pageIndex
+                                                - 1}}</a>
+                                            <a href="javascript:"
+                                               v-on:click="setPageIndex(bookCase[tabIndex].pageIndex - 1)">{{bookCase[tabIndex].pageIndex}}</a>
+                                            <a href="javascript:" class="active">{{bookCase[tabIndex].pageIndex +
+                                                1}}</a>
+                                            <a href="javascript:"
+                                               v-on:click="setPageIndex(bookCase[tabIndex].pageIndex + 1)">{{bookCase[tabIndex].pageIndex
+                                                + 2}}</a>
+                                            <a href="javascript:"
+                                               v-on:click="setPageIndex(bookCase[tabIndex].pageIndex + 2)">{{bookCase[tabIndex].pageIndex
+                                                + 3}}</a>
+                                            <span class="ellipsis">…</span><a href="javascript:"
+                                                                              v-on:click="setPageIndex(bookCase[tabIndex].pageCount-1)">{{bookCase[tabIndex].pageCount}}</a>
+                                        </template>
+                                    </template>
+                                    <a class="page-prev defalt" href="javascript:;"
+                                       v-if="bookCase[tabIndex].pageIndex+1 == bookCase[tabIndex].pageCount"><i
+                                            class="iconfont">&#xe7cf;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else
+                                       v-on:click="setPageIndex(bookCase[tabIndex].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                    共{{bookCase[tabIndex].pageCount}}页，到第<input type="text" class="text"
+                                                                                v-model="bookCase[tabIndex].goPageNo">页<a
+                                        href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </template>
+    <template id="bookmark">
+        <table class="control-table">
+            <thead>
+            <tr>
+                <th class="wa"></th>
+                <th class="wb">书名</th>
+                <th class="wc">书签章节</th>
+                <th class="wd">作者</th>
+                <th class="we">收藏时间</th>
+                <th class="wf"></th>
+            </tr>
+            </thead>
+            <tbody v-if="loading && !bookMark.pages">
+            <td colspan="6" class="userdataloaidng">正在加载 . . .</td>
+            </tbody>
+            <tbody v-else-if="!bookMark.pages">
+            <td colspan="6" class="userdataloaidng">书签为空</td>
+            </tbody>
+            <tbody v-else>
+            <tr v-bind:class="item.HasDelete ? 'hasdelete':''"
+                v-for="(item,itemindex) in bookMark.pages[bookMark.pageIndex]">
+                <td><input type="checkbox" v-if="!item.HasDelete" v-bind:value="item.BookId"
+                           v-model="bookMark.selItems"></td>
+                <td><a v-bind:href="'/category/'+item.ClassId + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a><a
+                        v-bind:href="'/info/'+item.BookId + '.html'" target="_blank">{{item.BookName}}</a></td>
+                <td><a v-bind:href="'/chapter/'+item.LastChapterId + '.html'"
+                       target="_blank">{{item.LastChapterName}}</a><em class="vip"
+                                                                       v-if="item.LastChapterIsVip > 0">vip</em></td>
+                <td>{{item.Author}}</td>
+                <td><span class="time">{{item.InsertTime}}</span></td>
+                <td v-bind:class="item.HasDelete ? 'deleteText':''">
+                    <template v-if="!item.HasDelete">
+                        <a href="javascript:;" class="delete" v-on:click="delSingleBook(itemindex)">删除</a>
+                    </template>
+                    <template v-else>
+                        <span>已删除</span>
+                    </template>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot v-if="!loading && bookMark.pages">
+            <tr>
+                <td>
+                    <input type="checkbox" v-model="bookMark.allSel" id="selectAll" v-on:click="selAll()"></td>
+                <td><a href="javascript:">
+                    <label for="selectAll">全选</label></a><a href="javascript:;" v-on:click="delSomeBook()">删除</a></td>
+                <td colspan="4">
+                    <div class="pages">
+                        <a class="page-prev defalt" href="javascript:;" v-if="bookMark.pageIndex==0"><i
+                                class="iconfont">&#xe7d0;</i></a>
+                        <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookMark.pageIndex-1)"><i
+                                class="iconfont">&#xe7d0;</i></a>
+
+                        <!--总页数10页以内-->
+                        <template v-if="bookMark.pageCount <= 10">
+                            <template v-for="i in bookMark.pageCount">
+                                <a href="javascript:" v-if="i-1==bookMark.pageIndex" class="active">{{i}}</a>
+                                <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                            </template>
+                        </template>
+
+                        <!--总页数超过10页-->
+                        <template v-else>
+                            <template v-if="bookMark.pageIndex < 4">
+                                <template v-for="i in 5">
+                                    <a href="javascript:" v-if="i-1==bookMark.pageIndex" class="active">{{i}}</a>
+                                    <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                </template>
+                                <span class="ellipsis">…</span><a href="javascript:"
+                                                                  v-on:click="setPageIndex(bookMark.pageCount-1)">{{bookMark.pageCount}}</a>
+                            </template>
+
+                            <template v-else-if="bookMark.pageIndex + 5 > bookMark.pageCount">
+                                <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                <template v-for="i in 5">
+                                    <a class="active" v-if="bookMark.pageCount - 6 + i == bookMark.pageIndex"
+                                       href="javascript:">{{bookMark.pageIndex+1}}</a>
+                                    <a href="javascript:" v-else v-on:click="setPageIndex(bookMark.pageCount - 6 + i)">{{bookMark.pageCount
+                                        - 5 + i}}</a>
+                                </template>
+                            </template>
+
+                            <template v-else>
+                                <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex - 2)">{{bookMark.pageIndex
+                                    - 1}}</a>
+                                <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex - 1)">{{bookMark.pageIndex}}</a>
+                                <a href="javascript:" class="active">{{bookMark.pageIndex + 1}}</a>
+                                <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex + 1)">{{bookMark.pageIndex
+                                    + 2}}</a>
+                                <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex + 2)">{{bookMark.pageIndex
+                                    + 3}}</a>
+                                <span class="ellipsis">…</span><a href="javascript:"
+                                                                  v-on:click="setPageIndex(bookMark.pageCount-1)">{{bookMark.pageCount}}</a>
+                            </template>
+                        </template>
+                        <a class="page-prev defalt" href="javascript:;"
+                           v-if="bookMark.pageIndex+1 == bookMark.pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                        <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookMark.pageIndex+1)"><i
+                                class="iconfont">&#xe7cf;</i></a>
+                        共{{bookMark.pageCount}}页，到第<input type="text" class="text" v-model="bookMark.goPageNo">页<a
+                            href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+
+    </template>
+
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="map-menu"><a href="" target="_blank" rel="nofollow">关于本站</a><a
+                href="" target="_blank" rel="nofollow">联系我们</a><a href=""
+                                                                                  target="_blank"
+                                                                                  rel="nofollow">会员帮助</a><a
+                href="" target="_blank" rel="nofollow">作者帮助</a></div>
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/JQBox.js?"></script>
+<script src="js/Util.js"></script>
+<script src="js/newmenutop.js"></script>
+
+<script src="js/commonbox.js"></script>
+<script src="js/lazyimgload.js"></script>
+<script src="js/statpage_pc.js"></script>
+<div id="statdiv" style="display:none;"></div>-->
+<script>
+    setTimeout(function () {
+        if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf("gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {
+            $('#statdiv').append('<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>');
+        }
+
+        //百度统计
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa574454240bf693f1d8415a3915f25ff' type='text/javascript'%3E%3C/script%3E"));
+        //cnzz统计
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape("%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
+    }, 200);
+</script>
+<!--<script src="js/vue.min.js"></script>-->
+<!--<script src="js/clipboard.min.js"></script>
+<script src="js/user_shelf.js"></script>
+
+<script src=" js/user_bookmark.js"></script>
+<script src=" js/user_bookreview.js"></script>
+<script src=" js/user_cost.js"></script>
+
+<script src=" js/user_subcribe.js"></script>
+<script src=" js/user_set.js"></script>
+
+<script src=" js/user_task.js"></script>
+
+<script src="js/user_share.js"></script>
+<script src=" js/bookorder.js"></script>
+<script src=" js/user_bookorder.js"></script>
+<script src="js/user_bookticket.js"></script>
+<script src=" js/user_message.js"></script>
+<script src=" js/user_lotteryticket.js"></script>
+
+<script src=" js/user_index.js"></script>
+
+<script type="text/javascript">-->
+
+</script>
+
+<script>
+    var obj = {
+        signInfo: {
+            hasSign: parseInt(0) == 1,
+            signDays: parseInt(0),
+            continueSignDays: parseInt(0),
+            signScore: parseInt(0)
+        },
+        accountInfo: {
+            account: parseInt(0),
+            yuanbao: parseInt(0),
+            tiyanbi: parseInt(0),
+            monticketCount: parseInt(0),
+            assessticketCount: parseInt(0),
+            bookCaseCount: parseInt(3)
+        },
+        userInfo: {
+            face: '',
+            mobile: '151*****271',
+            userName: '151*****271',
+            nickName: '',
+            regTime: new Date('2020/7/2 9:12:21'.replace(/-/g, '/')).format('yyyy-MM-dd hh:mm'),
+            sex: parseInt(0),
+            vip: parseInt(0) == 1,
+            vipLevel: parseInt(0),
+            switchList: [parseInt(1),
+                parseInt(1),
+                parseInt(1),
+                parseInt(1),
+                parseInt(1)],
+            isShowNicknameSet: parseInt(1) == 1,
+            isShowFaceSet: parseInt(0) == 1,
+
+        },
+        initFirstTabIndex: parseInt(1)
+    }
+
+    Init(obj);
+
+</script>
+</body>
+</html>
