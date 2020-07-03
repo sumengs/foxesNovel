@@ -56,7 +56,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             if (StringUtils.isNotEmpty(searchMap.get("keywords"))) {
 
                 boolQuery.must(QueryBuilders
-                        .queryStringQuery(searchMap.get("keywords")).field("author").field("name"));
+                        .queryStringQuery(searchMap.get("keywords")).field("name").field("author"));
             }
             //男女频选则
             if (StringUtils.isNotEmpty(searchMap.get("channel"))) {
@@ -124,7 +124,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             //开始查询
             AggregatedPage<BookInfo> bookInfos = this.searchBook(nativeSearchQueryBuilder);
 
-            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages()) {
+            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages() && bookInfos.getTotalPages()!=0) {
 
                 pageNum = String.valueOf(bookInfos.getTotalPages());
                 nativeSearchQueryBuilder.withPageable(

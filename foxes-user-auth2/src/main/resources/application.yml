@@ -2,7 +2,7 @@ server:
   port: 9200
 spring:
   application:
-    name: user-auth
+    name: user-oauth
   redis:
     host: 192.168.26.100
     port: 6379

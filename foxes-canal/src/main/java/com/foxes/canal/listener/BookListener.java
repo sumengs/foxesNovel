@@ -22,6 +22,7 @@ public class BookListener {
 
     @ListenPoint(schema = "foxes-novel",table = "tb_book")
     public void goodsUp(CanalEntry.EventType eventType, CanalEntry.RowData rowData){
+
         System.out.println("监听到数据库变化");
 
         //获取改变之前的数据并这部分数据转换为map
@@ -40,7 +41,7 @@ public class BookListener {
             rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE, "", newData.get("id"));
         }
         //是否下架
-        if (oldStatus.equals(newData.get(str)) && newStatus.equals(oldData.get(str))){
+        if ("1".equals(oldData.get("is_delete")) && "0".equals(newData.get("is_delete"))){
             //是下架,ES执行删除
             rabbitTemplate.convertAndSend(ESrabbitMQConfig.BOOK_ESUP_EXCHANGE,"",newData.get("id")+",down");
         }else {
