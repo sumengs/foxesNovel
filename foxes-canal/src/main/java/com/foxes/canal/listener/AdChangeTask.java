@@ -24,7 +24,7 @@ public class AdChangeTask {
     private RabbitTemplate rabbitTemplate;
 
 
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0/30 * * * * ?")
     public void adChangeTask() {
         Date date = new Date();
         System.out.println(date);
