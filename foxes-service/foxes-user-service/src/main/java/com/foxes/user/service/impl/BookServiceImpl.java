@@ -62,7 +62,7 @@ public class BookServiceImpl implements BookService {
     //最近阅读的小说id添加到redis中
     @Override
     public void addTime(String bookId) {
-        String username = "zhangsan";
+        String username = "foxes";
         Long size = redisTemplate.opsForList().size(username);
         if (size > 2) {
             redisTemplate.opsForList().rightPop(username);
@@ -72,8 +72,8 @@ public class BookServiceImpl implements BookService {
 
     //查询最近阅读
     @Override
-    public List<Book> listFavourite(String bookId) {
-        String username = "zhangsan";
+    public List<Book> listFavourite() {
+        String username = "foxes";
         List<String> range = redisTemplate.opsForList().range(username, 0, redisTemplate.opsForList().size(username));
         List<Book> bookList = new ArrayList<>();
         for (String book : range) {

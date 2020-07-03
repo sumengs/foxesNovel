@@ -1,6 +1,8 @@
 server:
   port: 9005
 spring:
+  rabbitmq:
+    host: 192.168.26.100
   application:
     name: user
   datasource:
@@ -10,6 +12,8 @@ spring:
     password: root
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  redis:
+    host: 192.168.26.100
 eureka:
   client:
     service-url:
@@ -37,3 +41,4 @@ hystrix:
           thread:
             # 熔断器超时时间，默认：1000/毫秒
             timeoutInMilliseconds: 20000
+

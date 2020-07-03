@@ -22,6 +22,7 @@ public class BookListener {
 
     @ListenPoint(schema = "foxes-novel",table = "tb_book")
     public void goodsUp(CanalEntry.EventType eventType, CanalEntry.RowData rowData){
+
         System.out.println("监听到数据库变化");
 
         //获取改变之前的数据并这部分数据转换为map

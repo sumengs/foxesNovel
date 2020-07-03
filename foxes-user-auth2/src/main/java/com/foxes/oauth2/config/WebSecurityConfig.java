@@ -26,12 +26,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
                 "/oauth/login",
                 "/oauth/logout",
-                "/oauth/toLogin",
                 "/login.html",
                 "/css/**",
                 "/data/**",
                 "/fonts/**",
-                "/img/**",
+                "/image/**",
                 "/js/**",
                 "/plugins/**");
     }
