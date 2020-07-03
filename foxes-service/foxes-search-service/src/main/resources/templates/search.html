@@ -92,7 +92,7 @@
     <div class="container">
         <div class="top-main cl">
             <a href="/index.html" class="logo">
-                <img src="/images/foxRead.png" style="height: 80px" alt="Foxes小说网">
+                <img th:src="@{../images/foxRead.png}" style="height: 80px" alt="Foxes小说网">
             </a>
             <div class="guide-writer">
                 <a class="become" href="javascript:" target="_blank">
@@ -103,7 +103,7 @@
                 </a>
             </div>
             <div class="search-bar">
-                <form id="hform" name="hform" th:action="@{/sweb/search}">
+                <form id="hform" name="hform" th:action="@{/search/sweb/search}">
 
                     <input th:type="text" class="search-text" placeholder="" name="keywords"
                            th:value="${searchMap.keywords}" maxlength="20">
@@ -190,21 +190,21 @@
                             </div>
                         </li>
                     </ul>
-                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>
+<!--                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>-->
                 </div>
                 <div class="search-result">
                     <div class="result-sort">
                         <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}" th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
 <!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
                         <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>
-                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='subscribeNum')}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">字数<span>↓</span></a>
+                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='subscribeNum')}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
 
                         <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}" th:class="'wordsNum'==${searchMap.sortField}?'active':''">字数<span>↓</span></a>
                         <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
                     </div>
-                    <div class="result-list">
+                    <div class="result-list" th:unless="${page.total}==0">
                         <ul>
-                            <li th:each="book,books:${items.rows}">
+                            <li th:each="book,books:${items.rows}" >
                                 <a class="book commonbook" href="book.html" target="_blank">
                                     <img data-src="">
                                 </a>
@@ -262,6 +262,10 @@
                         </div>
                     </div>
                 </div>
+                <div th:if="${page.total}==0">
+                    <img th:src="@{../images/nobook.png}" style="height: 300px">
+                </div>
+                    
             </div>
             <div class="inner-sidebar">
 

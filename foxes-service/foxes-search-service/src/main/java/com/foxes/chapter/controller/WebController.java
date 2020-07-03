@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,7 +21,7 @@ public class WebController {
 @Autowired
 private ESBookSearchService esBookSearchService;
 
-    @RequestMapping("/search")
+    @GetMapping("/search")
     public String toSearch(@RequestParam Map<String,String> map, Model model){
 
         if (map.get("keywords")==null){
@@ -41,7 +42,7 @@ private ESBookSearchService esBookSearchService;
                 Integer.parseInt(String.valueOf(search.get("pageSize")))
         );
         model.addAttribute("page",bookInfoPage);
-        StringBuilder url = new StringBuilder("/sweb/search?");
+        StringBuilder url = new StringBuilder("/search/sweb/search?");
         for (String s : map.keySet()) {
             if (!s.equals("sortRule")&&!s.equals("pageNum")&&!s.equals("pageSize")&&StringUtils.isNotEmpty(map.get(s))){
                 url.append(s).append("=").append(map.get(s)).append("&");

@@ -124,7 +124,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             //开始查询
             AggregatedPage<BookInfo> bookInfos = this.searchBook(nativeSearchQueryBuilder);
 
-            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages()) {
+            if (Integer.parseInt(pageNum) > bookInfos.getTotalPages() && bookInfos.getTotalPages()!=0) {
 
                 pageNum = String.valueOf(bookInfos.getTotalPages());
                 nativeSearchQueryBuilder.withPageable(
