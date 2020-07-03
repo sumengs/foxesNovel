@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 /**
  * @Author GaoZeXi on 2020/6/16
@@ -41,9 +39,11 @@ public class AuthController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Result<AuthToken> login(String username, String password, HttpServletResponse response,
+    public Result<AuthToken> login(@RequestBody HashMap<String,String> map, HttpServletResponse response,
                                    String redirectURL){
 
+        String username = map.get("username");
+        String password = map.get("password");
         //校验参数
         if (StringUtils.isEmpty(username)){
             throw new RuntimeException("请输入用户名");

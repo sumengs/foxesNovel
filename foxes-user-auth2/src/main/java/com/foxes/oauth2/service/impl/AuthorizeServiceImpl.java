@@ -104,4 +104,9 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         return "Basic " + new String(encode);
 
     }
+
+    public static void main(String[] args) {
+        String httpbasic = new AuthorizeServiceImpl().httpbasic("changgou", "changgou");
+        System.out.println(httpbasic);
+    }
 }
