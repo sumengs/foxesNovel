@@ -78,7 +78,7 @@
             <div class="column" id="loginaction">
                 <a v-if="!isLogin" href="http://localhost/oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
                 <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
-                <a v-if="isLogin" href="" class="userCenter">{{username}}</a>&ensp;
+                <a v-if="isLogin" href="" class="userCenter"><span v-text="username"></span></a>&ensp;
 
             </div>
             <!--
