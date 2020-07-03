@@ -21,6 +21,7 @@
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
+<div class="alert"></div>
 <div class="top-menu">
     <div class="container">
         <div class="download-app">
@@ -31,13 +32,11 @@
         <div class="guide-menu">
             <div class="column" id="loginaction"><a href="javascript:void(0);" class="login" id="headerLogin">登录</a>&ensp;<a
                     href="/Reg" class="register" target="_blank" rel="nofollow">注册</a></div>
-            <div class="column" id="userinfo" style="display: none;"><a href="/control" id="username" target="_blank"
-                                                                        rel="nofollow"></a>&ensp;<a href="javascript:"
-                                                                                                    class="register"
-                                                                                                    id="logout">退出</a>
+            <div class="column" id="userinfo" style="display: none;">
+                <a href="/control" id="username" target="_blank" rel="nofollow"></a>&ensp;<a class="register" id="logout">退出</a>
             </div>
             <div class="column more bookcase" id="menubookcase">
-                <a href="javascript:void(0);" class="my-book" id="mybookcase">我的书架</a>
+                <a href="/user/bookcase" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>
                 <div id="menucnt2" class="menu-ct menu-ct-2">
                     <div id="mybc">
@@ -67,17 +66,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
+            <div class="column"><a  class="service" target="_blank" rel="nofollow">联系客服</a></div>
         </div>
         <ul class="menu-style cl">
-            <li><a href="/category/1.html" class=''>玄幻</a></li>
-            <li><a href="/category/2.html" class=''>现代言情</a></li>
-            <li><a href="/category/3.html" class=''>玄幻仙侠</a></li>
-            <li><a href="/category/6.html" class=''>浪漫青春</a></li>
-            <li><a href="/category/5.html" class=''>悬疑</a></li>
-            <li><a href="/ip.html" class=''>改编频道</a></li>
-            <li><a href="/search?channel=1">男生频道</a></li>
-            <li><a href="/comic" class=''>漫画频道</a></li>
+            <li><a href="/search/sweb/search?&categoryName=玄幻" class=''>玄幻</a></li>
+            <li><a href="/search/sweb/search?&categoryName=都市" class=''>都市</a></li>
+            <li><a >浪漫青春</a></li>
+            <li><a >悬疑</a></li>
+            <li><a >改编频道</a></li>
+            <li><a href="/search/sweb/search?channel=1">男生频道</a></li>
+
 
         </ul>
     </div>
@@ -95,7 +93,7 @@
                 <img th:src="@{../images/foxRead.png}" style="height: 80px" alt="Foxes小说网">
             </a>
             <div class="guide-writer">
-                <a class="become" href="javascript:" target="_blank">
+                <a class="become" target="_blank">
                     <i class="iconfont">&#xe687;</i>我要当作家
                 </a>
                 <a class="welfare" href="javascript:" target="_blank">
@@ -109,7 +107,7 @@
                            th:value="${searchMap.keywords}" maxlength="20">
                     <span class="search-btn-bar">
                         <i class="iconfont">&#xe627;</i>
-                    <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
+                        <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
                     <button class="search-btn" th:type="submit"></button>
                 </form>
             </div>
@@ -117,11 +115,11 @@
         <div class="nav inner-nav cl">
             <ul class="main-menu">
                 <li><a href="/index.html">首页</a></li>
-                <li><a th:href="@{/sweb/search}">全部作品</a></li>
-                <li><a th:href="@{/sweb/search?status=1}">完本</a></li>
+                <li><a th:href="@{/search/sweb/search}">全部作品</a></li>
+                <li><a th:href="@{/search/sweb/search?status=1}">完本</a></li>
             </ul>
-            <div class="side-menu"><a class="writer" href="javascript:" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
-                    class="client" href="javascript:" onclick="commonBox.appBox();"><i class="iconfont">&#xe62d;</i>客户端</a>
+            <div class="side-menu"><a class="writer" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
+                    class="client"  ><i class="iconfont">&#xe62d;</i>客户端</a>
             </div>
         </div>
     </div>
@@ -135,12 +133,13 @@
                     <div class="bread">
                         <ul class="fl sui-breadcrumb">
                             <li>
-                                <a th:href="@{/sweb/search}" th:text="全部结果"></a> <b class="active" th:text="${searchMap.keywords}"></b>
-                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">频道:
+                                <a th:href="@{/search/sweb/search}" th:text="全部结果"></a> <b class="active"
+                                                                                    th:text="${searchMap.keywords}"></b>
+                                <b class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">频道:
                                     <b th:text="'1'==${searchMap.channel}?'男生':'女生'" class="active"></b>
                                     <a th:href="@{${#strings.replace(url,'&channel='+searchMap.channel,'')}}">×</a>
                                 </b>
-                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'categoryName')}">类别:
+                                <b class="with-x" th:if="${#maps.containsKey(searchMap,'categoryName')}">类别:
                                     <b th:text="${searchMap.categoryName}" class="active"></b>
                                     <a th:href="@{${#strings.replace(url,'&categoryName='+searchMap.categoryName,'')}}">×</a>
                                 </b>
@@ -160,10 +159,10 @@
                             <div class="tags" id="channeltype">
                                 <span class='active' data-value="0" data-type="channel">全部</span>
                                 <span>
-                                    <a th:href="@{${url}(channel='0')}"  th:text="女生"></a>
+                                    <a th:href="@{${url}(channel='0')}" th:text="女生"></a>
                                 </span>
                                 <span>
-                                    <a th:href="@{${url}(channel='1')}"  th:text="男生"> </a>
+                                    <a th:href="@{${url}(channel='1')}" th:text="男生"> </a>
                                 </span>
                             </div>
                         </li>
@@ -180,7 +179,7 @@
                         <li class='l_status ' th:unless="${#maps.containsKey(searchMap,'status')}">
                             <strong>状态：</strong>
                             <div class="tags">
-                                <span class='active'   th:text="全部"></span>
+                                <span class='active' th:text="全部"></span>
                                 <span>
                                     <a th:href="@{${url}('status'='0')}" th:text="连载"></a>
                                 </span>
@@ -190,62 +189,88 @@
                             </div>
                         </li>
                     </ul>
-<!--                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>-->
+                    <!--                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>-->
                 </div>
                 <div class="search-result">
                     <div class="result-sort">
-                        <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}" th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
-<!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
-                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>
-                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='subscribeNum')}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
+                        <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}"
+                           th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
+                        <!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
+                        <div th:if="${searchMap.sortField}==''">
+                            <a  th:href="@{${url}('sortField'='wordsNum')}">按字数<span>↓</span></a>
+                            <a  th:href="@{${url}('sortField'='subscribeNum')}">按收藏<span>↓</span></a>
+                            <a  th:href="@{${url}('sortField'='readNum')}" >按点击</a>
+                        </div>
 
-                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}" th:class="'wordsNum'==${searchMap.sortField}?'active':''">字数<span>↓</span></a>
-                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}"
+                            th:class="'wordsNum'==${searchMap.sortField}?'active':''">按字数<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}"
+                            th:class="${searchMap.sortField=='subscribeNum'?'active':''}">按收藏<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=readNum')}}"
+                            th:class="${searchMap.sortField=='readNum'?'active':''}">按点击<span>↓</span></a>
+
                     </div>
                     <div class="result-list" th:unless="${page.total}==0">
                         <ul>
-                            <li th:each="book,books:${items.rows}" >
+                            <li th:each="book,books:${items.rows}">
                                 <a class="book commonbook" th:href="@{/book/book/${book.id}.html}" target="_blank">
-                                    <img th:src="@{${book.imges}}">
+                                    <img th:src="@{${book.image}}">
                                 </a>
                                 <div class="info">
                                     <h4>
-                                        <a th:href="@{/book/book/${book.id}.html}" target="_blank"><span th:text="${book.name}"></span> </a>
+                                        <a th:href="@{/book/book/${book.id}.html}" target="_blank"><span
+                                                th:text="${book.name}"></span> </a>
                                         <span class="subtitle">
                                                         <a target="_blank" href="javascript:"><i
                                                                 class="iconfont">&#xe604;</i><span
                                                                 th:text="${book.author}"></span> </a>
                                                             <a target="_blank" href="javascript:"><span
                                                                     th:text="${book.categoryName}"></span> </a>
-                                                        <span>已完成</span>
+                                                        <span th:if="${book.status}==1" th:text="已完结"></span>
+                                                        <span th:if="${book.status}==0" th:text="连载中"></span>
                                                     </span>
                                     </h4>
                                     <p class="detail"><span th:text="${book.abstracts}"></span></p>
                                     <p class="number">
-                                        <span>更新：<span th:text="${book.releaseTime}"></span></span><span>字数：<span
-                                            th:text="${book.wordsNum}"></span></span></p>
+                                        <span>更新：<span
+                                                th:text="${#dates.format(book.releaseTime,'yyyy-MM-dd hh:mm:ss')}"></span></span>
+                                        <span>字数：<span
+                                            th:text="${book.wordsNum}"></span></span>
+                                        <span>点击：<span
+                                                th:text="${book.readNum}"></span></span>
+                                    </p>
                                     <div class="action">
-                                        <a href="javascript:" class="order-btn" onclick="addShelft(949361)"
-                                           id="addShelfBtn949361">放入书架</a>
+                                        <a class="order-btn" id="addShelfBtn" th:onclick="'javascript:addShelf(\''+${book.id}+'\');'"   th:text="放入书架"></a>
                                     </div>
                                 </div>
+
                             </li>
 
                         </ul>
-                        <div class="pages">
-                            <!--上一页-->
-                            <a th:unless="${items.pageNum}=='1'" class="go" th:href="@{${url}(pageNum=${page.currentpage-1})}">
-                                <i class="iconfont">&#xe7d0;</i>
-                            </a>
-                            <!--总页数10页以内-->
-                            <span   th:each="i:${#numbers.sequence(page.lpage,page.rpage)}" th:class="${i}==${page.currentpage}?'active':''">
-                                <a th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
-                            </span>
-                            <!--下一页-->
-                            <a  th:unless="${items.pageNum}==${page.last}" class="go" th:href="@{${url}(pageNum=${page.currentpage+1})}" >
-                                <i class="iconfont">&#xe7cf;</i>
-                            </a >
-                            <span style="margin-left: 50px" id="gopage">
+                        <table>
+                        <tr>
+                            <td width="65%" height="70px">
+                                <span style="margin-left: 100px" class="pages">
+                                <!--上一页-->
+                                <a th:unless="${items.pageNum}=='1'" class="go"
+                                   th:href="@{${url}(pageNum=${page.currentpage-1})}">
+                                    <i class="iconfont">&#xe7d0;</i>
+                                </a>
+                                    <!--总页数10页以内-->
+                                <span  th:each="i:${#numbers.sequence(page.lpage,page.rpage)}">
+                                    <a th:class="${i}==${page.currentpage}?'active':''" th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
+                                </span>
+                                    <!--下一页-->
+                                <a th:unless="${items.pageNum}==${page.last}" class="go"
+                                   th:href="@{${url}(pageNum=${page.currentpage+1})}">
+                                    <i class="iconfont">&#xe7cf;</i>
+                                </a>
+                                </span>
+                            </td>
+                            <td align="right" width="280px" >
                                <!-- 共<span th:text="${items.totalPages}"></span> 页，到第
                                 <input th:value="${page.currentpage}"  th:type="text" class="text" name="toPage">页
                                 <a th:href="@{${url}(pageNum=${page.currentpage})}"  class="go">GO</a>
@@ -253,19 +278,20 @@
 
                                  <form id="hform" name="hform" th:action="@{${#strings.replace(url,'&pageNum='+page.currentpage,'')}}">
                                      共<span th:text="${items.totalPages}"></span> 页，到第
-                                <input th:type="text" class="text" placeholder="" name="pageNum"
-                                       th:value="${items.pageNum}" maxlength="20">页
-                                <button class="search-btn" th:type="submit" >GO</button>
-                            </form>
+                                    <input style="width:20px;" th:type="text" class="text" placeholder="" name="pageNum"
+                                           th:value="${items.pageNum}" maxlength="20">页
+                                    <button class="search-btn" th:type="submit">GO</button>
+                                </form>
                             </span>
-
-                        </div>
+                            </td>
+                        </tr>
+                        </table>
                     </div>
                 </div>
                 <div th:if="${page.total}==0">
                     <img th:src="@{../images/nobook.png}" style="height: 300px">
                 </div>
-                    
+
             </div>
             <div class="inner-sidebar">
 
@@ -278,95 +304,95 @@
                         <div class="bd-main">
                             <dl class="dl-list">
                                 <dd><span class="classify">[古言]</span><span class="author">夜寒梓</span><a
-                                        href="/info/1350562.html" target="_blank" xid="1088101" tid="398">林家娇女种田忙</a>
+                                        href="" target="_blank" xid="1088101" tid="398">林家娇女种田忙</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">墨染清安</span><a
-                                        href="/info/1379377.html" target="_blank" xid="1088092" tid="391">重生食神学霸不软萌</a>
+                                        href="" target="_blank" xid="1088092" tid="391">重生食神学霸不软萌</a>
                                 </dd>
                                 <dd><span class="classify">[现实]</span><span class="author">暗夜璨枭</span><a
-                                        href="/info/1412177.html" target="_blank" xid="1088103" tid="398">最美逆行者之时代圆梦</a>
+                                        href="" target="_blank" xid="1088103" tid="398">最美逆行者之时代圆梦</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">一见安和</span><a
-                                        href="/info/1430213.html" target="_blank" xid="1088083" tid="380">我养大的孩子太监了</a>
+                                        href="" target="_blank" xid="1088083" tid="380">我养大的孩子太监了</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">耳东蔚然</span><a
-                                        href="/info/1416135.html" target="_blank" xid="1085308" tid="381">未婚妻她突然变A了</a>
+                                        href="" target="_blank" xid="1085308" tid="381">未婚妻她突然变A了</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">思羽长安</span><a
-                                        href="/info/1398276.html" target="_blank" xid="1088091" tid="391">顾少你老婆要翻天了</a>
+                                        href="" target="_blank" xid="1088091" tid="391">顾少你老婆要翻天了</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">雪年年</span><a
-                                        href="/info/1357082.html" target="_blank" xid="1088090"
+                                        href="" target="_blank" xid="1088090"
                                         tid="391">盛世豪门之夫人又凶又萌</a></dd>
                                 <dd><span class="classify">[古言]</span><span class="author">又浪又慢</span><a
-                                        href="/info/1420454.html" target="_blank" xid="1088088" tid="391">女帝重生之逢公子</a>
+                                        href="" target="_blank" xid="1088088" tid="391">女帝重生之逢公子</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">花间妖</span><a
-                                        href="/info/1412616.html" target="_blank" xid="1088102" tid="398">村花小妻凶又甜</a>
+                                        href="" target="_blank" xid="1088102" tid="398">村花小妻凶又甜</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">画江</span><a
-                                        href="/info/1410169.html" target="_blank" xid="1088110" tid="402">皇后是门技术活</a>
+                                        href="" target="_blank" xid="1088110" tid="402">皇后是门技术活</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">树幺幺</span><a
-                                        href="/info/1356898.html" target="_blank" xid="1088089" tid="391">亲爱的沐先生</a>
+                                        href="" target="_blank" xid="1088089" tid="391">亲爱的沐先生</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">尤妮丝</span><a
-                                        href="/info/1418069.html" target="_blank" xid="1088099" tid="398">清穿咸鱼攻略</a>
+                                        href="" target="_blank" xid="1088099" tid="398">清穿咸鱼攻略</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">关涩</span><a
-                                        href="/info/1410279.html" target="_blank" xid="1088104" tid="398">重生之太女殿下又飘了</a>
+                                        href="" target="_blank" xid="1088104" tid="398">重生之太女殿下又飘了</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">时舒影</span><a
-                                        href="/info/1402994.html" target="_blank" xid="1088093" tid="391">穿书奇缘之爱上男二</a>
+                                        href="" target="_blank" xid="1088093" tid="391">穿书奇缘之爱上男二</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">渐进淡出</span><a
-                                        href="/info/1372809.html" target="_blank" xid="1088100" tid="398">农女福妃名动天下</a>
+                                        href="" target="_blank" xid="1088100" tid="398">农女福妃名动天下</a>
                                 </dd>
                             </dl>
                         </div>
                         <div class="bd-main" style="display: none">
                             <dl class="dl-list">
                                 <dd><span class="classify">[仙侠]</span><span class="author">金铃动</span><a
-                                        href="/info/1064756.html" target="_blank" xid="1088111" tid="403">极品女仙</a></dd>
+                                        href="" target="_blank" xid="1088111" tid="403">极品女仙</a></dd>
                                 <dd><span class="classify">[古言]</span><span class="author">坐酌泠泠水</span><a
-                                        href="/info/971702.html" target="_blank" xid="1088109" tid="401">古代农家日常</a></dd>
+                                        href="" target="_blank" xid="1088109" tid="401">古代农家日常</a></dd>
                                 <dd><span class="classify">[科幻]</span><span class="author">谢君顾</span><a
-                                        href="/info/1335701.html" target="_blank" xid="1088096" tid="395">快穿美食直播间</a>
+                                        href="" target="_blank" xid="1088096" tid="395">快穿美食直播间</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">情非缘浅</span><a
-                                        href="/info/924814.html" target="_blank" xid="1088108" tid="401">步步逼婚之甜蜜暴击</a>
+                                        href="" target="_blank" xid="1088108" tid="401">步步逼婚之甜蜜暴击</a>
                                 </dd>
                                 <dd><span class="classify">[科幻]</span><span class="author">旺财是只喵</span><a
-                                        href="/info/969725.html" target="_blank" xid="1088105" tid="401">快穿之每次都是我躺枪</a>
+                                        href="" target="_blank" xid="1088105" tid="401">快穿之每次都是我躺枪</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">天泠</span><a
-                                        href="/info/949361.html" target="_blank" xid="1088095" tid="395">盛世娇宠之名门闺香</a>
+                                        href="" target="_blank" xid="1088095" tid="395">盛世娇宠之名门闺香</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">一只小胖</span><a
-                                        href="/info/1103667.html" target="_blank" xid="1088098" tid="395">重生农家清荷</a>
+                                        href="" target="_blank" xid="1088098" tid="395">重生农家清荷</a>
                                 </dd>
                                 <dd><span class="classify">[科幻]</span><span class="author">蜜语心言</span><a
-                                        href="/info/976640.html" target="_blank" xid="1088097" tid="395">快穿之炮灰的开挂人生</a>
+                                        href="" target="_blank" xid="1088097" tid="395">快穿之炮灰的开挂人生</a>
                                 </dd>
                                 <dd><span class="classify">[青春]</span><span class="author">依琴翩飞</span><a
-                                        href="/info/977785.html" target="_blank" xid="1088084" tid="383">重生学霸小甜妻</a>
+                                        href="" target="_blank" xid="1088084" tid="383">重生学霸小甜妻</a>
                                 </dd>
                                 <dd><span class="classify">[玄幻]</span><span class="author">莉莉薇</span><a
-                                        href="/info/967746.html" target="_blank" xid="1088106" tid="401">喜劫良缘</a></dd>
+                                        href="" target="_blank" xid="1088106" tid="401">喜劫良缘</a></dd>
                                 <dd><span class="classify">[现言]</span><span class="author">酷美人</span><a
-                                        href="/info/1366017.html" target="_blank" xid="1088087" tid="384">九十年代美好生活</a>
+                                        href="" target="_blank" xid="1088087" tid="384">九十年代美好生活</a>
                                 </dd>
                                 <dd><span class="classify">[现言]</span><span class="author">京剧猫</span><a
-                                        href="/info/1344790.html" target="_blank" xid="1088085" tid="383">隔壁大佬又帅又苏</a>
+                                        href="" target="_blank" xid="1088085" tid="383">隔壁大佬又帅又苏</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">风雨归来兮</span><a
-                                        href="/info/1096243.html" target="_blank" xid="1088094" tid="395">病娇毒妃狠绝色</a>
+                                        href="" target="_blank" xid="1088094" tid="395">病娇毒妃狠绝色</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">酒心小草莓</span><a
-                                        href="/info/1355874.html" target="_blank" xid="1088086" tid="384">重生美人爱种田</a>
+                                        href="" target="_blank" xid="1088086" tid="384">重生美人爱种田</a>
                                 </dd>
                                 <dd><span class="classify">[古言]</span><span class="author">妖治天下</span><a
-                                        href="/info/1077202.html" target="_blank" xid="1088107" tid="401">家有庶夫套路深</a>
+                                        href="" target="_blank" xid="1088107" tid="401">家有庶夫套路深</a>
                                 </dd>
                             </dl>
                         </div>
@@ -379,154 +405,39 @@
                     <div class="box-bd">
                         <dl class="dl-list">
                             <dd><span class="classify">[科幻]</span><span class="author">薄荷水冰沙</span><a
-                                    href="/info/1427035.html" target="_blank" xid="1088036" tid="387">快穿骑士攻略系统</a></dd>
+                                    href="" target="_blank" xid="1088036" tid="387">快穿骑士攻略系统</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">松鼠鱼的果仁</span><a
-                                    href="/info/1439176.html" target="_blank" xid="1088028" tid="386">酿爱情的咖啡</a></dd>
+                                    href="" target="_blank" xid="1088028" tid="386">酿爱情的咖啡</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">蓁越</span><a
-                                    href="/info/1434985.html" target="_blank" xid="1088032" tid="387">独家娇宠已上线</a></dd>
+                                    href="" target="_blank" xid="1088032" tid="387">独家娇宠已上线</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">掌柜有糖</span><a
-                                    href="/info/1446030.html" target="_blank" xid="1088033" tid="387">这个书粉欠收拾</a></dd>
+                                    href="" target="_blank" xid="1088033" tid="387">这个书粉欠收拾</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">风梧</span><a
-                                    href="/info/1441363.html" target="_blank" xid="1088027" tid="386">不想跟大佬谈恋爱</a></dd>
+                                    href="" target="_blank" xid="1088027" tid="386">不想跟大佬谈恋爱</a></dd>
                             <dd><span class="classify">[古言]</span><span class="author">蝶舞芳踪</span><a
-                                    href="/info/1379719.html" target="_blank" xid="1088030" tid="387">穿越之安然的小日子</a></dd>
+                                    href="" target="_blank" xid="1088030" tid="387">穿越之安然的小日子</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">竹篱清茶</span><a
-                                    href="/info/1444139.html" target="_blank" xid="1088034" tid="387">重生之我有灵泉</a></dd>
+                                    href="" target="_blank" xid="1088034" tid="387">重生之我有灵泉</a></dd>
                             <dd><span class="classify">[古言]</span><span class="author">木昔麦禾</span><a
-                                    href="/info/1441422.html" target="_blank" xid="1088035" tid="387">郡主她奉旨出嫁</a></dd>
+                                    href="" target="_blank" xid="1088035" tid="387">郡主她奉旨出嫁</a></dd>
                             <dd><span class="classify">[古言]</span><span class="author">南瓜不在忧伤</span><a
-                                    href="/info/1443426.html" target="_blank" xid="1088037" tid="388">古代末日生存录</a></dd>
+                                    href="" target="_blank" xid="1088037" tid="388">古代末日生存录</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">小二园</span><a
-                                    href="/info/1445426.html" target="_blank" xid="1088029" tid="386">老公是高岭之花</a></dd>
+                                    href="" target="_blank" xid="1088029" tid="386">老公是高岭之花</a></dd>
                             <dd><span class="classify">[古言]</span><span class="author">晏晏其语</span><a
-                                    href="/info/1439606.html" target="_blank" xid="1088023" tid="386">帝姬今天不想出门</a></dd>
+                                    href="" target="_blank" xid="1088023" tid="386">帝姬今天不想出门</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">山野点雾灯</span><a
-                                    href="/info/1440584.html" target="_blank" xid="1088024" tid="386">他作精病娇还黑莲花</a></dd>
+                                    href="" target="_blank" xid="1088024" tid="386">他作精病娇还黑莲花</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">铛铛</span><a
-                                    href="/info/1442411.html" target="_blank" xid="1088031" tid="387">穿书后我成了反派的心头宝</a>
+                                    href="" target="_blank" xid="1088031" tid="387">穿书后我成了反派的心头宝</a>
                             </dd>
                             <dd><span class="classify">[古言]</span><span class="author">维兮唯兮</span><a
-                                    href="/info/1445988.html" target="_blank" xid="1088025" tid="386">将门新妻</a></dd>
+                                    href="" target="_blank" xid="1088025" tid="386">将门新妻</a></dd>
                             <dd><span class="classify">[现言]</span><span class="author">秋天的信</span><a
-                                    href="/info/1436305.html" target="_blank" xid="1088026" tid="386">重生之倩女纪事</a></dd>
+                                    href="" target="_blank" xid="1088026" tid="386">重生之倩女纪事</a></dd>
                         </dl>
                     </div>
                 </div>
-                <div class="box-con tab bang-tab">
-                    <div class="box-hd hd">
-                        <h3 class="active">月票榜</h3>
-                        <h3>打赏榜</h3>
-                    </div>
-                    <div class="bd">
-                        <ul class="ranking-list">
-                            <li class="n1">
-                                <a class="book" href="/info/1072387.html" target="_blank">
-                                    <img src="">
-                                </a>
-                                <div class="detail">
-                                    <span class="num">NO.1</span>
-                                    <p class="name"><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                                    <p class="piao"><em>4990</em>月票</p>
-                                    <p class="author">古言&ensp;|&ensp;天下归元</p>
-                                </div>
-                            </li>
-                            <li class="n2">
-                                <span class="piao">3862</span>
-                                <span class="num">2</span>
-                                <p><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                            </li>
-                            <li class="n3">
-                                <span class="piao">2874</span>
-                                <span class="num">3</span>
-                                <p><a href="/info/1099917.html" target="_blank">我全家都是穿来的</a></p>
-                            </li>
-                            <li class="n4">
-                                <span class="piao">2559</span>
-                                <span class="num">4</span>
-                                <p><a href="/info/1363431.html" target="_blank">婚后被大佬惯坏了</a></p>
-                            </li>
-                            <li class="n5">
-                                <span class="piao">2455</span>
-                                <span class="num">5</span>
-                                <p><a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a></p>
-                            </li>
-                            <li class="n6">
-                                <span class="piao">2434</span>
-                                <span class="num">6</span>
-                                <p><a href="/info/971626.html" target="_blank">前方高能</a></p>
-                            </li>
-                            <li class="n7">
-                                <span class="piao">2426</span>
-                                <span class="num">7</span>
-                                <p><a href="/info/1429968.html" target="_blank">问丹朱</a></p>
-                            </li>
-                            <li class="n8">
-                                <span class="piao">2122</span>
-                                <span class="num">8</span>
-                                <p><a href="/info/1382598.html" target="_blank">纨绔天医</a></p>
-                            </li>
-                            <li class="n9">
-                                <span class="piao">2095</span>
-                                <span class="num">9</span>
-                                <p><a href="/info/1349331.html" target="_blank">红尘篱落</a></p>
-                            </li>
-                            <li class="n10">
-                                <span class="piao">1826</span>
-                                <span class="num">10</span>
-                                <p><a href="/info/1093857.html" target="_blank">龙飞凤仵</a></p>
-                            </li>
-                        </ul>
-                        <ul class="ranking-list" style="display: none">
-                            <li class="n1">
-                                <a class="book" href="/info/1406701.html" target="_blank">
-                                    <img data-src="">
-                                </a>
-                                <div class="detail">
-                                    <span class="num">NO.1</span>
-                                    <p class="name"><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                                    <p class="author" style="margin-top:26px;">现言&ensp;|&ensp;一路烦花</p>
-                                </div>
-                            </li>
-                            <li class="n2">
-                                <span class="num">2</span>
-                                <p><a href="/info/1447650.html" target="_blank">爱在随遇而安</a></p>
-                            </li>
-                            <li class="n3">
-                                <span class="num">3</span>
-                                <p><a href="/info/1363450.html" target="_blank">人人都爱于休休</a></p>
-                            </li>
-                            <li class="n4">
-                                <span class="num">4</span>
-                                <p><a href="/info/1071347.html" target="_blank">绝世倾城之尊主归来</a></p>
-                            </li>
-                            <li class="n5">
-                                <span class="num">5</span>
-                                <p><a href="/info/1444877.html" target="_blank">今天大佬又不做人了</a></p>
-                            </li>
-                            <li class="n6">
-                                <span class="num">6</span>
-                                <p><a href="/info/1408580.html" target="_blank">徒儿你自寻死路</a></p>
-                            </li>
-                            <li class="n7">
-                                <span class="num">7</span>
-                                <p><a href="/info/1425251.html" target="_blank">重生王妃太难哄</a></p>
-                            </li>
-                            <li class="n8">
-                                <span class="num">8</span>
-                                <p><a href="/info/1406896.html" target="_blank">豪门谋婚之大佬宠妻入骨</a></p>
-                            </li>
-                            <li class="n9">
-                                <span class="num">9</span>
-                                <p><a href="/info/1415031.html" target="_blank">穿越农女要回家</a></p>
-                            </li>
-                            <li class="n10">
-                                <span class="num">10</span>
-                                <p><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -565,39 +476,36 @@
 </script>
 <script th:src="@{../js/commendclickbyjquery.js}"></script>
 <!-- 引入组件库 -->
-<script th:src="@{../js/vue.js}" ></script>
+<script th:src="@{../js/vue.js}"></script>
 <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
-<script th:src="@{../js/axios.js}" ></script>
+<script th:src="@{../js/axios.js}"></script>
 <script th:inline="javascript">
-    var app = new Vue({
-        el: "#gopage",
-        data: {
-           pageNum: [[${items.pageNum}]]
-        },
-        methods: {
-            toPage: function () {
-                var s = this.pageNum;
-                alert(s)
+    function addShelf(bookId) {
+        $.ajax({
+            type: "GET",
+            url:"/bookshelf/add/"+bookId,
+            success: function (response) {
+                if (response.data.flag){
+                    $('.alert').html('加入书架成功').addClass('alert-success').show().delay(2500).fadeOut();
+                    doReload();
+                }else {
+                    alert("加入书架失败")
+                }
+            },
+            error: function () {
+                $('.alert').html('服务器忙,加入书架失败').addClass('alert-warning').show().delay(2500).fadeOut();
+                doReload();
 
             }
-        }
-    })
-    var search = new Vue({
-        el: "#header",
-        data: {
-            searchkeywords: "123"
-        },
-        methods: {
-            search: function () {
-                var s = this.searchkeywords;
-                axios.get("/search/keywords?keywords=" + s).then(function (response) {
-                    if (response.data.flag) {
-                        alert("111");
-                    }
-                })
-            }
-        }
-    })
+        });
+
+
+
+    }
+
+
+
+
 </script>
 </body>
 </html>

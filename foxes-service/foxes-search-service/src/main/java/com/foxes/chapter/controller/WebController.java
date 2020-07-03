@@ -42,7 +42,7 @@ private ESBookSearchService esBookSearchService;
                 Integer.parseInt(String.valueOf(search.get("pageSize")))
         );
         model.addAttribute("page",bookInfoPage);
-        StringBuilder url = new StringBuilder("/search/sweb/search?");
+        StringBuilder url = new StringBuilder("/search/sweb/search?&");
         for (String s : map.keySet()) {
             if (!s.equals("sortRule")&&!s.equals("pageNum")&&!s.equals("pageSize")&&StringUtils.isNotEmpty(map.get(s))){
                 url.append(s).append("=").append(map.get(s)).append("&");

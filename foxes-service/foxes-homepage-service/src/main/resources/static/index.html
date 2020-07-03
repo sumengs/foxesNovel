@@ -22,11 +22,16 @@
 
     <link href="css/iconfont.css" rel="stylesheet"/>
     <link href="css/global.css" rel="stylesheet" type="text/css"/>
+    <script src="js/cookie.js"></script>
+    <script src="js/vue.js"></script>
 
     <link href="css/base.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/JQBox.css"/>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <script>
+
+
+
         function getCookieValue(cookieName) {
             var arr, reg = new RegExp("(^| )" + cookieName + "=([^;]*)(;|$)");
             if (arr = document.cookie.match(reg))
@@ -40,6 +45,25 @@
             top.location.href = "";
         }
     </script>
+
+    <script>
+        var user_app =  new Vue({
+            el:"#userCenter",
+            data:{
+                username:"",
+                isLogin:false
+            },
+            created(){
+                let cookie = getCookie("username");
+                if(cookie.length>0){
+                    this.isLogin=true;
+                    this.username=cookie;
+                }
+
+            }
+        })
+
+    </script>
 </head>
 
 <body>
@@ -50,12 +74,19 @@
             <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index"
                                                                                                   href="index.html">首页</a>
         </div>
-        <div class="guide-menu">
-            <div class="column" id="loginaction"><a href="" class="login" id="headerLogin">登录</a>&ensp;<a href=""
-                                                                                                          class="register"
-                                                                                                          target="_blank"
-                                                                                                          rel="nofollow">注册</a>
+        <div class="guide-menu" id="userCenter">
+            <div class="column" id="loginaction">
+                <a v-if="!isLogin" href="http://localhost/oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                <a v-if="isLogin" href="" class="userCenter">{{username}}</a>&ensp;
+
             </div>
+            <!--
+            根据cookie的值来判断是否登录
+
+            -->
+
+
             <div class="column" id="userinfo" style="display: none;">&ensp;<a href="javascript:" class="register"
                                                                               id="logout">退出</a></div>
             <div class="column more bookcase" id="menubookcase">
@@ -121,10 +152,10 @@
                     class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare" href="" target="_blank"><i
                     class="iconfont">&#xe600;</i>作家福利</a></div>
             <div class="search-bar">
-                <form id="hform" name="hform" action="search.html" method="" target="_blank">
-                    <input type="text" class="search-text" placeholder="霸道女总裁" name="" id="searchkeyword"><span
-                        class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit" value=""
-                                                                                      class="search-btn" id="gosearch"></span>
+                <form id="hform" name="keywords" action="/search/sweb/search" method="get" target="_blank">
+                    <input type="text" class="search-text" placeholder="霸道女总裁" name="keywords" id="searchkeyword"><span
+                        class="search-btn-bar"><i class="iconfont">&#xe627;</i>
+                    <button type="submit" class="search-btn" id="gosearch"></span>
                 </form>
             </div>
         </div>
@@ -200,7 +231,7 @@
                                 </dd>
                                 <dd><a href="" target="_blank" xid="1088042" tid="491">·书穿八十年代小女不倒</a></dd>
                                 <dd><a href="" target="_blank" xid="1088040" tid="491">·我成了神仙大佬心尖宠</a></dd>
-                                <dd><a href=" target=" _blank" xid="1088048" tid="493">·背靠爸爸好乘凉</a></dd>
+                                <dd><a href="" target="_blank" xid="1088048" tid="493">·背靠爸爸好乘凉</a></dd>
                                 <dd><a href="" target="_blank" xid="1088038" tid="491">·丧系大佬他背着我长歪了</a></dd>
                             </dl>
                         </div>
@@ -523,11 +554,11 @@
                         <ul class="ranking-list">
                             <li class="n1">
                                 <span class="num">NO.1</span>
-                                <a class="book" href="#" xid="1088653" tid="537">
-                                    <img src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF79bkyAQewwAACF9ujChgE444.jpg">
+                                <a class="book" href="/info/1445031.html" target="_blank" xid="1088653" tid="537">
+                                    <img data-src="">
                                 </a>
                                 <div class="detail">
-                                    <p class="name"><a href="#" xid="1088653"
+                                    <p class="name"><a href="/info/1445031.html" target="_blank" xid="1088653"
                                                        tid="537">国民男神他又绿了</a></p>
                                     <p class="author">作者：行走的叶阿回</p>
                                     <p class="classify">分类：现言</p>
@@ -536,13 +567,13 @@
                             <li class="n2">
                                 <span class="piao">宝贝鹿鹿</span>
                                 <span class="num">2</span>
-                                <p><a href="" xid="1088654"
+                                <p><a href="/info/1444875.html" target="_blank" xid="1088654"
                                       tid="537">锦绣嫡女之赖上摄政王</a></p>
                             </li>
                             <li class="n3">
                                 <span class="piao">黛笙</span>
                                 <span class="num">3</span>
-                                <p><a href="#"  xid="1088655"
+                                <p><a href="/info/1446546.html" target="_blank" xid="1088655"
                                       tid="537">先婚后爱之小夫人太狂傲</a></p>
                             </li>
                             <li class="n4">
@@ -609,6 +640,8 @@
     </div>
 </div>
 <script src="js/jquery.min.js"></script>
+
+
 <script>
 
     $(function () {
@@ -621,6 +654,7 @@
                 let images = response.data;
 
                 for (let i = 0; i < images.length; i++) {
+
                     $(".roasting .roastingslider").append(
                         "<li><a href='" + images[i].url + "' target='_blank'>" +
                         "<img src='" + images[i].image + "'>" +
@@ -648,7 +682,7 @@
             type: "GET",
             url: "weixin",
             success: function (response) {
-                let images=response.data;
+                let images = response.data;
                 $("#wx").attr("src", "" + images.image);
             }
         });

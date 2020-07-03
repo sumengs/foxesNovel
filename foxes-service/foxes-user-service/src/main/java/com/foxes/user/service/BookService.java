@@ -19,5 +19,5 @@ public interface BookService {
     void addTime(String bookId);
 
     //查询最近阅读
-    List<Book> listFavourite(String bookId);
+    List<Book> listFavourite();
 }
