@@ -22,6 +22,8 @@ public class BookServiceImpl implements BookService {
     private BookMapper bookMapper;
     @Autowired
     private TokenDecode tokenDecode;
+    private static final String SET_KEY="setKey-";
+    private static final String List_KEY="listKey-";
 
     //返回书架中的书(Book)
     @Override
@@ -29,7 +31,7 @@ public class BookServiceImpl implements BookService {
        // String username = tokenDecode.getUserInfo().get("username");
         String username = "zhangsan";
 
-        Set<String> members = redisTemplate.opsForSet().members(username);
+        Set<String> members = redisTemplate.opsForSet().members(SET_KEY+username);
         List<Book> bookList = new ArrayList<>();
 
         if (members != null && members.size() > 0) {
@@ -48,33 +50,33 @@ public class BookServiceImpl implements BookService {
     @Override
     public void add(String bookId) {
         String username = "zhangsan";
-        redisTemplate.opsForSet().add(username, bookId);
+        redisTemplate.opsForSet().add(SET_KEY+username, bookId);
     }
 
     //取消书架
     @Override
     public void delete(String bookId) {
         String username = "zhangsan";
-        redisTemplate.opsForSet().remove(username, bookId);
+        redisTemplate.opsForSet().remove(SET_KEY+username, bookId);
 
     }
 
     //最近阅读的小说id添加到redis中
     @Override
     public void addTime(String bookId) {
-        String username = "foxes";
-        Long size = redisTemplate.opsForList().size(username);
+        String username = "zhangsan";
+        Long size = redisTemplate.opsForList().size(List_KEY+username);
         if (size > 2) {
-            redisTemplate.opsForList().rightPop(username);
+            redisTemplate.opsForList().rightPop(List_KEY+username);
         }
-        redisTemplate.opsForList().leftPush(username, bookId);
+        redisTemplate.opsForList().leftPush(List_KEY+username, bookId);
     }
 
     //查询最近阅读
     @Override
     public List<Book> listFavourite() {
-        String username = "foxes";
-        List<String> range = redisTemplate.opsForList().range(username, 0, redisTemplate.opsForList().size(username));
+        String username = "zhangsan";
+        List<String> range = redisTemplate.opsForList().range(List_KEY+username, 0, redisTemplate.opsForList().size(List_KEY+username));
         List<Book> bookList = new ArrayList<>();
         for (String book : range) {
             Book book1 = bookMapper.selectByPrimaryKey(book);
