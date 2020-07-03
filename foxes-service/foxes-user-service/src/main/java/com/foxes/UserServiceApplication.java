@@ -15,7 +15,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan(basePackages = {"com.foxes.user.mapper"})
+@MapperScan(basePackages = {"com.foxes.user.mapper","com.foxes.user.dao"})
 public class UserServiceApplication {
 
     public static void main(String[] args) {
