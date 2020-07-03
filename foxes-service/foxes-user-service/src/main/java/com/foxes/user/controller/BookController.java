@@ -47,9 +47,9 @@ public class BookController {
     }
 
 
-    @GetMapping("/findFavourite/{bookId}")
-    public Result findFavourite(@PathVariable("bookId") String bookId) {
-        List<Book> bookList = bookService.listFavourite(bookId);
+    @GetMapping("/findFavourite")
+    public Result findFavourite() {
+        List<Book> bookList = bookService.listFavourite();
         return new Result(true, StatusCode.OK, "查询最近成功", bookList);
     }
 
