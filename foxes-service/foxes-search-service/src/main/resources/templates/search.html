@@ -109,7 +109,7 @@
                            th:value="${searchMap.keywords}" maxlength="20">
                     <span class="search-btn-bar">
                         <i class="iconfont">&#xe627;</i>
-                    <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
+                        <!--                    <input type="submit" value="" class="search-btn" id="gosearch"></span>-->
                     <button class="search-btn" th:type="submit"></button>
                 </form>
             </div>
@@ -117,8 +117,8 @@
         <div class="nav inner-nav cl">
             <ul class="main-menu">
                 <li><a href="/index.html">首页</a></li>
-                <li><a th:href="@{/sweb/search}">全部作品</a></li>
-                <li><a th:href="@{/sweb/search?status=1}">完本</a></li>
+                <li><a th:href="@{/search/sweb/search}">全部作品</a></li>
+                <li><a th:href="@{/search/sweb/search?status=1}">完本</a></li>
             </ul>
             <div class="side-menu"><a class="writer" href="javascript:" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
                     class="client" href="javascript:" onclick="commonBox.appBox();"><i class="iconfont">&#xe62d;</i>客户端</a>
@@ -135,12 +135,13 @@
                     <div class="bread">
                         <ul class="fl sui-breadcrumb">
                             <li>
-                                <a th:href="@{/sweb/search}" th:text="全部结果"></a> <b class="active" th:text="${searchMap.keywords}"></b>
-                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">频道:
+                                <a th:href="@{/search/sweb/search}" th:text="全部结果"></a> <b class="active"
+                                                                                    th:text="${searchMap.keywords}"></b>
+                                <b class="with-x" th:if="${#maps.containsKey(searchMap,'channel')}">频道:
                                     <b th:text="'1'==${searchMap.channel}?'男生':'女生'" class="active"></b>
                                     <a th:href="@{${#strings.replace(url,'&channel='+searchMap.channel,'')}}">×</a>
                                 </b>
-                                <b  class="with-x" th:if="${#maps.containsKey(searchMap,'categoryName')}">类别:
+                                <b class="with-x" th:if="${#maps.containsKey(searchMap,'categoryName')}">类别:
                                     <b th:text="${searchMap.categoryName}" class="active"></b>
                                     <a th:href="@{${#strings.replace(url,'&categoryName='+searchMap.categoryName,'')}}">×</a>
                                 </b>
@@ -160,10 +161,10 @@
                             <div class="tags" id="channeltype">
                                 <span class='active' data-value="0" data-type="channel">全部</span>
                                 <span>
-                                    <a th:href="@{${url}(channel='0')}"  th:text="女生"></a>
+                                    <a th:href="@{${url}(channel='0')}" th:text="女生"></a>
                                 </span>
                                 <span>
-                                    <a th:href="@{${url}(channel='1')}"  th:text="男生"> </a>
+                                    <a th:href="@{${url}(channel='1')}" th:text="男生"> </a>
                                 </span>
                             </div>
                         </li>
@@ -180,7 +181,7 @@
                         <li class='l_status ' th:unless="${#maps.containsKey(searchMap,'status')}">
                             <strong>状态：</strong>
                             <div class="tags">
-                                <span class='active'   th:text="全部"></span>
+                                <span class='active' th:text="全部"></span>
                                 <span>
                                     <a th:href="@{${url}('status'='0')}" th:text="连载"></a>
                                 </span>
@@ -190,62 +191,120 @@
                             </div>
                         </li>
                     </ul>
-<!--                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>-->
+                    <!--                    <p class="classify-show">展开<i class="iconfont">&#xe601;</i></p>-->
                 </div>
                 <div class="search-result">
                     <div class="result-sort">
-                        <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}" th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
-<!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
-                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>
-                        <a th:if="${searchMap.sortField}==''" th:href="@{${url}('sortField'='subscribeNum')}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
+                        <a th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'')}}"
+                           th:class="${searchMap.sortField==''?'active':''}">综合排序<span>↓</span></a>
+                        <!--                        <a th:href="@{${url}('sortField'='wordsNum')}" th:class="${searchMap.sortField=='wordsNum'?'active':''}">字数<span>↓</span></a>-->
+                        <div th:if="${searchMap.sortField}==''">
+                            <a  th:href="@{${url}('sortField'='wordsNum')}">按字数<span>↓</span></a>
+                            <a  th:href="@{${url}('sortField'='subscribeNum')}">按收藏<span>↓</span></a>
+                            <a  th:href="@{${url}('sortField'='readNum')}" >按点击</a>
+                        </div>
 
-                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}" th:class="'wordsNum'==${searchMap.sortField}?'active':''">字数<span>↓</span></a>
-                        <a th:unless="${searchMap.sortField}==''" th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}" th:class="${searchMap.sortField=='subscribeNum'?'active':''}">总收藏<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=wordsNum')}}"
+                            th:class="'wordsNum'==${searchMap.sortField}?'active':''">按字数<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=subscribeNum')}}"
+                            th:class="${searchMap.sortField=='subscribeNum'?'active':''}">按收藏<span>↓</span></a>
+                        <a th:unless="${searchMap.sortField}==''"
+                            th:href="@{${#strings.replace(url,'&sortField='+searchMap.sortField,'&sortField=readNum')}}"
+                            th:class="${searchMap.sortField=='readNum'?'active':''}">按点击<span>↓</span></a>
+
                     </div>
                     <div class="result-list" th:unless="${page.total}==0">
                         <ul>
-                            <li th:each="book,books:${items.rows}" >
+                            <li th:each="book,books:${items.rows}">
                                 <a class="book commonbook" th:href="@{/book/book/${book.id}.html}" target="_blank">
-                                    <img th:src="@{${book.imges}}">
+                                    <img th:src="@{${book.image}}">
                                 </a>
                                 <div class="info">
                                     <h4>
-                                        <a th:href="@{/book/book/${book.id}.html}" target="_blank"><span th:text="${book.name}"></span> </a>
+                                        <a th:href="@{/book/book/${book.id}.html}" target="_blank"><span
+                                                th:text="${book.name}"></span> </a>
                                         <span class="subtitle">
                                                         <a target="_blank" href="javascript:"><i
                                                                 class="iconfont">&#xe604;</i><span
                                                                 th:text="${book.author}"></span> </a>
                                                             <a target="_blank" href="javascript:"><span
                                                                     th:text="${book.categoryName}"></span> </a>
-                                                        <span>已完成</span>
+                                                        <span th:if="${book.status}==1" th:text="已完结"></span>
+                                                        <span th:if="${book.status}==0" th:text="连载中"></span>
                                                     </span>
                                     </h4>
                                     <p class="detail"><span th:text="${book.abstracts}"></span></p>
                                     <p class="number">
-                                        <span>更新：<span th:text="${book.releaseTime}"></span></span><span>字数：<span
+                                        <span>更新：<span
+                                                th:text="${#dates.format(book.releaseTime,'yyyy-MM-dd hh:mm:ss')}"></span></span><span>字数：<span
                                             th:text="${book.wordsNum}"></span></span></p>
                                     <div class="action">
-                                        <a href="javascript:" class="order-btn" onclick="addShelft(949361)"
-                                           id="addShelfBtn949361">放入书架</a>
+                                        <a class="order-btn" id="addShelfBtn" th:onclick="'javascript:addShelf(\''+${book.id}+'\');'"   th:text="放入书架"></a>
                                     </div>
+
+                                    <script th:inline="javascript">
+                                        function addShelf(bookId) {
+                                            $.ajax({
+                                                type: "GET",
+                                                url:""
+                                            })
+
+
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "carousel",
+                                                async: false,
+                                                success: function (response) {
+                                                    let images = response.data;
+
+                                                    for (let i = 0; i < images.length; i++) {
+
+                                                        $(".roasting .roastingslider").append(
+                                                            "<li><a href='" + images[i].url + "' target='_blank'>" +
+                                                            "<img src='" + images[i].image + "'>" +
+                                                            "</a>" +
+                                                            "<div class='title'>" +
+                                                            "<h4><a class='name' href='" + images[i].url + "' target='_blank' xid='1088115' tid='486'>" + images[i].name + "</a><span>" + images[i].author + "</span></h4> " +
+                                                            "<p></p> </div> <div class='black-bg'></div> </li>"
+                                                        )
+                                                    }
+
+                                                }
+                                            });
+
+                                        }
+
+
+
+
+                                    </script>
                                 </div>
                             </li>
 
                         </ul>
-                        <div class="pages">
-                            <!--上一页-->
-                            <a th:unless="${items.pageNum}=='1'" class="go" th:href="@{${url}(pageNum=${page.currentpage-1})}">
-                                <i class="iconfont">&#xe7d0;</i>
-                            </a>
-                            <!--总页数10页以内-->
-                            <span   th:each="i:${#numbers.sequence(page.lpage,page.rpage)}" th:class="${i}==${page.currentpage}?'active':''">
-                                <a th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
-                            </span>
-                            <!--下一页-->
-                            <a  th:unless="${items.pageNum}==${page.last}" class="go" th:href="@{${url}(pageNum=${page.currentpage+1})}" >
-                                <i class="iconfont">&#xe7cf;</i>
-                            </a >
-                            <span style="margin-left: 50px" id="gopage">
+                        <table>
+                        <tr>
+                            <td width="65%" height="70px">
+                                <span style="margin-left: 100px" class="pages">
+                                <!--上一页-->
+                                <a th:unless="${items.pageNum}=='1'" class="go"
+                                   th:href="@{${url}(pageNum=${page.currentpage-1})}">
+                                    <i class="iconfont">&#xe7d0;</i>
+                                </a>
+                                    <!--总页数10页以内-->
+                                <span  th:each="i:${#numbers.sequence(page.lpage,page.rpage)}">
+                                    <a th:class="${i}==${page.currentpage}?'active':''" th:href="@{${url}(pageNum=${i})}" th:text="${i}"></a>
+                                </span>
+                                    <!--下一页-->
+                                <a th:unless="${items.pageNum}==${page.last}" class="go"
+                                   th:href="@{${url}(pageNum=${page.currentpage+1})}">
+                                    <i class="iconfont">&#xe7cf;</i>
+                                </a>
+                                </span>
+                            </td>
+                            <td align="right" width="280px" >
                                <!-- 共<span th:text="${items.totalPages}"></span> 页，到第
                                 <input th:value="${page.currentpage}"  th:type="text" class="text" name="toPage">页
                                 <a th:href="@{${url}(pageNum=${page.currentpage})}"  class="go">GO</a>
@@ -253,19 +312,20 @@
 
                                  <form id="hform" name="hform" th:action="@{${#strings.replace(url,'&pageNum='+page.currentpage,'')}}">
                                      共<span th:text="${items.totalPages}"></span> 页，到第
-                                <input th:type="text" class="text" placeholder="" name="pageNum"
-                                       th:value="${items.pageNum}" maxlength="20">页
-                                <button class="search-btn" th:type="submit" >GO</button>
-                            </form>
+                                    <input style="width:20px;" th:type="text" class="text" placeholder="" name="pageNum"
+                                           th:value="${items.pageNum}" maxlength="20">页
+                                    <button class="search-btn" th:type="submit">GO</button>
+                                </form>
                             </span>
-
-                        </div>
+                            </td>
+                        </tr>
+                        </table>
                     </div>
                 </div>
                 <div th:if="${page.total}==0">
                     <img th:src="@{../images/nobook.png}" style="height: 300px">
                 </div>
-                    
+
             </div>
             <div class="inner-sidebar">
 
@@ -565,39 +625,9 @@
 </script>
 <script th:src="@{../js/commendclickbyjquery.js}"></script>
 <!-- 引入组件库 -->
-<script th:src="@{../js/vue.js}" ></script>
+<script th:src="@{../js/vue.js}"></script>
 <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
-<script th:src="@{../js/axios.js}" ></script>
-<script th:inline="javascript">
-    var app = new Vue({
-        el: "#gopage",
-        data: {
-           pageNum: [[${items.pageNum}]]
-        },
-        methods: {
-            toPage: function () {
-                var s = this.pageNum;
-                alert(s)
+<script th:src="@{../js/axios.js}"></script>
 
-            }
-        }
-    })
-    var search = new Vue({
-        el: "#header",
-        data: {
-            searchkeywords: "123"
-        },
-        methods: {
-            search: function () {
-                var s = this.searchkeywords;
-                axios.get("/search/keywords?keywords=" + s).then(function (response) {
-                    if (response.data.flag) {
-                        alert("111");
-                    }
-                })
-            }
-        }
-    })
-</script>
 </body>
 </html>
