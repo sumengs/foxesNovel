@@ -21,6 +21,7 @@
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
+<div class="alert"></div>
 <div class="top-menu">
     <div class="container">
         <div class="download-app">
@@ -31,13 +32,11 @@
         <div class="guide-menu">
             <div class="column" id="loginaction"><a href="javascript:void(0);" class="login" id="headerLogin">登录</a>&ensp;<a
                     href="/Reg" class="register" target="_blank" rel="nofollow">注册</a></div>
-            <div class="column" id="userinfo" style="display: none;"><a href="/control" id="username" target="_blank"
-                                                                        rel="nofollow"></a>&ensp;<a href="javascript:"
-                                                                                                    class="register"
-                                                                                                    id="logout">退出</a>
+            <div class="column" id="userinfo" style="display: none;">
+                <a href="/control" id="username" target="_blank" rel="nofollow"></a>&ensp;<a class="register" id="logout">退出</a>
             </div>
             <div class="column more bookcase" id="menubookcase">
-                <a href="javascript:void(0);" class="my-book" id="mybookcase">我的书架</a>
+                <a href="/user/bookcase" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>
                 <div id="menucnt2" class="menu-ct menu-ct-2">
                     <div id="mybc">
@@ -67,17 +66,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
+            <div class="column"><a  class="service" target="_blank" rel="nofollow">联系客服</a></div>
         </div>
         <ul class="menu-style cl">
-            <li><a href="/category/1.html" class=''>玄幻</a></li>
-            <li><a href="/category/2.html" class=''>现代言情</a></li>
-            <li><a href="/category/3.html" class=''>玄幻仙侠</a></li>
-            <li><a href="/category/6.html" class=''>浪漫青春</a></li>
-            <li><a href="/category/5.html" class=''>悬疑</a></li>
-            <li><a href="/ip.html" class=''>改编频道</a></li>
-            <li><a href="/search?channel=1">男生频道</a></li>
-            <li><a href="/comic" class=''>漫画频道</a></li>
+            <li><a href="/search/sweb/search?&categoryName=玄幻" class=''>玄幻</a></li>
+            <li><a href="/search/sweb/search?&categoryName=都市" class=''>都市</a></li>
+            <li><a >浪漫青春</a></li>
+            <li><a >悬疑</a></li>
+            <li><a >改编频道</a></li>
+            <li><a href="/search/sweb/search?channel=1">男生频道</a></li>
+
 
         </ul>
     </div>
@@ -95,7 +93,7 @@
                 <img th:src="@{../images/foxRead.png}" style="height: 80px" alt="Foxes小说网">
             </a>
             <div class="guide-writer">
-                <a class="become" href="javascript:" target="_blank">
+                <a class="become" target="_blank">
                     <i class="iconfont">&#xe687;</i>我要当作家
                 </a>
                 <a class="welfare" href="javascript:" target="_blank">
@@ -120,8 +118,8 @@
                 <li><a th:href="@{/search/sweb/search}">全部作品</a></li>
                 <li><a th:href="@{/search/sweb/search?status=1}">完本</a></li>
             </ul>
-            <div class="side-menu"><a class="writer" href="javascript:" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
-                    class="client" href="javascript:" onclick="commonBox.appBox();"><i class="iconfont">&#xe62d;</i>客户端</a>
+            <div class="side-menu"><a class="writer" target="_blank"><i class="iconfont">&#xe6bd;</i>作家专区</a><a
+                    class="client"  ><i class="iconfont">&#xe62d;</i>客户端</a>
             </div>
         </div>
     </div>
@@ -238,49 +236,17 @@
                                     <p class="detail"><span th:text="${book.abstracts}"></span></p>
                                     <p class="number">
                                         <span>更新：<span
-                                                th:text="${#dates.format(book.releaseTime,'yyyy-MM-dd hh:mm:ss')}"></span></span><span>字数：<span
-                                            th:text="${book.wordsNum}"></span></span></p>
+                                                th:text="${#dates.format(book.releaseTime,'yyyy-MM-dd hh:mm:ss')}"></span></span>
+                                        <span>字数：<span
+                                            th:text="${book.wordsNum}"></span></span>
+                                        <span>点击：<span
+                                                th:text="${book.readNum}"></span></span>
+                                    </p>
                                     <div class="action">
                                         <a class="order-btn" id="addShelfBtn" th:onclick="'javascript:addShelf(\''+${book.id}+'\');'"   th:text="放入书架"></a>
                                     </div>
-
-                                    <script th:inline="javascript">
-                                        function addShelf(bookId) {
-                                            $.ajax({
-                                                type: "GET",
-                                                url:""
-                                            })
-
-
-                                            $.ajax({
-                                                type: "GET",
-                                                url: "carousel",
-                                                async: false,
-                                                success: function (response) {
-                                                    let images = response.data;
-
-                                                    for (let i = 0; i < images.length; i++) {
-
-                                                        $(".roasting .roastingslider").append(
-                                                            "<li><a href='" + images[i].url + "' target='_blank'>" +
-                                                            "<img src='" + images[i].image + "'>" +
-                                                            "</a>" +
-                                                            "<div class='title'>" +
-                                                            "<h4><a class='name' href='" + images[i].url + "' target='_blank' xid='1088115' tid='486'>" + images[i].name + "</a><span>" + images[i].author + "</span></h4> " +
-                                                            "<p></p> </div> <div class='black-bg'></div> </li>"
-                                                        )
-                                                    }
-
-                                                }
-                                            });
-
-                                        }
-
-
-
-
-                                    </script>
                                 </div>
+
                             </li>
 
                         </ul>
@@ -472,121 +438,6 @@
                         </dl>
                     </div>
                 </div>
-                <div class="box-con tab bang-tab">
-                    <div class="box-hd hd">
-                        <h3 class="active">月票榜</h3>
-                        <h3>打赏榜</h3>
-                    </div>
-                    <div class="bd">
-                        <ul class="ranking-list">
-                            <li class="n1">
-                                <a class="book" href="/info/1072387.html" target="_blank">
-                                    <img src="">
-                                </a>
-                                <div class="detail">
-                                    <span class="num">NO.1</span>
-                                    <p class="name"><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                                    <p class="piao"><em>4990</em>月票</p>
-                                    <p class="author">古言&ensp;|&ensp;天下归元</p>
-                                </div>
-                            </li>
-                            <li class="n2">
-                                <span class="piao">3862</span>
-                                <span class="num">2</span>
-                                <p><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                            </li>
-                            <li class="n3">
-                                <span class="piao">2874</span>
-                                <span class="num">3</span>
-                                <p><a href="/info/1099917.html" target="_blank">我全家都是穿来的</a></p>
-                            </li>
-                            <li class="n4">
-                                <span class="piao">2559</span>
-                                <span class="num">4</span>
-                                <p><a href="/info/1363431.html" target="_blank">婚后被大佬惯坏了</a></p>
-                            </li>
-                            <li class="n5">
-                                <span class="piao">2455</span>
-                                <span class="num">5</span>
-                                <p><a href="/info/1382225.html" target="_blank">席爷每天都想官宣</a></p>
-                            </li>
-                            <li class="n6">
-                                <span class="piao">2434</span>
-                                <span class="num">6</span>
-                                <p><a href="/info/971626.html" target="_blank">前方高能</a></p>
-                            </li>
-                            <li class="n7">
-                                <span class="piao">2426</span>
-                                <span class="num">7</span>
-                                <p><a href="/info/1429968.html" target="_blank">问丹朱</a></p>
-                            </li>
-                            <li class="n8">
-                                <span class="piao">2122</span>
-                                <span class="num">8</span>
-                                <p><a href="/info/1382598.html" target="_blank">纨绔天医</a></p>
-                            </li>
-                            <li class="n9">
-                                <span class="piao">2095</span>
-                                <span class="num">9</span>
-                                <p><a href="/info/1349331.html" target="_blank">红尘篱落</a></p>
-                            </li>
-                            <li class="n10">
-                                <span class="piao">1826</span>
-                                <span class="num">10</span>
-                                <p><a href="/info/1093857.html" target="_blank">龙飞凤仵</a></p>
-                            </li>
-                        </ul>
-                        <ul class="ranking-list" style="display: none">
-                            <li class="n1">
-                                <a class="book" href="/info/1406701.html" target="_blank">
-                                    <img data-src="">
-                                </a>
-                                <div class="detail">
-                                    <span class="num">NO.1</span>
-                                    <p class="name"><a href="/info/1406701.html" target="_blank">大神你人设崩了</a></p>
-                                    <p class="author" style="margin-top:26px;">现言&ensp;|&ensp;一路烦花</p>
-                                </div>
-                            </li>
-                            <li class="n2">
-                                <span class="num">2</span>
-                                <p><a href="/info/1447650.html" target="_blank">爱在随遇而安</a></p>
-                            </li>
-                            <li class="n3">
-                                <span class="num">3</span>
-                                <p><a href="/info/1363450.html" target="_blank">人人都爱于休休</a></p>
-                            </li>
-                            <li class="n4">
-                                <span class="num">4</span>
-                                <p><a href="/info/1071347.html" target="_blank">绝世倾城之尊主归来</a></p>
-                            </li>
-                            <li class="n5">
-                                <span class="num">5</span>
-                                <p><a href="/info/1444877.html" target="_blank">今天大佬又不做人了</a></p>
-                            </li>
-                            <li class="n6">
-                                <span class="num">6</span>
-                                <p><a href="/info/1408580.html" target="_blank">徒儿你自寻死路</a></p>
-                            </li>
-                            <li class="n7">
-                                <span class="num">7</span>
-                                <p><a href="/info/1425251.html" target="_blank">重生王妃太难哄</a></p>
-                            </li>
-                            <li class="n8">
-                                <span class="num">8</span>
-                                <p><a href="/info/1406896.html" target="_blank">豪门谋婚之大佬宠妻入骨</a></p>
-                            </li>
-                            <li class="n9">
-                                <span class="num">9</span>
-                                <p><a href="/info/1415031.html" target="_blank">穿越农女要回家</a></p>
-                            </li>
-                            <li class="n10">
-                                <span class="num">10</span>
-                                <p><a href="/info/1072387.html" target="_blank">山河盛宴</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -628,6 +479,33 @@
 <script th:src="@{../js/vue.js}"></script>
 <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
 <script th:src="@{../js/axios.js}"></script>
+<script th:inline="javascript">
+    function addShelf(bookId) {
+        $.ajax({
+            type: "GET",
+            url:"/bookshelf/add/"+bookId,
+            success: function (response) {
+                if (response.data.flag){
+                    $('.alert').html('加入书架成功').addClass('alert-success').show().delay(2500).fadeOut();
+                    doReload();
+                }else {
+                    alert("加入书架失败")
+                }
+            },
+            error: function () {
+                $('.alert').html('服务器忙,加入书架失败').addClass('alert-warning').show().delay(2500).fadeOut();
+                doReload();
 
+            }
+        });
+
+
+
+    }
+
+
+
+
+</script>
 </body>
 </html>
