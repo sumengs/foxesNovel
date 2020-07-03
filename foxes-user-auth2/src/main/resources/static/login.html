@@ -22,6 +22,8 @@
     <script src="/js/axios-0.18.0.js"></script>
     <!--jq-->
     <script src="/js/jquery-3.3.1.js"></script>
+    <!--cookie-->
+    <script src="js/cookie.js"></script>
 
 </head>
 
@@ -82,19 +84,11 @@
 </div>
 
     <script type="application/javascript">
-         // jq入口函数
-           $(function () {
-
-
-
-
-           })
          //验证用户名密码是否为空
          function verify(username,password) {
              if(!username){
                  layer.msg("用户名为空")
                  return false;
-
              }
              if(!password){
                  layer.msg("密码为空",)
@@ -102,7 +96,6 @@
              }
              return true;
          }
-
          function login() {
              var username = $("#username").val();
 
@@ -116,21 +109,27 @@
 
              if(verify(username,password)){
                  console.log(username+"1111"+password);
-                 axios.post("http:/localhost/oauth/login",param).then(res=>{
-
+                 axios.post("/oauth/login",param).then(res=>{
                          if(res.data.flag){
                              layer.msg(res.data.message);
+                             //取出redirectURL,进行跳转
+                             var resultData=res.data.data;
+                             console.log(resultData.redirectURL);
+                             layer.msg(resultData.redirectURL);
+                             var url=resultData.redirectURL;
+                             console.log(url);
+                            //将jti写入cookie
+                             setCookie("uid",resultData.jti);
+                             setCookie("username",resultData.loginUsername);
+                             console.log("jti写入cookie")
+                             //页面跳转
                              setTimeout(()=>{
-                                 location.href = "http:/localhost/index.html";
+                                 location.href = url;
                              },1300)
                          }
-
                  });
                  console.log("2222");
              }
-
-
-
          }
     </script>
 </body>
