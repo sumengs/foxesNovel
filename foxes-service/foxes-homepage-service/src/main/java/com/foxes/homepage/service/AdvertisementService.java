@@ -34,6 +34,13 @@ public interface AdvertisementService {
      */
     List<Advertisement> smallImage();
 
+    /**
+     * 微信二维码
+     *
+     * @return
+     */
+    Advertisement weixinImage();
+
 
     /**
      * 订阅榜

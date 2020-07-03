@@ -734,9 +734,8 @@
     </div>
 </div>
 <div style="position:fixed;right:10px;bottom:10px;" id="weappimg">
-    <div>
-
-        <img src="" alt="广告"/>
+    <div >
+        <img id="wx" src="" alt="广告"/>
         <p>Foxes小程序上线啦</p>
         <p>打开微信扫一扫</p>
         <i class="iconfont">&#xe622;</i>
@@ -782,6 +781,15 @@
                 let images = response.data;
                 $(".area_1200 a").attr("href", "" + images.url);
                 $(".area_1200 a .bigimg").attr("src", "" + images.image);
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "weixin",
+            success: function (response) {
+                let images=response.data;
+                $("#wx").attr("src", "" + images.image);
             }
         });
 
