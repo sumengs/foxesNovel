@@ -80,4 +80,15 @@ public class BookController {
         return "success";
     }
 
+
+    @RequestMapping("/generateAllBook")
+    public String generateAllBook(){
+        List<Book> bookList = bookService.findAll();
+        for (Book book : bookList) {
+            String id = book.getId();
+            bookService.generateHtml(id);
+        }
+        return "success";
+    }
+
 }
