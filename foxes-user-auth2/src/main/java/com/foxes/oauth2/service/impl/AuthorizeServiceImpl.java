@@ -7,6 +7,8 @@ package com.foxes.oauth2.service.impl;/*
 
 import com.foxes.oauth2.service.AuthorizeService;
 import com.foxes.oauth2.util.AuthToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -37,6 +39,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    public Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -44,11 +47,14 @@ public class AuthorizeServiceImpl implements AuthorizeService {
     @Value("${auth.ttl}")
     private Long ttl;
 
+    @Value("${spring.application.name}")
+    private String appName;
+
     @Override
     public AuthToken login(String username, String password, String clientId, String clientSecret) {
 
         //构造请求地址,http://localhost:9200/oauth/token
-        ServiceInstance serviceInstance = loadBalancerClient.choose("USER-AUTH");
+        ServiceInstance serviceInstance = loadBalancerClient.choose(appName);
 
         String url = serviceInstance.getUri() + "/oauth/token";
         //构造请求体 body ,headers
@@ -93,6 +99,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         //将jti 作为redis的key,jwt作为redis的value 存放数据,设置ttl
         stringRedisTemplate.opsForValue().set((String) map.get("jti"), (String) map.get("access_token")
                 ,ttl, TimeUnit.SECONDS);
+//        logger.info("该用户的信息已存入redis,key="+map.get("jti")+"  value="+map.get("access_token"));
         return authToken;
     }
 
@@ -103,5 +110,10 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         byte[] encode = Base64Utils.encode(string.getBytes());
         return "Basic " + new String(encode);
 
+    }
+
+    public static void main(String[] args) {
+        String httpbasic = new AuthorizeServiceImpl().httpbasic("changgou", "changgou");
+        System.out.println(httpbasic);
     }
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @Table(name = "tb_ad")
-public class Advertisement {
+public class Advertisement implements Serializable {
 
     @Id
     private Integer id;

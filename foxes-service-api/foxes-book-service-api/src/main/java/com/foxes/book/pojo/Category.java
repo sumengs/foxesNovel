@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @date: 2020/6/30 9:22
@@ -11,7 +12,7 @@ import javax.persistence.Table;
  */
 @Data
 @Table(name = "tb_category")
-public class Category {
+public class Category implements Serializable {
     /**
      * 主键ID
      */
@@ -28,27 +29,6 @@ public class Category {
      */
     private Integer seq;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
 }

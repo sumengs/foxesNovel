@@ -9,26 +9,28 @@
     <title>登录 - foxes</title>
 
     <!--加载css样式-->
-    <link rel="stylesheet" media="all" href="css/web-aec5e95c7d38e6d93742.css"/>
-    <link rel="stylesheet" media="all" href="css/entry-725103a0668ccb1789d4.css"/>
+    <link rel="stylesheet" media="all" href="./css/web-aec5e95c7d38e6d93742.css"/>
+    <link rel="stylesheet" media="all" href="./css/entry-725103a0668ccb1789d4.css"/>
 
     <!--layui-->
-    <script src="plugins/layui/layui.all.js"></script>
-    <link rel="stylesheet" href="plugins/layui/css/layui.css">
+    <script src="./plugins/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css">
 
     <!--vue-->
-    <script src="js/vue.js"></script>
+    <script src="./js/vue.js"></script>
     <!--axios-->
-    <script src="js/axios-0.18.0.js"></script>
+    <script src="./js/axios-0.18.0.js"></script>
     <!--jq-->
-    <script src="js/jquery-3.3.1.js"></script>
+    <script src="./js/jquery-3.3.1.js"></script>
+    <!--cookie-->
+    <script src="./js/cookie.js"></script>
 
 </head>
 
 <body class="no-padding reader-black-font" lang="zh-CN">
 <div class="sign">
     <div class="logo">
-        <a href=""><img src="image/logo2.png" alt="Logo" style="width: 300px"/></a>
+        <a href=""><img src="./image/logo2.png" alt="Logo" style="width: 300px"/></a>
     </div>
     <div class="main">
         <h4 class="title">
@@ -82,20 +84,11 @@
 </div>
 
     <script type="application/javascript">
-         // jq入口函数
-           $(function () {
-
-
-
-
-           })
          //验证用户名密码是否为空
          function verify(username,password) {
-
              if(!username){
                  layer.msg("用户名为空")
                  return false;
-
              }
              if(!password){
                  layer.msg("密码为空",)
@@ -103,29 +96,40 @@
              }
              return true;
          }
-
          function login() {
              var username = $("#username").val();
 
              var password = $("#password").val();
 
+             console.log(username+"1111"+password);
              let param = {};
              param['username'] = username;
              param['password'] = password;
+             console.log('param : '+param);
 
              if(verify(username,password)){
+                 console.log(username+"1111"+password);
                  axios.post("/oauth/login",param).then(res=>{
                          if(res.data.flag){
                              layer.msg(res.data.message);
+                             //取出redirectURL,进行跳转
+                             var resultData=res.data.data;
+
+                             console.log(resultData.redirectURL);
+                             var url="http://localhost/index.html";
+
+                            //将jti写入cookie
+                             setCookie("uid",resultData.jti,1000*60*60*2);
+                             setCookie("username",resultData.loginUsername);
+                             console.log("jti写入cookie")
+                             //页面跳转
                              setTimeout(()=>{
-                                 window.location.href("http://127.0.0.1/index.html");
+                                 location.href = url;
                              },1300)
                          }
-                 })
+                 });
+                 console.log("2222");
              }
-
-
-
          }
     </script>
 </body>

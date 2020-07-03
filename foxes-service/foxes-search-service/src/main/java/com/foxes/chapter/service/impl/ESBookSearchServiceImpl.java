@@ -56,15 +56,15 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             if (StringUtils.isNotEmpty(searchMap.get("keywords"))) {
 
                 boolQuery.must(QueryBuilders
-                        .queryStringQuery(searchMap.get("keywords")).field("author").field("name"));
+                        .queryStringQuery(searchMap.get("keywords")).field("name").field("author"));
             }
             //男女频选则
             if (StringUtils.isNotEmpty(searchMap.get("channel"))) {
                 boolQuery.filter(QueryBuilders.termQuery("channel", searchMap.get("channel")));
             }
             //类别选则
-            if (StringUtils.isNotEmpty(searchMap.get("category"))) {
-                boolQuery.filter(QueryBuilders.termQuery("category", searchMap.get("category")));
+            if (StringUtils.isNotEmpty(searchMap.get("categoryName"))) {
+                boolQuery.filter(QueryBuilders.termQuery("categoryName", searchMap.get("categoryName")));
             }
             //完结选择
             if (StringUtils.isNotEmpty(searchMap.get("status"))) {
@@ -110,7 +110,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                 pageNum = "1";
             }
             if (StringUtils.isEmpty(pageSize)) {
-                pageSize = "3";
+                pageSize = "10";
             }
             nativeSearchQueryBuilder.withPageable(
                     PageRequest.of(Integer.parseInt(pageNum) - 1, Integer.parseInt(pageSize)));

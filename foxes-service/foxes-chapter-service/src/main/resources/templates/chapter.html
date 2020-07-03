@@ -101,7 +101,7 @@
         </div>
         <div class="mid-bar-search">
             <form id="hform" name="keywords" action="/search/sweb/search" method="get" target="_blank">
-                <input type="text" class="minisearch-text" placeholder="公主她在现代星光璀璨" name="s_wd" id="searchkeyword"
+                <input type="text" class="minisearch-text" placeholder="公主她在现代星光璀璨" name="keywords" id="searchkeyword"
                        maxlength="20">
                 <span class="search-btn-bar">
                 <i class="iconfont">&#xe627;</i><input type="submit" value="" class="minisearch-btn" id="gosearch">
@@ -365,64 +365,64 @@
         }
     });
 
-    // window.loginCallBack = function () {
-    //     location.reload();
-    // }
-    // if ("" == "nologin") {
-    //     //QQ登录
-    //     if (QC.Login.check() == true) {
-    //         QC.Login.signOut();
-    //     }
-    //     window.login(true);
-    // }
+    /*    // window.loginCallBack = function () {
+        //     location.reload();
+        // }
+        // if ("" == "nologin") {
+        //     //QQ登录
+        //     if (QC.Login.check() == true) {
+        //         QC.Login.signOut();
+        //     }
+        //     window.login(true);
+        // }
 
-    // var readobj = {
-    //     bookid: parseInt(949361),
-    //     chapterid: parseInt(8446493),
-    //     chaptername: '000前尘',
-    //     isvip: parseInt(1),
-    //     needSubcribe: parseInt(1),
-    //     useraccount: parseInt(0),
-    //     useryuanbao: parseInt(0),
-    //     usertiyanbi: parseInt(0),
-    //     needCount: parseInt(0),
-    //     allChapter: "",
-    //     subAllChapterNeedCount: parseInt(0),
-    //     hasLogin: parseInt(0) > 0,
-    //     hasInShelf: parseInt(0) > 0,
-    //     viewName: "",
-    //     preChapterId: parseInt(0),
-    //     nextChapterId: parseInt(8447580),
-    //     wordCount: parseInt(3100),
-    //     //阅读设置
-    //     readSet: {
-    //         colorStyle: "theme_yellow",
-    //         fontStyle: "Microsoft YaHei",
-    //         fontSize: parseInt(18),
-    //         pageWidth: parseInt(960),
-    //         scrollMode: parseInt(0),
-    //         scrollSpeed: parseInt(5),
-    //         autoNextPage: parseInt(0)
-    //     },
-    //     //作者红包
-    //     bonusType: parseInt(0),
-    //     //限时折扣
-    //     limiDiscount: parseInt(0) > 0 && parseInt(0) < 100,
-    //     limitDiscountTime: {
-    //         year: parseInt(1),
-    //         month: parseInt(1),
-    //         day: parseInt(1),
-    //         hour: parseInt(0),
-    //         minute: parseInt(0),
-    //         second: parseInt(0)
-    //     },
-    //     maxChapterId: parseInt(0),
-    //     initAuto: parseInt(0),
-    //     volumeID: parseInt(1)
-    // }
+        // var readobj = {
+        //     bookid: parseInt(949361),
+        //     chapterid: parseInt(8446493),
+        //     chaptername: '000前尘',
+        //     isvip: parseInt(1),
+        //     needSubcribe: parseInt(1),
+        //     useraccount: parseInt(0),
+        //     useryuanbao: parseInt(0),
+        //     usertiyanbi: parseInt(0),
+        //     needCount: parseInt(0),
+        //     allChapter: "",
+        //     subAllChapterNeedCount: parseInt(0),
+        //     hasLogin: parseInt(0) > 0,
+        //     hasInShelf: parseInt(0) > 0,
+        //     viewName: "",
+        //     preChapterId: parseInt(0),
+        //     nextChapterId: parseInt(8447580),
+        //     wordCount: parseInt(3100),
+        //     //阅读设置
+        //     readSet: {
+        //         colorStyle: "theme_yellow",
+        //         fontStyle: "Microsoft YaHei",
+        //         fontSize: parseInt(18),
+        //         pageWidth: parseInt(960),
+        //         scrollMode: parseInt(0),
+        //         scrollSpeed: parseInt(5),
+        //         autoNextPage: parseInt(0)
+        //     },
+        //     //作者红包
+        //     bonusType: parseInt(0),
+        //     //限时折扣
+        //     limiDiscount: parseInt(0) > 0 && parseInt(0) < 100,
+        //     limitDiscountTime: {
+        //         year: parseInt(1),
+        //         month: parseInt(1),
+        //         day: parseInt(1),
+        //         hour: parseInt(0),
+        //         minute: parseInt(0),
+        //         second: parseInt(0)
+        //     },
+        //     maxChapterId: parseInt(0),
+        //     initAuto: parseInt(0),
+        //     volumeID: parseInt(1)
+        // }
 
 
-    // Init(readobj);
+        // Init(readobj);*/
 </script>
 
 
@@ -444,6 +444,7 @@
             $("#items").append(
                 "<li><a href='" + chapters[i].id + ".html' target='_self'>" + chapters[i].name + "</a></li>"
             )
+
         }
     }
 

@@ -2,6 +2,7 @@ package com.foxes.homepage.service;
 
 import com.foxes.book.pojo.Book;
 import com.foxes.chapter.pojo.Advertisement;
+import com.foxes.chapter.pojo.Leaderboard;
 import com.sumeng.peekshopping.entity.Result;
 
 import java.util.List;
@@ -34,13 +35,20 @@ public interface AdvertisementService {
      */
     List<Advertisement> smallImage();
 
+    /**
+     * 微信二维码
+     *
+     * @return
+     */
+    Advertisement weixinImage();
+
 
     /**
      * 订阅榜
      *
      * @return
      */
-    Result<List<Book>> subscribeList();
+    List<Leaderboard> subscribeList();
 
 
     /**
@@ -48,5 +56,11 @@ public interface AdvertisementService {
      *
      * @return
      */
-    Result<List<Book>> readList();
+    List<Leaderboard> readList();
+
+
+    /**
+     * 更新Redis
+     */
+    void updateRedis();
 }

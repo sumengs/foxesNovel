@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8085
 
 spring:
   application:
@@ -12,6 +12,8 @@ spring:
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   rabbitmq:
+    host: 192.168.26.100
+  redis:
     host: 192.168.26.100
 
 
