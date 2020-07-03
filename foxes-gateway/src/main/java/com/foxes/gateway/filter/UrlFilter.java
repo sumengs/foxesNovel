@@ -7,8 +7,7 @@ public class UrlFilter {
 
     //所有需要传递令牌的地址
     public static String filterPath="" +
-            "/api/user/**," +
-            "/api/returnOrderItem/**";
+            "/user/**," ;
 
     public static boolean hasAuthorize(String url){
 
@@ -17,10 +16,11 @@ public class UrlFilter {
         for (String value : split) {
 
             if (url.startsWith(value)){
-                return true; //代表当前的访问地址是需要传递令牌的
+                //代表当前的访问地址是需要传递令牌的
+                return true;
             }
         }
-
-        return false; //代表当前的访问地址是不需要传递令牌的
+        //代表当前的访问地址是不需要传递令牌的
+        return false;
     }
 }
