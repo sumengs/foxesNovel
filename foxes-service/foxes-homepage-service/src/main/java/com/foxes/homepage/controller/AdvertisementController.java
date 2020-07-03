@@ -47,6 +47,12 @@ public class AdvertisementController {
         Advertisement bigImage = advertisementService.bigImage();
         return new Result<>(true, StatusCode.OK, "轮播图数据返回成功", bigImage);
     }
+    @RequestMapping("/weixin")
+    @ResponseBody
+    public Result<Advertisement> weixinImage(){
+        Advertisement weixinImage = advertisementService.weixinImage();
+        return new Result<>(true,StatusCode.OK,"微信二维码返回成功",weixinImage);
+    }
 
 
     @ResponseBody

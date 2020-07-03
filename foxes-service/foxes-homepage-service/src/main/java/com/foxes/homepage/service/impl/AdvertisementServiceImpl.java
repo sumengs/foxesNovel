@@ -55,6 +55,15 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     }
 
     @Override
+    public Advertisement weixinImage() {
+        Example example = new Example(Advertisement.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("position", "4");
+
+        return advertisementMapper.selectOneByExample(example);
+    }
+
+    @Override
     public Result<List<Book>> subscribeList() {
         return bookFeign.findTopTenSubscribe();
     }
