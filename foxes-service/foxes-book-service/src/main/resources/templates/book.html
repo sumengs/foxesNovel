@@ -142,8 +142,7 @@
                 </div>
             </div>
             <div class="area_1200">
-                <a href="https://images.xxsy.net/xxhtml/2020/duanwu/pre.html?v=1" target="_blank"><img
-                        src="https://images.xxsy.net/flimg/recommend/c20200618103530.jpg" class="bigimg"></a>
+                <a href=""><img src="https://images.xxsy.net/flimg/recommend/c20200618103530.jpg" class="bigimg"></a>
             </div>
         </div>
     </div>
@@ -208,21 +207,14 @@
                     <div class="box-bd freebook other-book-slider">
                         <div class="wrap">
                             <ul class="freeslider">
-                                <li>
-                                    <a href="book.html" target="_blank">
-                                        <img src="">
+                                <li th:each="bookOfAuthor,bookOfAuthorStat:${bookListOfAuthor}">
+                                    <a th:href="'/book/book/'+ ${bookOfAuthor.id} + '.html'" target="_blank">
+                                        <img th:src="${bookOfAuthor.image}">
                                     </a>
-                                    <h4><a href="/info/1441380.html" target="_blank">锦绣医妃之庶女凰途</a></h4>
-                                    <p class="btns"><a href="javascript:;" class="red-btn othershelf"
-                                            data-bookid="1441380">放入书架</a></p>
-                                </li>
-                                <li>
-                                    <a href="book.html" target="_blank">
-                                        <img src="">
-                                    </a>
-                                    <h4><a href="book.html" target="_blank">盛宠之嫡女医妃</a></h4>
-                                    <p class="btns"><a href="javascript:;" class="red-btn othershelf"
-                                            data-bookid="801802">放入书架</a></p>
+                                    <h4><a th:href="'/book/book/'+ ${bookOfAuthor.id} + '.html'" th:text="${bookOfAuthor.name}" target="_blank"></a></h4>
+                                    <p class="btns">
+                                        <a href="javascript:;" class="red-btn othershelf" data-bookid="1441380">放入书架</a>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -248,15 +240,15 @@
                                 <div><span class="btn-show" style="display: none;">展开<i
                                             class="iconfont">&#xe601;</i></span></div>
                             </div>
-                            <div class="fans-interact">
+                            <!--<div class="fans-interact">
                                 <h3 class="profile-main-title">
                                     粉丝互动
                                 </h3>
                                 <div class="bd cl" id="fansinfo">
                                     <p class="textloading">正在加载 . . .</p>
                                 </div>
-                            </div>
-                            <div class="maylike">
+                            </div>-->
+                            <!--<div class="maylike">
                                 <h3 class="profile-main-title">喜欢这作品的人还喜欢</h3>
                                 <ul class="unusual-list unusual-heng-list cl">
 
@@ -292,8 +284,8 @@
                                     </li>
 
                                 </ul>
-                            </div>
-                            <div class="discuss_content tab-con onlyclick" id="discuss_content">
+                            </div>-->
+                            <!--<div class="discuss_content tab-con onlyclick" id="discuss_content">
 
                                 <h3 class="profile-main-title">作品讨论区</h3>
                                 <div class="tab-bd">
@@ -302,15 +294,13 @@
                                         <p>下载客户端，获取更多内容</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="profile-side">
                             <div class="author-profile">
-                                <a href="javascript:;" title="金牌作家"><span class="author-prize" id="authorlevel"
-                                        style="display:none;"></span></a>
-                                <a href="/authorcenter/258020.html" target="_blank"><img class="avatar"
-                                        src=""></a>
-                                <p class="p-name"><a href="/authorcenter/258020.html" target="_blank">天泠</a></p>
+                                <a href="javascript:;" title="金牌作家"><span class="author-prize" id="authorlevel" style="display:none;"></span></a>
+                                <a href="javascript:void(0)"><img class="avatar" th:src="${book.authorHead}"></a>
+                                <p class="p-name"><a href="javascript:void(0)" th:text="${book.author}"></a></p>
                                 <div class="p-saying">
                                     <div class="over-box">
                                         <div id="authorintro"></div>
@@ -319,7 +309,7 @@
                                 </div>
                             </div>
 
-                            <div class="box-con tab-con products-tab">
+                            <!--<div class="box-con tab-con products-tab">
                                 <div class="box-hd tab-hd">
                                     <h3 class="active">优秀作品</h3>
                                     <h3>完结作品</h3>
@@ -594,7 +584,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -641,14 +631,14 @@
             </dl>
         </div>
     </div>
-    <div style="position:fixed;right:10px;bottom:10px;" id="weappimg">
+    <!--<div style="position:fixed;right:10px;bottom:10px;" id="weappimg">
         <div>
             <img src="" />
             <p>foxes小程序上线</p>
             <p>打开微信扫一扫</p>
             <i class="iconfont">&#xe622;</i>
         </div>
-    </div>
+    </div>-->
     <input type="hidden" value="天泠" id="authorname_value">
     <div class="footer">
         <div class="container">
@@ -658,14 +648,14 @@
 
         </div>
     </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/JQBox.js"></script>
-    <script src="/js/Util.js"></script>
-    <script src="/js/newmenutop.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/JQBox.js"></script>
+    <script src="../js/Util.js"></script>
+    <script src="../js/newmenutop.js"></script>
 
-    <script src="/js/commonbox.js"></script>
-    <script src="/js/lazyimgload.js"></script>
-    <script src="/js/statpage_pc.js"></script>
+    <script src="../js/commonbox.js"></script>
+    <script src="../js/lazyimgload.js"></script>
+    <script src="../js/statpage_pc.js"></script>
     <div id="statdiv" style="display:none;"></div>
     <script>
         setTimeout(function () {
@@ -688,26 +678,26 @@
                 "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
         }, 200);
     </script>
-    <script src="/js/jquery.bxslider.min.js"></script>
-    <script src="/js/scroll.js"></script>
-    <script src="/js/jquery.raty.min.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/userinfo.js"></script>
-    <script src="/js/giftrecharge.js"></script>
+    <script src="../js/jquery.bxslider.min.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/jquery.raty.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/userinfo.js"></script>
+    <script src="../js/giftrecharge.js"></script>
 
-    <script src="/js/gift.js"></script>
+    <script src="../js/gift.js"></script>
 
-    <script src="/js/chapterlist.js"></script>
+    <script src="../js/chapterlist.js"></script>
 
-    <script src="/js/commentaction.js"></script>
-    <script src="/js/bookreivew.js"></script>
-    <script src="/js/bookinfo.js"></script>
+    <script src="../js/commentaction.js"></script>
+    <script src="../js/bookreivew.js"></script>
+    <script src="../js/bookinfo.js"></script>
 
     <!-- 作者红包 -->
-    <script src="/js/authorbonus.js"></script>
-    <script src="/js/clipboard.min.js"></script>
-    <script src="/js/showshare.js"></script>
-    <script src="/js/giftredpackage.js"></script>
+    <script src="../js/authorbonus.js"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/showshare.js"></script>
+    <script src="../js/giftredpackage.js"></script>
 
     <script>
         var obj = {
@@ -741,7 +731,7 @@
     </script>
 
 
-    <script src="/js/commendclickbyjquery.js"></script>
+    <script src="../js/commendclickbyjquery.js"></script>
 </body>
 
 </html>

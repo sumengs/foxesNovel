@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心我的书架</title>
+
+</head>
+<script>
+</script>
+<body>
+<div id="app">
+<i>最近观看</i><br>
+
+    <ul>
+        <a><li v-for="favourite in favourites">{{favourite}}</li></a>
+    </ul>
+<i>我的书架</i>
+
+    <ul>
+        <a><li v-for="item in items">{{item}}</li></a>
+    </ul>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            items: [],
+            favourites: []
+        },
+        methods: {
+            list() {
+                axios.get("/book/list").then(res => {
+                    if (res.data.flag) {
+                        app.items = res.data.data;
+                    }
+                });
+            },
+            favourite(bookId){
+                axios.get("/book/findFavourite?bookId="+bookId).then(res=>{
+                    if (res.data.flag){
+                        app.favourites=res.data.data;
+                    }
+                })
+            }
+        },
+
+        created() {
+            this.list();
+            this.favourite()
+        }
+    })
+</script>
+</html>

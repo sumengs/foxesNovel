@@ -100,4 +100,9 @@ public class Book {
      */
     private Integer isVerify;
 
+    /**
+     * 作者头像图片地址
+     */
+    private String authorHead;
+
 }

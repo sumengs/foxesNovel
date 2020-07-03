@@ -48,4 +48,10 @@ public interface BookService {
      */
     List<Book> findBySubscribeNumDesc();
 
+    /**
+     * 根据作者查询小说列表
+     * @param author
+     * @return
+     */
+    List<Book> findListByAuthor(String author);
 }
