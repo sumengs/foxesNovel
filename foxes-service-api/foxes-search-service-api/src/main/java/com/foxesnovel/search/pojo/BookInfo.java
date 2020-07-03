@@ -20,13 +20,13 @@ public class BookInfo {
     /**
      * 小说名
      */
-    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_smart")
+    @Field(index = true, store = true, type = FieldType.Text, analyzer = "ik_smart")
     private String name;
 
     /**
      * 作者
      */
-    @Field(index = true, store = true, type = FieldType.Text,analyzer = "ik_smart")
+    @Field(index = true, store = true, type = FieldType.Text, analyzer = "ik_smart")
     private String author;
 
     /**
@@ -58,7 +58,6 @@ public class BookInfo {
     private Integer category;
 
 
-
     /**
      * 是否删除,1为删除,0未删除
      */
@@ -74,6 +73,7 @@ public class BookInfo {
      */
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer isFree;
+
     /**
      * 收藏数
      */
@@ -86,28 +86,6 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer readNum;
 
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
-    public Integer getIsFree() {
-        return isFree;
-    }
-
-    public void setIsFree(Integer isFree) {
-        this.isFree = isFree;
-    }
-
-    public Integer getSubscribeNum() {
-        return subscribeNum;
-    }
-
-    public void setSubscribeNum(Integer subscribeNum) {
-        this.subscribeNum = subscribeNum;
-    }
 
     /**
      * 总字数
@@ -133,8 +111,41 @@ public class BookInfo {
     @Field(index = true, store = true, type = FieldType.Integer)
     private Integer isVerify;
 
+    /**
+     * 类型名称
+     */
     @Field(index = true, store = true, type = FieldType.Keyword)
     private String categoryName;
+
+    /**
+     * 作者头像图片地址
+     */
+    @Field(index = true, store = true, type = FieldType.Text)
+    private String authorHead;
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public Integer getIsFree() {
+        return isFree;
+    }
+
+    public void setIsFree(Integer isFree) {
+        this.isFree = isFree;
+    }
+
+    public Integer getSubscribeNum() {
+        return subscribeNum;
+    }
+
+    public void setSubscribeNum(Integer subscribeNum) {
+        this.subscribeNum = subscribeNum;
+    }
 
     public String getCategoryName() {
         return categoryName;
@@ -222,6 +233,22 @@ public class BookInfo {
 
     public void setWordsNum(Integer wordsNum) {
         this.wordsNum = wordsNum;
+    }
+
+    public Integer getReadNum() {
+        return readNum;
+    }
+
+    public void setReadNum(Integer readNum) {
+        this.readNum = readNum;
+    }
+
+    public String getAuthorHead() {
+        return authorHead;
+    }
+
+    public void setAuthorHead(String authorHead) {
+        this.authorHead = authorHead;
     }
 
     public String getImage() {

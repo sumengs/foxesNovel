@@ -205,17 +205,17 @@
                     <div class="result-list" th:unless="${page.total}==0">
                         <ul>
                             <li th:each="book,books:${items.rows}" >
-                                <a class="book commonbook" href="book.html" target="_blank">
-                                    <img data-src="">
+                                <a class="book commonbook" th:href="@{/book/book/${book.id}.html}" target="_blank">
+                                    <img th:src="@{${book.imges}}">
                                 </a>
                                 <div class="info">
                                     <h4>
-                                        <a href="book.html" target="_blank"><span th:text="${book.name}"></span> </a>
+                                        <a th:href="@{/book/book/${book.id}.html}" target="_blank"><span th:text="${book.name}"></span> </a>
                                         <span class="subtitle">
-                                                        <a target="_blank" href="/authorcenter/258020.html"><i
+                                                        <a target="_blank" href="javascript:"><i
                                                                 class="iconfont">&#xe604;</i><span
                                                                 th:text="${book.author}"></span> </a>
-                                                            <a target="_blank" href="/Category/1.html"><span
+                                                            <a target="_blank" href="javascript:"><span
                                                                     th:text="${book.categoryName}"></span> </a>
                                                         <span>已完成</span>
                                                     </span>
