@@ -24,10 +24,14 @@
     <link href="css/global.css" rel="stylesheet" type="text/css"/>
     <script src="js/cookie.js"></script>
     <script src="js/vue.js"></script>
-
+    <script src="./js/axios.js"></script>
     <link href="css/base.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/JQBox.css"/>
-    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+
+    <script src="plugins/layui/layui.all.js"></script>
+    <link rel="stylesheet" type="text/css" href="plugins/layui/css/layui.css"/>
+
+
     <script>
 
 
@@ -46,24 +50,6 @@
         }
     </script>
 
-    <script>
-        var user_app =  new Vue({
-            el:"#userCenter",
-            data:{
-                username:"",
-                isLogin:false
-            },
-            created(){
-                let cookie = getCookie("username");
-                if(cookie.length>0){
-                    this.isLogin=true;
-                    this.username=cookie;
-                }
-
-            }
-        })
-
-    </script>
 </head>
 
 <body>
@@ -74,21 +60,66 @@
             <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index"
                                                                                                   href="index.html">首页</a>
         </div>
-        <div class="guide-menu" id="userCenter">
-            <div class="column" id="loginaction">
-                <a v-if="!isLogin" href="http://localhost/oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
+        <div class="guide-menu" >
+            <div class="column" id="userCenter">
+                <a v-if="!isLogin" href="http://localhost/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
                 <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
-                <a v-if="isLogin" href="" class="userCenter"><span v-text="username"></span></a>&ensp;
-
+                <a v-if="isLogin" href="" class="userCenter">{{username}}</a>&nbsp;&nbsp;
+                <a v-if="isLogin" href="javascript:void(0)" @click="logout()" class="userCenter">退出</a>
             </div>
+
+            <script>
+                var user_app =  new Vue({
+                    el:"#userCenter",
+                    data:{
+                        username:"",
+                        uid:"",
+                        isLogin:false
+                    },
+                    methods:{
+                        logout(){
+                            console.log("用户注销");
+                            axios.get("/oauth/logout?uid="+this.uid).then(res=>{
             <!--
             根据cookie的值来判断是否登录
 
             -->
 
+                                if(res.data.flag){
+                                    console.log("用户已经注销");
+                                    //前端注销页面
+                                    this.isLogin=false;
+                                    layer.msg(res.data.message);
+                                }else{
+                                    layer.msg("服务器忙...");
+                                }
 
-            <div class="column" id="userinfo" style="display: none;">&ensp;<a href="javascript:" class="register"
-                                                                              id="logout">退出</a></div>
+                            })
+                        }
+                    },
+                    created(){
+                        let c_username = getCookie("username");
+                        let c_uid = getCookie("uid");
+                        if(c_uid.length>0){
+                            this.username=c_username;
+                            this.uid=c_uid;
+                        }
+                        console.log("查询用户登录状态");
+                        axios.get("/oauth/loginStatus?uid="+this.uid).then(res=>{
+                            if(res.data.flag){
+                                //已登录
+                                console.log("用户已经登录");
+                                this.isLogin=true;
+                            }else{
+                                console.log("用户未登录");
+                                this.isLogin=false;
+                            }
+                        });
+                    }
+                })
+
+            </script>
+
             <div class="column more bookcase" id="menubookcase">
                 <a href="javascript:void(0);" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>

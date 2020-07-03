@@ -28,7 +28,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
 
     public Logger  logger =LoggerFactory.getLogger(this.getClass());
 
-    public static final String LOGIN_URL="http://localhost:9200/oauth/toLogin";
+    public static final String LOGIN_URL="http://localhost/oauth/login.html";
 
     public  String redirectURL="";
 
