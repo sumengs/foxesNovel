@@ -1,0 +1,1 @@
+(function(){window._userInfo={account:0,yuanbao:0,monTicket:0,assessTicket:0,diamondTicket:0,flowerTicket:0,updateAccount:function(){}}})();

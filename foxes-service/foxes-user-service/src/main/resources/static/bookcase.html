@@ -1,57 +1,2336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>个人中心我的书架</title>
+    <title>我的控制面板-潇湘书院</title>
+    <meta name="robots" content="all">
+<meta name="googlebot" content="all">
+<meta name="baiduspider" content="all">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a" />
+<link href="css/menutop.css" rel="stylesheet" type="text/css" />
 
+<link href="css/iconfont.css" rel="stylesheet" />
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/JQBox.css" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link href="css/center.css?v=201907" rel="stylesheet" />
+<link href="css/pagestatic.css?v=20200615" rel="stylesheet" />
+    
 </head>
+<body id="help">
+    <div class="top-menu search-top-menu">
+    <div class="container">
+        <div class="download-app">
+            <a class="app-android" href="/download.html" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
+            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index" href="//www.xxsy.net/">首页</a>
+        </div>
+        <div class="guide-menu">
+            <div class="column" id="loginaction"><a href="javascript:" class="login" id="headerLogin">登录</a>&ensp;<a href="/Reg" rel="nofollow" class="register" target="_blank">注册</a></div>
+            <div class="column" id="userinfo" style="display: none;"><a href="/control" rel="nofollow" class="username" id="username" target="_blank"></a>&ensp;<a href="javascript:" class="register" id="logout">退出</a></div>
+            <div class="column more bookcase" id="menubookcase">
+                <a href="javascript:" class="my-book" id="mybookcase">我的书架</a>
+                <em><i></i></em>
+                <div id="menucnt2" class="menu-ct menu-ct-2">
+                    <div id="mybc">
+                        <span class="off"></span>
+                        <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
+                        <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
+                        <span class="rblank"></span>
+                    </div>
+                    <ul id="mybctitle">
+                        <li class="n0">序</li>
+                        <li class="n1">书名</li>
+                        <li class="n2">标签章节(加入时间)</li>
+                        <li class="n3">作者</li>
+                        <li class="n4">操作</li>
+                    </ul>
+                    <ul id="mybcasecnt1" class="menumybclist">
+                        <div style="height: 200px!important; line-height: 200px!important;">
+                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif" />正在加载数据...</div>
+                    </ul>
+                    <ul id="mybcasecnt2" class="menumybclist" style="display: none;">
+                        <div style="height: 200px!important; line-height: 200px!important;">
+                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif" />正在加载数据...</div>
+                    </ul>
+                </div>
+            </div>
+            <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
+        </div>
+        <div class="mid-bar-search">
+            <form id="hform" name="hform" action="/search" method="get" target="_blank">
+                <input type="text" class="minisearch-text" placeholder="农家福妻娇又美" name="s_wd" id="searchkeyword" maxlength="20"><span class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit" value="" class="minisearch-btn" id="gosearch"></span>
+            </form>
+        </div>
+        <ul class="menu-style cl">
+            <li><a href="" target="_self">古代言情</a></li>
+            <li><a href="" target="_self">现代言情</a></li>
+            <li><a href="" target="_self">玄幻仙侠</a></li>
+            <li><a href="" target="_self">浪漫青春</a></li>
+            <li><a href="" target="_self">悬疑</a></li>
+            <li><a href="" target="_self">改编频道</a></li>
+            <li><a href="" target="_self">男生频道</a></li>
+            <li><a href="" target="_self">漫画频道</a></li>
+        </ul>
+    </div>
+</div>
+<input id="pagetoken" value="f47c91cde8a4160cfe41c7fbd9255cbe" type="hidden">
 <script>
+    window._pageToken = document.getElementById('pagetoken').value;
 </script>
-<body>
-<div id="app">
-<i>最近观看</i><br>
 
-    <ul>
-        <a><li v-for="favourite in favourites">{{favourite}}</li></a>
-    </ul>
-<i>我的书架</i>
+    <div class="content" id="vm">
+        <div class="container container-control">
+            <div class="control tab-click cl">
+                <div class="control-menu">
+                    <div class="control-title"><span class="ribbon"></span><i class="iconfont">&#xe62e;</i>会员中心</div>
+                    <div class="click-hd">
+                        <h3 ><a href="my.html"><i class="iconfont">&#xe606;</i>我的首页</a></h3>
+                        <h3 class="active"><a href="bookcase.html"><i class="iconfont">&#xe61b;</i>我的书架</a></h3>
+                        <h3 v-bind:class="tabIndex==2 ? 'active':''" v-on:click="setTabIndex(2)"><a href="javascript:;"><i class="iconfont">&#xe609;</i>我的书签</a></h3>
+                        <h3 v-bind:class="tabIndex==11 ? 'active':''" v-on:click="setTabIndex(11)"><a href="javascript:;"><i class="iconfont">&#xe748;</i>我的消息</a></h3>
+                        <h3 v-on:click="lotteryTabOpen = !lotteryTabOpen">
+                            <a href="javascript:;">
+                                <i class="iconfont more-icon" v-if="lotteryTabOpen" v-cloak>&#xe7cd;</i>
+                                <i class="iconfont more-icon" v-else v-cloak>&#xe601;</i>
+                                <i class="iconfont">&#xe628;</i>我的福利
+                            </a>
+                        </h3>
+                        <div class="secondary-nav" v-show="lotteryTabOpen" v-cloak>
+                            <h3 v-bind:class="tabIndex==10 ? 'active':''" v-on:click="setTabIndex(10)"><a href="javascript:;"><i class="iconfont">&#xe7d1;</i>我的书券<em>new</em></a></h3>
+                            
+                            <h3 v-bind:class="tabIndex==7 ? 'active':''" v-on:click="setTabIndex(7)"><a href="javascript:;"><i class="iconfont">&#xe61f;</i>奖励任务</a></h3>
+                            <h3 v-bind:class="tabIndex==12 ? 'active':''" v-on:click="setTabIndex(12)"><a href="javascript:;"><i class="iconfont">&#xe600;</i>礼品兑换</a></h3>
+                        </div>
+                        <h3 v-bind:class="tabIndex==9 ? 'active':''" v-on:click="setTabIndex(9)"><a href="javascript:;"><i class="iconfont">&#xe65c;</i>我的书单<em>new</em></a></h3>
+                        <h3 v-bind:class="tabIndex==3 ? 'active':''" v-on:click="setTabIndex(3)"><a href="javascript:;"><i class="iconfont">&#xe6ae;</i>我的书评</a></h3>
+                        <h3><a href="/quanzi/square" target="_blank"><i class="iconfont">&#xe618;</i>我的圈子</a></h3>
+                        <h3 v-bind:class="tabIndex==4 ? 'active':''" v-on:click="setTabIndex(4)"><a href="javascript:;"><i class="iconfont">&#xe60e;</i>我的钱包</a></h3>
+                        <h3 v-bind:class="tabIndex==5 ? 'active':''" v-on:click="setTabIndex(5)"><a href="javascript:;"><i class="iconfont">&#xe75c;</i>订阅设置</a></h3>
+                        <h3 v-bind:class="tabIndex==6 ? 'active':''" v-on:click="setTabIndex(6)"><a href="javascript:;"><i class="iconfont">&#xe60d;</i>个人设置</a></h3>
+                        <h3><a href="http://recharge.xxsy.net/" target="_blank"><i class="iconfont">&#xe625;</i>充值中心</a></h3>
+                        <h3><a href="/login/logout"><i class="iconfont">&#xe649;</i>退出登录</a></h3>
+                    </div>
+                    <div class="help">
+                        <a href="/help/uhelp.html" target="_blank">会员帮助中心></a>
+                        <a href="/help/ahelp.html" target="_blank">作家帮助中心></a>
+                        <a href="http://author.xxsy.net" target="_blank">我要当作家></a>
+                    </div>
+                </div>
+                <div class="control-main click-bd" v-cloak>
+                    <div class="works-main" v-show="tabIndex == 0">
+                        <dl class="user-head cl">
+                            <dt>
+                                <img class="auatar" v-bind:src="' pic/userface/'+userInfo.face" v-if="userInfo.face != ''">
+                                <img class="auatar" src=" pic/userface/girl/10001.jpg" v-else-if="userInfo.sex == 0">
+                                <img class="auatar" src=" pic/userface/boy/10001.jpg" v-else>
+                            </dt>
+                            <dd>
+                                <h2>
+                                    <span class="name">{{userInfo.nickName == '' ? userInfo.userName : userInfo.nickName}}</span>
+                                                                                                                <span>
+                                            包月会员：
+                                            <a href="/baoyue" target="_blank" class="colorred">未开通，立即开通包月</a>
+                                        </span>
+                                </h2>
+                                <p>
+                                    会员积分（动态粉丝值）：0 点
+                                    <a href="/userzone/16609793" class="blue-link f-r" target="_blank">个人主页</a>
+                                </p>
+                                <p><a href="javascript:;" class="common-blue-link" v-on:click="lotteryTabOpen=true;setTabIndex(7)">签到</a> 领取更多奖励</p>
+                                <div class="honor-medal">
+                                    <span>荣誉勋章：</span>
+                                </div>
+                            </dd>
+                        </dl>
+                        <ul class="account-info">
+                            <li>
+                                <h3><i class="iconfont">&#xe60f;</i>账户余额</h3>
+                                <p><span class="num_red">{{accountInfo.account}}</span>潇湘币</p>
+                                <p><span class="num_red">{{accountInfo.yuanbao}}</span>元宝</p>
+                                <p><span class="num_red">{{accountInfo.tiyanbi}}</span>体验币</p>
+                                <p><a href="http://recharge.xxsy.net/" class="blue-link" target="_blank">充值</a></p>
+                            </li>
+                            <li style="position:relative;">
+                                
+                                <h3><i class="iconfont">&#xe63a;</i>月票&评价票</h3>
+                                <p><span class="num_red">{{accountInfo.monticketCount}}</span>月票</p>
+                                <p class="ticketinfo">再订阅消费2500点，可得1张月票</p>
+                                <p><span class="num_red">{{accountInfo.assessticketCount}}</span>评价票</p>
+                                    <p class="ticketinfo">再订阅消费1000点，可得1张评价票</p>
+                            </li>
+                            <li>
+                                <h3><i class="iconfont">&#xe648;</i>我的书架</h3>
+                                <p><span class="num_red">{{accountInfo.bookCaseCount}}</span>藏书</p>
+                                <p><a href="javascript:;" class="blue-link" id="linkto-bookshelf" v-on:click="setTabIndex(1)">前往查看</a></p>
+                            </li>
+                            <li>
+                                <h3><i class="iconfont">&#xe61d;</i>我的消费</h3>
+                                <p>累计消费：<span class="num_gray">0</span>潇湘币</p>
+                                <p>累计订阅：<span class="num_gray">0</span>潇湘币</p>
+                            </li>
+                        </ul>
+                        <div class="maylike">
+                            <h3 class="profile-main-title">猜你喜欢</h3>
+                            <ul class="unusual-list unusual-heng-list cl">
+                                        <li>
+                                            <a class="book" href="/info/1101656.html" target="_blank">
+                                                <img src=" img/1101656.jpg">
+                                            </a>
+                                            <div class="info">
+                                                <h4><a href="/info/1101656.html" target="_blank">侯门嫡女之一品夫人</a></h4>
+                                                <p class="subtitle">凌七七&ensp;/&ensp;著</p>
+                                                <p class="detail">新文《腹黑首辅的心尖宠》已开，欢迎亲们入坑！一朝穿越，顾明卿成了大晋朝忠勇侯府的嫡次...</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="book" href="/info/971729.html" target="_blank">
+                                                <img src=" img/971729.jpg">
+                                            </a>
+                                            <div class="info">
+                                                <h4><a href="/info/971729.html" target="_blank">女战神的黑包群</a></h4>
+                                                <p class="subtitle">二谦&ensp;/&ensp;著</p>
+                                                <p class="detail">星际第一女战神东姝，某天突然加入一个黑包群！女战神一脸懵逼，顺手一戳！——————快...</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="book" href="/info/1026606.html" target="_blank">
+                                                <img src=" img/1026606.jpg">
+                                            </a>
+                                            <div class="info">
+                                                <h4><a href="/info/1026606.html" target="_blank">农娇有福</a></h4>
+                                                <p class="subtitle">寂寞的清泉&ensp;/&ensp;著</p>
+                                                <p class="detail">【清泉的新书《农家娇女》已经上传，请亲们多多支持！】陈燕燕情场失意，败的彻底。再次睁...</p>
+                                            </div>
+                                        </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 1">
+                        <bookcase-component v-bind:topaccountinfo="accountInfo" v-bind:topdataloading="dataLoading"></bookcase-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 2">
+                        <bookmark-component v-bind:topdataloading="dataLoading"></bookmark-component>
+                    </div>
+                    
+                    <div class="works-main" v-show="tabIndex == 9">
+                        <bookorder-component v-bind:topdataloading="dataLoading" v-bind:topviplevel="userInfo.vipLevel"></bookorder-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 7">
+                        <task-component v-bind:topdataloading="dataLoading" v-bind:topisvip="userInfo.vip"
+                                        v-on:method-set-tiyanbi-count="setTiyanbiCount"
+                                        v-on:method-set-yuanbao-count="setYuanbaoCount"
+                                        v-on:method-set-pingjiapiao-count="setPingjiapiaoCount"
+                                        v-on:method-set-yuepiao-count="setYuepiaoCount"></task-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 3">
+                        <bookreview-component v-bind:topdataloading="dataLoading"></bookreview-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 4">
+                        <cost-component v-bind:topdataloading="dataLoading" v-bind:topaccountinfo="accountInfo"></cost-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 10">
+                        <bookticket-component v-bind:topdataloading="dataLoading"></bookticket-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 5">
+                        <subcribe-component v-bind:topaccountinfo="accountInfo" v-bind:topuserinfo="userInfo" v-bind:topdataloading="dataLoading"></subcribe-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 6">
+                        <set-component v-bind:topuserinfo="userInfo" v-bind:topdataloading="dataLoading"></set-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 11">
+                        <message-component v-bind:topdataloading="dataLoading"></message-component>
+                    </div>
+                    <div class="works-main" v-show="tabIndex == 12">
+                        <lotteryticket-component></lotteryticket-component>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="componentlist">
+        <template id="bookcase">
+            <div class="box-con tab-con">
+    <div class="box-hd tab-hd">
+        <!--<h3 v-bind:class="[tabIndex == 2 ? 'active':'']" v-on:click="setTabIndex(2)">最近阅读</h3>
+        <h3 v-bind:class="[tabIndex == 0 ? 'active':'']" v-on:click="setTabIndex(0)">按收藏时间排序</h3>
+        <h3 v-bind:class="[tabIndex == 1 ? 'active':'']" v-on:click="setTabIndex(1)">按更新时间排序</h3>-->
+    </div>
+    <div class="box-bd tab-bd">
+        <div class="bd-main">
+            <table class="control-table">
+                <thead>
+                    <tr>
+                        <th class="wa"></th>
+                        <th class="wb">书名</th>
+                        <th class="wc">最新章节</th>
+                        <th class="wd">作者</th>
+                        <th class="we">最新章节发布时间</th>
+                        <!--<th class="history">阅读进度</th>-->
+                    </tr>
+                </thead>
+                <!--<tbody v-if="(loading[tabIndex] && !bookCase[tabIndex].pages) || !ready || (bookCase[tabIndex].pages && !bookCase[tabIndex].pages[bookCase[tabIndex].pageIndex].load)">
+                    <td colspan="6" class="userdataloaidng">正在加载 . . .</td>
+                </tbody>
+                <tbody v-else-if="!bookCase[tabIndex].pages">
+                    <td colspan="6" class="userdataloaidng">书架为空</td>
+                </tbody>-->
+                <tbody id="bookList">
+                    <tr>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td><a>斗破苍穹</a></td>
+                        <td><a>第四百七十六章 第二层</a></td>
+                        <td><a>天蚕土豆</a></td>
+                        <td><span class="time">2020-06-28 03:55</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td><a>修真界败类</a></td>
+                        <td><a>第五百三十九章 动静</a></td>
+                        <td><a>跃千愁</a></td>
+                        <td><span class="time">2020-06-28 15:13</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td><a>凡人修仙之仙界篇</a></td>
+                        <td><a>第五百章 幻金火</a></td>
+                        <td><a>作者</a></td>
+                        <td><span class="time">2020-06-28 15:24</span></td>
+                    </tr>
+                </tbody>
+                <tfoot v-if="tabIndex != 2 && ready && bookCase[tabIndex].pages">
+                    <tr>
+                        <td>
+                            <input type="checkbox" v-model="bookCase[tabIndex].allSel" id="selectAll" v-on:click="selAll()"></td>
+                        <td><a href="javascript:">
+                            <label for="selectAll">全选</label></a><a href="javascript:;" v-on:click="delSomeBook()">删除</a></td>
+                        <td colspan="4">
+                            <div class="pages">
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookCase[tabIndex].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookCase[tabIndex].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                <!--总页数10页以内-->
+                                <template v-if="bookCase[tabIndex].pageCount <= 10">
+                                    <template v-for="i in bookCase[tabIndex].pageCount">
+                                        <a href="javascript:" v-if="i-1==bookCase[tabIndex].pageIndex" class="active">{{i}}</a>
+                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                    </template>
+                                </template>
+                                <!--总页数超过10页-->
+                                <template v-else>
+                                    <template v-if="bookCase[tabIndex].pageIndex < 4" >
+                                        <span v-for="i in 5">
+                                            <a href="javascript:" v-if="i-1==bookCase[tabIndex].pageIndex" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </span>
+                                        <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageCount-1)">{{bookCase[tabIndex].pageCount}}</a>
+                                    </template>
+                                    <template v-else-if="bookCase[tabIndex].pageIndex + 5 > bookCase[tabIndex].pageCount">
+                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                        <template v-for="i in 5">
+                                            <a class="active" v-if="bookCase[tabIndex].pageCount - 6 + i == bookCase[tabIndex].pageIndex" href="javascript:">{{bookCase[tabIndex].pageIndex+1}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(bookCase[tabIndex].pageCount - 6 + i)">{{bookCase[tabIndex].pageCount - 5 + i}}</a>
+                                        </template>
+                                    </template>
+                                    <template v-else>
+                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageIndex - 2)">{{bookCase[tabIndex].pageIndex - 1}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageIndex - 1)">{{bookCase[tabIndex].pageIndex}}</a>
+                                        <a href="javascript:" class="active">{{bookCase[tabIndex].pageIndex + 1}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageIndex + 1)">{{bookCase[tabIndex].pageIndex + 2}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageIndex + 2)">{{bookCase[tabIndex].pageIndex + 3}}</a>
+                                        <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookCase[tabIndex].pageCount-1)">{{bookCase[tabIndex].pageCount}}</a>
+                                    </template>
+                                </template>
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookCase[tabIndex].pageIndex+1 == bookCase[tabIndex].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookCase[tabIndex].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                共{{bookCase[tabIndex].pageCount}}页，到第<input type="text" class="text" v-model="bookCase[tabIndex].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
 
-    <ul>
-        <a><li v-for="item in items">{{item}}</li></a>
-    </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 
-</body>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
-<script src="js/axios.min.js"></script>
-<script>
-    var app = new Vue({
-        el: "#app",
-        data: {
-            items: [],
-            favourites: []
-        },
-        methods: {
-            list() {
-                axios.get("/book/list").then(res => {
-                    if (res.data.flag) {
-                        app.items = res.data.data;
-                    }
-                });
-            },
-            favourite(bookId){
-                axios.get("/book/findFavourite?bookId="+bookId).then(res=>{
-                    if (res.data.flag){
-                        app.favourites=res.data.data;
-                    }
-                })
-            }
-        },
+        </template>
+        <template id="bookmark">
+            <table class="control-table">
+    <thead>
+        <tr>
+            <th class="wa"></th>
+            <th class="wb">书名</th>
+            <th class="wc">书签章节</th>
+            <th class="wd">作者</th>
+            <th class="we">收藏时间</th>
+            <th class="wf"></th>
+        </tr>
+    </thead>
+    <tbody v-if="loading && !bookMark.pages">
+        <td colspan="6" class="userdataloaidng">正在加载 . . .</td>
+    </tbody>
+    <tbody v-else-if="!bookMark.pages">
+        <td colspan="6" class="userdataloaidng">书签为空</td>
+    </tbody>
+    <tbody v-else >
+        <tr v-bind:class="item.HasDelete ? 'hasdelete':''" v-for="(item,itemindex) in bookMark.pages[bookMark.pageIndex]">
+            <td><input type="checkbox" v-if="!item.HasDelete" v-bind:value="item.BookId" v-model="bookMark.selItems"></td>
+            <td><a v-bind:href="'/category/'+item.ClassId + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a><a v-bind:href="'/info/'+item.BookId + '.html'" target="_blank">{{item.BookName}}</a></td>
+            <td><a v-bind:href="'/chapter/'+item.LastChapterId + '.html'" target="_blank">{{item.LastChapterName}}</a><em class="vip" v-if="item.LastChapterIsVip > 0">vip</em></td>
+            <td>{{item.Author}}</td>
+            <td><span class="time">{{item.InsertTime}}</span></td>
+            <td v-bind:class="item.HasDelete ? 'deleteText':''">
+                <template v-if="!item.HasDelete">
+                    <a href="javascript:;" class="delete" v-on:click="delSingleBook(itemindex)">删除</a>
+                </template>
+                <template v-else>
+                    <span>已删除</span>
+                </template>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot v-if="!loading && bookMark.pages">
+        <tr>
+            <td>
+                <input type="checkbox" v-model="bookMark.allSel" id="selectAll" v-on:click="selAll()"></td>
+            <td><a href="javascript:">
+                <label for="selectAll">全选</label></a><a href="javascript:;" v-on:click="delSomeBook()">删除</a></td>
+            <td colspan="4">
+                <div class="pages">
+                    <a class="page-prev defalt" href="javascript:;" v-if="bookMark.pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookMark.pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
 
-        created() {
-            this.list();
-            this.favourite()
+                    <!--总页数10页以内-->
+                    <template v-if="bookMark.pageCount <= 10">
+                        <template v-for="i in bookMark.pageCount">
+                            <a href="javascript:" v-if="i-1==bookMark.pageIndex" class="active">{{i}}</a>
+                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                        </template>
+                    </template>
+
+                    <!--总页数超过10页-->
+                    <template v-else>
+                        <template v-if="bookMark.pageIndex < 4">
+                            <template v-for="i in 5">
+                                <a href="javascript:" v-if="i-1==bookMark.pageIndex" class="active">{{i}}</a>
+                                <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                            </template>
+                            <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookMark.pageCount-1)">{{bookMark.pageCount}}</a>
+                        </template>
+
+                        <template v-else-if="bookMark.pageIndex + 5 > bookMark.pageCount">
+                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                            <template v-for="i in 5">
+                                <a class="active" v-if="bookMark.pageCount - 6 + i == bookMark.pageIndex" href="javascript:">{{bookMark.pageIndex+1}}</a>
+                                <a href="javascript:" v-else v-on:click="setPageIndex(bookMark.pageCount - 6 + i)">{{bookMark.pageCount - 5 + i}}</a>
+                            </template>
+                        </template>
+
+                        <template v-else>
+                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                            <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex - 2)">{{bookMark.pageIndex - 1}}</a>
+                            <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex - 1)">{{bookMark.pageIndex}}</a>
+                            <a href="javascript:" class="active">{{bookMark.pageIndex + 1}}</a>
+                            <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex + 1)">{{bookMark.pageIndex + 2}}</a>
+                            <a href="javascript:" v-on:click="setPageIndex(bookMark.pageIndex + 2)">{{bookMark.pageIndex + 3}}</a>
+                            <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookMark.pageCount-1)">{{bookMark.pageCount}}</a>
+                        </template>
+                    </template>
+                    <a class="page-prev defalt" href="javascript:;" v-if="bookMark.pageIndex+1 == bookMark.pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookMark.pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                    共{{bookMark.pageCount}}页，到第<input type="text" class="text" v-model="bookMark.goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+        </template>
+        <template id="share">
+            <div>
+    <div class="flowchart">
+        <img src="/Content/pic/flowchart.png" />
+        <ul class="flowchart-conditions">
+            <li>
+                <h4>分享专属链接或二维码给好友</h4>
+                <dl>
+                    <dt><i class="iconfont">&#xe611;</i>成功邀请注册</dt>
+                    <dd><em>{{regCount}}</em>人</dd>
+                </dl>
+            </li>
+            <li>
+                <h4>好友通过专属链接或二维码下载<br>潇湘书院APP注册（填邀请码）</h4>
+                <dl>
+                    <dt><i class="iconfont">&#xe611;</i>成功邀请首充</dt>
+                    <dd><em>{{rechargeCount}}</em>人</dd>
+                </dl>
+            </li>
+            <li>
+                <h4>您获得奖励</h4>
+                <dl>
+                    <dt><i class="iconfont">&#xe61d;</i>累计获得元宝</dt>
+                    <dd><em>{{totalPoint}}</em>元宝</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <ul class="account-info flowchart-info">
+        <li class="column1">
+            <dl>
+                <dd class="d1">
+                    <span>您的专属邀请链接：</span>
+                    <div class="detail">
+                        <p><a>{{shareUrl}}</a></p>
+                        <p v-show="hasLoad"><span class="copy-btn" id="copy" v-bind:data-clipboard-text="shareUrl">复制链接</span></p>
+                    </div>
+                </dd>
+                <dd class="d2">
+                    <span>您的专属邀请码：</span>
+                    <div class="detail">
+                        <h4>{{shareCode}}</h4>
+                        <p><span>邀请码仅供ios用户使用</span></p>
+                    </div>
+                </dd>
+            </dl>
+        </li>
+        <li class="column2">
+            <dl>
+                <dd><span>您的专属邀请二维码：</span></dd>
+                <dd><img v-bind:src="'data:image/png;base64,' + imageCode" class="share-mycode" v-show="hasLoad"></dd>
+            </dl>
+        </li>
+    </ul>
+    <dl class="activ-rules">
+        <dt>活动规则</dt>
+        <dd>1、分享专属邀请，邀请好友下载安装潇湘书院APP</dd>
+        <dd>&emsp;●  好友注册账号，并在首次登录时填写你的邀请码（安卓无需填写），你将获得500元宝</dd>
+        <dd>&emsp;●  若该好友首次充值成功，你将再获得500元宝</dd>
+        <dd>&emsp;●  好友需为新注册用户。多邀多得，数量不限</dd>
+        <dd>2、被邀好友可获得APP新人福利：500体验币+包月体验7天+充值多少送多少</dd>
+        <dd>3、更多活动细则</dd>
+        <dd>&emsp;●  通过邀请有礼获得的元宝的，有效期为30天</dd>
+        <dd>&emsp;●  同一账号、同一手机号、同一设备号，都视为同一用户</dd>
+        <dd>&emsp;●  本活动目前处于试运营阶段，潇湘书院有权根据运营需要随时调整活动规则及奖励。本活动最终解释权归潇湘书院所有</dd>
+    </dl>
+
+    <!-- 遮罩层指引页 -->
+    <div class="guide-box" v-show="introShow">
+        <div class="cover"></div>
+        <div class="guide-share">
+            <img src="/Content/pic/share-guide-pic.png" class="share-guide-pic">
+            <img src="/Content/pic/share-guide-btn.png" class="share-guide-btn" v-on:click="introShow = false">
+        </div>
+    </div>
+</div>
+        </template>
+        <template id="bookorder">
+            <div>
+    <div class="box-con tab-con">
+        <div class="box-hd tab-hd">
+            <h3 v-bind:class="type==2 ? 'active':''" v-on:click="setType(2)">收藏的书单</h3>
+            <h3 v-bind:class="type==3 ? 'active':''" v-on:click="setType(3)">创建的书单</h3>
+            <h3 v-bind:class="type==0 ? 'active':''" v-on:click="setType(0)">新建书单</h3>
+            <a href="/bookorder" target="_blank"><h3 class="link">书单广场</h3></a>
+        </div>
+        <div class="box-bd tab-bd">
+            <div class="bd-main" id="bookrdercontent2" v-show="type == 2"></div>
+            <div class="bd-main" id="bookrdercontent3" v-show="type == 3"></div>
+            <div class="bd-main" v-show="type == 0">
+                <div class="creatlist-form">
+                    <div class="form"><label>书单名称：</label><input type="text" class="text text1" placeholder="4-20字" v-model="detailInfo.title" maxlength=30></div>
+                    <div class="form"><label>书单简介：</label><textarea class="text text2" placeholder="10-1000字" v-model="detailInfo.intro" maxlength=1500></textarea></div>
+                    <div class="form">
+                        <label>书单作品：</label>
+                        <div class="addbook-detail">
+                            <ul class="input-detail">
+                                <li v-for="(item, index) in bookSelectList">
+                                    <div class="book">
+                                        <img v-bind:src="' bimg/'+item.bookId+'.jpg'">
+                                        <p>{{item.bookName}}</p>
+                                    </div>
+                                    <textarea class="text text3" placeholder="请填写10-500字推荐语（必填）" v-model="item.intro" maxlength=800></textarea>
+                                    <span class="del" v-on:click="deleteBookListItem(index)">删除</span>
+                                </li>
+                            </ul>
+                            <dl class="addbook-action">
+                                <dt>
+                                    <p>已有 {{bookSelectList.length}} / 15 本作品</p>
+                                    <span class="addbook-btn" v-on:click="setBookSelectBoxShow(true)"><i class="iconfont">&#xe612;</i>添加作品</span>
+                                </dt>
+                                <dd class="action">
+                                    <span class="red-btn red-big-btn btn-draft" v-on:click="saveBookOrder(false)">保存草稿</span><span class="red-btn red-big-btn btn-publish" v-on:click="beforeSaveBookOrder()">发布书单</span>
+                                </dd>
+                                <dd class="tips">
+                                    <p>1.VIP等级≥2可以创建书单，每个用户最多可创建6个书单，每个书单最多添加15本作品</p>
+                                    <p>2.书单发布后暂不可修改，只能删除</p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="addbook-box" v-show="bookShow">
+        <div class="cover"></div>
+        <div class="addbook-main">
+            <span class="closebtn iconfont" v-on:click="bookShow = false">&#xe622;</span>
+            <div class="box-con tab-con">
+                <div class="box-hd tab-hd">
+                    <h3 v-bind:class="bookTab==0 ? 'active':''" v-on:click="setBookSearchTab(0)">书架作品</h3>
+                    <h3 v-bind:class="bookTab==1 ? 'active':''" v-on:click="setBookSearchTab(1)">搜索作品</h3>
+                </div>
+                <div class="box-bd tab-bd">
+                    <div class="bd-main">
+                        <div class="popadd-search" v-show="bookTab==1">
+                            <input type="text" class="s-text" placeholder="搜索作品/作者名" maxlength=50 v-model="bookSearchKeyword" v-on:keyup.enter="searchBook(0, true)">
+                            <input type="button" class="s-btn" value="搜索" v-on:click="searchBook(0, true)">
+                        </div>
+                        <div class="choosebook-main">
+                            <div class="choosebook-list">
+                                <p v-if="bookSearchLoading[bookTab]" class="userdataloaidng">正在加载 . . .</p>
+                                <p v-else-if="bookList[bookTab].length == 0" class="userdataloaidng">暂无数据</p>
+                                <ul v-else>
+                                    <li v-for="(item, index) in bookList[bookTab]" v-bind:class="item.checked ? 'active':''" v-on:click="selectBook(index)">
+                                        <img v-bind:src="' bimg/' + item.bookId + '.jpg'">
+                                        <h3>{{item.bookName}}</h3>
+                                        <p>{{item.authorName}}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pages" v-if="bookSearchPageCount[bookTab] > 0">
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookSearchPageIndex[bookTab]==0"><i class="iconfont">&#xe7d0;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="searchBook(bookSearchPageIndex[bookTab]-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                <!--总页数10页以内-->
+                                <template v-if="bookSearchPageCount[bookTab] <= 10">
+                                    <template v-for="i in bookSearchPageCount[bookTab]">
+                                        <a href="javascript:" v-if="i-1==bookSearchPageIndex[bookTab]" class="active">{{i}}</a>
+                                        <a href="javascript:" v-else v-on:click="searchBook(i-1)">{{i}}</a>
+                                    </template>
+                                </template>
+                                <!--总页数超过10页-->
+                                <template v-else>
+                                    <template v-if="bookSearchPageIndex[bookTab] < 4">
+                                        <template v-for="i in 5">
+                                            <a href="javascript:" v-if="i-1==bookSearchPageIndex[bookTab]" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="searchBook(i-1)">{{i}}</a>
+                                        </template>
+                                        <span class="ellipsis">…</span>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageCount[bookTab]-1)">{{bookSearchPageCount[bookTab]}}</a>
+                                    </template>
+
+                                    <template v-else-if="bookSearchPageIndex[bookTab] + 5 > bookSearchPageCount[bookTab]">
+                                        <a href="javascript:" v-on:click="searchBook(0)">1</a>
+                                        <span class="ellipsis">…</span>
+                                        <template v-for="i in 5">
+                                            <a class="active" v-if="bookSearchPageCount[bookTab] - 6 + i == bookSearchPageIndex[bookTab]" href="javascript:">{{bookSearchPageIndex[bookTab]+1}}</a>
+                                            <a href="javascript:" v-else v-on:click="searchBook(bookSearchPageCount[bookTab] - 6 + i)">{{bookSearchPageCount[bookTab] - 5 + i}}</a>
+                                        </template>
+                                    </template>
+                                    <template v-else>
+                                        <a href="javascript:" v-on:click="searchBook(0)">1</a>
+                                        <span class="ellipsis">…</span>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageIndex[bookTab] - 2)">{{bookSearchPageIndex[bookTab] - 1}}</a>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageIndex[bookTab] - 1)">{{bookSearchPageIndex[bookTab]}}</a>
+                                        <a href="javascript:" class="active">{{bookSearchPageIndex[bookTab] + 1}}</a>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageIndex[bookTab] + 1)">{{bookSearchPageIndex[bookTab] + 2}}</a>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageIndex[bookTab] + 2)">{{bookSearchPageIndex[bookTab] + 3}}</a>
+                                        <span class="ellipsis">…</span>
+                                        <a href="javascript:" v-on:click="searchBook(bookSearchPageCount[bookTab]-1)">{{bookSearchPageCount[bookTab]}}</a>
+                                    </template>
+                                </template>
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookSearchPageIndex[bookTab]+1 == bookSearchPageCount[bookTab]"><i class="iconfont">&#xe7cf;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="searchBook(bookSearchPageIndex[bookTab]+1)"><i class="iconfont">&#xe7cf;</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="choosebook-action"><span class="choose-left">{{bookSelectList.length}}/15</span><span class="red-btn red-big-btn btn-sure" v-on:click="bookShow = false">选好了</span></div>
+        </div>
+    </div>
+    <div class="sure-box" v-show="draftConfirmBoxShow">
+        <div class="cover"></div>
+        <div class="push-sure">
+            <span class="closebtn iconfont" v-on:click="draftConfirmBoxShow = false">&#xe622;</span>
+            <dl>
+                <dt>保存草稿？</dt>
+                <dd>
+                    <p>您有内容未保存，是否保存为草稿</p>
+                    <div class="action"><span class="red-btn red-big-btn btn-cancel" v-on:click="cancelSaveDraft()">不保存</span><span class="red-btn red-big-btn btn-sure" v-on:click="saveBookOrder(false)">保存</span></div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="sure-box" v-show="saveConfirmBoxShow">
+        <div class="cover"></div>
+        <div class="push-sure">
+            <span class="closebtn iconfont" v-on:click="saveConfirmBoxShow = false">&#xe622;</span>
+            <dl>
+                <dt>确认发布？</dt>
+                <dd>
+                    <p>书单发布后，暂不允许修改，但可以删除</p>
+                    <div class="action"><span class="red-btn red-big-btn btn-cancel" v-on:click="saveConfirmBoxShow = false">取消</span><span class="red-btn red-big-btn btn-sure" v-on:click="saveBookOrder(true)">发布</span></div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="sure-box" v-show="deleteConfirmBoxShow">
+        <div class="cover"></div>
+        <div class="push-sure">
+            <span class="closebtn iconfont" v-on:click="deleteConfirmBoxShow = false">&#xe622;</span>
+            <dl>
+                <dt>删除书单？</dt>
+                <dd>
+                    <p>书单删除后无法恢复</p>
+                    <div class="action"><span class="red-btn red-big-btn btn-cancel" v-on:click="deleteConfirmBoxShow = false">取消</span><span class="red-btn red-big-btn btn-sure" v-on:click="deleteBookOrder()">删除</span></div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+        </template>
+        <template id="task">
+            <div>
+    <div class="control-hdtitle signed-title">
+        <h3>签到领奖励<a href="javascript:;" class="common-blue-link" v-on:click="weekSignedRulesShow=true">签到规则</a></h3>
+    </div>
+    <template v-if="initLoading">
+        <p class="userdataloaidng">正在加载签到信息</p>
+    </template>
+    <template v-else>
+        <div class="usercenter-signed">
+            <ul class="task-list">
+                <li class="task-signin">
+                    <div class="signin">
+                        <div class="sign-item sign-zero">
+                            <div class="signing signing-finish" v-if="weekSigned.todayIsSigned">已签到</div>
+                            <div class="signing signing-finish" v-else-if="weekSigned.loading">签到中</div>
+                            <div class="signing" v-else v-on:click="getWeekSignedReward()" title="点击签到">签到</div>
+                        </div>
+                        <div class="sign-item sign-one" v-for="(item,index) in weekSigned.rewardList">
+                            <div>{{weekName[index]}}</div>
+                            <div class="bg-sign-future-one" v-if="item == 0">
+
+                                <div class="bg-sign-future-two">
+                                    <img src="https: css/pc/website/images/signed/sign-icon.png">
+                                </div>
+                            </div>
+                            <div class="bg-sign-now-one bg-sign-finish" v-else-if="index < weekSigned.todayIndex || (index == weekSigned.todayIndex && weekSigned.todayIsSigned)">
+                                <i class="iconfont">&#xe615;</i>
+                                <div class="bg-sign-now-two">
+                                    <img src="https: css/pc/website/images/signed/sign-icon.png" />
+                                </div>
+                            </div>
+                            <div class="bg-sign-now-one" v-else>
+                                <div class="bg-sign-now-two">
+                                    <img src="https: css/pc/website/images/signed/sign-icon.png">
+                                </div>
+                            </div>
+
+                            <div class="sign-prize">+{{item}}元宝</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="task-sign-prize" v-if="totalSigned.taskList.length > 0">
+                    <div class="prize-bg">
+                        <div class="left">
+                            <p class="prize-title">累计签到</p>
+                            <div class="prize-con">
+                                <div class="prize-area">
+                                    <div class="prize-message">
+                                        <p class="prize-one">{{totalSigned.taskList[0].NeedTotal}}日累计签到礼包</p>
+                                        <p class="prize-two">累计签到{{totalSigned.taskList[0].NeedTotal}}日可获得{{totalSignedRewardText(totalSigned.taskList[0].TaskItems)}}</p>
+                                    </div>
+                                    <div class="prize-btn">
+                                        <a href="javascript:;" class="btn-read btn-white" v-if="totalSigned.signedTotalCount < totalSigned.taskList[0].NeedTotal">还需签到{{totalSigned.taskList[0].NeedTotal-totalSigned.signedTotalCount}}天</a>
+                                        <a href="javascript:;" class="btn-read" v-else-if="totalSigned.loading">正在领取</a>
+                                        <a href="javascript:;" class="btn-read" v-else v-on:click="getTotalSignedReward()">待领取</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="cover" v-show="signedRewardBox.show || weekSignedRulesShow"></div>
+            <div class="sign-box" v-show="signedRewardBox.show">
+                <div class="sign-main">
+                    <p class="sign-prize-title">签到奖励</p>
+                    <ul class="sign-prize-list">
+                        <li v-for="item in signedRewardBox.rewardList">
+                            获得<span class="sign-num">{{item.count}}</span>
+                            <span class="sign-type" v-if="item.iid == 1">元宝</span>
+                            <span class="sign-type" v-else-if="item.iid == 2">张月票</span>
+                            <span class="sign-type" v-else-if="item.iid == 3">张评价票</span>
+                            <span class="sign-type" v-else-if="item.iid == 4">体验币</span>
+                        </li>
+                    </ul>
+                    <div v-on:click="hideSignedRewardBox()" class="iconfont sign-close-btn">&#xe622;</div>
+                </div>
+            </div>
+            <div class="sign-box" v-show="weekSignedRulesShow">
+                <div class="sign-main">
+                    <p class="sign-prize-title">每日签到奖励</p>
+                    <div class="signed-rules">
+                        <table class="data-table">
+                            <tbody>
+                                <tr>
+                                    <td>周一</td>
+                                    <td>周二</td>
+                                    <td>周三</td>
+                                    <td>周四</td>
+                                    <td>周五</td>
+                                    <td>周六</td>
+                                    <td>周日</td>
+                                </tr>
+                                <tr>
+                                    <td>1元宝</td>
+                                    <td>2元宝</td>
+                                    <td>4元宝</td>
+                                    <td>6元宝</td>
+                                    <td>8元宝</td>
+                                    <td>10元宝</td>
+                                    <td>15元宝</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="">
+                            <li>1. 签到每周循环（周一至周日）；</li>
+                            <li>2. 若中途漏签，次日则从1元宝重新开始；</li>
+                            <li>3. 元宝可订阅VIP章节，有效期30天；</li>
+                            <li>4. 每个用户每天可签到一次。同一帐号、同一手机、同一设备号，均视为同一用户；</li>
+                            <li>5. 本活动最终解释权归潇湘书院所有。</li>
+                        </ul>
+                    </div>
+                    <div v-on:click="weekSignedRulesShow=false" class="iconfont sign-close-btn">&#xe622;</div>
+                </div>
+            </div>
+
+        </div>
+    </template>
+    <div class="control-hdtitle">
+        <h3>新手任务</h3>
+    </div>
+    <ul class="task-list">
+        <li>
+            <span class="task-icon task-icon1"></span>
+            <dl class="task-detail">
+                <dt>绑定手机</dt>
+                <dd><p>进入【个人中心】→点击【个人设置】→点击绑定手机【请绑定】→绑定手机</p></dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[0] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[0] == 1" v-on:click="getReward(1)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[0] == 1 && loading[0]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励100体验币</p>
+            </div>
+        </li>
+        <li>
+            <span class="task-icon task-icon2"></span>
+            <dl class="task-detail">
+                <dt>收藏追书</dt>
+                <dd><p>点击【任意作品】→进入【作品详情页】→点击【加入书架】</p></dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[1] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[1] == 1" v-on:click="getReward(2)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[1] == 1 && loading[1]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励10体验币</p>
+            </div>
+        </li>
+        <li>
+            <span class="task-icon task-icon3"></span>
+            <dl class="task-detail">
+                <dt>评头论足</dt>
+                <dd>
+                    <p>方式1：点击【任意作品】→进入【作品详情页】→点击【我要评论】</p>
+                    <p>方式2：进入【阅读页】→点击【讨论】→发表一条评论</p>
+                </dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[2] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[2] == 1" v-on:click="getReward(3)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[2] == 1 && loading[2]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励10体验币</p>
+            </div>
+        </li>
+    </ul>
+    <div class="control-hdtitle">
+        <h3>每日任务</h3>
+    </div>
+    <ul class="task-list">
+        <li>
+            <span class="task-icon task-icon4"></span>
+            <dl class="task-detail">
+                <dt>阅读有礼</dt>
+                <dd><p>浏览任意一本作品详情页</p></dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[3] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[3] == 1" v-on:click="getReward(4)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[3] == 1 && loading[3]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励2体验币</p>
+            </div>
+        </li>
+        <li>
+            <span class="task-icon task-icon5"></span>
+            <dl class="task-detail">
+                <dt>订阅有礼</dt>
+                <dd><p>使用潇湘币订阅任意作品【VIP章节】</p></dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[4] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[4] == 1" v-on:click="getReward(5)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[4] == 1 && loading[4]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励5体验币</p>
+            </div>
+        </li>
+        <li>
+            <span class="task-icon task-icon6"></span>
+            <dl class="task-detail">
+                <dt>投票有礼</dt>
+                <dd><p>给任意作品投出月票</p></dd>
+            </dl>
+            <div class="task-action">
+                <a href="javascript:;" class="btn-read" v-if="initLoading">加载中</a>
+                <a href="javascript:;" class="btn-read btn-white" v-else-if="taskState[5] == 0">未完成</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[5] == 1" v-on:click="getReward(6)">待领取</a>
+                <a href="javascript:;" class="btn-read" v-else-if="taskState[5] == 1 && loading[5]">正在领取</a>
+                <a href="javascript:;" class="btn-read btn-gray" v-else>已领取</a>
+                <p>完成任务奖励10体验币</p>
+            </div>
+        </li>
+    </ul>
+</div>
+        </template>
+        <template id="bookreview">
+            <div class="box-con tab-con">
+    <div class="box-hd tab-hd">
+        <h3 v-bind:class="[tabIndex == 0 ? 'active':'']" v-on:click="setTabIndex(0)">我发出的评论</h3>
+        <h3 v-bind:class="[tabIndex == 1 ? 'active':'']" v-on:click="setTabIndex(1)">作者回复的评论</h3>
+        <h3 v-bind:class="[tabIndex == 2 ? 'active':'']" v-on:click="setTabIndex(2)">我的回复</h3>
+        <h3 v-bind:class="[tabIndex == 3 ? 'active':'']" v-on:click="setTabIndex(3)">回复我的</h3>
+    </div>
+    <div class="box-bd tab-bd">
+        <div class="bd-main">
+            <table class="control-table">
+                <thead>
+                    <tr>
+                        <th class="wb">来源</th>
+                        <th class="wq">{{tabIndex < 2 ? '评论内容' : '回复内容'}}</th>
+                        <th class="we">{{tabIndex < 2 ? '发表时间' : '回复时间'}}</th>
+                        <th class="wf"></th>
+                    </tr>
+                </thead>
+                <tbody v-if="loading[tabIndex] && (!bookReview[tabIndex].pages || !bookReview[tabIndex].pages[bookReview[tabIndex].pageIndex])">
+                    <td colspan="4" class="userdataloaidng">正在加载 . . .</td>
+                </tbody>
+                <tbody v-else-if="!bookReview[tabIndex].pages">
+                    <td colspan="4" class="userdataloaidng">内容为空</td>
+                </tbody>
+                <tbody v-else>
+                    <tr v-for="(item,itemindex) in bookReview[tabIndex].pages[bookReview[tabIndex].pageIndex]">
+                        <td>
+                            <template v-if="item.BookID > 0">
+                                <a v-bind:href="'/category/'+item.ClassID + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a>
+                                <a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank">{{item.BookTitle}}</a>
+                            </template>
+                            <template v-else>
+                                <a href="/quanzi/square" target="_blank">圈子</a>
+                            </template>
+                        </td>
+                        <td><div class="comment-detail commentcontent" v-html="item.Content" v-bind:style="{height:item.ShowAll ? 'auto':'24px'}"></div></td>
+                        <td><span class="time">{{new Date(item.InsertTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                        <td><a v-bind:href="'/quanzi/detail?commentid=' + (tabIndex < 2 ? item.ID : item.TMID)" class="btn-toggle" target="_blank">查看详情</a></td>
+                    </tr>
+                </tbody>
+                <tfoot v-if="ready[tabIndex] && bookReview[tabIndex].pages">
+                    <tr>
+                        <td colspan="4">
+                            <div class="pages">
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookReview[tabIndex].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookReview[tabIndex].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                <!--总页数10页以内-->
+                                <template v-if="bookReview[tabIndex].pageCount <= 10">
+                                    <template v-for="i in bookReview[tabIndex].pageCount">
+                                        <a href="javascript:" v-if="i-1==bookReview[tabIndex].pageIndex" class="active">{{i}}</a>
+                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                    </template>
+                                </template>
+                                <!--总页数超过10页-->
+                                <template v-else>
+                                    <template v-if="bookReview[tabIndex].pageIndex < 4">
+                                        <template v-for="i in 5">
+                                            <a href="javascript:" v-if="i-1==bookReview[tabIndex].pageIndex" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </template>
+                                        <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageCount-1)">{{bookReview[tabIndex].pageCount}}</a>
+                                    </template>
+
+                                    <template v-else-if="bookReview[tabIndex].pageIndex + 5 > bookReview[tabIndex].pageCount">
+                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                        <template v-for="i in 5">
+                                            <a class="active" v-if="bookReview[tabIndex].pageCount - 6 + i == bookReview[tabIndex].pageIndex" href="javascript:">{{bookReview[tabIndex].pageIndex+1}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(bookReview[tabIndex].pageCount - 6 + i)">{{bookReview[tabIndex].pageCount - 5 + i}}</a>
+                                        </template>
+                                    </template>
+                                    <template v-else>
+                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a><span class="ellipsis">…</span>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageIndex - 2)">{{bookReview[tabIndex].pageIndex - 1}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageIndex - 1)">{{bookReview[tabIndex].pageIndex}}</a>
+                                        <a href="javascript:" class="active">{{bookReview[tabIndex].pageIndex + 1}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageIndex + 1)">{{bookReview[tabIndex].pageIndex + 2}}</a>
+                                        <a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageIndex + 2)">{{bookReview[tabIndex].pageIndex + 3}}</a>
+                                        <span class="ellipsis">…</span><a href="javascript:" v-on:click="setPageIndex(bookReview[tabIndex].pageCount-1)">{{bookReview[tabIndex].pageCount}}</a>
+                                    </template>
+                                </template>
+                                <a class="page-prev defalt" href="javascript:;" v-if="bookReview[tabIndex].pageIndex+1 == bookReview[tabIndex].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(bookReview[tabIndex].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                共{{bookReview[tabIndex].pageCount}}页，到第<input type="text" class="text" v-model="bookReview[tabIndex].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+        </template>
+        <template id="cost">
+            <div>
+    <div class="account-rest">
+        <a href="http://recharge.xxsy.net/" class="red-btn red-big-btn" target="_blank">充值</a><strong>账户余额：</strong><em class="num_red">{{topaccountinfo.account}}</em>潇湘币
+        <em class="num_red">{{topaccountinfo.yuanbao}}</em>元宝
+        <em class="num_red">{{topaccountinfo.tiyanbi}}</em>体验币
+    </div>
+    <div class="box-con tab-con">
+        <div class="box-hd tab-hd">
+            <h3 v-bind:class="tabIndex==0 ? 'active':''" v-on:click="setTabIndex(0)">消费记录</h3>
+            <h3 v-bind:class="tabIndex==1 ? 'active':''" v-on:click="setTabIndex(1)">充值记录</h3>
+            <h3 v-bind:class="tabIndex==2 ? 'active':''" v-on:click="setTabIndex(2)">奖励记录</h3>
+        </div>
+        <div class="box-bd tab-bd">
+            <!-- 消费记录 -->
+            <div class="bd-main" v-show="tabIndex==0">
+                <div class="tab-inner consume-history">
+                    <div class="tab-inner-hd">
+                        <div class="row-radio-type f-l" v-show="chilrenTabIndex[0]==0">
+                            <label><input type="radio" name="history" v-model.number="isHistory" value="0">当天订阅记录</label>
+                            <label><input type="radio" name="history" v-model.number="isHistory" value="1">历史订阅记录</label>
+                        </div>
+                        <span v-bind:class="chilrenTabIndex[0]==0 ? 'active':''" v-on:click="setCostTabIndex(0)">章节订阅</span>
+                        <span v-bind:class="chilrenTabIndex[0]==1 ? 'active':''" v-on:click="setCostTabIndex(1)">打赏消费</span>
+                        <span v-bind:class="chilrenTabIndex[0]==2 ? 'active':''" v-on:click="setCostTabIndex(2)">特价全本订阅</span>
+                        <span v-bind:class="chilrenTabIndex[0]==3 ? 'active':''" v-on:click="setCostTabIndex(3)">包月</span>
+                        <span v-bind:class="chilrenTabIndex[0]==4 ? 'active':''" v-on:click="setCostTabIndex(4)">元宝消费</span>
+                    </div>
+                    <div class="tab-inner-bd">
+                        <!-- 章节订阅（当天） -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==0 && isHistory==0">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wb">书名</th>
+                                        <th class="wc">订阅章节</th>
+                                        <th class="we">消费点数</th>
+                                        <th class="we">订阅时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][0] && (!costData[0][0].pages || !costData[0][0].pages[costData[0][0].pageIndex])">
+                                <td colspan="4" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][0].pages">
+                                <td colspan="4" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][0].pages[costData[0][0].pageIndex]">
+                                        <td><a v-bind:href="'/category/'+ item.BookClassID + '.html'" class="classify" target="_blank">[{{item.BookClassName}}]</a><a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank">{{item.BookTitle}}</a></td>
+                                        <td><a v-bind:href="'/chapter/'+item.ChapterID + '.html'" target="_blank">{{item.ChapterTitle}}</a></td>
+                                        <td>
+                                            <span v-if="item.Point > 0"><em>{{item.Point}}</em>潇湘币</span>
+                                            <span v-if="item.Ingots > 0"><em>{{item.Ingots}}</em>元宝</span>
+                                            <span v-if="item.Tiyanbi > 0"><em>{{item.Tiyanbi}}</em>体验币</span>
+                                            <span v-if="item.Point+item.Ingots+item.Tiyanbi==0"><em>0</em>潇湘币</span>
+                                        </td>
+                                        <td><span class="time">{{new Date(item.Time.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="ready[0] && costData[0][0].pages">
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][0].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][0].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][0].pageCount <= 10">
+                                                    <template v-for="i in costData[0][0].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][0].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <!--总页数超过10页-->
+                                                <template v-else>
+                                                    <template v-if="costData[0][0].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][0].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageCount-1)">{{costData[0][0].pageCount}}</a>
+                                                    </template>
+
+                                                    <template v-else-if="costData[0][0].pageIndex + 5 > costData[0][0].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][0].pageCount - 6 + i == costData[0][0].pageIndex" href="javascript:">{{costData[0][0].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][0].pageCount - 6 + i)">{{costData[0][0].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageIndex - 2)">{{costData[0][0].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageIndex - 1)">{{costData[0][0].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][0].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageIndex + 1)">{{costData[0][0].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageIndex + 2)">{{costData[0][0].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][0].pageCount-1)">{{costData[0][0].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][0].pageIndex+1 == costData[0][0].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][0].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][0].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][0].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 章节订阅（历史） -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==0 && isHistory==1">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wb">书名</th>
+                                        <th class="wc">订阅章节</th>
+                                        <th class="we">消费点数</th>
+                                        <th class="we">订阅时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][5] && (!costData[0][5].pages || !costData[0][5].pages[costData[0][5].pageIndex])">
+                                    <td colspan="4" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][5].pages">
+                                    <td colspan="4" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][5].pages[costData[0][5].pageIndex]">
+                                        <td><a v-bind:href="'/category/'+ item.BookClassID + '.html'" class="classify" target="_blank">[{{item.BookClassName}}]</a><a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank">{{item.BookTitle}}</a></td>
+                                        <td><a v-bind:href="'/chapter/'+item.ChapterID + '.html'" target="_blank">{{item.ChapterTitle}}</a></td>
+                                        <td>
+                                            <span v-if="item.Point > 0"><em>{{item.Point}}</em>潇湘币</span>
+                                            <span v-if="item.Ingots > 0"><em>{{item.Ingots}}</em>元宝</span>
+                                            <span v-if="item.Tiyanbi > 0"><em>{{item.Tiyanbi}}</em>体验币</span>
+                                            <span v-if="item.Point+item.Ingots+item.Tiyanbi==0"><em>0</em>潇湘币</span>
+                                        </td>
+                                        <td><span class="time">{{new Date(item.Time.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="ready[0] && costData[0][5].pages">
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][5].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][5].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][5].pageCount <= 10">
+                                                    <template v-for="i in costData[0][5].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][5].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <!--总页数超过10页-->
+                                                <template v-else>
+                                                    <template v-if="costData[0][5].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][5].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageCount-1)">{{costData[0][5].pageCount}}</a>
+                                                    </template>
+
+                                                    <template v-else-if="costData[0][5].pageIndex + 5 > costData[0][5].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][5].pageCount - 6 + i == costData[0][5].pageIndex" href="javascript:">{{costData[0][5].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][5].pageCount - 6 + i)">{{costData[0][5].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageIndex - 2)">{{costData[0][5].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageIndex - 1)">{{costData[0][5].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][5].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageIndex + 1)">{{costData[0][5].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageIndex + 2)">{{costData[0][5].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][5].pageCount-1)">{{costData[0][5].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][5].pageIndex+1 == costData[0][5].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][5].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][5].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][5].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 打赏消费 -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==1">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wb">赠送作品</th>
+                                        <th class="wj">作者</th>
+                                        <th class="wd">道具类型</th>
+                                        <th class="wd">赠送数量</th>
+                                        <th class="wd">消费点数</th>
+                                        <th class="we">赠送时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][1] && (!costData[0][1].pages || !costData[0][1].pages[costData[0][1].pageIndex])">
+                                <td colspan="6" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][1].pages">
+                                <td colspan="6" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][1].pages[costData[0][1].pageIndex]">
+                                        <td><a v-bind:href="'/category/'+item.BookClassID + '.html'" class="classify" target="_blank">[{{item.BookClassName}}]</a><a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank">{{item.BookName}}</a></td>
+                                        <td><a v-bind:href="'/authorcenter/'+ item.AuthorID + '.html'" target="_blank">{{item.AuthorName}}</a></td>
+                                        <td>{{item.Attach == 18 ? '活动月票' : item.TypeName}}</td>
+                                        <td>{{item.SendCount}}</td>
+                                        <td>{{item.Point}}</td>
+                                        <td><span class="time">{{new Date(item.SendTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="chilrenReady[1] && costData[0][1].pages">
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][1].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][1].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][1].pageCount <= 10">
+                                                    <template v-for="i in costData[0][1].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][1].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <!--总页数超过10页-->
+                                                <template v-else>
+                                                    <template v-if="costData[0][1].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][1].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageCount-1)">{{costData[0][1].pageCount}}</a>
+                                                    </template>
+
+                                                    <template v-else-if="costData[0][1].pageIndex + 5 > costData[0][1].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][1].pageCount - 6 + i == costData[0][1].pageIndex" href="javascript:">{{costData[0][1].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][1].pageCount - 6 + i)">{{costData[0][1].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageIndex - 2)">{{costData[0][1].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageIndex - 1)">{{costData[0][1].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][1].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageIndex + 1)">{{costData[0][1].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageIndex + 2)">{{costData[0][1].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][1].pageCount-1)">{{costData[0][1].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][1].pageIndex+1 == costData[0][1].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][1].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][1].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][1].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 特价全本订阅 -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==2">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wb">书名</th>
+                                        <th class="wj">作者</th>
+                                        <th class="wk">消费点数</th>
+                                        <th class="wj">最新更新</th>
+                                        <th class="wj">订阅时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][2] && (!costData[0][2].pages || !costData[0][2].pages[costData[0][2].pageIndex])">
+                                <td colspan="5" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][2].pages">
+                                <td colspan="5" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][2].pages[costData[0][2].pageIndex]">
+                                        <td><a v-bind:href="'/category/'+item.ClassID + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a><a v-bind:href="'/info/'+item.ID + '.html'" target="_blank">{{item.Title}}</a></td>
+                                        <td><a v-bind:href="'/authorcenter/'+item.AuthorID + '.html'" target="_blank">{{item.AuthorName}}</a></td>
+                                        <td>{{item.Price}}</td>
+                                        <td><span class="time">{{new Date(item.UpdateTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                        <td><span class="time">{{new Date(item.ReadTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="chilrenReady[2] && costData[0][2].pages">
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][2].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][2].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][2].pageCount <= 10">
+                                                    <template v-for="i in costData[0][2].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][2].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <template v-else>
+                                                    <template v-if="costData[0][2].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][2].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageCount-1)">{{costData[0][2].pageCount}}</a>
+                                                    </template>
+                                                    <template v-else-if="costData[0][2].pageIndex + 5 > costData[0][2].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][2].pageCount - 6 + i == costData[0][2].pageIndex" href="javascript:">{{costData[0][2].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][2].pageCount - 6 + i)">{{costData[0][2].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageIndex - 2)">{{costData[0][2].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageIndex - 1)">{{costData[0][2].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][2].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageIndex + 1)">{{costData[0][2].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageIndex + 2)">{{costData[0][2].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][2].pageCount-1)">{{costData[0][2].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][2].pageIndex+1 == costData[0][2].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][2].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][2].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][2].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 包月记录 -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==3">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wb">生效日期</th>
+                                        <th class="wj">过期日期</th>
+                                        <th class="wk">当前状态</th>
+                                        <th class="wj">消费点数</th>
+                                        <th class="wj">消费时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][3] && (!costData[0][3].pages || !costData[0][3].pages[costData[0][3].pageIndex])">
+                                <td colspan="5" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][3].pages">
+                                <td colspan="5" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][3].pages[costData[0][3].pageIndex]">
+                                        <td><span class="time">{{new Date(item.starttime.replace(/-/g,'/')).format('yyyy-MM-dd')}}</span></td>
+                                        <td><span class="time">{{new Date(item.endtime.replace(/-/g,'/')).format('yyyy-MM-dd')}}</span></td>
+                                        <td>{{item.isIntime == 1 ? '有效' : '已过期'}}</td>
+                                        <td>{{item.dianshu}}</td>
+                                        <td><span class="time">{{new Date(item.addtime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="chilrenReady[3] && costData[0][3].pages">
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][3].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][3].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][3].pageCount <= 10">
+                                                    <template v-for="i in costData[0][3].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][3].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <!--总页数超过10页-->
+                                                <template v-else>
+                                                    <template v-if="costData[0][3].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][3].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageCount-1)">{{costData[0][3].pageCount}}</a>
+                                                    </template>
+
+                                                    <template v-else-if="costData[0][3].pageIndex + 5 > costData[0][3].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][3].pageCount - 6 + i == costData[0][3].pageIndex" href="javascript:">{{costData[0][3].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][3].pageCount - 6 + i)">{{costData[0][3].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageIndex - 2)">{{costData[0][3].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageIndex - 1)">{{costData[0][3].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][3].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageIndex + 1)">{{costData[0][3].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageIndex + 2)">{{costData[0][3].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][3].pageCount-1)">{{costData[0][3].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][3].pageIndex+1 == costData[0][3].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][3].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][3].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][3].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 元宝消费 -->
+                        <div class="inner-bd-main" v-show="chilrenTabIndex[0]==4">
+                            <table class="control-table">
+                                <thead>
+                                    <tr>
+                                        <th class="wc">用途</th>
+                                        <th class="wi">消费点数</th>
+                                        <th class="we">消费时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-if="loading[0][4] && (!costData[0][4].pages || !costData[0][4].pages[costData[0][4].pageIndex])">
+                                <td colspan="4" class="userdataloaidng">正在加载 . . .</td>
+                                </tbody>
+                                <tbody v-else-if="!costData[0][4].pages">
+                                <td colspan="4" class="userdataloaidng">记录为空</td>
+                                </tbody>
+                                <tbody v-else>
+                                    <tr v-for="(item,itemindex) in costData[0][4].pages[costData[0][4].pageIndex]">
+                                        <td>章节订阅</td>
+                                        <td>{{item.Amount}}</td>
+                                        <td><span class="time">{{new Date(item.InsertTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot v-if="ready[0] && costData[0][4].pages">
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="pages">
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][4].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][4].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                                <!--总页数10页以内-->
+                                                <template v-if="costData[0][4].pageCount <= 10">
+                                                    <template v-for="i in costData[0][4].pageCount">
+                                                        <a href="javascript:" v-if="i-1==costData[0][4].pageIndex" class="active">{{i}}</a>
+                                                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                    </template>
+                                                </template>
+                                                <!--总页数超过10页-->
+                                                <template v-else>
+                                                    <template v-if="costData[0][4].pageIndex < 4">
+                                                        <template v-for="i in 5">
+                                                            <a href="javascript:" v-if="i-1==costData[0][4].pageIndex" class="active">{{i}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                                        </template>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageCount-1)">{{costData[0][4].pageCount}}</a>
+                                                    </template>
+
+                                                    <template v-else-if="costData[0][4].pageIndex + 5 > costData[0][4].pageCount">
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <template v-for="i in 5">
+                                                            <a class="active" v-if="costData[0][4].pageCount - 6 + i == costData[0][4].pageIndex" href="javascript:">{{costData[0][4].pageIndex+1}}</a>
+                                                            <a href="javascript:" v-else v-on:click="setPageIndex(costData[0][4].pageCount - 6 + i)">{{costData[0][4].pageCount - 5 + i}}</a>
+                                                        </template>
+                                                    </template>
+                                                    <template v-else>
+                                                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageIndex - 2)">{{costData[0][4].pageIndex - 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageIndex - 1)">{{costData[0][4].pageIndex}}</a>
+                                                        <a href="javascript:" class="active">{{costData[0][4].pageIndex + 1}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageIndex + 1)">{{costData[0][4].pageIndex + 2}}</a>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageIndex + 2)">{{costData[0][4].pageIndex + 3}}</a>
+                                                        <span class="ellipsis">…</span>
+                                                        <a href="javascript:" v-on:click="setPageIndex(costData[0][4].pageCount-1)">{{costData[0][4].pageCount}}</a>
+                                                    </template>
+                                                </template>
+                                                <a class="page-prev defalt" href="javascript:;" v-if="costData[0][4].pageIndex+1 == costData[0][4].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[0][4].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                                共{{costData[0][4].pageCount}}页，到第<input type="text" class="text" v-model="costData[0][4].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <ul class="order-rules">
+                    <li>提示：</li>
+                    <li>1、订阅记录中显示的消费点数是指在正常情况下，订阅该章节所需支付的潇湘币。但是对于5折特价书籍，在实际订阅时都是只扣掉一半的潇湘币。</li>
+                    <li>2、因为一些VIP书可能会被删除，将导致针对该书的订阅记录无法显示。</li>
+                </ul>
+            </div>
+            <!-- 充值记录 -->
+            <div class="bd-main" v-show="tabIndex==1">
+                <table class="control-table">
+                    <thead>
+                        <tr>
+                            <th class="wb">充值点数</th>
+                            <th class="wb">充值时间</th>
+                            <th class="wb">充值渠道</th>
+                            <th class="wl">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="loading[1][0] && (!costData[1][0].pages || !costData[1][0].pages[costData[1][0].pageIndex])">
+                    <td colspan="4" class="userdataloaidng">正在加载 . . .</td>
+                    </tbody>
+                    <tbody v-else-if="!costData[1][0].pages">
+                    <td colspan="4" class="userdataloaidng">记录为空</td>
+                    </tbody>
+                    <tbody v-else>
+                        <tr v-for="(item,itemindex) in costData[1][0].pages[costData[1][0].pageIndex]">
+                            <td>{{item.Point + '（潇湘币）'}}</td>
+                            <td><span class="time">{{new Date(item.InsertTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                            <td>{{item.OrderID}}</td>
+                            <td>{{item.State == 0 ? '充值成功':'未支付'}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot v-if="ready[1] && costData[1][0].pages">
+                        <tr>
+                            <td colspan="5">
+                                <div class="pages">
+                                    <a class="page-prev defalt" href="javascript:;" v-if="costData[1][0].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[1][0].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                    <!--总页数10页以内-->
+                                    <template v-if="costData[1][0].pageCount <= 10">
+                                        <template v-for="i in costData[1][0].pageCount">
+                                            <a href="javascript:" v-if="i-1==costData[1][0].pageIndex" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </template>
+                                    </template>
+                                    <!--总页数超过10页-->
+                                    <template v-else>
+                                        <template v-if="costData[1][0].pageIndex < 4">
+                                            <template v-for="i in 5">
+                                                <a href="javascript:" v-if="i-1==costData[1][0].pageIndex" class="active">{{i}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                            </template>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageCount-1)">{{costData[1][0].pageCount}}</a>
+                                        </template>
+
+                                        <template v-else-if="costData[1][0].pageIndex + 5 > costData[1][0].pageCount">
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <template v-for="i in 5">
+                                                <a class="active" v-if="costData[1][0].pageCount - 6 + i == costData[1][0].pageIndex" href="javascript:">{{costData[1][0].pageIndex+1}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(costData[1][0].pageCount - 6 + i)">{{costData[1][0].pageCount - 5 + i}}</a>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageIndex - 2)">{{costData[1][0].pageIndex - 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageIndex - 1)">{{costData[1][0].pageIndex}}</a>
+                                            <a href="javascript:" class="active">{{costData[1][0].pageIndex + 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageIndex + 1)">{{costData[1][0].pageIndex + 2}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageIndex + 2)">{{costData[1][0].pageIndex + 3}}</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[1][0].pageCount-1)">{{costData[1][0].pageCount}}</a>
+                                        </template>
+                                    </template>
+                                    <a class="page-prev defalt" href="javascript:;" v-if="costData[1][0].pageIndex+1 == costData[1][0].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[1][0].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                    共{{costData[1][0].pageCount}}页，到第<input type="text" class="text" v-model="costData[1][0].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- 获得奖励记录 -->
+            <div class="bd-main" v-show="tabIndex==2">
+                <table class="control-table">
+                    <thead>
+                        <tr>
+                            <th class="wh">获赠金额</th>
+                            <th class="wb">来源</th>
+                            <th class="wh">生效时间</th>
+                            <th class="wh">到期时间</th>
+                            <th class="wn">当前状态</th>
+                        </tr>
+                    </thead>
+
+                    <tbody v-if="loading[2][0] && (!costData[2][0].pages || !costData[2][0].pages[costData[2][0].pageIndex])">
+                    <td colspan="5" class="userdataloaidng">正在加载 . . .</td>
+                    </tbody>
+                    <tbody v-else-if="!costData[2][0].pages">
+                    <td colspan="5" class="userdataloaidng">记录为空</td>
+                    </tbody>
+                    <tbody v-else>
+                        <tr v-for="(item,itemindex) in costData[2][0].pages[costData[2][0].pageIndex]">
+                            <td>{{item.Amount + item.ItemName}}</td>
+                            <td>{{item.ItemSourceName}}</td>
+                            <td><span class="time">{{new Date(item.StartTime.replace(/-/g,'/')).format('yyyy-MM-dd')}}</span></td>
+                            <td>
+                                <span class="time" v-if="item.Iid != 9">{{new Date(item.EndTime.replace(/-/g,'/')).format('yyyy-MM-dd')}}</span>
+                            </td>
+                            <td>{{item.Surplus < 0 && item.IID != 9 ? '失效':'有效'}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot v-if="ready[2] && costData[2][0].pages">
+                        <tr>
+                            <td colspan="5">
+                                <div class="pages">
+                                    <a class="page-prev defalt" href="javascript:;" v-if="costData[2][0].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[2][0].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                    <!--总页数10页以内-->
+                                    <template v-if="costData[2][0].pageCount <= 10">
+                                        <template v-for="i in costData[2][0].pageCount">
+                                            <a href="javascript:" v-if="i-1==costData[2][0].pageIndex" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </template>
+                                    </template>
+                                    <!--总页数超过10页-->
+                                    <template v-else>
+                                        <template v-if="costData[2][0].pageIndex < 4">
+                                            <template v-for="i in 5">
+                                                <a href="javascript:" v-if="i-1==costData[2][0].pageIndex" class="active">{{i}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                            </template>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageCount-1)">{{costData[2][0].pageCount}}</a>
+                                        </template>
+
+                                        <template v-else-if="costData[2][0].pageIndex + 5 > costData[2][0].pageCount">
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <template v-for="i in 5">
+                                                <a class="active" v-if="costData[2][0].pageCount - 6 + i == costData[2][0].pageIndex" href="javascript:">{{costData[2][0].pageIndex+1}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(costData[2][0].pageCount - 6 + i)">{{costData[2][0].pageCount - 5 + i}}</a>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageIndex - 2)">{{costData[2][0].pageIndex - 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageIndex - 1)">{{costData[2][0].pageIndex}}</a>
+                                            <a href="javascript:" class="active">{{costData[2][0].pageIndex + 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageIndex + 1)">{{costData[2][0].pageIndex + 2}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageIndex + 2)">{{costData[2][0].pageIndex + 3}}</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(costData[2][0].pageCount-1)">{{costData[2][0].pageCount}}</a>
+                                        </template>
+                                    </template>
+                                    <a class="page-prev defalt" href="javascript:;" v-if="costData[2][0].pageIndex+1 == costData[2][0].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(costData[2][0].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                    共{{costData[2][0].pageCount}}页，到第<input type="text" class="text" v-model="costData[2][0].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </template>
+        <template id="bookticket">
+            <div class="box-con tab-con">
+    <div class="box-hd tab-hd">
+        <h3 v-bind:class="[type == 0 ? 'active':'']" v-on:click="setType(0)">可用书券</h3>
+        <h3 v-bind:class="[type == 1 ? 'active':'']" v-on:click="setType(1)">已用书券</h3>
+        <h3 v-bind:class="[type == 2 ? 'active':'']" v-on:click="setType(2)">过期书券</h3>
+        <a href="/help/uhelp?t=8" target="_blank" class="shuquan-rules">书券规则说明</a>
+    </div>
+    <div class="box-bd tab-bd">
+        <div class="bd-main">
+            <template v-if="loading[type] && (!list[type].pages || !list[type].pages[list[type].pageIndex])">
+                <p class="userdataloaidng">正在加载 . . .</p>
+            </template>
+            <template v-else-if="!list[type].pages">
+                <p class="userdataloaidng">暂无书券</p>
+            </template>
+            <template v-else>
+                <ul class="shuquan-list cl" v-bind:class="['shuquan-list','cl',type !=0 ? 'shuquan-list-used' : '', type==2 ? 'shuquan-list-overdue' : '']">
+                    <li v-for="item in list[type].pages[list[type].pageIndex]">
+                        <dl class="desc-head">
+                            <dt v-if="item.Type==1"><span>{{parseInt(item.Hours/24)}}天</span>限免券</dt>
+                            <dt v-else-if="item.Type==2"><span>1整本</span>免费券</dt>
+                            <dt v-else><span>限定章节</span>限免券</dt>
+                            <dd>{{item.Name}}</dd>
+                        </dl>
+                        <dl class="desc-main" v-if="type==0">
+                            <dd v-if="item.BookCount == 0"><span>在任意作品详情页使用（特定作品除外）</span></dd>
+                            <dd v-else><span>限&emsp;&emsp;定：</span><a v-bind:href="'/bookticket/'+item.TID + '/' + item.ID" target="_blank">限指定作品</a></dd>
+                            <dd><span>有效期至：</span>{{new Date(item.EndTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</dd>
+                            <dt v-if="item.BookCount>0"><a v-bind:href="'/bookticket/'+item.TID + '/' + item.ID" target="_blank" class="btn-use">立即使用</a></dt>
+                        </dl>
+                        <dl class="desc-main" v-else-if="type==1">
+                            <dd>兑换了 <a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank" class="convert-booktitle">《{{item.BookTitle}}》</a></dd>
+                            <dd class="time">{{new Date(item.UseTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}  已使用</dd>
+                            <dt><a href="javaScript:;" class="btn-use">已使用</a></dt>
+                        </dl>
+                        <dl class="desc-main" v-else>
+                            <dd class="time">{{new Date(item.EndTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}  已过期</dd>
+                            <dt><a href="javaScript:;" class="btn-use">已过期</a></dt>
+                        </dl>
+                    </li>
+                </ul>
+            </template>
+            <div class="pages" v-if="ready[type] && list[type].pages">
+                <a class="page-prev defalt" href="javascript:;" v-if="list[type].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(list[type].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                <!--总页数10页以内-->
+                <template v-if="list[type].pageCount <= 10">
+                    <template v-for="i in list[type].pageCount">
+                        <a href="javascript:" v-if="i-1==list[type].pageIndex" class="active">{{i}}</a>
+                        <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                    </template>
+                </template>
+                <!--总页数超过10页-->
+                <template v-else>
+                    <template v-if="list[type].pageIndex < 4">
+                        <template v-for="i in 5">
+                            <a href="javascript:" v-if="i-1==list[type].pageIndex" class="active">{{i}}</a>
+                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                        </template>
+                        <span class="ellipsis">…</span>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageCount-1)">{{list[type].pageCount}}</a>
+                    </template>
+                    <template v-else-if="list[type].pageIndex + 5 > list[type].pageCount">
+                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                        <span class="ellipsis">…</span>
+                        <template v-for="i in 5">
+                            <a class="active" v-if="list[type].pageCount - 6 + i == list[type].pageIndex" href="javascript:">{{list[type].pageIndex+1}}</a>
+                            <a href="javascript:" v-else v-on:click="setPageIndex(list[type].pageCount - 6 + i)">{{list[type].pageCount - 5 + i}}</a>
+                        </template>
+                    </template>
+                    <template v-else>
+                        <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                        <span class="ellipsis">…</span>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageIndex - 2)">{{list[type].pageIndex - 1}}</a>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageIndex - 1)">{{list[type].pageIndex}}</a>
+                        <a href="javascript:" class="active">{{list[type].pageIndex + 1}}</a>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageIndex + 1)">{{list[type].pageIndex + 2}}</a>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageIndex + 2)">{{list[type].pageIndex + 3}}</a>
+                        <span class="ellipsis">…</span>
+                        <a href="javascript:" v-on:click="setPageIndex(list[type].pageCount-1)">{{list[type].pageCount}}</a>
+                    </template>
+                </template>
+                <a class="page-prev defalt" href="javascript:;" v-if="list[type].pageIndex+1 == list[type].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(list[type].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        </template>
+        <template id="subcribe">
+            <div>
+    <div class="control-hdtitle">
+        <h3>自动订阅<span>（开启自动订阅后，在阅读到未订阅VIP章节且潇湘币余额充足时，系统自动执行订阅操作）</span></h3>
+    </div>
+    <table class="control-table">
+        <thead>
+            <tr>
+                <th class="wb">书名</th>
+                <th class="wb">作者</th>
+                <th class="wm">开启时间</th>
+                <th class="wo">操作</th>
+            </tr>
+        </thead>
+        <tbody v-if="!ready">
+            <td colspan="4" class="chapterlistloading">正在加载 . . .</td>
+        </tbody>
+        <tbody v-else-if="autoList.length == 0">
+            <td colspan="4" class="chapterlistloading">自动订阅记录为空</td>
+        </tbody>
+        <tbody v-else>
+            <tr v-for="(item,itemindex) in autoList">
+                <td><a v-bind:href="'/category/'+item.ClassID + '.html'" class="classify" target="_blank">[{{item.ClassName}}]</a><a v-bind:href="'/info/'+item.BookID + '.html'" target="_blank">{{item.BookTitle}}</a></td>
+                <td><a v-bind:href="'/authorcenter/'+item.AuthorID + '.html'" target="_blank">{{item.AuthorName}}</a></td>
+                <td><span class="time">{{ new Date(item.OpenTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</span></td>
+                <td>
+                    <a href="javascript:;" class="delete" v-on:click="delBook(itemindex, item.BookID)">取消订阅</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <template v-show="ready">
+        <div class="control-hdtitle">
+            <h3>包月订阅<span>（包月期间可无限制阅读包月书库作品）</span></h3>
+        </div>
+        <dl class="my-order">
+            <dd>
+                <div class="order-sure">
+                    <a href="/baoyue" class="red-btn red-big-btn" target="_blank">开通包月</a>
+                    <p>{{monthText}}</p>
+                </div>
+            </dd>
+        </dl>
+    </template>
+</div>
+
+        </template>
+        <template id="set">
+            <div>
+    <div class="box-con tab-con">
+        <div class="box-hd tab-hd">
+            <h3 v-bind:class="tabIndex==0 ? 'active':''" v-on:click="setTabIndex(0)">基本设置</h3>
+            <h3 v-bind:class="tabIndex==1 ? 'active':''" v-on:click="setTabIndex(1)">修改密码</h3>
+        </div>
+        <div class="box-bd tab-bd">
+            <div class="bd-main" v-show="tabIndex==0">
+                <div class="form-box">
+                    <div class="form">
+                        <span class="label">用户名：</span>
+                        <span class="text">{{topuserinfo.userName}}</span>
+                    </div>
+                    <div class="form" v-if="topuserinfo.isShowNicknameSet">
+                        <span class="label">昵称：</span>
+                        <template v-if="topuserinfo.nickName != ''">
+                            <span class="text">{{topuserinfo.nickName}}</span>
+                        </template>
+                        <template v-else>
+                            <template v-if="!setNickName.show">
+                                <span class="text">您还未设置昵称</span>
+                                <a href="javascript:;" class="blue-link" v-on:click="setNickName.show = true">设置</a>
+                            </template>
+                            <template v-else>
+                                <input type="text" class="text-input text-phone" placeholder="3~12位汉字、字母或数字" maxlength="12" v-model="setNickName.newNickName">
+                                <a href="javascript:;" class="blue-link" v-on:click="saveNickName()">保存</a>
+                                <a href="javascript:;" class="blue-link" v-on:click="setNickName.show = false">取消</a>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="form">
+                        <span class="label">注册时间：</span>
+                        <span class="text">{{topuserinfo.regTime}}</span>
+                    </div>
+                    <div class="form" v-if="topuserinfo.isShowFaceSet">
+                        <span class="label">头像：</span>
+                        <span class="text">
+                            <img class="reader-avatar" v-bind:src="' pic/userface/'+topuserinfo.face" v-if="topuserinfo.face != ''">
+                            <img class="reader-avatar" src=" pic/userface/girl/10001.jpg" v-else-if="topuserinfo.sex == 0">
+                            <img class="reader-avatar" src=" pic/userface/boy/10001.jpg" v-else>
+                            <a href="javascript:;" class="blue-link" v-on:click="showSelectFace(true)">修改</a>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">性别：</span>
+                        <span class="text">
+                            <label class="sexy">
+                                <input type="radio" name="sexy" v-model.number="sex" value="0">女
+                            </label><label class="sexy"><input type="radio" name="sexy" v-model.number="sex" value="1">男</label><a href="javascript:;" v-show="sex != topuserinfo.sex" class="blue-link" v-on:click="saveSex()">保存</a>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">绑定手机：</span>
+                        <template v-if="topuserinfo.mobile == ''">
+                            <span class="text">您还未绑定手机<a href="javascript:;" class="blue-link" v-on:click="showBindMobile()">请绑定</a></span>
+                        </template>
+                        <template v-else>
+                            <span class="text">{{topuserinfo.mobile}}<a href="javascript:;" class="blue-link" v-on:click="showBindMobile()">修改</a></span>
+                        </template>
+                    </div>
+                    <div class="form">
+                        <span class="label" style="width:153px;"><a href="/userlogout" class="blue-link">我要注销账号</a></span>
+                    </div>
+                    <div class="form">
+                        <span class="label">全站广播：</span>
+                        <span class="text" v-if="topuserinfo.vipLevel > 3">
+                            <label class="sexy"><input type="radio" name="giftnotice" v-model.number="switchList[0]" value="1">开启</label>
+                            <label class="sexy"><input type="radio" name="giftnotice" v-model.number="switchList[0]" value="0">关闭</label>
+                            <a href="javascript:;" v-show="switchList[0] != topuserinfo.switchList[0]" class="blue-link" v-on:click="saveSwitchSet(0)">保存</a>
+                        </span>
+                        <span class="text" v-else>
+                            <label class="sexy"><input type="radio" name="giftnotice" v-model.number="switchList[0]" value="1" disabled>开启</label>
+                            <label class="sexy"><input type="radio" name="giftnotice" v-model.number="switchList[0]" value="0" disabled>关闭</label>
+                            <label style="color:#999;font-size:12px;">您的VIP等级为{{topuserinfo.vipLevel}}，VIP4及以上用户才可以关闭全站广播</label>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <h3 class="user-switch-title">个人主页设置</h3>
+                    </div>
+                    <div class="form">
+                        <span class="label">我的书单：</span>
+                        <span class="text">
+                            <label class="sexy"><input type="radio" name="bookorder" v-model.number="switchList[1]" value="1">显示</label>
+                            <label class="sexy"><input type="radio" name="bookorder" v-model.number="switchList[1]" value="0">隐藏</label>
+                            <a href="javascript:;" v-show="switchList[1] != topuserinfo.switchList[1]" class="blue-link" v-on:click="saveSwitchSet(1)">保存</a>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">我的书架：</span>
+                        <span class="text">
+                            <label class="sexy"><input type="radio" name="bookcase" v-model.number="switchList[2]" value="1">开启</label>
+                            <label class="sexy"><input type="radio" name="bookcase" v-model.number="switchList[2]" value="0">隐藏</label>
+                            <a href="javascript:;" v-show="switchList[2] != topuserinfo.switchList[2]" class="blue-link" v-on:click="saveSwitchSet(2)">保存</a>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">我的最爱：</span>
+                        <span class="text">
+                            <label class="sexy"><input type="radio" name="favorite" v-model.number="switchList[3]" value="1">开启</label>
+                            <label class="sexy"><input type="radio" name="favorite" v-model.number="switchList[3]" value="0">隐藏</label>
+                            <a href="javascript:;" v-show="switchList[3] != topuserinfo.switchList[3]" class="blue-link" v-on:click="saveSwitchSet(3)">保存</a>
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">阅读足迹：</span>
+                        <span class="text">
+                            <label class="sexy"><input type="radio" name="readhistory" v-model.number="switchList[4]" value="1">开启</label>
+                            <label class="sexy"><input type="radio" name="readhistory" v-model.number="switchList[4]" value="0">隐藏</label>
+                            <a href="javascript:;" v-show="switchList[4] != topuserinfo.switchList[4]" class="blue-link" v-on:click="saveSwitchSet(4)">保存</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="bd-main" v-show="tabIndex==1">
+                <div v-if="topuserinfo.vip" class="form-box">
+                    <template v-if="topuserinfo.mobile == ''">
+                        <p>为了您的帐号安全，VIP会员修改密码前请先<a href="javascript:" class="common-link" v-on:click="showBindMobile()">绑定手机</a></p>
+                    </template>
+                    <template v-else>
+                        <div class="form">
+                            <span class="label">绑定手机：</span>
+                            <span class="text">{{topuserinfo.mobile}}</span>
+                        </div>
+                        <div class="form">
+                            <span class="label">输入完整的手机号：</span>
+                            <span class="text">
+                                <input type="text" class="text-input text-phone" v-model="setPassword.mobile">
+                            </span>
+                        </div>
+
+                        <div class="form">
+                            <span class="label">图片验证码：</span>
+                            <span class="text">
+                                <input type="text" class="text-input text-message" v-model="setPassword.vcode">
+                            </span><img v-bind:src="imgCode" class="code imgcode" v-on:click="setImageVcode()"><a class="blue-link" href="javascript:;" v-on:click="setImageVcode()">换一换</a>
+                        </div>
+                        <div class="form">
+                            <span class="label">短信验证码：</span>
+                            <span class="text">
+                                <input type="text" class="text-input text-message" v-model="setPassword.smsVcode">
+                                <a class="get-code" href="javascript:;" v-if="setPassword.smsTimeLess == 0" v-on:click="getSmsCode()">获取短信验证码</a>
+                                <a class="get-code get-code-defalt" href="javascript:;" v-else>{{setPassword.smsTimeLess}}秒后重新获取</a>
+                            </span>
+                        </div>
+                        <div v-show="setPassword.showSet">
+                            <div class="form">
+                                <span class="label">新密码：</span>
+                                <span class="text">
+                                    <input type="password" class="text-input text-phone" v-model="setPassword.newpassword">
+                                </span>
+                            </div>
+                            <div class="form">
+                                <span class="label">重复新密码：</span>
+                                <span class="text">
+                                    <input type="password" class="text-input text-phone" v-model="setPassword.copynewpassword">
+                                </span>
+                            </div>
+                            <div class="btn-confirm"><a href="javascript:" class="red-btn red-big-btn" v-on:click="changePassBySmsCode()">确认</a></div>
+                        </div>
+                    </template>
+                </div>
+                <div v-else class="form-box">
+                    <div class="form">
+                        <span class="label">原密码：</span>
+                        <span class="text">
+                            <input type="password" class="text-input text-phone" v-model="setPassword.oldpassword">
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">新密码：</span>
+                        <span class="text">
+                            <input type="password" class="text-input text-phone" v-model="setPassword.newpassword">
+                        </span>
+                    </div>
+                    <div class="form">
+                        <span class="label">重复新密码：</span>
+                        <span class="text">
+                            <input type="password" class="text-input text-phone" v-model="setPassword.copynewpassword">
+                        </span>
+                    </div>
+                    <div class="btn-confirm"><a href="javascript:" class="red-btn red-big-btn" v-on:click="changePassByOldPass()">确认</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="avatar-box" v-show="setFace.show">
+        <div class="cover"></div>
+        <div class="setbox">
+            <span class="closebtn iconfont" v-on:click="showSelectFace(false)">&#xe622;</span>
+            <div class="box-con tab-con">
+                <div class="box-hd tab-hd cl">
+                    <h3 v-bind:class="setFace.faceTabIndex==0 ? 'active':''" v-on:click="setFaceTabIndex(0)">女生头像</h3>
+                    <h3 v-bind:class="setFace.faceTabIndex==1 ? 'active':''" v-on:click="setFaceTabIndex(1)">男生头像</h3>
+                </div>
+                <div class="tab-bd">
+                    <div class="bd-main" v-show="setFace.faceTabIndex==0">
+                        <ul class="facelist cl">
+                            <template v-for="i in 30">
+                                <li v-bind:class="setFace.faceIndex[0]==i ? 'cnt':''" v-on:click="setFaceIndex(0,i)">
+                                    <img v-bind:src="' pic/userface/girl/100'+(i.toString().fill(2,'0'))+'s.jpg'">
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div class="bd-main" v-show="setFace.faceTabIndex==1">
+                        <ul class="facelist cl">
+                            <template v-for="i in 30">
+                                <li v-bind:class="setFace.faceIndex[1]==i ? 'cnt':''" v-on:click="setFaceIndex(1,i)">
+                                    <img v-bind:src="' pic/userface/boy/100'+(i.toString().fill(2,'0'))+'s.jpg'">
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div class="change-btn">
+                        <a href="javascript:;" class="red-btn btn-sure" v-on:click="saveFace()">确定</a><a href="javascript:;" class="red-btn btn-cancel" v-on:click="setFace.show=false">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修改手机 -->
+    <div class="phone-box" v-show="setMobile.show">
+        <div class="cover"></div>
+        <div class="setmobilebox">
+            <span class="closebtn iconfont" v-on:click="showBindMobile()">&#xe622;</span>
+            <div class="form-box">
+                <iframe v-bind:src="setMobile.show ? '/BindMobile' : ''" width=800 height=500 frameborder=0 scrolling=no style="border:none"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </template>
+        <template id="message">
+            <div>
+    <div class="box-con tab-con">
+        <div class="box-hd tab-hd">
+            <h3 v-bind:class="[tabIndex == 0 ? 'active':'']" v-on:click="setTabIndex(0)">全部消息</h3>
+            <h3 v-bind:class="[tabIndex == 1 ? 'active':'']" v-on:click="setTabIndex(1)">系统消息</h3>
+            <h3 v-bind:class="[tabIndex == 2 ? 'active':'']" v-on:click="setTabIndex(2)">公告通知</h3>
+            <h3 v-bind:class="[tabIndex == 3 ? 'active':'']" v-on:click="setTabIndex(3)">活动消息</h3>
+
+        </div>
+        <div class="box-bd tab-bd">
+            <div class="bd-main">
+                <table class="control-table control-table-message">
+                    <thead>
+                        <tr>
+                            <th class="lx">类型</th>
+                            <th class="wr">标题</th>
+                            <th class="ws">消息时间</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="loading[tabIndex] && (!list[tabIndex].pages || !list[tabIndex].pages[list[tabIndex].pageIndex])">
+                    <td colspan="3" class="userdataloaidng">正在加载 . . .</td>
+                    </tbody>
+                    <tbody v-else-if="!list[tabIndex].pages">
+                    <td colspan="3" class="userdataloaidng">内容为空</td>
+                    </tbody>
+                    <tbody v-else v-for="(item,itemindex) in list[tabIndex].pages[list[tabIndex].pageIndex]">
+                        <tr v-bind:class="[item.ShowCount == 0 ? 'unread' : '', item.ShowMessage ? 'message-show' : '', 'control-table-message-tr']" v-on:click="showMessage(itemindex)">
+                            <td><span class="message">{{getMessageTypeName(item.MsgType)}}</span></td>
+                            <td>{{item.Title}}</td>
+                            <td><p class="time">{{new Date(item.SendTime.replace(/-/g,'/')).format('yyyy-MM-dd hh:mm:ss')}}</p></td>
+                        </tr>
+                        <tr class="message-info" v-show="item.ShowMessage">
+                            <td colspan="3">
+                                <dl class="message-detail">
+                                    <dt>{{item.Title}}</dt>
+                                    <dd v-html="item.Text.replace(/\n|\r/g, '<br>')"></dd>
+                                </dl>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot v-if="ready[tabIndex] && list[tabIndex].pages">
+                        <tr>
+                            <td colspan="3">
+                                <div class="pages">
+                                    <a class="page-prev defalt" href="javascript:;" v-if="list[tabIndex].pageIndex==0"><i class="iconfont">&#xe7d0;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(list[tabIndex].pageIndex-1)"><i class="iconfont">&#xe7d0;</i></a>
+                                    <!--总页数10页以内-->
+                                    <template v-if="list[tabIndex].pageCount <= 10">
+                                        <template v-for="i in list[tabIndex].pageCount">
+                                            <a href="javascript:" v-if="i-1==list[tabIndex].pageIndex" class="active">{{i}}</a>
+                                            <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                        </template>
+                                    </template>
+                                    <!--总页数超过10页-->
+                                    <template v-else>
+                                        <template v-if="list[tabIndex].pageIndex < 4">
+                                            <template v-for="i in 5">
+                                                <a href="javascript:" v-if="i-1==list[tabIndex].pageIndex" class="active">{{i}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(i-1)">{{i}}</a>
+                                            </template>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageCount-1)">{{list[tabIndex].pageCount}}</a>
+                                        </template>
+
+                                        <template v-else-if="list[tabIndex].pageIndex + 5 > list[tabIndex].pageCount">
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <template v-for="i in 5">
+                                                <a class="active" v-if="list[tabIndex].pageCount - 6 + i == list[tabIndex].pageIndex" href="javascript:">{{list[tabIndex].pageIndex+1}}</a>
+                                                <a href="javascript:" v-else v-on:click="setPageIndex(list[tabIndex].pageCount - 6 + i)">{{list[tabIndex].pageCount - 5 + i}}</a>
+                                            </template>
+                                        </template>
+                                        <template v-else>
+                                            <a href="javascript:" v-on:click="setPageIndex(0)">1</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageIndex - 2)">{{list[tabIndex].pageIndex - 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageIndex - 1)">{{list[tabIndex].pageIndex}}</a>
+                                            <a href="javascript:" class="active">{{list[tabIndex].pageIndex + 1}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageIndex + 1)">{{list[tabIndex].pageIndex + 2}}</a>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageIndex + 2)">{{list[tabIndex].pageIndex + 3}}</a>
+                                            <span class="ellipsis">…</span>
+                                            <a href="javascript:" v-on:click="setPageIndex(list[tabIndex].pageCount-1)">{{list[tabIndex].pageCount}}</a>
+                                        </template>
+                                    </template>
+                                    <a class="page-prev defalt" href="javascript:;" v-if="list[tabIndex].pageIndex+1 == list[tabIndex].pageCount"><i class="iconfont">&#xe7cf;</i></a>
+                                    <a class="page-prev" href="javascript:;" v-else v-on:click="setPageIndex(list[tabIndex].pageIndex+1)"><i class="iconfont">&#xe7cf;</i></a>
+                                    共{{list[tabIndex].pageCount}}页，到第<input type="text" class="text" v-model="list[tabIndex].goPageNo">页<a href="javascript:" class="go" v-on:click="goPageNum()">GO</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+        </template>
+        <template id="lotteryticket">
+            <div>
+    <div class="control-hdtitle">
+        <h3>礼品兑换</h3>
+    </div>
+    <div class="gift-exchange">
+        <input type="text" class="gift-code" placeholder="请输入礼品兑换码" v-model="ticketNo" maxlength="50">
+        <input type="button" class="gift-btn" v-model="btnText" v-on:click="useTicket()">
+    </div>
+
+    <div class="exchange-box" v-show="showResultBox">
+        <div class="cover"></div>
+        <div class="exchange-main">
+            <span class="closebtn iconfont" v-on:click="closeResultBox()">&#xe622;</span>
+            <div class="popbox-title">
+                <span>兑换{{result ? '成功' : '失败'}}</span>
+            </div>
+            <template v-if="result">
+                <ul class="gift-get">
+                    <template v-for="item in successInfo">
+                        <li v-if="item.TypeID == 102">
+                            {{item.ItemName}}                            
+                        </li>
+                        <li v-else-if="item.TypeID == 101">
+                            <span>{{item.Count}}天</span>包月体验
+                        </li>
+                        <li v-else>
+                            <span>{{item.Count}}</span>{{item.ItemName}}
+                        </li>
+                    </template>
+                </ul>
+                <p class="tips">体验币/元宝可订阅VIP章节，有效期30天<br>书券有效期7天，请及时兑换(同一书券每个用户只能获得一次)</p>
+            </template>
+            <template v-else>
+                <p class="exchange-failure">{{failMessage}}</p>
+            </template>
+            <span class="red-btn red-big-btn" v-on:click="closeResultBox()">我知道了</span>
+        </div>
+    </div>
+</div>
+        </template>
+    </div>
+    <div class="footer">
+    <div class="container">
+        <div class="map-menu"><a href="/about.html?v=9" target="_blank" rel="nofollow">关于本站</a><a href="/help/uhelp.html" target="_blank" rel="nofollow">联系我们</a><a href="/help/uhelp.html" target="_blank" rel="nofollow">会员帮助</a><a href="/help/ahelp.html" target="_blank" rel="nofollow">作者帮助</a></div>
+        <p class="copyright">
+            版权所有：苏州经纬网络信息科技有限公司。（171） 联系方式：0512-67068106<br>
+            网站备案/许可证号：<a href="http://beian.miit.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noreferrer nofollow">苏ICP备16023960号-1</a>
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32059002002332" style="margin-left:10px;">
+                <img src="/Content/pic/sgwab.jpg" style="margin-right:3px;height:20px;width:20px" />苏公网安备32059002002332号
+            </a>
+            <span style="margin-left:10px;">出版经营许可证：新出发苏零字第 苏姑苏SK044 号</span>
+        </p>
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/JQBox.js?"></script>
+<script src="js/Util.js"></script>
+<script src="js/newmenutop.js"></script>
+
+<script src="js/commonbox.js"></script>
+<script src="js/lazyimgload.js"></script>
+<script src="js/statpage_pc.js"></script>
+<div id="statdiv" style="display:none;"></div>
+<script>
+    setTimeout(function () {
+        if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf("gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {
+            $('#statdiv').append('<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>');
         }
-    })
+
+        //百度统计
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa574454240bf693f1d8415a3915f25ff' type='text/javascript'%3E%3C/script%3E"));
+        //cnzz统计
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        $('#statdiv').append(unescape("%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
+    }, 200);
 </script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/user_shelf.js"></script>
+
+    <script src=" js/user_bookmark.js"></script>
+    <script src=" js/user_bookreview.js"></script>
+    <script src=" js/user_cost.js"></script>
+    
+    <script src=" js/user_subcribe.js"></script>
+    <script src=" js/user_set.js"></script>
+    
+    <script src=" js/user_task.js"></script>
+    
+    <script src="js/user_share.js"></script>
+    <script src=" js/bookorder.js"></script>
+    <script src=" js/user_bookorder.js"></script>
+    <script src="js/user_bookticket.js"></script>
+    <script src=" js/user_message.js"></script>
+    <script src=" js/user_lotteryticket.js"></script>
+    
+    <script src=" js/user_index.js"></script>
+
+    <script type="text/javascript">
+        /*$(function () {
+            $.get("/book/list",function(data){
+                let bookList = data.data;
+                for(let i = 1; i = bookList.length; i++){
+                    $("#bookList").append("<tr>\n" +
+                        "                        <td>\n" +
+                        "                            <input type=\"checkbox\" />\n" +
+                        "                        </td>\n" +
+                        "                        <td><a>"+ bookList[i].name +"</a></td>\n" +
+                        "                        <td><a>"+ bookList[i].name +"</a></td>\n" +
+                        "                        <td><a>"+ bookList[i].author +"</a></td>\n" +
+                        "                        <td><span class=\"time\">"+ bookList[i].updateTime +"</span></td>\n" +
+                        "                    </tr>");
+                }
+            },"json");
+        });*/
+    </script>
+
+    <script>
+        var obj = {
+            signInfo: {
+                hasSign: parseInt(0) == 1,
+                signDays: parseInt(0),
+                continueSignDays: parseInt(0),
+                signScore: parseInt(0)
+            },
+            accountInfo: {
+                account: parseInt(0),
+                yuanbao: parseInt(0),
+                tiyanbi: parseInt(0),
+                monticketCount: parseInt(0),
+                assessticketCount: parseInt(0),
+                bookCaseCount: parseInt(3)
+            },
+            userInfo: {
+                face: '',
+                mobile: '151*****271',
+                userName: '151*****271',
+                nickName: '',
+                regTime: new Date('2020/7/2 9:12:21'.replace(/-/g, '/')).format('yyyy-MM-dd hh:mm'),
+                sex: parseInt(0),
+                vip: parseInt(0) == 1,
+                vipLevel: parseInt(0),
+                switchList: [parseInt(1),
+                    parseInt(1),
+                    parseInt(1),
+                    parseInt(1),
+                    parseInt(1)],
+                isShowNicknameSet: parseInt(1) == 1,
+                isShowFaceSet: parseInt(0) == 1,
+
+            },
+            initFirstTabIndex: parseInt(1)
+        }
+
+        Init(obj);
+
+    </script>
+</body>
 </html>

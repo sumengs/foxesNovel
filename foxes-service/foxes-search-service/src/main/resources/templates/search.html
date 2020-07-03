@@ -21,65 +21,95 @@
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
 </head>
 <body>
+<script>
+    var user_app =  new Vue({
+        el:"#userCenter",
+        data:{
+            username:"",
+            isLogin:false
+        },
+        created(){
+            let cookie = getCookie("username");
+            if(cookie.length>0){
+                this.isLogin=true;
+                this.username=cookie;
+            }
+
+        }
+    })
+
+</script>
 <div class="alert"></div>
-<div class="top-menu">
-    <div class="container">
-        <div class="download-app">
-            <!--<a class="app-android" href="/download.html" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
-            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a
-                class="app-index" href="//www.xxsy.net/">首页</a>-->
-        </div>
-        <div class="guide-menu">
-            <div class="column" id="loginaction"><a href="javascript:void(0);" class="login" id="headerLogin">登录</a>&ensp;<a
-                    href="/Reg" class="register" target="_blank" rel="nofollow">注册</a></div>
-            <div class="column" id="userinfo" style="display: none;">
-                <a href="/control" id="username" target="_blank" rel="nofollow"></a>&ensp;<a class="register" id="logout">退出</a>
+    <div class="top-menu">
+        <div class="container">
+            <div class="download-app">
+                <a class="app-android" href="" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
+                <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index"
+                                                                                                      href="index.html">首页</a>
             </div>
-            <div class="column more bookcase" id="menubookcase">
-                <a href="/user/bookcase" class="my-book" id="mybookcase">我的书架</a>
-                <em><i></i></em>
-                <div id="menucnt2" class="menu-ct menu-ct-2">
-                    <div id="mybc">
-                        <span class="off"></span>
-                        <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
-                        <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
-                        <span class="rblank"></span>
+            <div class="guide-menu" id="userCenter">
+                <div class="column" id="loginaction">
+                    <a v-if="!isLogin" href="http://localhost/oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                    <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                    <a v-if="isLogin" href="" class="userCenter"><span v-text="username"></span></a>&ensp;
+
+                </div>
+                <!--
+                根据cookie的值来判断是否登录
+
+                -->
+
+
+                <div class="column" id="userinfo" style="display: none;">&ensp;<a href="javascript:" class="register"
+                                                                                  id="logout">退出</a></div>
+                <div class="column more bookcase" id="menubookcase">
+                    <a href="javascript:void(0);" class="my-book" id="mybookcase">我的书架</a>
+                    <em><i></i></em>
+                    <div id="menucnt2" class="menu-ct menu-ct-2">
+                        <div id="mybc">
+                            <span class="off"></span>
+                            <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
+                            <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
+                            <span class="rblank"></span>
+                        </div>
+                        <ul id="mybctitle">
+                            <li class="n0">序</li>
+                            <li class="n1">书名</li>
+                            <li class="n2">标签章节(加入时间)</li>
+                            <li class="n3">作者</li>
+                            <li class="n4">操作</li>
+                        </ul>
+                        <ul id="mybcasecnt1" class="menumybclist">
+                            <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                                  style="width:32px;height:32px;"
+                                                                                                  src=""/>正在加载数据...
+                            </div>
+                        </ul>
+                        <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
+                            <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                                  style="width:32px;height:32px;"
+                                                                                                  src=""/>正在加载数据...
+                            </div>
+                        </ul>
                     </div>
-                    <ul id="mybctitle">
-                        <li class="n0">序</li>
-                        <li class="n1">书名</li>
-                        <li class="n2">标签章节(加入时间)</li>
-                        <li class="n3">作者</li>
-                        <li class="n4">操作</li>
-                    </ul>
-                    <ul id="mybcasecnt1" class="menumybclist">
-                        <div style="height:200px!important;line-height:200px!important;"><img border=0
-                                                                                              style="width:32px;height:32px;"
-                                                                                              src=""/>正在加载数据...
-                        </div>
-                    </ul>
-                    <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
-                        <div style="height:200px!important;line-height:200px!important;"><img border=0
-                                                                                              style="width:32px;height:32px;"
-                                                                                              src=""/>正在加载数据...
-                        </div>
-                    </ul>
+                </div>
+                <div class="column"><a href="" class="service" target="_blank" rel="nofollow">联系客服</a>
                 </div>
             </div>
-            <div class="column"><a  class="service" target="_blank" rel="nofollow">联系客服</a></div>
+            <ul class="menu-style cl">
+                <li><a href="" class=''>古代言情</a></li>
+                <li><a href="" class=''>现代言情</a></li>
+                <li><a href="" class=''>玄幻仙侠</a></li>
+                <li><a href="" class=''>浪漫青春</a></li>
+                <li><a href="" class=''>悬疑</a></li>
+                <li><a href="" class=''>改编频道</a></li>
+                <li><a href="">男生频道</a></li>
+                <li><a href="" class=''>漫画频道</a></li>
+
+            </ul>
         </div>
-        <ul class="menu-style cl">
-            <li><a href="/search/sweb/search?&categoryName=玄幻" class=''>玄幻</a></li>
-            <li><a href="/search/sweb/search?&categoryName=都市" class=''>都市</a></li>
-            <li><a >浪漫青春</a></li>
-            <li><a >悬疑</a></li>
-            <li><a >改编频道</a></li>
-            <li><a href="/search/sweb/search?channel=1">男生频道</a></li>
-
-
-        </ul>
     </div>
-</div>
+
 <!--<input id="pagetoken" value="c21940f1e87a93cb24e35ccebe181269" type="hidden">-->
 <script>
     // window._pageToken = document.getElementById('pagetoken').value;

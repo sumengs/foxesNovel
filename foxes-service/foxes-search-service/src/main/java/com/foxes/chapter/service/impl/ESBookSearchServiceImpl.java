@@ -63,8 +63,8 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
                 boolQuery.filter(QueryBuilders.termQuery("channel", searchMap.get("channel")));
             }
             //类别选则
-            if (StringUtils.isNotEmpty(searchMap.get("category"))) {
-                boolQuery.filter(QueryBuilders.termQuery("category", searchMap.get("category")));
+            if (StringUtils.isNotEmpty(searchMap.get("categoryName"))) {
+                boolQuery.filter(QueryBuilders.termQuery("categoryName", searchMap.get("categoryName")));
             }
             //完结选择
             if (StringUtils.isNotEmpty(searchMap.get("status"))) {
