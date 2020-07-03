@@ -22,11 +22,16 @@
 
     <link href="css/iconfont.css" rel="stylesheet"/>
     <link href="css/global.css" rel="stylesheet" type="text/css"/>
+    <script src="js/cookie.js"></script>
+    <script src="js/vue.js"></script>
 
     <link href="css/base.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/JQBox.css"/>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
     <script>
+
+
+        
         function getCookieValue(cookieName) {
             var arr, reg = new RegExp("(^| )" + cookieName + "=([^;]*)(;|$)");
             if (arr = document.cookie.match(reg))
@@ -40,6 +45,25 @@
             top.location.href = "";
         }
     </script>
+
+    <script>
+        var user_app =  new Vue({
+            el:"#userCenter",
+            data:{
+                username:"",
+                isLogin:false
+            },
+            created(){
+                let cookie = getCookie("username");
+                if(cookie.length>0){
+                    this.isLogin=true;
+                    this.username=cookie;
+                }
+
+            }
+        })
+
+    </script>
 </head>
 
 <body>
@@ -50,12 +74,19 @@
             <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index"
                                                                                                   href="index.html">首页</a>
         </div>
-        <div class="guide-menu">
-            <div class="column" id="loginaction"><a href="" class="login" id="headerLogin">登录</a>&ensp;<a href=""
-                                                                                                          class="register"
-                                                                                                          target="_blank"
-                                                                                                          rel="nofollow">注册</a>
+        <div class="guide-menu" id="userCenter">
+            <div class="column" id="loginaction">
+                <a v-if="!isLogin" href="http://localhost/oauth/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                <a v-if="isLogin" href="" class="userCenter">{{username}}</a>&ensp;
+
             </div>
+            <!--
+            根据cookie的值来判断是否登录
+            
+            -->
+
+
             <div class="column" id="userinfo" style="display: none;">&ensp;<a href="javascript:" class="register"
                                                                               id="logout">退出</a></div>
             <div class="column more bookcase" id="menubookcase">
@@ -197,61 +228,7 @@
             <div class="mainbar">
                 <div class="roasting">
                     <ul class="roastingslider">
-                        <!--                        <li>-->
-                        <!--                            <a href="" target="_blank">-->
-                        <!--                                <img src="https://images.xxsy.net/flimg/recommend/c20200618153428.jpg">-->
-                        <!--                            </a>-->
-                        <!--                            <div class="title">-->
-                        <!--                                <h4><a class="name" href="" target="_blank" xid="1088115"-->
-                        <!--                                       tid="486">【现言】赫先生的医见钟情</a><span>笑倾一世/著</span></h4>-->
-                        <!--                                <p></p>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="black-bg"></div>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <a href="" target="_blank">-->
-                        <!--                                <img src="https://images.xxsy.net/flimg/recommend/c20200618153350.jpg">-->
-                        <!--                            </a>-->
-                        <!--                            <div class="title">-->
-                        <!--                                <h4><a class="name" href="" target="_blank" xid="1088112"-->
-                        <!--                                       tid="486">【古言】农门肥千金</a><span>佛前一水莲/著</span></h4>-->
-                        <!--                                <p></p>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="black-bg"></div>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <a href="" target="_blank">-->
-                        <!--                                <img src="https://images.xxsy.net/flimg/recommend/c20200618153402.jpg">-->
-                        <!--                            </a>-->
-                        <!--                            <div class="title">-->
-                        <!--                                <h4><a class="name" href="" target="_blank" xid="1088113"-->
-                        <!--                                       tid="486">【古言】锦鲤王妃有空间</a><span>年华/著</span></h4>-->
-                        <!--                                <p></p>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="black-bg"></div>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <a href="" target="_blank">-->
-                        <!--                                <img src="https://images.xxsy.net/flimg/recommend/c20200618153513.jpg">-->
-                        <!--                            </a>-->
-                        <!--                            <div class="title">-->
-                        <!--                                <h4><a class="name" href="" target="_blank" xid="1088116"-->
-                        <!--                                       tid="486">【古言】侯门嫡女之一品夫人</a><span>凌七七/著</span></h4>-->
-                        <!--                                <p></p>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="black-bg"></div>-->
-                        <!--                        </li>-->
-                        <!--                        <li>-->
-                        <!--                            <a href="" target="_blank">-->
-                        <!--                                <img src="https://images.xxsy.net/flimg/recommend/c20200618153414.jpg">-->
-                        <!--                            </a>-->
-                        <!--                            <div class="title">-->
-                        <!--                                <h4><a class="name" href="" target="_blank" xid="1088114"-->
-                        <!--                                       tid="486">【科幻】快穿之位面黑科技</a><span>二谦/著</span></h4>-->
-                        <!--                                <p></p>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="black-bg"></div>-->
-                        <!--                        </li>-->
+
                     </ul>
                 </div>
                 <div class="recommend-today tab-con">
@@ -284,7 +261,7 @@
                                 </dd>
                                 <dd><a href="" target="_blank" xid="1088042" tid="491">·书穿八十年代小女不倒</a></dd>
                                 <dd><a href="" target="_blank" xid="1088040" tid="491">·我成了神仙大佬心尖宠</a></dd>
-                                <dd><a href=" target=" _blank" xid="1088048" tid="493">·背靠爸爸好乘凉</a></dd>
+                                <dd><a href="" target="_blank" xid="1088048" tid="493">·背靠爸爸好乘凉</a></dd>
                                 <dd><a href="" target="_blank" xid="1088038" tid="491">·丧系大佬他背着我长歪了</a></dd>
                             </dl>
                         </div>
@@ -734,7 +711,7 @@
     </div>
 </div>
 <div style="position:fixed;right:10px;bottom:10px;" id="weappimg">
-    <div >
+    <div>
         <img id="wx" src="" alt="广告"/>
         <p>Foxes小程序上线啦</p>
         <p>打开微信扫一扫</p>
@@ -748,6 +725,8 @@
     </div>
 </div>
 <script src="js/jquery.min.js"></script>
+
+
 <script>
 
     $(function () {
@@ -788,7 +767,7 @@
             type: "GET",
             url: "weixin",
             success: function (response) {
-                let images=response.data;
+                let images = response.data;
                 $("#wx").attr("src", "" + images.image);
             }
         });
@@ -821,27 +800,7 @@
 <script src="js/lazyimgload.js"></script>
 <script src="js/statpage_pc.js"></script>
 <div id="statdiv" style="display:none;"></div>
-<script>
-    setTimeout(function () {
-        if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf(
-            "gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {
-            $('#statdiv').append(
-                '<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>'
-            );
-        }
 
-        //百度统计
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        $('#statdiv').append(unescape("%3Cscript src='" + _bdhmProtocol +
-            "hm.baidu.com/h.js%3Fa574454240bf693f1d8415a3915f25ff' type='text/javascript'%3E%3C/script%3E"
-        ));
-        //cnzz统计
-        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        $('#statdiv').append(unescape(
-            "%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol +
-            "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));
-    }, 200);
-</script>
 <script src="js/jquery.bxslider.min.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/common.js"></script>

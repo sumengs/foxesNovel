@@ -28,8 +28,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
 
     public Logger  logger =LoggerFactory.getLogger(this.getClass());
 
-    public static final String LOGIN_URL="http://localhost:8001/api/oauth/toLogin";
+    public static final String LOGIN_URL="http://localhost:9200/oauth/toLogin";
 
+    public  String redirectURL="";
 
     @Autowired
     private AuthService authService;
@@ -39,7 +40,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         //获取当前请求对象
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
-
+        redirectURL=request.getURI().getPath();
         String path = request.getURI().getPath();
         URI uri = exchange.getRequest().getURI();
         //如果路径是登录,或者不需要传递令牌的路径,直接放行
@@ -55,7 +56,8 @@ public class AuthFilter implements GlobalFilter, Ordered {
         if (StringUtils.isEmpty(jti)){
             logger.warn(uri+"    [该请求 cookie中没有jti,跳转登录]");
             //未登录,跳转登录
-            return  this.toLoginPage(LOGIN_URL+"?redirectURL="+request.getURI().getPath(),exchange);
+            logger.warn("跳转路径:"+LOGIN_URL+"?redirectURL="+redirectURL);
+            return  this.toLoginPage(LOGIN_URL+"?redirectURL="+redirectURL,exchange);
 
         }
 
@@ -64,9 +66,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
         String redisToken = authService.getTokenFromRedis(jti);
         if (StringUtils.isEmpty(redisToken)){
             //未登录,跳转登录
-            logger.warn(uri+"    [该请求的jti对应的令牌不存在或已失效,跳转登录]");
-
-            return  this.toLoginPage(LOGIN_URL+"?redirectURL="+request.getURI().getPath(),exchange);
+            logger.warn(uri+"    [该请求的jti对应的令牌不存在或已失效,跳转登录],如有问题,请核实该jti是否在redis中存在token"+jti);
+            logger.warn("跳转路径:"+LOGIN_URL+"?redirectURL="+redirectURL);
+            return  this.toLoginPage(LOGIN_URL+"?redirectURL="+redirectURL,exchange);
 
         }
 

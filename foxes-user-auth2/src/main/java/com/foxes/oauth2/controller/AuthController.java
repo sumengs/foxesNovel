@@ -6,6 +6,8 @@ import com.foxes.oauth2.util.CookieUtil;
 import com.sumeng.peekshopping.constant.StatusCode;
 import com.sumeng.peekshopping.entity.Result;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,7 +23,6 @@ import java.util.HashMap;
  */
 @Controller
 @RequestMapping("/oauth")
-@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -36,12 +37,15 @@ public class AuthController {
     @Value("${auth.cookieMaxAge}")
     private int cookieMaxAge;
 
-
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     @RequestMapping("/login")
     @ResponseBody
     public Result<AuthToken> login(@RequestBody HashMap<String,String> map, HttpServletResponse response,
                                    String redirectURL){
 
+        if(StringUtils.isEmpty(redirectURL)){
+            redirectURL="index.html";
+        }
         String username = map.get("username");
         String password = map.get("password");
         //校验参数
@@ -56,9 +60,13 @@ public class AuthController {
 
         //将jti的值存入cookie中
         this.saveJtiToCookie(authToken.getJti(),response);
+        HashMap<String, String> resultData = new HashMap<>(16);
+        resultData.put("jti",authToken.getJti());
+        resultData.put("redirectURL",redirectURL);
+        resultData.put("loginUsername",username);
 
         //返回结果
-        return new Result(true, StatusCode.OK,"登录成功",authToken.getJti());
+        return new Result(true, StatusCode.OK,"登录成功",resultData);
 
     }
     @RequestMapping("/toLogin")
@@ -72,6 +80,9 @@ public class AuthController {
     //将令牌的断标识jti存入到cookie中
     private void saveJtiToCookie(String jti, HttpServletResponse response) {
         CookieUtil.addCookie(response,cookieDomain,"/","uid",jti,cookieMaxAge,false);
+//        logger.info("jti写入cookie成功  "+jti);
     }
+
+
 
 }
