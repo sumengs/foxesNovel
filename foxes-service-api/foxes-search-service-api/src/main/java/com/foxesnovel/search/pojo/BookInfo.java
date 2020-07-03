@@ -20,7 +20,7 @@ public class BookInfo {
     /**
      * 小说名
      */
-    @Field(index = true, store = true, type = FieldType.Text, analyzer = "ik_smart")
+    @Field(index = true, store = true, type = FieldType.Text, analyzer = "ik_max_word")
     private String name;
 
     /**

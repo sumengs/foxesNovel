@@ -56,7 +56,7 @@ public class ESBookSearchServiceImpl implements ESBookSearchService {
             if (StringUtils.isNotEmpty(searchMap.get("keywords"))) {
 
                 boolQuery.must(QueryBuilders
-                        .queryStringQuery(searchMap.get("keywords")).field("author").field("name"));
+                        .queryStringQuery(searchMap.get("keywords")).field("name").field("author"));
             }
             //男女频选则
             if (StringUtils.isNotEmpty(searchMap.get("channel"))) {

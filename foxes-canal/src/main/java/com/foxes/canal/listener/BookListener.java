@@ -40,7 +40,7 @@ public class BookListener {
             rabbitTemplate.convertAndSend(RabbitMQConfig.BOOK_UP_EXCHANGE, "", newData.get("id"));
         }
         //是否下架
-        if (oldStatus.equals(newData.get(str)) && newStatus.equals(oldData.get(str))){
+        if ("1".equals(oldData.get("is_delete")) && "0".equals(newData.get("is_delete"))){
             //是下架,ES执行删除
             rabbitTemplate.convertAndSend(ESrabbitMQConfig.BOOK_ESUP_EXCHANGE,"",newData.get("id")+",down");
         }else {
