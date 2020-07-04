@@ -19,23 +19,82 @@
     <link href="../css/center.css?v=201907" rel="stylesheet"/>
     <link href="../css/pagestatic.css?v=20200615" rel="stylesheet"/>
 
+    <script src="../js/cookie.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../plugins/layui/layui.all.js"></script>
+    <link rel="stylesheet" type="text/css" href="../plugins/layui/css/layui.css"/>
 </head>
 <body id="help">
 <div class="top-menu search-top-menu">
     <div class="container">
         <div class="download-app">
-            <a class="app-android" href="/download.html" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
-            <a class="app-ios" href="/download.html" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a
-                class="app-index" href="//www.xxsy.net/">首页</a>
+            <a class="app-android" href=""><i class="iconfont">&#xe607;</i>Android版</a>
+            <a class="app-ios" href=""><i class="iconfont">&#xe60b;</i>iOS版</a><a
+                class="app-index" href="http://www.foxes.com">首页</a>
         </div>
-        <div class="guide-menu">
-            <div class="column" id="loginaction"><a href="javascript:" class="login" id="headerLogin">登录</a>&ensp;<a
-                    href="/Reg" rel="nofollow" class="register" target="_blank">注册</a></div>
-            <div class="column" id="userinfo" style="display: none;"><a href="/control" rel="nofollow" class="username"
-                                                                        id="username" target="_blank"></a>&ensp;<a
-                    href="javascript:" class="register" id="logout">退出</a></div>
+        <div class="guide-menu" >
+            <div class="column" id="userCenter">
+                <a v-if="!isLogin" href="http://www.foxes.com/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                <a v-if="isLogin" href="http://www.foxes.com:9005/my.html" class="userCenter"><span v-text="username"></span></a>&ensp;
+                <a v-if="isLogin" href="javascript:void(0)" @click="logout()" class="userCenter">退出</a>
+            </div>
+
+            <script>
+                var user_app =  new Vue({
+                    el:"#userCenter",
+                    data:{
+                        username:"",
+                        uid:"",
+                        isLogin:false
+                    },
+                    methods:{
+                        logout(){
+                            console.log("用户注销");
+                            axios.get("/oauth/logout?uid="+this.uid).then(res=>{
+                                <!--
+                                根据cookie的值来判断是否登录
+
+                                -->
+
+                                if(res.data.flag){
+                                    console.log("用户已经注销");
+                                    //前端注销页面
+                                    this.isLogin=false;
+                                    layer.msg(res.data.message);
+                                }else{
+                                    layer.msg("服务器忙...");
+                                }
+
+                            })
+                        }
+                    },
+                    created(){
+                        let c_username = getCookie("username");
+                        let c_uid = getCookie("uid");
+                        if(c_uid.length>0){
+                            this.username=c_username;
+                            this.uid=c_uid;
+                        }
+                        console.log("查询用户登录状态");
+                        axios.get("/oauth/loginStatus?uid="+this.uid).then(res=>{
+                            if(res.data.flag){
+                                //已登录
+                                console.log("用户已经登录");
+                                this.isLogin=true;
+                            }else{
+                                console.log("用户未登录");
+                                this.isLogin=false;
+                            }
+                        });
+                    }
+                })
+
+            </script>
+
             <div class="column more bookcase" id="menubookcase">
-                <a href="javascript:" class="my-book" id="mybookcase">我的书架</a>
+                <a href="http://www.foxes.com:9005/bookcase.html" class="my-book" id="mybookcase">我的书架</a>
                 <em><i></i></em>
                 <div id="menucnt2" class="menu-ct menu-ct-2">
                     <div id="mybc">
@@ -52,22 +111,25 @@
                         <li class="n4">操作</li>
                     </ul>
                     <ul id="mybcasecnt1" class="menumybclist">
-                        <div style="height: 200px!important; line-height: 200px!important;">
-                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif"/>正在加载数据...
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
                         </div>
                     </ul>
-                    <ul id="mybcasecnt2" class="menumybclist" style="display: none;">
-                        <div style="height: 200px!important; line-height: 200px!important;">
-                            <img border="0" style="width: 32px; height: 32px;" src=" pic/loading.gif"/>正在加载数据...
+                    <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
                         </div>
                     </ul>
                 </div>
             </div>
-            <div class="column"><a href="/help/uhelp.html" class="service" target="_blank" rel="nofollow">联系客服</a></div>
+            <div class="column"><a href="" class="service" target="_blank" rel="nofollow">联系客服</a>
+            </div>
         </div>
         <div class="mid-bar-search">
-            <form id="hform" name="hform" action="/search" method="get" target="_blank">
-                <input type="text" class="minisearch-text" placeholder="农家福妻娇又美" name="s_wd" id="searchkeyword"
+            <form id="hform" name="hform" action="http://www.foxes.com/search/sweb/search" method="get" target="_blank">
+                <input type="text" class="minisearch-text" placeholder="农家福妻娇又美" name="keywords" id="searchkeyword"
                        maxlength="20"><span class="search-btn-bar"><i class="iconfont">&#xe627;</i><input type="submit"
                                                                                                           value=""
                                                                                                           class="minisearch-btn"

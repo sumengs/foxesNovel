@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Author GaoZeXi on 2020/7/2
  * @Description: Step by Step  and Stand on,  You Are The Best Investment!!!
  */
-@FeignClient(name = "user")
+@FeignClient(name = "user-service")
 public interface UserFeign {
 
     /***

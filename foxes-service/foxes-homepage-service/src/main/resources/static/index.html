@@ -62,7 +62,7 @@
         </div>
         <div class="guide-menu" >
             <div class="column" id="userCenter">
-                <a v-if="!isLogin" href="http://localhost/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
                 <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
                 <a v-if="isLogin" href="http://localhost:9005/my.html" class="userCenter">{{username}}</a>&nbsp;&nbsp;
                 <a v-if="isLogin" href="javascript:void(0)" @click="logout()" class="userCenter">退出</a>
@@ -688,7 +688,7 @@
                         "<img src='" + images[i].image + "'>" +
                         "</a>" +
                         "<div class='title'>" +
-                        "<h4><a class='name' href='" + images[i].url + "' target='_blank' xid='1088115' tid='486'>" + images[i].name + "</a><span>" + images[i].author + "</span></h4> " +
+                        "<h4><a class='name' href='"+images[i].url + "' target='_blank' xid='1088115' tid='486'>" + images[i].name + "</a><span>" + images[i].author + "</span></h4> " +
                         "<p></p> </div> <div class='black-bg'></div> </li>"
                     )
                 }
