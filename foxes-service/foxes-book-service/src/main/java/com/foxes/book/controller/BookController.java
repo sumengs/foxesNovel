@@ -69,13 +69,12 @@ public class BookController {
     }
 
     /**
-     * 跳转小说详情页
+     * 生成小说详情页
      * @param bookId
-     * @param model
      * @return
      */
-    @RequestMapping("/generateBookHtml")
-    public String toBook(@RequestParam("bookId") String bookId, Model model){
+    @RequestMapping("/generateHtml/{id}")
+    public String generateHtml(@PathVariable("id") String bookId){
         bookService.generateHtml(bookId);
         return "success";
     }
