@@ -70,4 +70,24 @@ public class ChapterController {
         }
         return "111";
     }
+
+
+    @GetMapping("/generate/all")
+    @ResponseBody
+    public String generateAll() {
+
+        List<Chapter> chapterList = chapterService.findAll();
+
+        for (Chapter chapter : chapterList) {
+            try {
+                chapterService.generateHtml(chapter.getId());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return "all";
+    }
 }
+
+

@@ -182,5 +182,10 @@ public class ChapterServiceImpl implements ChapterService {
         }
     }
 
+    @Override
+    public List<Chapter> findAll() {
+        return chapterMapper.selectAll();
+    }
+
 
 }
