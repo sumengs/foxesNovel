@@ -62,4 +62,10 @@ public interface ChapterService {
      * @param id
      */
     void deleteHtml(String id);
+
+    /**
+     * 查询所有
+     * @return
+     */
+    List<Chapter> findAll();
 }

@@ -80,6 +80,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //开启表单登录
         http.formLogin()
                 //设置访问登录页面的路径
+                .loginPage("/login.html")
                 //设置 登录表单 form 的action 的提交路径
                 .loginProcessingUrl("/oauth/login");
     }

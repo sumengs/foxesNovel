@@ -80,10 +80,7 @@
                         logout(){
                             console.log("用户注销");
                             axios.get("/oauth/logout?uid="+this.uid).then(res=>{
-            <!--
-            根据cookie的值来判断是否登录
 
-            -->
 
                                 if(res.data.flag){
                                     console.log("用户已经注销");
@@ -184,8 +181,8 @@
                     class="iconfont">&#xe600;</i>作家福利</a></div>
             <div class="search-bar">
                 <form id="hform" name="keywords" action="/search/sweb/search" method="get" target="_blank">
-                    <input type="text" class="search-text" placeholder="霸道女总裁" name="keywords" id="searchkeyword"><span
-                        class="search-btn-bar"><i class="iconfont">&#xe627;</i>
+                    <input type="text" class="search-text" placeholder="霸道女总裁" name="keywords" id="searchkeyword">
+                    <span class="search-btn-bar"><i class="iconfont">&#xe627;</i>
                     <button type="submit" class="search-btn" id="gosearch"></span>
                 </form>
             </div>
