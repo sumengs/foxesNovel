@@ -4,7 +4,7 @@ spring:
   rabbitmq:
     host: 192.168.26.100
   application:
-    name: user
+    name: user-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.26.100:3306/foxes-novel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC

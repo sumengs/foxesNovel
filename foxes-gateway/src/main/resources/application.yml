@@ -72,15 +72,12 @@ spring:
 
         # 用户服务
         - id: user # 唯一标识
-          uri: lb://USER # 转发路径(user-oauth 服务)
+          uri: lb://user-service # 转发路径(user-oauth 服务)
           predicates:
             - Path=/user/** # 条件，用于请求网关路径的匹配规则
             - Path=/bookshelf/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 0
-
-
-
 
         - id: homepage # 唯一标识
           uri: lb://homepage-service # 转发路径(homepage 服务)
