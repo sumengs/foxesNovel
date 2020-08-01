@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(basePackages = {"com.foxes.book.feign"})
+@EnableFeignClients(basePackages = {"com.foxes.read.feign"})
 public class SearchServiceApplication {
 
     public static void main(String[] args) {

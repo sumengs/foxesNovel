@@ -1,6 +1,6 @@
 package com.foxes.homepage.controller;
 
-import com.foxes.book.pojo.Book;
+import com.foxes.read.pojo.Book;
 import com.foxes.chapter.pojo.Advertisement;
 import com.foxes.chapter.pojo.Leaderboard;
 import com.foxes.homepage.service.AdvertisementService;

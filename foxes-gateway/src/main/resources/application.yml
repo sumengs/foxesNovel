@@ -17,30 +17,28 @@ spring:
     host: 192.168.26.100
   cloud:
     gateway:
-#      globalcors:
-#        cors-configurations:
-#          '[/**]':
-#            allowedOrigins: "*" #允许所有请求跨域
-#            allowedMethods:
-#              - GET
-#              - POST
-#              - PUT
-#              - DELETE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*" #允许所有请求跨域
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       routes:
-        # 章节微服务
-        - id: chapter # 唯一标识
-          uri: lb://chapter-service # 转发路径(good 服务)
-          predicates:
-            - Path=/chapter/** # 条件，用于请求网关路径的匹配规则
-          filters:
-            - StripPrefix= 1
-
-
-        # 小说微服务
+        # 阅读微服务
         - id: book # 唯一标识
-          uri: lb://book-service # 转发路径(good 服务)
+          uri: lb://read-service # 转发路径(good 服务)
           predicates:
             - Path=/book/** # 条件，用于请求网关路径的匹配规则
+          filters:
+            - StripPrefix= 0
+
+        - id: chapter
+          uri: lb://read-service # 转发路径(good 服务)
+          predicates:
+            - Path=/chapter/** # 条件，用于请求网关路径的匹配规则
           filters:
             - StripPrefix= 1
 

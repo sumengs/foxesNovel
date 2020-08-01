@@ -1,9 +1,8 @@
 package com.foxes.homepage.service.impl;
 
-import com.foxes.book.feign.BookFeign;
-import com.foxes.book.feign.CategoryFeign;
-import com.foxes.book.pojo.Book;
-import com.foxes.book.pojo.Category;
+import com.foxes.read.feign.BookFeign;
+import com.foxes.read.feign.CategoryFeign;
+import com.foxes.read.pojo.Book;
 import com.foxes.chapter.pojo.Leaderboard;
 import com.foxes.homepage.dao.AdvertisementMapper;
 import com.foxes.chapter.pojo.Advertisement;

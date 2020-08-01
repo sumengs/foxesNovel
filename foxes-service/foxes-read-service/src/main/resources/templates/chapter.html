@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>[[${book.name}]]_[[${chapter.name}]]_全文阅读,阅读目录,[[${book.author}]],[[${category.name}]], [[${book.name}]] ,Foxes小说网</title>
+
+    <meta id="keywords" th:attr="content=${book.name} +'_'+${chapter.name}+'_全文阅读,'+${book.name}+'最新章节目录'"/>
+    <meta id="description" th:attr="content = '提供'+${book.name}+'全文阅读,提供'+${book.name}+'最新章节阅读,提供'+${book.name}+'下载'"/>
+    <!--手机适配-->
+    <!--    <meta http-equiv="mobile-agent"-->
+    <!--          content="format=html5; url=https://m.xxsy.net/page/Content?bookid=949361&chapterid=8446493"/>-->
+    <!--    <meta http-equiv="mobile-agent"-->
+    <!--          content="format=xhtml; url=https://g.xxsy.net/read.asp?bookid=949361&zj_id=8446493"/>-->
+    <!--    <meta http-equiv="mobile-agent" content="format=wml; url=https://g.xxsy.net/read.asp?bookid=949361&zj_id=8446493"/>-->
+    <meta property="qc:admins" content="1451570347600316654"/>
+    <meta name="robots" content="all">
+    <meta name="googlebot" content="all">
+    <meta name="baiduspider" content="all">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a"/>
+
+    <!--css资源文件-->
+    <link href="../static/css/menutop.css" th:href="@{../css/menutop.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/iconfont.css" th:href="@{../css/iconfont.css}" rel="stylesheet"/>
+    <link href="../static/css/global.css" th:href="@{../css/global.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/base.css" th:href="@{../css/base.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/JQBox.css" th:href="@{../css/JQBox.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/authorbonus.css" th:href="@{../css/authorbonus.css}" rel="stylesheet"/>
+    <link href="../static/css/pagestatic.css" th:href="@{../css/pagestatic.css}" rel="stylesheet"/>
+
+    <!--  手机适配  -->
+    <!--    <script>-->
+    <!--        function getCookieValue(cookieName) {-->
+    <!--            var arr, reg = new RegExp("(^| )" + cookieName + "=([^;]*)(;|$)");-->
+    <!--            if (arr = document.cookie.match(reg))-->
+    <!--                return (arr[2]);-->
+    <!--            else-->
+    <!--                return null;-->
+    <!--        }-->
+
+    <!--        if (getCookieValue('norefm') != 1 && /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator-->
+    <!--            .userAgent)) {-->
+    <!--            top.location.href = "https://m.xxsy.net/page/content?bookid=949361&chapterid=8446493";-->
+    <!--        }-->
+    <!--    </script>-->
+</head>
+
+<body id="readcontent" class="theme_yellow">
+<div class="top-menu">
+    <div class="container">
+        <div class="download-app">
+            <a class="app-android" href="" ><i class="iconfont">&#xe607;</i>Android版</a>
+            <a class="app-ios" href=""><i class="iconfont">&#xe60b;</i>iOS版</a>
+            <a class="app-index" href="/index.html">首页</a>
+        </div>
+        <div class="guide-menu" >
+            <div class="column" id="userCenter">
+                <a v-if="!isLogin" href="http://localhost/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                <a v-if="isLogin" href="http://localhost:9005/my.html" class="userCenter"><span v-text="username"></span></a>&ensp;
+                <a v-if="isLogin" href="javascript:void(0)" @click="logout()" class="userCenter">退出</a>
+            </div>
+
+            <script>
+                var user_app =  new Vue({
+                    el:"#userCenter",
+                    data:{
+                        username:"",
+                        uid:"",
+                        isLogin:false
+                    },
+                    methods:{
+                        logout(){
+                            console.log("用户注销");
+                            axios.get("/oauth/logout?uid="+this.uid).then(res=>{
+                                <!--
+                                根据cookie的值来判断是否登录
+
+                                -->
+
+                                if(res.data.flag){
+                                    console.log("用户已经注销");
+                                    //前端注销页面
+                                    this.isLogin=false;
+                                    layer.msg(res.data.message);
+                                }else{
+                                    layer.msg("服务器忙...");
+                                }
+
+                            })
+                        }
+                    },
+                    created(){
+                        let c_username = getCookie("username");
+                        let c_uid = getCookie("uid");
+                        if(c_uid.length>0){
+                            this.username=c_username;
+                            this.uid=c_uid;
+                        }
+                        console.log("查询用户登录状态");
+                        axios.get("/oauth/loginStatus?uid="+this.uid).then(res=>{
+                            if(res.data.flag){
+                                //已登录
+                                console.log("用户已经登录");
+                                this.isLogin=true;
+                            }else{
+                                console.log("用户未登录");
+                                this.isLogin=false;
+                            }
+                        });
+                    }
+                })
+
+            </script>
+
+            <div class="column more bookcase" id="menubookcase">
+                <a href="http://localhost:9005/bookcase.html" class="my-book" id="mybookcase">我的书架</a>
+                <em><i></i></em>
+                <div id="menucnt2" class="menu-ct menu-ct-2">
+                    <div id="mybc">
+                        <span class="off"></span>
+                        <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
+                        <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
+                        <span class="rblank"></span>
+                    </div>
+                    <ul id="mybctitle">
+                        <li class="n0">序</li>
+                        <li class="n1">书名</li>
+                        <li class="n2">标签章节(加入时间)</li>
+                        <li class="n3">作者</li>
+                        <li class="n4">操作</li>
+                    </ul>
+                    <ul id="mybcasecnt1" class="menumybclist">
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
+                    </ul>
+                    <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="column"><a href="" class="service" rel="nofollow">联系客服</a>
+            </div>
+        </div>
+        <ul class="menu-style cl">
+            <li><a href="" class=''>古代言情</a></li>
+            <li><a href="" class=''>现代言情</a></li>
+            <li><a href="" class=''>玄幻仙侠</a></li>
+            <li><a href="" class=''>浪漫青春</a></li>
+            <li><a href="" class=''>悬疑</a></li>
+            <li><a href="" class=''>改编频道</a></li>
+            <li><a href="">男生频道</a></li>
+            <li><a href="" class=''>漫画频道</a></li>
+
+        </ul>
+    </div>
+</div>
+<input id="pagetoken" value="c21940f1e87a93cb24e35ccebe181269" type="hidden">
+<script>
+    window._pageToken = document.getElementById('pagetoken').value;
+</script>
+
+
+<div class="container auto-container" id="auto-container" style="width:960px">
+    <p class="bread">当前位置：<a th:href="@{../../index.html}" target="_blank">foxes小说网</a>&gt;
+        <a href="" th:text="${category.name}"></a>&gt;
+        <a th:href="'../../book/'+${book.id} + '.html'" target="_blank" th:text="${book.name}"></a>
+    </p>
+    <!--    <em class="iconfont icon-liwu"></em>-->
+    <div class="chapter-read">
+        <h1 class="chapter-title" th:text="${chapter.name}"></h1>
+        <p class="chapter-subtitle">
+            书名：<a th:href="'../../book/'+${book.id} + '.html'"  target="_blank" th:text="${book.name}"></a>
+            <i>|</i>
+            作者：<a href="" th:text="${book.author}"></a>
+            <i>|</i>
+            发布：<span th:text="${bookReleaseTime}"></span>
+            <i>|</i>
+            <span>更新：<span th:text="${chapterUpdateTime}"></span></span>
+            <i>|</i>
+            字数：<span th:text="${chapter.wordsNum}"></span>字
+        </p>
+        <div class="chapter-main" id="auto-chapter" style="font-family:Microsoft YaHei;font-size:18px;"
+             th:text="${chapter.txt}">
+        </div>
+        <a href="javascript:;" class="red-btn showgiftbox" data-index="2">打赏</a>
+    </div>
+    <ul class="chapter-control cl">
+        <li class="chapter-prev">
+            <span th:if="${chapter.pre} == 0">
+                <a th:href="'../../book/'+${chapter.bookId} +'.html'"><em>上一章</em><i>（快捷键：←）</i></a>
+            </span>
+            <span th:if="${chapter.pre} != 0">
+                <a th:href="${chapter.pre} + '.html'"><em>上一章</em><i>（快捷键：←）</i></a>
+            </span>
+        </li>
+
+
+        <li class='chapter-next'>
+            <span th:if="${chapter.next} == 0">
+                <a th:href="'../../book/'+${chapter.bookId} +'.html'"><em>下一章</em><i>（快捷键：→）</i></a>
+            </span>
+            <span th:if="${chapter.next} != 0">
+                <a th:href="${chapter.next} + '.html'"><em>下一章</em><i>（快捷键：→）</i></a>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<div class="left-sub-menu" id="menu-left">
+    <ul class="nav-set cl">
+        <li class="nav-set-li">
+            <a id="item" class="nav-icon" href="javascript:;">
+                <i class="iconfont">&#xe63f;</i>
+                目录
+            </a>
+            <div class="nav-box" style="display: none">
+                <div class="nav-hd">
+                    <span class="closebtn iconfont">&#xe622;</span>
+                    <h3>目录</h3>
+                </div>
+                <div class="nav-bd">
+                    <div class="catalog">
+                        <!--                        <p class="chapterlistloading">正在加载 . . .</p>-->
+                        <dl class="catalog-main" id="chapter" style="margin-bottom:10px;">
+                            <dd>
+                                <ul id="items" class="catalog-list cl">
+
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-set-li" id="readsetmenu">
+            <a class="nav-icon" href="javascript:;"><i class="iconfont">&#xe60d;</i>设置</a>
+            <div class="nav-box" style="display: none">
+                <div class="nav-hd">
+                    <span class="closebtn iconfont forreadset">&#xe622;</span>
+                    <h3>设置您喜欢的阅读方式</h3>
+                </div>
+                <div class="nav-bd">
+                    <dl class="resize-action">
+                        <dd>
+                            <span class="label">阅读主题：</span>
+                            <div class="form color-mode cl">
+                                    <span class='mode_yellow current' data-value="theme_yellow"><i
+                                            class="iconfont">&#xe615;</i></span>
+                                <span class='mode_orange ' data-value="theme_orange"><i
+                                        class="iconfont">&#xe615;</i></span>
+                                <span class='mode_green ' data-value="theme_green"><i
+                                        class="iconfont">&#xe615;</i></span>
+                                <span class='mode_blue ' data-value="theme_blue"><i
+                                        class="iconfont">&#xe615;</i></span>
+                                <span class='mode_pink ' data-value="theme_pink"><i
+                                        class="iconfont">&#xe615;</i></span>
+                                <span class='mode_gray ' data-value="theme_gray"><i
+                                        class="iconfont">&#xe615;</i></span>
+                                <span class='mode_black ' data-value="theme_black"><em
+                                        class="iconfont">&#xe637;</em><i class="iconfont">&#xe615;</i></span>
+                            </div>
+                        </dd>
+                        <dd>
+                            <span class="label">正文字体：</span>
+                            <div class="form fontfamily-mode cl"><span class='font-YaHei current'
+                                                                       data-value="Microsoft YaHei">雅黑</span><span
+                                    class="font-SimSun "
+                                    data-value="SimSun">宋体 </span><span class='font-KaiTi '
+                                                                        data-value="KaiTi">楷体</span></div>
+                        </dd>
+                        <dd>
+                            <span class="label">字体大小：</span>
+                            <div class="form font-size-mode"><span class="fontsize-minus">A-</span><span
+                                    class="fontsize-text" id="readfontsize">18</span><span
+                                    class="fontsize-plus">A+</span></div>
+                        </dd>
+                        <dd>
+                            <span class="label">页面宽度：</span>
+                            <div class="form web-width-mode"><span class="websize-minus"><i
+                                    class="iconfont">&#xe64b;</i>-</span><span
+                                    class="websize-text">960</span><span class="websize-plus"><i
+                                    class="iconfont">&#xe64b;</i>+</span></div>
+                        </dd>
+                        <dd>
+                            <span class="label">自动滚屏：</span>
+                            <div class="form read-mode"><span class="auto-read"><span
+                                    class='auto-read-btn auto-read-close'>关闭</span></span></div>
+                            <span class="label">滚屏速度：</span>
+                            <div class="form scrollspeed-mode"><span class="scrollspeed-minus"
+                                                                     data-value="-1">S-</span><span
+                                    class="speed-text"
+                                    id="scorllSpeed">5</span><span
+                                    class="scrollspeed-plus" data-value="1">S+</span></div>
+                        </dd>
+                        <dd>
+                            <span class="label">滚屏阅读：</span>
+                            <div class="form page-mode">
+                                    <span class="auto-page">
+                                        <input type="checkbox" id="pagemode"><label for="pagemode">滚屏结束自动翻页</label>
+                                    </span>
+                            </div>
+                        </dd>
+                        <dt><a href="javascript:;" class="red-btn resize-keep" id="savereadset">保 存</a><a
+                                href="javascript:;" class="red-btn resize-cancel forreadset" id="cancelReadSet">取
+                            消</a></dt>
+                    </dl>
+                </div>
+            </div>
+        </li>
+        <li class="nav-set-li">
+            <a class="nav-icon" href="javascript:;"><i class="iconfont">&#xe63e;</i>手机</a>
+            <div class="nav-box" style="display: none">
+                <div class="nav-hd">
+                    <span class="closebtn iconfont">&#xe622;</span>
+                    <h3>手机阅读</h3>
+                </div>
+                <div class="nav-bd">
+                    <dl class="qr-code">
+                        <dd>
+                            <img src="" alt="客户端二维码">
+                        </dd>
+                        <dt>扫描二维码下载客户端，随时随地掌上阅读</dt>
+                    </dl>
+                </div>
+            </div>
+        </li>
+        <li>
+            <a class="nav-icon" href="javascript:;" id="addshelf"><i class="iconfont">&#xe72d;</i>书架</a>
+        </li>
+        <li>
+            <a class="nav-icon" href="javascript:;" id="addmark"><i class="iconfont">&#xe626;</i>书签</a>
+        </li>
+    </ul>
+</div>
+<div class="right-sub-menu" id="menu-right">
+    <ul class="nav-set cl">
+        <li>
+            <a href="javascript:;" class="nav-icon showgiftbox" data-index="2"><i
+                    class="iconfont">&#xe600;</i>打赏</a>
+        </li>
+        <li>
+            <a href="javascript:;" class="nav-icon showgiftbox" data-index="1"><i
+                    class="iconfont">&#xe616;</i>投票</a>
+        </li>
+        <li>
+            <a href="javascript:;" class="nav-icon showgiftbox" data-index="3"><i
+                    class="iconfont">&#xe7cc;</i>讨论</a>
+        </li>
+        <li>
+            <a href="javascript:scrollTo(0,0)" class="nav-icon backTop"><i class="iconfont">&#xe617;</i></a>
+        </li>
+    </ul>
+</div>
+<div id="bookId" th:text="${book.id}" style="display: none"></div>
+
+<div class="footer">
+    <div class="container">
+        <div class="map-menu">
+            <a href=""  rel="nofollow">关于本站</a>
+            <a href=""  rel="nofollow">联系我们</a>
+            <a href=""  rel="nofollow">会员帮助</a>
+            <a href=""  rel="nofollow">作者帮助</a></div>
+    </div>
+</div>
+<script src="../static/js/jquery.min.js" th:src="@{../js/jquery.min.js}"></script>
+<script src="../static/js/JQBox.js" th:src="@{../js/JQBox.js}"></script>
+<script src="../static/js/Util.js" th:src="@{../js/Util.js}"></script>
+<!--<script src="../static/js/newmenutop.js" th:src="@{../js/newmenutop.js}"></script>-->
+
+<script src="../static/js/commonbox.js" th:src="@{../js/commonbox.js}"></script>
+<script src="../static/js/lazyimgload.js" th:src="@{../js/lazyimgload.js}"></script>
+<script src="../static/js/statpage_pc.js" th:src="@{../js/statpage_pc.js}"></script>
+<div id="statdiv" style="display:none;"></div>
+
+<script src="../static/js/jquery.bxslider.min.js" th:src="@{../js/jquery.bxslider.min.js}"></script>
+<script src="../static/js/jquery.raty.min.js" th:src="@{../js/jquery.raty.min.js}"></script>
+<script src="../static/js/userinfo.js" th:src="@{../js/userinfo.js}"></script>
+<script src="../static/js/chapterlist.js" th:src="@{../js/chapterlist.js}"></script>
+<script src="../static/js/giftrecharge.js" th:src="@{../js/giftrecharge.js}"></script>
+<script src="../static/js/gift.js" th:src="@{../js/gift.js}"></script>
+
+<script src="../static/js/read.js" th:src="@{../js/read.js}"></script>
+
+<!--&lt;!&ndash; 作者红包 &ndash;&gt;-->
+<!--<script src="../static/js/authorbonus.js" th:src="@{../js/authorbonus.js}"></script>-->
+<!--<script src="../static/js/qqlogin.js" th:src="@{../js/qqlogin.js}"></script>-->
+<!--<script src="../static/js/clipboard.js" th:src="@{../js/clipboard.min.js}"></script>-->
+
+<script>
+    $('#weappimg i').click(function () {
+        $('#weappimg').remove();
+    })
+
+    $(document).bind('contextmenu cut copy selectstart', function (e) {
+        if ($('#shareinfobox').length == 0 || $('#shareinfobox').css('display') == 'none') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    /*    // window.loginCallBack = function () {
+        //     location.reload();
+        // }
+        // if ("" == "nologin") {
+        //     //QQ登录
+        //     if (QC.Login.check() == true) {
+        //         QC.Login.signOut();
+        //     }
+        //     window.login(true);
+        // }
+
+        // var readobj = {
+        //     bookid: parseInt(949361),
+        //     chapterid: parseInt(8446493),
+        //     chaptername: '000前尘',
+        //     isvip: parseInt(1),
+        //     needSubcribe: parseInt(1),
+        //     useraccount: parseInt(0),
+        //     useryuanbao: parseInt(0),
+        //     usertiyanbi: parseInt(0),
+        //     needCount: parseInt(0),
+        //     allChapter: "",
+        //     subAllChapterNeedCount: parseInt(0),
+        //     hasLogin: parseInt(0) > 0,
+        //     hasInShelf: parseInt(0) > 0,
+        //     viewName: "",
+        //     preChapterId: parseInt(0),
+        //     nextChapterId: parseInt(8447580),
+        //     wordCount: parseInt(3100),
+        //     //阅读设置
+        //     readSet: {
+        //         colorStyle: "theme_yellow",
+        //         fontStyle: "Microsoft YaHei",
+        //         fontSize: parseInt(18),
+        //         pageWidth: parseInt(960),
+        //         scrollMode: parseInt(0),
+        //         scrollSpeed: parseInt(5),
+        //         autoNextPage: parseInt(0)
+        //     },
+        //     //作者红包
+        //     bonusType: parseInt(0),
+        //     //限时折扣
+        //     limiDiscount: parseInt(0) > 0 && parseInt(0) < 100,
+        //     limitDiscountTime: {
+        //         year: parseInt(1),
+        //         month: parseInt(1),
+        //         day: parseInt(1),
+        //         hour: parseInt(0),
+        //         minute: parseInt(0),
+        //         second: parseInt(0)
+        //     },
+        //     maxChapterId: parseInt(0),
+        //     initAuto: parseInt(0),
+        //     volumeID: parseInt(1)
+        // }
+
+
+        // Init(readobj);*/
+</script>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: "../chapter/findAllChapterByBookId/" + $("#bookId").text(),
+            success: function (result) {
+                f(result);
+            }
+        })
+    });
+
+    function f(e) {
+        let chapters = e.data;
+        for (let i = 0; i < chapters.length; i++) {
+            $("#items").append(
+                "<li><a href='" + chapters[i].id + ".html' target='_self'>" + chapters[i].name + "</a></li>"
+            )
+
+        }
+    }
+
+</script>
+</body>
+
+</html>

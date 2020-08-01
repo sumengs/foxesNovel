@@ -12,11 +12,10 @@
     <artifactId>foxes-service-api</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>foxes-chapter-service-api</module>
         <module>foxes-homepage-service-api</module>
         <module>foxes-search-service-api</module>
         <module>foxes-user-service-api</module>
-        <module>foxes-book-service-api</module>
+        <module>foxes-read-service-api</module>
     </modules>
     <dependencies>
         <dependency>

@@ -1,9 +1,7 @@
 package com.foxes.homepage.service;
 
-import com.foxes.book.pojo.Book;
 import com.foxes.chapter.pojo.Advertisement;
 import com.foxes.chapter.pojo.Leaderboard;
-import com.sumeng.peekshopping.entity.Result;
 
 import java.util.List;
 

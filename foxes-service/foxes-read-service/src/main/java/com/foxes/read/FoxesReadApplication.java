@@ -1,19 +1,22 @@
-package com.foxes.homepage;
+package com.foxes.read;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
- * @date: 2020/6/27 10:01
+ * @date: 2020/6/28 16:07
  * @author: sumeng
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.foxes.homepage.dao"})
+@EnableEurekaClient
+@MapperScan(basePackages = {"com.foxes.read.dao"})
 @EnableFeignClients(basePackages = {"com.foxes.read.feign"})
-public class HomepageServiceApplication {
+public class FoxesReadApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(HomepageServiceApplication.class, args);
+        SpringApplication.run(FoxesReadApplication.class, args);
     }
 }

@@ -9,13 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>foxes-homepage-service</artifactId>
+    <artifactId>foxes-read-service</artifactId>
 
     <dependencies>
         <dependency>
-            <artifactId>foxes-homepage-service-api</artifactId>
             <groupId>com.foxes</groupId>
+            <artifactId>foxes-read-service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!--通用mapper起步依赖-->
         <dependency>
@@ -23,17 +31,8 @@
             <artifactId>mapper-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
-        </dependency>
-        <dependency>
-            <artifactId>foxes-read-service-api</artifactId>
-            <groupId>com.foxes</groupId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

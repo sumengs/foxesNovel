@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>[[${book.name}]],[[${book.name}]]全文阅读,[[${book.name}]]最新章节,Foxes小说网</title>
+    <meta id="keywords" th:attr="content=${book.name}+','+${book.name}+'全文阅读,'+${book.name}+'最新章节,'+ ${book.name}"/>
+    <meta id="description" th:attr="content=${book.name}+'全文阅读,'+${book.name}+'最新章节阅读,'+${book.name}+'免费下,本书标签'"/>
+    <meta name="robots" content="all">
+    <meta name="googlebot" content="all">
+    <meta name="baiduspider" content="all">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="360-site-verification" content="9cb9cc707f89ad716643f082207a632a"/>
+    <link th:href="@{../css/menutop.css}" rel="stylesheet" type="text/css"/>
+
+    <link th:href="@{../css/iconfont.css}" rel="stylesheet"/>
+    <link th:href="@{../css/global.css}" rel="stylesheet" type="text/css"/>
+
+    <link th:href="@{../css/base.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{../css/JQBox.css}" rel="stylesheet" type="text/css"/>
+
+    <link th:href="@{../css/authorbonus.css}" rel="stylesheet"/>
+    <link th:href="@{../css/quanzi.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{../css/pagestatic.css}" rel="stylesheet"/>
+
+    <script th:src="@{../js/cookie.js}"></script>
+    <script th:src="@{../js/vue.js}"></script>
+    <script th:src="@{../js/axios.js}"></script>
+    <script th:src="@{../plugins/layui/layui.all.js}"></script>
+    <link th:href="@{../plugins/layui/css/layui.css}" rel="stylesheet" type="text/css" />
+
+    <script>
+        function getCookieValue(cookieName) {
+            var arr, reg = new RegExp("(^| )" + cookieName + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return (arr[2]);
+            else
+                return null;
+        }
+
+        if (getCookieValue('norefm') != 1 && /Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator
+            .userAgent)) {
+            top.location.href = "";
+        }
+    </script>
+</head>
+
+<body>
+<div class="top-menu">
+    <div class="container">
+        <div class="download-app">
+            <a class="app-android" href="" target="_blank"><i class="iconfont">&#xe607;</i>Android版</a>
+            <a class="app-ios" href="" target="_blank"><i class="iconfont">&#xe60b;</i>iOS版</a><a class="app-index"
+                                                                                                  href="/index.html">首页</a>
+        </div>
+        <div class="guide-menu">
+            <div class="column" id="userCenter">
+                <a v-if="!isLogin" href="http://localhost/oauth3/login.html" class="login" id="headerLogin">登录</a>&ensp;
+                <a v-if="!isLogin" href="" class="register" target="_blank" rel="nofollow">注册</a>
+                <a v-if="isLogin" href="http://localhost:9005/my.html" class="userCenter"><span
+                        v-text="username"></span></a>&ensp;
+                <a v-if="isLogin" href="javascript:void(0)" @click="logout()" class="userCenter">退出</a>
+            </div>
+
+            <script>
+                var user_app = new Vue({
+                    el: "#userCenter",
+                    data: {
+                        username: "",
+                        uid: "",
+                        isLogin: false
+                    },
+                    methods: {
+                        logout() {
+                            console.log("用户注销");
+                            axios.get("/oauth/logout?uid=" + this.uid).then(res => {
+                                <!--
+                                根据cookie的值来判断是否登录
+
+                                -->
+
+                                if (res.data.flag) {
+                                    console.log("用户已经注销");
+                                    //前端注销页面
+                                    this.isLogin = false;
+                                    layer.msg(res.data.message);
+                                } else {
+                                    layer.msg("服务器忙...");
+                                }
+
+                            })
+                        }
+                    },
+                    created() {
+                        let c_username = getCookie("username");
+                        let c_uid = getCookie("uid");
+                        if (c_uid.length > 0) {
+                            this.username = c_username;
+                            this.uid = c_uid;
+                        }
+                        console.log("查询用户登录状态");
+                        axios.get("/oauth/loginStatus?uid=" + this.uid).then(res => {
+                            if (res.data.flag) {
+                                //已登录
+                                console.log("用户已经登录");
+                                this.isLogin = true;
+                            } else {
+                                console.log("用户未登录");
+                                this.isLogin = false;
+                            }
+                        });
+                    }
+                })
+
+            </script>
+
+            <div class="column more bookcase" id="menubookcase">
+                <a href="http://localhost:9005/bookcase.html" class="my-book" id="mybookcase">我的书架</a>
+                <em><i></i></em>
+                <div id="menucnt2" class="menu-ct menu-ct-2">
+                    <div id="mybc">
+                        <span class="off"></span>
+                        <span id="head_select_2" class="off" onclick="menuBookCase.setBookCaseTab(2)">我的书签</span>
+                        <span id="head_select_1" class="on" onclick="menuBookCase.setBookCaseTab(1)">我的书架</span>
+                        <span class="rblank"></span>
+                    </div>
+                    <ul id="mybctitle">
+                        <li class="n0">序</li>
+                        <li class="n1">书名</li>
+                        <li class="n2">标签章节(加入时间)</li>
+                        <li class="n3">作者</li>
+                        <li class="n4">操作</li>
+                    </ul>
+                    <ul id="mybcasecnt1" class="menumybclist">
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
+                    </ul>
+                    <ul id="mybcasecnt2" class="menumybclist" style="display:none;">
+                        <div style="height:200px!important;line-height:200px!important;"><img border=0
+                                                                                              style="width:32px;height:32px;"
+                                                                                              src=""/>正在加载数据...
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="column"><a href="" class="service" target="_blank" rel="nofollow">联系客服</a>
+            </div>
+        </div>
+        <ul class="menu-style cl">
+            <li><a href="" class=''>古代言情</a></li>
+            <li><a href="" class=''>现代言情</a></li>
+            <li><a href="" class=''>玄幻仙侠</a></li>
+            <li><a href="" class=''>浪漫青春</a></li>
+            <li><a href="" class=''>悬疑</a></li>
+            <li><a href="" class=''>改编频道</a></li>
+            <li><a href="">男生频道</a></li>
+            <li><a href="" class=''>漫画频道</a></li>
+
+        </ul>
+    </div>
+</div>
+<input id="pagetoken" value="c21940f1e87a93cb24e35ccebe181269" type="hidden">
+<script>
+    window._pageToken = document.getElementById('pagetoken').value;
+</script>
+
+
+<div class="header header-detail">
+    <div class="container">
+        <div class="top-main cl">
+            <a href="/index.html" class="logo">
+                <img src="../images/logo.png" alt="Foxes小说网" style="height: 80px"/>
+            </a>
+            <div class="guide-writer"><a class="become" href="" target="_blank"><i
+                    class="iconfont">&#xe687;</i>我要当作家</a><a class="welfare"
+                                                             href="" target="_blank"><i
+                    class="iconfont">&#xe600;</i>作家福利</a></div>
+            <div class="search-bar">
+                <form id="hform" name="hform" action="/search/sweb/search" method="get" target="_blank">
+                    <input type="text" class="search-text" placeholder="公主她在现代星光璀璨" name="keywords"
+                           id="searchkeyword"><span class="search-btn-bar"><i class="iconfont">&#xe627;</i><input
+                        type="submit" value="" class="search-btn" id="gosearch"></span>
+                </form>
+            </div>
+        </div>
+        <div class="area_1200">
+            <a href=""><img src="http://47.97.218.10:8888/group1/M00/00/00/rBD0CF7_C2qATJRiAAPG46mrMbY172.gif"
+                            class="bigimg"></a>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<div class="content">
+    <div class="container">
+        <p class="bread">当前位置：<a href="/index.html" target="_blank">foxes小说网首页</a>&gt;<a href=""
+                                                                                         th:text="${category.name}"></a>&gt;[[${book.name}]]
+        </p>
+        <div class="bookdetail cl">
+            <dl class="bookprofile">
+                <dt>
+                    <img th:src="${book.image}" th:alt="${book.name}">
+                </dt>
+                <dd>
+                    <div class="title">
+                        <a href="javascript:;" class="read-by-phone" onclick="commonBox.appBox();"><i
+                                class="iconfont">&#xe63e;</i>手机阅读</a>
+                        <h1 th:text="${book.name}"></h1>
+                        <span>
+                                文&nbsp;/&nbsp;<a href="/index.html" target="_blank" th:text="${book.author}"></a>
+                            </span>
+                    </div>
+                    <p class="sub-cols">
+                        <span>会员作品</span>
+                        <span th:if="${book.status==1}">已完结</span>
+                        <span th:if="${book.status==0}">未完结</span>
+                        <span>类别：[[${category.name}]]</span>
+                        <span>发布：[[${#dates.format(book.releaseTime,'yyyy-MM-dd')}]]</span>
+                    </p>
+                    <p class="sub-data">
+                        <span><em th:text="${book.wordsNum/10000}"></em><em>万</em>字</span><span><em
+                            th:text="${book.readNum/10000}"></em><em>万</em>阅读</span><span><em
+                            th:text="${book.subscribeNum}"></em>收藏</span></p>
+                    <p class="sub-tags">
+                    </p>
+                    <div class="sub-newest">
+                        <p>最新公共章节：<a th:href="|/chapter/${book.id}/${lastChapter.html}|" target="_blank"
+                                     th:text="${lastChapter.name}"></a>
+                            <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span>
+                        </p>
+                        <p>最新VIP章节：<a th:href="|/chapter/${book.id}/${lastChapter.html}|" target="_blank"
+                                      th:text="${lastChapter.name}"></a>
+                            <span class="time" th:text="${#dates.format(lastChapter.updateTime,'yyyy-MM-dd')}"></span>
+                        </p>
+                    </div>
+                    <div class="book-btns">
+                        <a class="btn_read" th:href="|/chapter/${book.id}/${firstChapter.html}|">开始阅读</a>
+                        <a class='btn_shelf ' href="javascript:">加入书架</a>
+                        <a class="btn_vote showgiftbox" href="javascript:" data-index="1">投票互动</a>
+                        <a class="btn_play showgiftbox" href="javascript:" data-index="2">打赏支持</a>
+                    </div>
+                    <div class="score-bar">
+                        <p class="active">本书评价<span>（已有1880人评价）</span></p>
+                        <div class="score-show">
+                            <!--<div id="bookstar" data-score="5.0"></div>-->
+                            <div id="curscore"></div>
+                            <a href="javascript:;" class="appraisal-btn showgiftbox" id="appraisal-btn"
+                               data-index="0">我要评价</a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+
+            <div class="box-con other-book">
+                <div class="box-hd">
+                    <h3 class="active">作者其他</h3>
+                </div>
+                <div class="box-bd freebook other-book-slider">
+                    <div class="wrap">
+                        <ul class="freeslider">
+                            <li th:each="bookOfAuthor,bookOfAuthorStat:${bookListOfAuthor}">
+                                <a th:href="'/book/book/'+ ${bookOfAuthor.id} + '.html'" target="_blank">
+                                    <img th:src="${bookOfAuthor.image}">
+                                </a>
+                                <h4><a th:href="'/book/book/'+ ${bookOfAuthor.id} + '.html'"
+                                       th:text="${bookOfAuthor.name}" target="_blank"></a></h4>
+                                <p class="btns">
+                                    <a href="javascript:;" class="red-btn othershelf" data-bookid="1441380">放入书架</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-con book-detail-tab tab-click" id="app">
+            <div class="box-hd click-hd">
+                <h3 class="active">作品介绍</h3>
+                <h3 id="chapterllisttab">作品目录</h3>
+                <a class="link_discuss" href="javascript:;">作品讨论区</a>
+
+            </div>
+            <div class="click-bd">
+                <div class="works-main cl">
+                    <div class="profile-main">
+                        <div class="book-profile">
+                            <dl class="introcontent">
+                                <dd>
+                                    <p th:text="${book.abstracts}"></p>
+                                </dd>
+                            </dl>
+                            <div><span class="btn-show" style="display: none;">展开<i
+                                    class="iconfont">&#xe601;</i></span></div>
+                        </div>
+                    </div>
+                    <div class="profile-side">
+                        <div class="author-profile">
+                            <a href="javascript:;" title="金牌作家"><span class="author-prize" id="authorlevel"
+                                                                      style="display:none;"></span></a>
+                            <a href="javascript:void(0)"><img class="avatar" th:src="${book.authorHead}"></a>
+                            <p class="p-name"><a href="javascript:void(0)" th:text="${book.author}"></a></p>
+                            <div class="p-saying">
+                                <div class="over-box">
+                                    <div id="authorintro"></div>
+                                </div>
+                                <p class="over-btn" style="display:none;"><i class="iconfont">&#xe601;</i></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="works-main catalog" style="display: none">
+                    <div class="fix" id="chapterlist">
+                        <!--<p class="chapterlistloading">正在加载 . . .</p>-->
+                        <dd>
+                            <ul class="catalog-list cl">
+                                <li th:each="chapter,chapterStat:${chapterList}">
+                                    <a th:href="|/chapter/${book.id}/${chapter.html}|" target="_blank"
+                                       th:text="${chapter.name}"></a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <a href="javascript:scrollTo(0,0)" class="back-top" id="back-top"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" value="天泠" id="authorname_value">
+<div class="footer">
+    <div class="container">
+        <div class="map-menu"><a href="" rel="nofollow">关于本站</a><a href=""
+                                                                   rel="nofollow">联系我们</a><a href=""
+                                                                                             rel="nofollow">会员帮助</a><a
+                href="" rel="nofollow">作者帮助</a></div>
+
+    </div>
+</div>
+<script th:src="@{../js/jquery.min.js}"></script>
+<script th:src="@{../js/JQBox.js}"></script>
+<script th:src="@{../js/Util.js}"></script>
+<script th:src="@{../js/newmenutop.js}"></script>
+
+<script th:src="@{../js/commonbox.js}"></script>
+<script th:src="@{../js/lazyimgload.js}"></script>
+<script th:src="@{../js/statpage_pc.js}"></script>
+<!--<script>-->
+<!--    setTimeout(function () {-->
+<!--        if (location.href.toString().indexOf("xdindex.html") < 0 && location.href.toString().indexOf(-->
+<!--            "gyindex.html") < 0 && location.href.toString().indexOf("xhindex.html") < 0) {-->
+<!--            $('#statdiv').append(-->
+<!--                '<script src="https://s13.cnzz.com/stat.php?id=1275068004&web_id=1275068004" language="JavaScript"><\/script>'-->
+<!--            );-->
+<!--        }-->
+
+<!--        //百度统计-->
+<!--        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
+<!--        $('#statdiv').append(unescape("%3Cscript src='" + _bdhmProtocol +-->
+<!--            "hm.baidu.com/h.js%3Fa574454240bf693f1d8415a3915f25ff' type='text/javascript'%3E%3C/script%3E"-->
+<!--        ));-->
+<!--        //cnzz统计-->
+<!--        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
+<!--        $('#statdiv').append(unescape(-->
+<!--            "%3Cspan id='cnzz_stat_icon_1275068799'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol +-->
+<!--            "w.cnzz.com/c.php%3Fid%3D1275068799%26l%3D3' type='text/javascript'%3E%3C/script%3E"));-->
+<!--    }, 200);-->
+<!--</script>-->
+<script th:src="@{../js/jquery.bxslider.min.js}"></script>
+<script th:src="@{../js/scroll.js}"></script>
+<script th:src="@{../js/jquery.raty.min.js}"></script>
+<script th:src="@{../js/common.js}"></script>
+<script th:src="@{../js/userinfo.js}"></script>
+<script th:src="@{../js/giftrecharge.js}"></script>
+
+<script th:src="@{../js/gift.js}"></script>
+
+<script th:src="@{../js/chapterlist.js}"></script>
+
+<script th:src="@{../js/commentaction.js}"></script>
+<script th:src="@{../js/bookreivew.js}"></script>
+<script th:src="@{../js/bookinfo.js}"></script>
+
+<!-- 作者红包 -->
+<script th:src="@{../js/authorbonus.js}"></script>
+<script th:src="@{../js/clipboard.min.js}"></script>
+<script th:src="@{../js/showshare.js}"></script>
+<script th:src="@{../js/giftredpackage.js}"></script>
+
+<script th:src="@{../js/commendclickbyjquery.js}"></script>
+</body>
+
+</html>

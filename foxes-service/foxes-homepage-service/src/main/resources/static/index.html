@@ -24,7 +24,7 @@
     <link href="css/global.css" rel="stylesheet" type="text/css"/>
     <script src="js/cookie.js"></script>
     <script src="js/vue.js"></script>
-    <script src="./js/axios.js"></script>
+    <script src="js/axios.js"></script>
     <link href="css/base.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/JQBox.css"/>
 
@@ -734,7 +734,7 @@
             success: function (response) {
                 let books = response.data;
                 for (let i = 0; i < books.length; i++) {
-                    $("#subscribeList").append("<li><span class='classify'>["+books[i].category+"]</span><a href='book/book/"+books[i].bookId+".html' target='_blank'>"+ books[i].bookName + "</a></li>")
+                    $("#subscribeList").append("<li><span class='classify'>["+books[i].category+"]</span><a href='book/"+books[i].bookId+".html' target='_blank'>"+ books[i].bookName + "</a></li>")
                 }
             }
         })
@@ -747,13 +747,13 @@
                 let books = response.data;
 
                 $("#readList").append("<li class='n1'>" +
-                    "<a class='book' href='book/book/"+books[0].bookId+".html' target='_blank'>" +
+                    "<a class='book' href='book/"+books[0].bookId+".html' target='_blank'>" +
                     "<img src='"+books[0].bookImage+"'>" +
                     "</a>" +
                     "<div class='detail'>" +
                     "<span class='num'>NO.1</span>" +
                     "<p class='name'>" +
-                    "<a href='book/book/"+books[0].bookId+".html' target='_blank'>"+books[0].bookName+"</a>" +
+                    "<a href='book/"+books[0].bookId+".html' target='_blank'>"+books[0].bookName+"</a>" +
                     "</p> " +
                     "<p class='piao'><em>"+books[0].readNum+"</em>&ensp;热度</p>" +
                     "<p class='author'>"+books[0].category+"&ensp;|&ensp;"+books[0].bookAuthor+"</p>" +
@@ -764,7 +764,7 @@
                     $("#readList").append("<li class='n"+(i+1)+"'>"+
                         "<span class='piao'>"+books[i].readNum+"</span>"+
                         "<span class='num'>"+(i+1)+"</span>"+
-                        "<p><a href='book/book/"+books[i].bookId+".html' target='_blank'>"+books[i].bookName+"</a></p></li>")
+                        "<p><a href='book/"+books[i].bookId+".html' target='_blank'>"+books[i].bookName+"</a></p></li>")
                 }
             }
         })
