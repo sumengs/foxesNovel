@@ -13,7 +13,7 @@ import java.util.List;
  * @date: 2020/6/30 13:14
  * @author: sumeng
  */
-@FeignClient(name = "chapter-service")
+@FeignClient(name = "read-service")
 public interface ChapterFeign {
 
     /**

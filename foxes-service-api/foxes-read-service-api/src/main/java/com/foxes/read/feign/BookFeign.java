@@ -12,7 +12,7 @@ import java.util.List;
  * @date: 2020/6/30 14:36
  * @author: lenaminz
  */
-@FeignClient(name = "book-service")
+@FeignClient(name = "read-service")
 public interface BookFeign {
     /**
      * 根据id查询小说数据

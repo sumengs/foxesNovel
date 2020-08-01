@@ -1,5 +1,5 @@
 server:
-  port: 6002
+  port: 8084
 spring:
   application:
     name: search-service
@@ -7,16 +7,16 @@ spring:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   elasticsearch:
     rest:
-      uris: 192.168.26.100:9200
+      uris: 192.168.246.130:9200
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.26.100:3306/foxer-novel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.246.130:3306/foxer-novel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
   thymeleaf:
     cache: false
   rabbitmq:
-    host: 192.168.26.100
+    host: 192.168.246.130
 eureka:
   client:
     service-url:

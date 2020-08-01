@@ -12,7 +12,7 @@ import java.util.List;
  * @date: 2020/6/30 14:48
  * @author: lenaminz
  */
-@FeignClient(name = "book-service")
+@FeignClient(name = "read-service")
 public interface CategoryFeign {
     /**
      * 查询所有分类信息

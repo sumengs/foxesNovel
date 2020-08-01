@@ -277,12 +277,12 @@
                     <div class="result-list" th:unless="${page.total}==0">
                         <ul>
                             <li th:each="book,books:${items.rows}">
-                                <a class="book commonbook" th:href="@{'/book/book/'+${book.id}+'.html'}" target="_blank">
+                                <a class="book commonbook" th:href="@{'/book/'+${book.id}+'.html'}" target="_blank">
                                     <img th:src="@{${book.image}}">
                                 </a>
                                 <div class="info">
                                     <h4>
-                                        <a th:href="@{'/book/book/'+${book.id}+'.html'}" target="_blank"><span
+                                        <a th:href="@{'/book/'+${book.id}+'.html'}" target="_blank"><span
                                                 th:text="${book.name}"></span> </a>
                                         <span class="subtitle">
                                                         <a target="_blank" ><i

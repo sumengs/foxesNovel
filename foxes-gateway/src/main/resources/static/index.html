@@ -676,7 +676,7 @@
 
         $.ajax({
             type: "GET",
-            url: "carousel",
+            url: "home/carousel",
             async: false,
             success: function (response) {
                 let images = response.data;
@@ -698,7 +698,7 @@
 
         $.ajax({
             type: "GET",
-            url: "big",
+            url: "home/big",
             success: function (response) {
                 let images = response.data;
                 $(".area_1200 a").attr("href", "" + images.url);
@@ -708,7 +708,7 @@
 
         $.ajax({
             type: "GET",
-            url: "weixin",
+            url: "home/weixin",
             success: function (response) {
                 let images = response.data;
                 $("#wx").attr("src", "" + images.image);
@@ -718,7 +718,7 @@
 
         $.ajax({
             type: "GET",
-            url: "small",
+            url: "home/small",
             success: function (response) {
                 let images = response.data;
                 $(".topic-rec-area a:first-child").attr("href", "" + images[0].url);
@@ -730,7 +730,7 @@
 
         $.ajax({
             type: "GET",
-            url: "subscribe",
+            url: "home/subscribe",
             success: function (response) {
                 let books = response.data;
                 for (let i = 0; i < books.length; i++) {
@@ -742,7 +742,7 @@
 
         $.ajax({
             type: "GET",
-            url: "read",
+            url: "home/read",
             success: function (response) {
                 let books = response.data;
 
